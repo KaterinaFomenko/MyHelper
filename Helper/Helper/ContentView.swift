@@ -7,33 +7,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var columsTop2 = [GridItem(.adaptive(minimum: 50, maximum: 50))]
     
     static var widthStackLV: CGFloat = 95
-    // @State var colums = Array(repeating: GridItem(.flexible()), count: 4)
-    // @State var colums2 = Array(repeating: GridItem(.flexible()), count: 4)
+    
     @State var columsMain = [GridItem(.adaptive(minimum: widthStackLV), spacing: 5)]
-    @State var columsTop2 = [GridItem(.adaptive(minimum: 50, maximum: 50))]
+   
     @State var columsTop = [GridItem(.fixed(100))]
    
-        var body: some View {
+    @StateObject private var model = DM.shared // ✅ Управляем состоянием DM
         
-         
-             
-            //GeometryReader { geometry in
+    var body: some View {
+        
                 VStack(spacing: 0)  {
+                   
+                    // Горизонтальный LazyHGrid
                     ScrollView(.horizontal) {
-                        SelectedItemsView(columsMain: $columsTop)
-                            .frame(width: 90)
+                        SelectedItemsView(columsTop: $columsTop)
+                            .environmentObject(model)
                     }
                     .frame(height: 120)
-                    
+                    .padding()
+                   
+                    // Серый разделитель
                     Rectangle()
                         .fill(Color.gray)
                         .frame(height: 30)
                     
+                    // Вертикальный Grid
                     ScrollView {
                         CardGridView(colums: $columsMain)
-                   
+                            .environmentObject(model)
                     }
                 }
             }

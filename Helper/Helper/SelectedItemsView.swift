@@ -6,23 +6,25 @@
 //
 
 import SwiftUI
-
+// Горизонтальный LazyHGrid
 struct SelectedItemsView: View {
     
-    @Binding var columsMain: [GridItem]
+    @Binding var columsTop: [GridItem]
+    @EnvironmentObject var dM: DM   // Теперь следим за изменениями
+    
     var body: some View {
         
-        LazyHGrid(rows: columsMain) {
+        LazyHGrid(rows: columsTop) {
             // + GETselectedItemsArray
-            ForEach(DM.selectedItemsArray) { item in
+            ForEach(dM.selectedItemsArray) { item in
                 CardView(card: item)
-               
             }
         }.padding()
     }
 }
 
 #Preview {
-    @Previewable @State var colums = [GridItem(.flexible())]
-    return CardGridView(colums: $colums) // передаём $ для Binding
+    @Previewable @State var columsTop = [GridItem(.flexible())]
+    SelectedItemsView(columsTop: $columsTop)
+        .environmentObject(DM.shared) // Передаём `DM`, чтобы видеть `selectedItemsArray`
 }

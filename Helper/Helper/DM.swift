@@ -8,16 +8,21 @@
 import Foundation
 import SwiftUI
 
-struct DM {
+class DM: ObservableObject {
    
-    static var array: [[CardModel]] = [[]]
-    static var selectedItemsArray: [CardModel] = [] // for top grid
+    @Published var selectedItemsArray: [CardModel] = [] // for top grid
+    @Published var array: [[CardModel]] = []
+
+    static let shared = DM()
     
-    static func initArray() {
-        
+    init() {
+        initArray()
+    }
+    
+    private func initArray() {
         for section in 0..<2 { // section
             var cardArray: [CardModel] = []
-            for _ in 0..<25 {
+            for _ in 0..<15 {
                 
                 var card = CardModel()
                 card.title = "Sleep " + String(section)
@@ -27,27 +32,27 @@ struct DM {
                 cardArray.append(card)
             }
             array.append(cardArray)
-            
         }
-        array.remove(at: 0)
+       // array.remove(at: 0)
         print("Init OK")
         print(array)
         
-        selectedItemsArray.append(array[0].first!)
+        //shared.selectedItemsArray.append(array[0].first!)
         
     }
     
-    static func addItemToSelected(item: CardModel) {
+     func addItemToSelected(item: CardModel) {
         if !selectedItemsArray.contains(where: {$0.id == item.id}) {
             selectedItemsArray.append(item)
             print("Add new item in SelectedArray")
         }
     }
     
-    static func getCards(section: Int) -> [CardModel] {
+     func getCards(section: Int) -> [CardModel] {
         if array.count < 2 { //init at first start
-            initArray()
+       //     initArray()
         }
+         
         print("getson num = " + String(section))
         return array[section]
     }
