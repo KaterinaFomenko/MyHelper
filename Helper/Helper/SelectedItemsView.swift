@@ -15,7 +15,6 @@ struct SelectedItemsView: View {
     var body: some View {
         
         LazyHGrid(rows: columsTop) {
-            // + GETselectedItemsArray
             ForEach(dM.selectedItemsArray) { item in
                 CardView(card: item)
             }

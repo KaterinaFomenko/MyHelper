@@ -7,15 +7,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var columsTop2 = [GridItem(.adaptive(minimum: 50, maximum: 50))]
+   // @State var columsTop2 = [GridItem(.adaptive(minimum: 50, maximum: 50))]
     
-    static var widthStackLV: CGFloat = 95
-    
-    @State var columsMain = [GridItem(.adaptive(minimum: widthStackLV), spacing: 5)]
+//   95 - ширина одной ячейки
+    @State var columsMain = [GridItem(.adaptive(minimum: 100), spacing: 0)]
    
     @State var columsTop = [GridItem(.fixed(100))]
    
-    @StateObject private var model = DM.shared // ✅ Управляем состоянием DM
+    @StateObject private var model = DM.shared // Управляем состоянием DM
         
     var body: some View {
         

@@ -10,7 +10,7 @@ import SwiftUI
 struct CardGridView: View {
     
     @Binding var colums: [GridItem]
-    @EnvironmentObject var dataManager: DM
+   // @EnvironmentObject var dataManager: DM
     
     var body: some View {
         
@@ -20,8 +20,6 @@ struct CardGridView: View {
                     CardView(card: item)
                         .onTapGesture {
                             DM.shared.addItemToSelected(item: item)
-                            
-                            print("!!!selectedItemsArray: \(DM.shared.selectedItemsArray)")
                         }
                 }
             } header: {
@@ -33,7 +31,14 @@ struct CardGridView: View {
             Section {
                 ForEach(DM.shared.getCards(section: 1)) { item in
                     CardView(card: item)
+                        .onTapGesture {
+                        DM.shared.addItemToSelected(item: item)
+                        
+                        print("!!!selectedItemsArray: \(DM.shared.selectedItemsArray)")
+                    }
                 }
+                
+                
             } header: {
                 Text("General actions")
                     .font(.largeTitle.bold())
@@ -45,5 +50,6 @@ struct CardGridView: View {
 
 #Preview {
     @Previewable @State var colums = [GridItem(.flexible())]
-    return CardGridView(colums: $colums) // передаём $ для Binding
+    return CardGridView(colums: $colums)
+        .environmentObject(DM.shared)// передаём $ для Binding
 }

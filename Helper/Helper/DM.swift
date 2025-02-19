@@ -33,12 +33,6 @@ class DM: ObservableObject {
             }
             array.append(cardArray)
         }
-       // array.remove(at: 0)
-        print("Init OK")
-        print(array)
-        
-        //shared.selectedItemsArray.append(array[0].first!)
-        
     }
     
      func addItemToSelected(item: CardModel) {
@@ -48,13 +42,9 @@ class DM: ObservableObject {
         }
     }
     
-     func getCards(section: Int) -> [CardModel] {
-        if array.count < 2 { //init at first start
-       //     initArray()
-        }
-         
-        print("getson num = " + String(section))
-        return array[section]
+    func getCards(section: Int) -> [CardModel] {
+        guard section < array.count else { return [] }
+         return array[section]
     }
     
     /*
