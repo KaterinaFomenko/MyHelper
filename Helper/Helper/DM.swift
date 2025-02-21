@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class DM: ObservableObject {
-   
+    @Published var cardsLoad: [CardModelJson] = load()
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     @Published var array: [[CardModel]] = []
 
@@ -27,7 +27,7 @@ class DM: ObservableObject {
                 var card = CardModel()
                 card.title = "Sleep " + String(section)
                 card.image = "cubesV_xBG"
-                card.colorSection = .green
+                card.colorSection = "green"
                 card.groupId = 1
                 cardArray.append(card)
             }
@@ -47,15 +47,24 @@ class DM: ObservableObject {
          return array[section]
     }
     
-    /*
-    static var rightCards: [CardModel] {
-        var array: [CardModel] = []
-        
-        for _ in 0..<10 {
-            let card = CardModel.init(title: "Sleep", image: "cubesV_xBG")
-            array.append(card)
+    func removeLastItem() {
+        if !selectedItemsArray.isEmpty {
+            selectedItemsArray.removeLast()
         }
-        return array
     }
-     */
+    
+    func getConvertedCards() -> [CardModel] {
+        return cardsLoad.map { cardData in
+            CardModel(
+                title: cardData.title,
+                colorSection: cardData.color,
+                groupId: cardData.parentId,
+                image: cardData.imageName,
+                cardId: cardData.cardId
+            )
+        }
+    }
+    
+    
+  
 }

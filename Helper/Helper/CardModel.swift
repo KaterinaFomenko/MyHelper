@@ -10,10 +10,13 @@ import SwiftUI
 
 struct CardModel: Identifiable {
     var id = UUID()
+    
     var title: String = ""
-    var image: String = ""
-    var colorSection: Color = .white
+    var colorSection: String = ""
     var groupId: Int = 0
+    var image: String = ""
+    var cardId: Int = 1
 }
+
 
 

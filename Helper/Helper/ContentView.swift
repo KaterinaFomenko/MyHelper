@@ -6,42 +6,53 @@
 //
 import SwiftUI
 
+
+
 struct ContentView: View {
-   // @State var columsTop2 = [GridItem(.adaptive(minimum: 50, maximum: 50))]
     
-//   95 - ширина одной ячейки
+    // Управляем состоянием DM
+    @StateObject private var dm = DM.shared
+    
+    
+    //   100 - ширина одной ячейки
     @State var columsMain = [GridItem(.adaptive(minimum: 100), spacing: 0)]
-   
     @State var columsTop = [GridItem(.fixed(100))]
-   
-    @StateObject private var model = DM.shared // Управляем состоянием DM
-        
+    
     var body: some View {
         
-                VStack(spacing: 0)  {
-                   
-                    // Горизонтальный LazyHGrid
-                    ScrollView(.horizontal) {
-                        SelectedItemsView(columsTop: $columsTop)
-                            .environmentObject(model)
-                    }
-                    .frame(height: 120)
-                    .padding()
-                   
-                    // Серый разделитель
-                    Rectangle()
-                        .fill(Color.gray)
-                        .frame(height: 30)
-                    
-                    // Вертикальный Grid
-                    ScrollView {
-                        CardGridView(colums: $columsMain)
-                            .environmentObject(model)
-                    }
+        VStack(spacing: 0)  {
+            
+            // Горизонтальный Scroll
+            ScrollView(.horizontal) {
+                SelectedCardsView(columsTop: $columsTop)
+                    .environmentObject(dm)
+            }
+            .frame(height: 120)
+            .padding()
+            
+            
+            // Серый разделитель
+            ZStack() {
+                Rectangle()
+                    .fill(Color.blue.opacity(0.1))
+                    .frame(height: 80)
+                HStack {
+                    Spacer()
+                    SettingsView()
+                        .environmentObject(dm)
                 }
             }
+            
+            
+            // Вертикальный MainScroll
+            ScrollView {
+                MainCardsView(colums: $columsMain)
+                    .environmentObject(dm)
+            }
         }
-    
+    }
+}
+
 
 
 #Preview {
