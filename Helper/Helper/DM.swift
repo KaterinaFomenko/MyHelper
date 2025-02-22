@@ -9,13 +9,14 @@ import Foundation
 import SwiftUI
 
 class DM: ObservableObject {
-    @Published var cardsLoad: [CardModelJson] = load()
+    @Published var cardsLoad: [CardModelJson] = []
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     @Published var array: [[CardModel]] = []
 
     static let shared = DM()
     
     init() {
+        getCardsLoad()
         initArray()
     }
     
@@ -36,21 +37,26 @@ class DM: ObservableObject {
     }
     
      func addItemToSelected(item: CardModel) {
-        if !selectedItemsArray.contains(where: {$0.id == item.id}) {
+         if !selectedItemsArray.contains(where: {$0.cardId == item.cardId}) {
             selectedItemsArray.append(item)
             print("Add new item in SelectedArray")
         }
-    }
-    
-    func getCards(section: Int) -> [CardModel] {
-        guard section < array.count else { return [] }
-         return array[section]
     }
     
     func removeLastItem() {
         if !selectedItemsArray.isEmpty {
             selectedItemsArray.removeLast()
         }
+    }
+    
+    private func getCardsLoad() -> [CardModelJson] {
+        cardsLoad = load()
+        return cardsLoad
+    }
+    
+    private func fetchCardsLoad() {
+        let loadedCards = getCardsLoad()
+        print("Загруженные карточки: \(loadedCards)")
     }
     
     func getConvertedCards() -> [CardModel] {
@@ -68,3 +74,11 @@ class DM: ObservableObject {
     
   
 }
+
+
+
+
+//    func getCards(section: Int) -> [CardModel] {
+//        guard section < array.count else { return [] }
+//         return array[section]
+//    }

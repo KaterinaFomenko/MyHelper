@@ -30,7 +30,6 @@ struct ContentView: View {
             .frame(height: 120)
             .padding()
             
-            
             // Серый разделитель
             ZStack() {
                 Rectangle()
@@ -42,7 +41,6 @@ struct ContentView: View {
                         .environmentObject(dm)
                 }
             }
-            
             
             // Вертикальный MainScroll
             ScrollView {
