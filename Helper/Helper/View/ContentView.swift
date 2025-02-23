@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     // Управляем состоянием DM
-    @StateObject private var dm = DM.shared
+    @ObservedObject private var dm = DM.shared
     
     
     //   100 - ширина одной ячейки

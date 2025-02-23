@@ -10,12 +10,12 @@ import SwiftUI
 struct SelectedCardsView: View {
     
     @Binding var columsTop: [GridItem]
-    @EnvironmentObject var dm: DM   // Теперь следим за изменениями
+    @EnvironmentObject var dm: DM   // следим за изменениями
     
     var body: some View {
         
         LazyHGrid(rows: columsTop) {
-            ForEach(dm.selectedItemsArray) { item in
+            ForEach(dm.selectedItemsArray, id: \.cardId) { item in
                 CardView(card: item)
             }
         }.padding()

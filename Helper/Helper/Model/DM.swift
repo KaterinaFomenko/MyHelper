@@ -9,32 +9,35 @@ import Foundation
 import SwiftUI
 
 class DM: ObservableObject {
-    @Published var cardsLoad: [CardModelJson] = []
+  
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
-    @Published var array: [[CardModel]] = []
+    @Published var mainCardsArray: [CardModel] = [] //data from Json
+    @Published var array: [CardModel] = []
 
     static let shared = DM()
     
     init() {
         getCardsLoad()
-        initArray()
+        //initArray()
     }
-    
+    /*
     private func initArray() {
         for section in 0..<2 { // section
             var cardArray: [CardModel] = []
             for _ in 0..<15 {
                 
-                var card = CardModel()
+                var card = CardModel(from: <#any Decoder#>)
                 card.title = "Sleep " + String(section)
-                card.image = "cubesV_xBG"
-                card.colorSection = "green"
+                card.imageName = "cubesV_xBG"
+                //card. = "green"
                 card.groupId = 1
                 cardArray.append(card)
+                 
             }
             array.append(cardArray)
         }
     }
+     */
     
      func addItemToSelected(item: CardModel) {
          if !selectedItemsArray.contains(where: {$0.cardId == item.cardId}) {
@@ -49,26 +52,24 @@ class DM: ObservableObject {
         }
     }
     
-    private func getCardsLoad() -> [CardModelJson] {
-        cardsLoad = load()
-        return cardsLoad
-    }
-    
-    private func fetchCardsLoad() {
-        let loadedCards = getCardsLoad()
-        print("Загруженные карточки: \(loadedCards)")
+    private func getCardsLoad() -> [CardModel] {
+        mainCardsArray = load()
+        print("🎞️ Загруженные карточки: \(mainCardsArray)")
+        return mainCardsArray
     }
     
     func getConvertedCards() -> [CardModel] {
-        return cardsLoad.map { cardData in
-            CardModel(
-                title: cardData.title,
-                colorSection: cardData.color,
-                groupId: cardData.parentId,
-                image: cardData.imageName,
-                cardId: cardData.cardId
-            )
-        }
+        return mainCardsArray
+//        return mainCardsArray.map { cardData in
+//            CardModel(
+//                cardId: cardData.cardId,
+//                title: cardData.title,
+//                //colorCard: cardData.color,
+//                groupId: cardData.groupId,
+//                imageName: cardData.imageName
+//                
+//            )
+//        }
     }
     
     

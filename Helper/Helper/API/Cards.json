@@ -1,0 +1,70 @@
+[
+    {
+        "title": "I",
+        "color": "0,0,255",
+        "groupId": 1,
+        "imageName": "I",
+        "cardId": 1
+    },
+    {
+        "title": "You",
+        "color": "255,0,0",
+        "groupId": 1,
+        "imageName": "You",
+        "cardId": 2
+    },
+    {
+        "title": "Good morning",
+        "color": "0,128,0",
+        "groupId": 2,
+        "imageName": "Good morning",
+        "cardId": 4
+    },
+    {
+        "title": "Hello",
+        "color": "255,192,203",
+        "groupId": 2,
+        "imageName": "Hello",
+        "cardId": 5
+    },
+    {
+        "title": "Hurts",
+        "color": "255,255,0",
+        "groupId": 3,
+        "imageName": "Hurts",
+        "cardId": 6,
+        "childCards": [
+            {"title": "Head",
+            "color": "255,255,0",
+            "groupId": 3,
+            "imageName": "Hurts",
+            "cardId": 6.1
+            },
+            {"title": "Arm",
+            "color": "255,255,0",
+            "groupId": 3,
+            "imageName": "Hurts",
+            "cardId": 6.2
+            },
+            {"title": "Leg",
+            "color": "255,255,0",
+            "groupId": 3,
+            "imageName": "Hurts",
+            "cardId": 6.3
+            },
+            {"title": "Stomach",
+            "color": "255,255,0",
+            "groupId": 3,
+            "imageName": "Hurts",
+            "cardId": 6.4
+            },
+            {"title": "Tooth",
+            "color": "255,255,0",
+            "groupId": 3,
+            "imageName": "Hurts",
+            "cardId": 6.5
+            }
+            
+        ]
+    }
+]

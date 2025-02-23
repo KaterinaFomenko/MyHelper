@@ -15,11 +15,18 @@ struct MainCardsView: View {
     var body: some View {
         
         LazyVGrid(columns: colums, spacing: 10) {
-            
-            ForEach(dm.getConvertedCards()) { card in
+            //
+            ForEach(dm.getConvertedCards(), id: \.cardId) { card in
                 CardView(card: card)
                     .onTapGesture {
-                        dm.addItemToSelected(item: card)
+                        // если childCards
+                        if card.childCards?.isEmpty ?? false {
+                            dm.addItemToSelected(item: card)
+                        } else {
+                            // показываем дочерний элемент
+                            dm.$mainCardsArray
+                        }
+                        
                     }
             }
         }
@@ -31,15 +38,15 @@ struct MainCardsView: View {
         
         
             
-//            ForEach(dm.cardsLoad) { card in
+//            ForEach(dm.mainCardsArray) { card in
 //                CardView(card: card)
 //                    .onTapGesture {
 //                        let newCard = CardModel(
 //                            id: card.cardId,
 //                            title: card.title,
-//                            image: card.imageName,
-//                            colorSection: card.color,
-//                            groupId: card.parentId)
+//                            imageName: card.imageName,
+//                            color: card.color,
+//                            parentId: card.parentId)
 //                    }
 //                
 //            }
@@ -59,7 +66,7 @@ struct MainCardsView: View {
             
 //            List {
 //                ForEach(DM.shared.cards) { card in
-//                    CardModel(id: card.cardId, title: card.title, image: card.imageName, colorSection: card.color, groupId: card.parentId)
+//                    CardModel(id: card.cardId, title: card.title, imageName: card.imageName, color: card.color, parentId: card.parentId)
                     
                     // .onTapGesture {
                     //  DM.shared.addItemToSelected(item: item)
