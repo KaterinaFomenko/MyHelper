@@ -1,0 +1,69 @@
+
+[
+    {
+        "title": "I",
+        "groupId": 1,
+        "imageName": "I2",
+        "cardId": 1
+    },
+    {
+        "title": "You",
+        "groupId": 1,
+        "imageName": "You",
+        "cardId": 2
+    },
+    {
+        "title": "Words of greeting",
+        "groupId": 2,
+        "imageName": "greeting2",
+        "cardId": 3,
+        "childCards": [
+            {"title": "Good morning",
+                "groupId": 2,
+                "imageName": "Good morning",
+                "cardId": 2.1
+            },
+            {
+                "title": "Hello",
+                "groupId": 2,
+                "imageName": "Hello",
+                "cardId": 2.2
+            }
+        ]
+    },
+    {
+        "title": "Hurts",
+        "groupId": 3,
+        "imageName": "Hurts",
+        "cardId": 6,
+        "childCards": [
+            {"title": "Head",
+                "groupId": 3,
+                "imageName": "Hurts",
+                "cardId": 6.1
+            },
+            {"title": "Arm",
+                "groupId": 3,
+                "imageName": "Hurts",
+                "cardId": 6.2
+            },
+            {"title": "Leg",
+                "groupId": 3,
+                "imageName": "Hurts",
+                "cardId": 6.3
+            },
+            {"title": "Stomach",
+                "groupId": 3,
+                "imageName": "Hurts",
+                "cardId": 6.4
+            },
+            {"title": "Tooth",
+                "groupId": 3,
+                "imageName": "tooth2",
+                "cardId": 6.5
+            }
+            
+        ]
+    }
+]
+

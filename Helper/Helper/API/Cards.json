@@ -1,67 +1,458 @@
 [
     {
         "title": "I",
-        "groupId": 1,
+        "cardId": 1,
         "imageName": "I2",
-        "cardId": 1
+        "priority": 1,
+        "groupId": 1
     },
     {
         "title": "You",
-        "groupId": 1,
+        "cardId": 2,
         "imageName": "You",
-        "cardId": 2
+        "priority": 1,
+        "groupId": 1
     },
     {
         "title": "Words of greeting",
-        "groupId": 2,
-        "imageName": "greeting2",
         "cardId": 3,
+        "imageName": "greeting2",
+        "priority": 1,
+        "groupId": 2,
         "childCards": [
-            {"title": "Good morning",
-                "groupId": 2,
+            {
+                "title": "Good morning",
+                "cardId": 3.1,
                 "imageName": "Good morning",
-                "cardId": 2.1
+                "groupId": 2
             },
             {
                 "title": "Hello",
-                "groupId": 2,
+                "cardId": 3.2,
                 "imageName": "Hello",
-                "cardId": 2.2
+                "groupId": 2
+            },
+            {
+                "title": "Goodbye",
+                "cardId": 3.3,
+                "imageName": "Goodbye",
+                "groupId": 2
             }
         ]
     },
     {
         "title": "Hurts",
-        "groupId": 3,
+        "cardId": 4,
         "imageName": "Hurts",
-        "cardId": 6,
+        "priority": 1,
+        "groupId": 3,
         "childCards": [
-            {"title": "Head",
-                "groupId": 3,
+            {
+                "title": "Head",
+                "cardId": 4.1,
                 "imageName": "Hurts",
-                "cardId": 6.1
+                "groupId": 3
             },
-            {"title": "Arm",
-                "groupId": 3,
+            {
+                "title": "Arm",
+                "cardId": 4.2,
                 "imageName": "Hurts",
-                "cardId": 6.2
+                "groupId": 3
             },
-            {"title": "Leg",
-                "groupId": 3,
+            {
+                "title": "Leg",
+                "cardId": 4.3,
                 "imageName": "Hurts",
-                "cardId": 6.3
+                "groupId": 3
             },
-            {"title": "Stomach",
-                "groupId": 3,
+            {
+                "title": "Stomach",
+                "cardId": 4.4,
                 "imageName": "Hurts",
-                "cardId": 6.4
+                "groupId": 3
             },
-            {"title": "Tooth",
-                "groupId": 3,
+            {
+                "title": "Tooth",
+                "cardId": 4.5,
                 "imageName": "tooth2",
-                "cardId": 6.5
+                "groupId": 3
+            },
+            {
+                "title": "Ear",
+                "cardId": 4.6,
+                "imageName": "ear_hurt",
+                "groupId": 3
+            },
+            {
+                "title": "Back",
+                "cardId": 4.7,
+                "imageName": "back_hurt",
+                "groupId": 3
+            },
+            {
+                "title": "Throat",
+                "cardId": 4.8,
+                "imageName": "throat_hurt",
+                "groupId": 3
             }
-            
+        ]
+    },
+    {
+        "title": "Games",
+        "cardId": 5,
+        "imageName": "games",
+        "priority": 2,
+        "groupId": 4,
+        "childCards": [
+            {
+                "title": "Ball",
+                "cardId": 5.1,
+                "imageName": "Ball",
+                "groupId": 4
+            },
+            {
+                "title": "Puzzle",
+                "cardId": 5.2,
+                "imageName": "Puzzle",
+                "groupId": 4
+            },
+            {
+                "title": "Doll",
+                "cardId": 5.3,
+                "imageName": "Doll",
+                "groupId": 4
+            },
+            {
+                "title": "Car",
+                "cardId": 5.4,
+                "imageName": "Car",
+                "groupId": 4
+            }
+        ]
+    },
+    {
+        "title": "Toilet",
+        "cardId": 6,
+        "imageName": "toilet",
+        "priority": 2,
+        "groupId": 5,
+        "childCards": [
+            {
+                "title": "Toilet",
+                "cardId": 6.1,
+                "imageName": "Toilet",
+                "groupId": 5
+            },
+            {
+                "title": "Wash Hands",
+                "cardId": 6.2,
+                "imageName": "Wash Hands",
+                "groupId": 5
+            },
+            {
+                "title": "Pee",
+                "cardId": 6.3,
+                "imageName": "Pee",
+                "groupId": 5
+            },
+            {
+                "title": "Poop",
+                "cardId": 6.4,
+                "imageName": "Poop",
+                "audioName": "poop.mp3",
+                "groupId": 5
+            }
+        ]
+    },
+    {
+        "title": "Tableware",
+        "cardId": 7,
+        "imageName": "tableware",
+        "priority": 3,
+        "groupId": 6,
+        "childCards": [
+            {
+                "title": "Fork",
+                "cardId": 7.1,
+                "imageName": "Fork",
+                "groupId": 6
+            },
+            {
+                "title": "Spoon",
+                "cardId": 7.2,
+                "imageName": "Spoon",
+                "groupId": 6
+            },
+            {
+                "title": "Knife",
+                "cardId": 7.3,
+                "imageName": "Knife",
+                "groupId": 6
+            },
+            {
+                "title": "Plate",
+                "cardId": 7.4,
+                "imageName": "Plate",
+                "groupId": 6
+            }
+        ]
+    },
+    {
+        "title": "Feelings",
+        "cardId": 8,
+        "imageName": "feelings",
+        "priority": 2,
+        "groupId": 7,
+        "childCards": [
+            {
+                "title": "Good",
+                "cardId": 8.1,
+                "imageName": "Good",
+                "groupId": 7
+            },
+            {
+                "title": "Bad",
+                "cardId": 8.2,
+                "imageName": "Bad",
+                "groupId": 7
+            }
+        ]
+    },
+    {
+        "title": "Emotions",
+        "cardId": 9,
+        "imageName": "emotions",
+        "priority": 2,
+        "groupId": 8,
+        "childCards": [
+            {
+                "title": "Happy",
+                "cardId": 9.1,
+                "imageName": "Happy",
+                "groupId": 8
+            },
+            {
+                "title": "Sad",
+                "cardId": 9.2,
+                "imageName": "Sad",
+                "groupId": 8
+            },
+            {
+                "title": "Angry",
+                "cardId": 9.3,
+                "imageName": "Angry",
+                "groupId": 8
+            },
+            {
+                "title": "Hungry",
+                "cardId": 9.4,
+                "imageName": "Hungry",
+                "groupId": 8
+            },
+            {
+                "title": "Satisfied",
+                "cardId": 9.5,
+                "imageName": "Satisfied",
+                "groupId": 8
+            },
+            {
+                "title": "Dissatisfied",
+                "cardId": 9.6,
+                "imageName": "Dissatisfied",
+                "groupId": 8
+            }
+        ]
+    },
+    {
+        "title": "Food",
+        "cardId": 10,
+        "imageName": "food",
+        "priority": 2,
+        "groupId": 9,
+        "childCards": [
+            {
+                "title": "Apple",
+                "cardId": 10.1,
+                "imageName": "Apple",
+                "groupId": 9
+            },
+            {
+                "title": "Bread",
+                "cardId": 10.2,
+                "imageName": "Bread",
+                "groupId": 9
+            },
+            {
+                "title": "Water",
+                "cardId": 10.3,
+                "imageName": "Water",
+                "groupId": 9
+            },
+            {
+                "title": "Juice",
+                "cardId": 10.4,
+                "imageName": "Juice",
+                "groupId": 9
+            }
+        ]
+    },
+    {
+        "title": "Actions",
+        "cardId": 11,
+        "imageName": "actions",
+        "priority": 2,
+        "groupId": 10,
+        "childCards": [
+            {
+                "title": "Play",
+                "cardId": 11.1,
+                "imageName": "Play",
+                "groupId": 10
+            },
+            {
+                "title": "Wait",
+                "cardId": 11.2,
+                "imageName": "Wait",
+                "groupId": 10
+            },
+            {
+                "title": "Hug",
+                "cardId": 11.3,
+                "imageName": "Hug",
+                "groupId": 10
+            },
+            {
+                "title": "Kiss",
+                "cardId": 11.4,
+                "imageName": "Kiss",
+                "groupId": 10
+            }
+        ]
+    },
+    {
+        "title": "Weather",
+        "cardId": 12,
+        "imageName": "weather",
+        "priority": 3,
+        "groupId": 11,
+        "childCards": [
+            {
+                "title": "Sunny",
+                "cardId": 12.1,
+                "imageName": "Sunny",
+                "groupId": 11
+            },
+            {
+                "title": "Rainy",
+                "cardId": 12.2,
+                "imageName": "Rainy",
+                "groupId": 11
+            },
+            {
+                "title": "Snowy",
+                "cardId": 12.3,
+                "imageName": "Snowy",
+                "groupId": 11
+            }
+        ]
+    },
+    {
+        "title": "Colors",
+        "cardId": 13,
+        "imageName": "colors",
+        "priority": 3,
+        "groupId": 12,
+        "childCards": [
+            {
+                "title": "Red",
+                "cardId": 13.1,
+                "imageName": "Red",
+                "groupId": 12
+            },
+            {
+                "title": "Blue",
+                "cardId": 13.2,
+                "imageName": "Blue",
+                "groupId": 12
+            },
+            {
+                "title": "Green",
+                "cardId": 13.3,
+                "imageName": "Green",
+                "groupId": 12
+            },
+            {
+                "title": "Yellow",
+                "cardId": 13.4,
+                "imageName": "Yellow",
+                "groupId": 12
+            }
+        ]
+    },
+    {
+        "title": "Numbers",
+        "cardId": 14,
+        "imageName": "numbers",
+        "priority": 3,
+        "groupId": 13,
+        "childCards": [
+            {
+                "title": "One",
+                "cardId": 14.1,
+                "imageName": "One",
+                "groupId": 13
+            },
+            {
+                "title": "Two",
+                "cardId": 14.2,
+                "imageName": "Two",
+                "groupId": 13
+            },
+            {
+                "title": "Three",
+                "cardId": 14.3,
+                "imageName": "Three",
+                "groupId": 13
+            },
+            {
+                "title": "Four",
+                "cardId": 14.4,
+                "imageName": "Four",
+                "groupId": 13
+            }
+        ]
+    },
+    {
+        "title": "Animals",
+        "cardId": 15,
+        "imageName": "animals",
+        "priority": 3,
+        "groupId": 14,
+        "childCards": [
+            {
+                "title": "Dog",
+                "cardId": 15.1,
+                "imageName": "Dog",
+                "groupId": 14
+            },
+            {
+                "title": "Cat",
+                "cardId": 15.2,
+                "imageName": "Cat",
+                "groupId": 14
+            },
+            {
+                "title": "Lion",
+                "cardId": 15.3,
+                "imageName": "Lion",
+                "groupId": 14
+            },
+            {
+                "title": "Elephant",
+                "cardId": 15.4,
+                "imageName": "Elephant",
+                "groupId": 14
+            }
         ]
     }
 ]

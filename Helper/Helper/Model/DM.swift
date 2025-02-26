@@ -49,10 +49,23 @@ class DM: ObservableObject {
                 return "F26B0F"
             case 3 :
                 return "E73879"
+            case 4:
+                return "33FF57" // Зеленый
+            case 5:
+                return "33B5FF" // Голубой
+            case 6:
+                return "FF33A1" // Фиолетовый
+            case 7:
+                return "FF5733" // Красный
+            case 8:
+                return "8E44AD" // Пурпурный
+            case 9:
+                return "3498DB" // Синий
             default:
-                return "7E1891"
+                return "7E1891" // Фиолетовый (по умолчанию)
         }
     }
+    
     
     /*
     private func initArray() {

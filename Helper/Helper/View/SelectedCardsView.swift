@@ -16,7 +16,7 @@ struct SelectedCardsView: View {
         
         LazyHGrid(rows: columsTop) {
             ForEach(dm.selectedItemsArray, id: \.cardId) { item in
-                CardView(card: item)
+                CardViewForSecectedCards(card: item)
             }
         }.padding()
     }
