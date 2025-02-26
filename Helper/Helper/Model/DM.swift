@@ -16,6 +16,7 @@ class DM: ObservableObject {
     @Published var childCardsArray: [CardModel] = []  // source for childElements from Json
     
     @Published var mainArray: [CardModel] = [] // monitor
+    
     static let shared = DM()
     
     init() {

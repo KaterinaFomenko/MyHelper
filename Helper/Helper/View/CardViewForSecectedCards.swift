@@ -27,14 +27,7 @@ struct CardViewForSecectedCards: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40)
-               // .padding(.bottom, 5)
         }
-//        .frame(width: 90)
-//        .background(RoundedRectangle(cornerRadius: 10)
-//            .fill(Color(hex: DM.shared.getColor(groupId: card.groupId)))
-//            .opacity(0.5)
-//            .shadow(color: .gray, radius: 2, x: 3, y: 3)
- //       )
     }
 }
 

@@ -11,19 +11,10 @@ struct SettingsView: View {
     @State private var isPressed = false
     @EnvironmentObject var dm: DM
     
+    
     var body: some View {
         HStack(alignment: .center) {
-            Button {
-                // TODO Text Field
-            } label: {
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 20))
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundStyle(.white)
-                    .clipShape(Circle())
-                    .scaleEffect(isPressed ? 0.9 : 1.0)
-            } .frame(width: 100, height: 100)
+
             
             Button {
                 dm.removeLastItem()

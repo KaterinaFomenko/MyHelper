@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 //cardsData.last?.childCards?[4].title ?? ""  ->  "Tooth"
 
-struct CardModel: Decodable, Identifiable {
+struct CardModel: Decodable, Identifiable, Hashable {
     var id: Float { cardId }
     
     var cardId: Float
@@ -19,14 +19,6 @@ struct CardModel: Decodable, Identifiable {
     var priority: Int?
     var childCards: [CardModel]?
 }
-
-//struct ChildCard: Decodable {
-//    var cardId: Float
-//    var title: String
-//    var groupId: Int
-//    var imageName: String
-//    
-//}
 
 func load() -> [CardModel] {
     // 1. Поиск файла в Bundle

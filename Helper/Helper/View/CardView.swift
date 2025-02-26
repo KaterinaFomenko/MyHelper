@@ -11,7 +11,6 @@ struct CardView: View {
     
     let card: CardModel
     
-    
     var body: some View {
         VStack(spacing: 1.0) {
             Text(card.title)

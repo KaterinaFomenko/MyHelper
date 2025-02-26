@@ -10,26 +10,15 @@ struct ContentView: View {
     
     // Управляем состоянием DM
     @ObservedObject private var dm = DM.shared
-    
-    //   100 - ширина одной ячейки
-    @State var columsMain = [GridItem(.adaptive(minimum: 100), spacing: 0)]
-    @State var columsTop = [GridItem(.fixed(100))]
-   
-    
+
     var body: some View {
         
         VStack(spacing: 0)  {
-            
             // Горизонтальный Scroll
-            
-            ScrollView(.horizontal) {
-                SelectedCardsView(columsTop: $columsTop)
-                    .environmentObject(dm)
-            }
-            .frame(height: 40)
-            .padding()
-            
-            
+                    SelectedCardsView()
+                        .environmentObject(dm)
+                }
+
             // Серый разделитель
             ZStack() {
                 Rectangle()
@@ -45,14 +34,13 @@ struct ContentView: View {
             // Вертикальный MainScroll
             ScrollView {
                 VStack {
-                    MainCardsView(colums: $columsMain)
+                    MainCardsView()
                         .environmentObject(dm)
-
                 }
             }
         }
     }
-}
+
 
 
 

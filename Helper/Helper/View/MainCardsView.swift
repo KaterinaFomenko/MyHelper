@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-// Вертикальный Grid
+
 struct MainCardsView: View {
     
-    @Binding var colums: [GridItem]
     @EnvironmentObject var dm: DM
-    
+    var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
     
     var body: some View {
         
@@ -38,10 +37,6 @@ struct MainCardsView: View {
                                 var cardBack = CardModel(cardId: 101, title: "Back", groupId: 1, imageName: "back1")
                                 dm.mainArray.insert(cardHome, at: 0)
                                 dm.mainArray.append(cardBack)
-                                
-//                                dm.mainArray = (card.cardId == 100) ? dm.parentCardsArray : dm.mainArray // return Home page
-//                                dm.mainArray = (card.cardId == 101) ? dm.parentCardsArray : dm.mainArray // return Back
-                                
                             }
                         }
                     }
@@ -50,7 +45,7 @@ struct MainCardsView: View {
         .padding()
     }
 }
-//
+
 //#Preview {
 //    
 //    @Previewable @State var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
