@@ -6,17 +6,15 @@
 //
 import SwiftUI
 
-
-
 struct ContentView: View {
     
     // Управляем состоянием DM
     @ObservedObject private var dm = DM.shared
     
-    
     //   100 - ширина одной ячейки
     @State var columsMain = [GridItem(.adaptive(minimum: 100), spacing: 0)]
     @State var columsTop = [GridItem(.fixed(100))]
+   
     
     var body: some View {
         
@@ -44,8 +42,11 @@ struct ContentView: View {
             
             // Вертикальный MainScroll
             ScrollView {
-                MainCardsView(colums: $columsMain)
-                    .environmentObject(dm)
+                VStack {
+                    MainCardsView(colums: $columsMain)
+                        .environmentObject(dm)
+
+                }
             }
         }
     }

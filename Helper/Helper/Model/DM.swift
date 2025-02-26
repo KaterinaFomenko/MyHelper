@@ -11,33 +11,17 @@ import SwiftUI
 class DM: ObservableObject {
   
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
-    @Published var mainCardsArray: [CardModel] = [] //data from Json
-    @Published var array: [CardModel] = []
-
+    
+    @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
+    @Published var childCardsArray: [CardModel] = []  // source for childElements from Json
+    
+    @Published var mainArray: [CardModel] = [] // monitor
     static let shared = DM()
     
     init() {
-        getCardsLoad()
-        //initArray()
+        loadParentCards()
+        mainArray = parentCardsArray
     }
-    /*
-    private func initArray() {
-        for section in 0..<2 { // section
-            var cardArray: [CardModel] = []
-            for _ in 0..<15 {
-                
-                var card = CardModel(from: <#any Decoder#>)
-                card.title = "Sleep " + String(section)
-                card.imageName = "cubesV_xBG"
-                //card. = "green"
-                card.groupId = 1
-                cardArray.append(card)
-                 
-            }
-            array.append(cardArray)
-        }
-    }
-     */
     
      func addItemToSelected(item: CardModel) {
          if !selectedItemsArray.contains(where: {$0.cardId == item.cardId}) {
@@ -52,15 +36,50 @@ class DM: ObservableObject {
         }
     }
     
-    private func getCardsLoad() -> [CardModel] {
-        mainCardsArray = load()
-        print("🎞️ Загруженные карточки: \(mainCardsArray)")
-        return mainCardsArray
+    private func loadParentCards() {
+        parentCardsArray = load()
+        print("🎞️ Загруженные карточки: \(parentCardsArray)")
     }
     
-    func getConvertedCards() -> [CardModel] {
-        return mainCardsArray
-//        return mainCardsArray.map { cardData in
+    public func getColor(groupId: Int) -> String {
+            switch groupId {
+            case 1 :
+                return "FCC737"
+            case 2 :
+                return "F26B0F"
+            case 3 :
+                return "E73879"
+            default:
+                return "7E1891"
+        }
+    }
+    
+    /*
+    private func initArray() {
+        for section in 0..<2 { // section
+            var cardArray: [CardModel] = []
+            for _ in 0..<15 {
+                
+                var card = CardModel(from: <#any Decoder#>)
+                card.title = "Sleep " + String(section)
+                card.imageName = "cubesV_xBG"
+                //card. = "green"
+                card.groupId = 1
+                cardArray.append(card)
+                 
+            }
+            mainArray.append(cardArray)
+        }
+    }
+     */
+    
+    
+//    func getConvertedCards() -> [CardModel] {
+//        let getConvertedCards = parentCardsArray
+//       // print("🎞️getConvertedCards : \(getConvertedCards)")
+//        return parentCardsArray
+
+//        return parentCardsArray.map { cardData in
 //            CardModel(
 //                cardId: cardData.cardId,
 //                title: cardData.title,
@@ -70,7 +89,7 @@ class DM: ObservableObject {
 //                
 //            )
 //        }
-    }
+//    }
     
     
   
@@ -80,6 +99,6 @@ class DM: ObservableObject {
 
 
 //    func getCards(section: Int) -> [CardModel] {
-//        guard section < array.count else { return [] }
-//         return array[section]
+//        guard section < mainArray.count else { return [] }
+//         return mainArray[section]
 //    }

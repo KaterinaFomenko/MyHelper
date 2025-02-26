@@ -11,20 +11,19 @@ import SwiftUI
 
 struct CardModel: Decodable, Identifiable {
     var id: Float { cardId }
+    
     var cardId: Float
     var title: String
-    //var color: String // "0,0,255" RGB
     var groupId: Int
     var imageName: String
-    var childCards: [ChildCards]?
+    var childCards: [CardModel]?
 }
 
-struct ChildCards: Decodable {
-    var cardId: Float = 1
-    var title: String = ""
-    //var color: String = ""
-    var groupId: Int = 0
-    var imageName: String = ""
+struct ChildCard: Decodable {
+    var cardId: Float
+    var title: String
+    var groupId: Int
+    var imageName: String
     
 }
 

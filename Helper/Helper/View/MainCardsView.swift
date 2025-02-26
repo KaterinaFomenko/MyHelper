@@ -12,82 +12,48 @@ struct MainCardsView: View {
     @Binding var colums: [GridItem]
     @EnvironmentObject var dm: DM
     
+    
     var body: some View {
         
         LazyVGrid(columns: colums, spacing: 10) {
-            //
-            ForEach(dm.getConvertedCards(), id: \.cardId) { card in
+            
+            ForEach(dm.mainArray, id: \.cardId) { card in
                 CardView(card: card)
                     .onTapGesture {
-                        // если childCards
-                        if card.childCards?.isEmpty ?? false {
+                        print("☎️ \(card.title)")
+
+                        if card.childCards?.isEmpty ?? true && card.cardId < 100 {
+                           
                             dm.addItemToSelected(item: card)
                         } else {
                             // показываем дочерний элемент
-                            dm.$mainCardsArray
+                            if card.cardId == 100 {
+                                 dm.mainArray = dm.parentCardsArray
+                            } else if card.cardId == 101 {
+                                dm.mainArray = dm.parentCardsArray
+                            } else {
+                                
+                                dm.mainArray = card.childCards ?? []
+                                var cardHome = CardModel(cardId: 100, title: "Home", groupId: 11, imageName: "home")
+                                var cardBack = CardModel(cardId: 101, title: "Back", groupId: 1, imageName: "back1")
+                                dm.mainArray.insert(cardHome, at: 0)
+                                dm.mainArray.append(cardBack)
+                                
+//                                dm.mainArray = (card.cardId == 100) ? dm.parentCardsArray : dm.mainArray // return Home page
+//                                dm.mainArray = (card.cardId == 101) ? dm.parentCardsArray : dm.mainArray // return Back
+                                
+                            }
                         }
-                        
                     }
             }
         }
         .padding()
     }
 }
-        
-        
-        
-        
-            
-//            ForEach(dm.mainCardsArray) { card in
-//                CardView(card: card)
-//                    .onTapGesture {
-//                        let newCard = CardModel(
-//                            id: card.cardId,
-//                            title: card.title,
-//                            imageName: card.imageName,
-//                            color: card.color,
-//                            parentId: card.parentId)
-//                    }
-//                
-//            }
-//        }
- //   }
-        
- //       LazyVGrid(columns: colums, pinnedViews: .sectionHeaders) {
-//            Section {
-//                ForEach(DM.shared.getCards(section: 0)) { item in
-//                    CardView(card: item)
-//                        .onTapGesture {
-//                            DM.shared.addItemToSelected(item: item)
-//                            
-//                        }
-//                }
-//            }
-            
-//            List {
-//                ForEach(DM.shared.cards) { card in
-//                    CardModel(id: card.cardId, title: card.title, imageName: card.imageName, color: card.color, parentId: card.parentId)
-                    
-                    // .onTapGesture {
-                    //  DM.shared.addItemToSelected(item: item)
-                    
-                    //  print("!!!selectedItemsArray: \(DM.shared.selectedItemsArray)")
-                    // }
-//                }
- //           }
-                
-//            } header: {
-//                Text("General actions")
-//                    .font(.largeTitle.bold())
-//                    .padding(.bottom, 5)
-//            }
-//        }
-//    }
+//
+//#Preview {
+//    
+//    @Previewable @State var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
+//    MainCardsView(colums: $colums, isHaveChildCards: <#Binding<Bool>#>)
+//        .environmentObject(DM.shared) // передаём $ для Binding
 //}
-
-#Preview {
-    
-    @Previewable @State var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
-    return MainCardsView(colums: $colums)
-        .environmentObject(DM.shared) // передаём $ для Binding
-}
