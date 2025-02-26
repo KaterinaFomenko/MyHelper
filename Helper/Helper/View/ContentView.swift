@@ -21,12 +21,14 @@ struct ContentView: View {
         VStack(spacing: 0)  {
             
             // Горизонтальный Scroll
+            
             ScrollView(.horizontal) {
                 SelectedCardsView(columsTop: $columsTop)
                     .environmentObject(dm)
             }
-            .frame(height: 120)
+            .frame(height: 40)
             .padding()
+            
             
             // Серый разделитель
             ZStack() {

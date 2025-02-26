@@ -20,14 +20,14 @@ struct CardViewForSecectedCards: View {
     var body: some View {
         VStack(spacing: 1.0) {
             Text(card.title)
-                .font(.custom("Helvetica Neue", size: 30))
+                .font(.custom("Helvetica Neue", size: 25))
                 .multilineTextAlignment(.center)
                 
             Image(card.imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 60)
-                .padding(.bottom, 5)
+                .frame(width: 40)
+               // .padding(.bottom, 5)
         }
 //        .frame(width: 90)
 //        .background(RoundedRectangle(cornerRadius: 10)
