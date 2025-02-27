@@ -20,10 +20,10 @@ struct CardView: View {
             Image(card.imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 60)
+                .frame(width: 60, height: 60)
                 .padding(.bottom, 5)
         }
-        .frame(width: 90)
+        .frame(width: 100, height: 100 )
         .background(RoundedRectangle(cornerRadius: 10)
             .fill(Color(hex: DM.shared.getColor(groupId: card.groupId)))
             .opacity(0.5)

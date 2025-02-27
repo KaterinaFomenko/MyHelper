@@ -9,16 +9,38 @@ import SwiftUI
 // Голубой разделитель
 struct SettingsView: View {
     @State private var isPressed = false
-    // @State private var textWay: String = "H"
-    @EnvironmentObject var dm: DM
     
+    @EnvironmentObject var dm: DM
     
     var body: some View {
         HStack(alignment: .center) {
             
-            Label("", systemImage: "house.circle.fill")
-                .font(.system(size: 45))
+            Image("home5")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 46, height: 46)
+                .scaleEffect(1)
+                .clipShape(Circle())
+                .background(Circle().fill(Color.white))
                 .foregroundStyle(.blue)
+                .padding(5)
+                
+        
+                .onTapGesture {
+                    dm.titleWay = ""
+                }
+            
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal) {
+                    Text(dm.titleWay)
+                        .font(.system(size: 25))
+                        .id(dm.titleWay)
+                }.onChange(of: dm.titleWay) { oldValue, newValue in
+                    withAnimation {
+                        proxy.scrollTo(newValue, anchor: .trailing)
+                    }
+                }
+            }
             
             Spacer()
             
@@ -35,7 +57,7 @@ struct SettingsView: View {
             }
             .padding(.trailing, 10)
             .frame(width: 80, height: 100, alignment: .trailing) // для увеличения площади нажатия
-            //.background(Color(.gray))
+           // .background(Color(.gray))
         }    }
 }
 #Preview {

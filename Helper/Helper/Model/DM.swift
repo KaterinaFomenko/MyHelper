@@ -17,6 +17,8 @@ class DM: ObservableObject {
     
     @Published var mainArray: [CardModel] = [] // monitor
     
+    @Published var titleWay: String = ""
+    
     static let shared = DM()
     
     init() {

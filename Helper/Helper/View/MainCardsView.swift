@@ -10,6 +10,7 @@ import SwiftUI
 struct MainCardsView: View {
     
     @EnvironmentObject var dm: DM
+    
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
     
     var body: some View {
@@ -18,23 +19,37 @@ struct MainCardsView: View {
             
             ForEach(dm.mainArray, id: \.cardId) { card in
                 CardView(card: card)
+                
                     .onTapGesture {
+                
                         print("☎️ \(card.title)")
-
+                        
                         if card.childCards?.isEmpty ?? true && card.cardId < 100 {
-                           
+                            // Add new card on top array
                             dm.addItemToSelected(item: card)
+                           
                         } else {
-                            // показываем дочерний элемент
+                            
+                            // tap Home / Back
                             if card.cardId == 100 {
+                                 dm.titleWay = ""
                                  dm.mainArray = dm.parentCardsArray
                             } else if card.cardId == 101 {
+                                dm.titleWay = ""
                                 dm.mainArray = dm.parentCardsArray
                             } else {
                                 
+                                // Add path on SettigsView
+                                dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
+                                
+                                // проваливаемся в childCards
                                 dm.mainArray = card.childCards ?? []
-                                var cardHome = CardModel(cardId: 100, title: "Home", groupId: 11, imageName: "home2" )
-                                var cardBack = CardModel(cardId: 101, title: "Back", groupId: 1, imageName: "back1")
+                                
+                                dm.addItemToSelected(item: card)
+                                
+                                // Add servise buttons
+                                let cardHome = CardModel(cardId: 100, title: "Home", groupId: 11, imageName: "home4" )
+                                let cardBack = CardModel(cardId: 101, title: "Back", groupId: 1, imageName: "back1")
                                 dm.mainArray.insert(cardHome, at: 0)
                                 dm.mainArray.append(cardBack)
                             }

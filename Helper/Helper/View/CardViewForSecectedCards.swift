@@ -26,7 +26,7 @@ struct CardViewForSecectedCards: View {
             Image(card.imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 40)
+                .frame(width: 40, height: 40)
         }
     }
 }

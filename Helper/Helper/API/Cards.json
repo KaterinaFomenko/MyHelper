@@ -2,14 +2,21 @@
     {
         "title": "I",
         "cardId": 1,
-        "imageName": "I2",
+        "imageName": "I",
         "priority": 1,
         "groupId": 1
     },
     {
         "title": "You",
         "cardId": 2,
-        "imageName": "You",
+        "imageName": "you",
+        "priority": 1,
+        "groupId": 1
+    },
+    {
+        "title": "Want",
+        "cardId": 16,
+        "imageName": "want",
         "priority": 1,
         "groupId": 1
     },
@@ -43,7 +50,7 @@
     {
         "title": "Hurts",
         "cardId": 4,
-        "imageName": "Hurts",
+        "imageName": "hurts",
         "priority": 1,
         "groupId": 3,
         "childCards": [
@@ -98,7 +105,7 @@
         ]
     },
     {
-        "title": "Games",
+        "title": "Play",
         "cardId": 5,
         "imageName": "games",
         "priority": 2,
@@ -107,19 +114,19 @@
             {
                 "title": "Ball",
                 "cardId": 5.1,
-                "imageName": "Ball",
+                "imageName": "ball",
                 "groupId": 4
             },
             {
                 "title": "Puzzle",
                 "cardId": 5.2,
-                "imageName": "Puzzle",
+                "imageName": "puzzle",
                 "groupId": 4
             },
             {
                 "title": "Doll",
                 "cardId": 5.3,
-                "imageName": "Doll",
+                "imageName": "doll",
                 "groupId": 4
             },
             {

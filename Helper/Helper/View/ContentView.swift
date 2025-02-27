@@ -10,7 +10,7 @@ struct ContentView: View {
     
     // Управляем состоянием DM
     @ObservedObject private var dm = DM.shared
-    //   @State var textWay: String
+    
     var body: some View {
         
         
@@ -27,7 +27,9 @@ struct ContentView: View {
                 .frame(height: 60)
             HStack() {
                 Spacer()
+                
                 SettingsView()
+                
                     .environmentObject(dm)
                 
             }
@@ -38,8 +40,7 @@ struct ContentView: View {
             VStack {
                 MainCardsView()
                     .environmentObject(dm)
-            }.onTapGesture {
-                // textWay = textWay + "ello "
+                    
             }
         }
     }
