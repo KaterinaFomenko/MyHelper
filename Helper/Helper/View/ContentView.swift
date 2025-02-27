@@ -10,36 +10,40 @@ struct ContentView: View {
     
     // Управляем состоянием DM
     @ObservedObject private var dm = DM.shared
-
+    //   @State var textWay: String
     var body: some View {
+        
         
         VStack(spacing: 0)  {
             // Горизонтальный Scroll
-                    SelectedCardsView()
-                        .environmentObject(dm)
-                }
-
-            // Серый разделитель
-            ZStack() {
-                Rectangle()
-                    .fill(Color.blue.opacity(0.1))
-                    .frame(height: 80)
-                HStack {
-                    Spacer()
-                    SettingsView()
-                        .environmentObject(dm)
-                }
+            SelectedCardsView()
+                .environmentObject(dm)
+        }
+        
+        // Голубой разделитель
+        ZStack() {
+            Rectangle()
+                .fill(Color.blue.opacity(0.1))
+                .frame(height: 60)
+            HStack() {
+                Spacer()
+                SettingsView()
+                    .environmentObject(dm)
+                
             }
-            
-            // Вертикальный MainScroll
-            ScrollView {
-                VStack {
-                    MainCardsView()
-                        .environmentObject(dm)
-                }
+        }
+        
+        // Вертикальный MainScroll
+        ScrollView {
+            VStack {
+                MainCardsView()
+                    .environmentObject(dm)
+            }.onTapGesture {
+                // textWay = textWay + "ello "
             }
         }
     }
+}
 
 
 

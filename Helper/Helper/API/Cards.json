@@ -74,7 +74,7 @@
             {
                 "title": "Tooth",
                 "cardId": 4.5,
-                "imageName": "tooth2",
+                "imageName": "tooth1",
                 "groupId": 3
             },
             {
@@ -279,7 +279,7 @@
             {
                 "title": "Bread",
                 "cardId": 10.2,
-                "imageName": "Bread",
+                "imageName": "bread1",
                 "groupId": 9
             },
             {

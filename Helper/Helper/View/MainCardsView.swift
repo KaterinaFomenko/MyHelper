@@ -33,7 +33,7 @@ struct MainCardsView: View {
                             } else {
                                 
                                 dm.mainArray = card.childCards ?? []
-                                var cardHome = CardModel(cardId: 100, title: "Home", groupId: 11, imageName: "home")
+                                var cardHome = CardModel(cardId: 100, title: "Home", groupId: 11, imageName: "home2" )
                                 var cardBack = CardModel(cardId: 101, title: "Back", groupId: 1, imageName: "back1")
                                 dm.mainArray.insert(cardHome, at: 0)
                                 dm.mainArray.append(cardBack)
@@ -52,3 +52,6 @@ struct MainCardsView: View {
 //    MainCardsView(colums: $colums, isHaveChildCards: <#Binding<Bool>#>)
 //        .environmentObject(DM.shared) // передаём $ для Binding
 //}
+
+
+
