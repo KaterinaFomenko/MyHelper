@@ -17,6 +17,7 @@ struct MainCardsView: View {
         
         LazyVGrid(columns: colums, spacing: 10) {
             
+            
             ForEach(dm.mainArray, id: \.cardId) { card in
                 CardView(card: card)
                 
@@ -27,9 +28,8 @@ struct MainCardsView: View {
                         if card.childCards?.isEmpty ?? true && card.cardId < 100 {
                             // Add new card on top array
                             dm.addItemToSelected(item: card)
-                           
-                        } else {
                             
+                        } else {
                             // tap Home / Back
                             if card.cardId == 100 {
                                  dm.titleWay = ""
@@ -37,8 +37,10 @@ struct MainCardsView: View {
                             } else if card.cardId == 101 {
                                 dm.titleWay = ""
                                 dm.mainArray = dm.parentCardsArray
-                            } else {
                                 
+                            } else if card.id == 102 {
+                                
+                            } else {
                                 // Add path on SettigsView
                                 dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
                                 
@@ -48,16 +50,35 @@ struct MainCardsView: View {
                                 dm.addItemToSelected(item: card)
                                 
                                 // Add servise buttons
-                                let cardHome = CardModel(cardId: 100, title: "Home", groupId: 11, imageName: "home4" )
-                                let cardBack = CardModel(cardId: 101, title: "Back", groupId: 1, imageName: "back1")
+                                let cardHome = CardModel(cardId: 100, title: "Home", groupId: 100, imageName: "home4" )
+                                let cardBack = CardModel(cardId: 101, title: "Back", groupId: 101, imageName: "back1")
+                                
                                 dm.mainArray.insert(cardHome, at: 0)
                                 dm.mainArray.append(cardBack)
+                                
+                                let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus" )
+                                dm.mainArray.append(cardPlus)
                             }
                         }
                     }
             }
         }
+        
         .padding()
+        
+        .onChange(of: dm.mainArray, { oldValue, newValue in
+            let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus")
+            if !dm.mainArray.contains(where: {$0.id == cardPlus.id}) {
+                dm.mainArray.append(cardPlus)
+            }
+        })
+        
+        .onAppear() {
+            let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus" )
+            if !dm.mainArray.contains(where: {$0.id == cardPlus.id}) {
+                dm.mainArray.append(cardPlus)
+            }
+        }
     }
 }
 

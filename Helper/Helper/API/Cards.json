@@ -145,26 +145,20 @@
         "groupId": 5,
         "childCards": [
             {
-                "title": "Toilet",
-                "cardId": 6.1,
-                "imageName": "Toilet",
-                "groupId": 5
-            },
-            {
                 "title": "Wash Hands",
-                "cardId": 6.2,
+                "cardId": 6.1,
                 "imageName": "Wash Hands",
                 "groupId": 5
             },
             {
                 "title": "Pee",
-                "cardId": 6.3,
+                "cardId": 6.2,
                 "imageName": "Pee",
                 "groupId": 5
             },
             {
                 "title": "Poop",
-                "cardId": 6.4,
+                "cardId": 6.3,
                 "imageName": "Poop",
                 "audioName": "poop.mp3",
                 "groupId": 5

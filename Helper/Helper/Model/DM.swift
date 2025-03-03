@@ -45,27 +45,37 @@ class DM: ObservableObject {
     }
     
     public func getColor(groupId: Int) -> String {
-            switch groupId {
-            case 1 :
-                return "FCC737"
-            case 2 :
-                return "F26B0F"
-            case 3 :
-                return "E73879"
-            case 4:
-                return "33FF57" // Зеленый
-            case 5:
-                return "33B5FF" // Голубой
-            case 6:
-                return "FF33A1" // Фиолетовый
-            case 7:
-                return "FF5733" // Красный
-            case 8:
-                return "8E44AD" // Пурпурный
-            case 9:
-                return "3498DB" // Синий
-            default:
-                return "7E1891" // Фиолетовый (по умолчанию)
+        switch groupId {
+        case 1:
+            return "F4D03F" // Приглушенный желтый
+        case 2:
+            return "E67E22" // Приглушенный оранжевый
+        case 3:
+            return "D2527F" // Приглушенный розовый
+        case 4:
+            return "FF9D23" // Яркий оранжевый
+        case 5:
+            return "71BBB2" // Яркий оливка
+        case 6:
+            return "D17D98" // Приглушенный фиолетовый
+        case 7:
+            return "E74C3C" // Приглушенный красный
+        case 8:
+            return "E73879" // Яркий розовый
+        case 9:
+            return "2980B9" // Приглушенный синий
+        case 10:
+            return "B1C29E" // Оливковый
+        case 11:
+            return "F39C12" // Приглушенный оранжевый
+        case 12:
+            return "D35400" // Теплый оранжевый
+        case 13:
+            return "27AE60" // Приглушенный зеленый
+        case 14:
+            return "5DADE2" // Приглушенный голубой
+        default:
+            return "EAEAEA" // Серый (по умолчанию)
         }
     }
     
