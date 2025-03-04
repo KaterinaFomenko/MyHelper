@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 class DM: ObservableObject {
-  
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
@@ -20,9 +19,11 @@ class DM: ObservableObject {
     @Published var titleWay: String = ""
     
     static let shared = DM()
+    let textToSpeech = TextToSpeech()
     
     init() {
         loadParentCards()
+        addPlusCard()
         mainArray = parentCardsArray
     }
     
@@ -39,10 +40,22 @@ class DM: ObservableObject {
         }
     }
     
+    func speakText(text: String) {
+        //textToSpeech.speak(text: text, locale: "en-US")
+        textToSpeech.speak(text: text, locale: "en-US", voiceIdentifier: "com.apple.speech.synthesis.voice.Fred")
+    }
+    
     private func loadParentCards() {
         parentCardsArray = load()
         print("🎞️ Загруженные карточки: \(parentCardsArray)")
     }
+    
+    private func addPlusCard() {
+        let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus")
+            parentCardsArray.append(cardPlus)
+            print("dm.parentCardsArray.append(cardPlus)")
+    }
+    
     
     public func getColor(groupId: Int) -> String {
         switch groupId {
