@@ -7,30 +7,26 @@
 
 import SwiftUI
 
-struct CustomTextModifier: ViewModifier {
-    var font: Font
-    var color: Color
-    
+// Модификатор для стилизации фона
+
+struct CustomButtonModifier: ViewModifier {
+    let isPressed: Bool
     func body(content: Content) -> some View {
         content
-            .font(font)
-            .foregroundColor(color)
+            .padding()
+            .font(.headline)
+            .foregroundStyle(.white)
+            .fontWeight(.bold)
+            .frame(width: 150)
+            .background(.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(radius: 5)
+            .scaleEffect(isPressed ? 0.95 : 1.0)
+            .animation(.easeInOut, value: isPressed)
     }
 }
 
-extension View {
-    func myCustomText(font: Font, color: Color = .cyan) -> some View {
-        modifier(CustomTextModifier(font: font, color: color))
-    }
-}
-
-struct CustomContentView: View {
-    var body: some View {
-        Text("Hello, World!")
-            .myCustomText(font: .largeTitle, color: .green)
-    }
-}
 
 #Preview {
-    CustomContentView()
+    
 }

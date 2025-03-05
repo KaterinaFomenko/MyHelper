@@ -18,7 +18,7 @@ class TextToSpeech {
         
         for voice in voices {
             
-            print("🎶Identifier: \(voice.identifier), Name: \(voice.name), Language: \(voice.language)")
+            //print("🎶Identifier: \(voice.identifier), Name: \(voice.name), Language: \(voice.language)")
         }
         
        
@@ -26,8 +26,10 @@ class TextToSpeech {
         
         if let voice = AVSpeechSynthesisVoice(identifier: voiceIdentifier) {
             utterance.voice = voice
+            print("🎶🎶 custom voice")
         } else {
             utterance.voice = AVSpeechSynthesisVoice(language: locale)
+            print("🎶🎶 standart voice")
         }
         
         utterance.voice = AVSpeechSynthesisVoice(language: locale)
