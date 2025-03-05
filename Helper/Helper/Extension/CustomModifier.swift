@@ -19,7 +19,7 @@ struct CustomButtonModifier: ViewModifier {
             .fontWeight(.bold)
             .frame(width: 150)
             .background(.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 50))
             .shadow(radius: 5)
             .scaleEffect(isPressed ? 0.95 : 1.0)
             .animation(.easeInOut, value: isPressed)
