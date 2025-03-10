@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class DM: ObservableObject {
+    @Published var isShowAddScreen: Bool = false
+    
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
@@ -56,88 +58,29 @@ class DM: ObservableObject {
             print("dm.parentCardsArray.append(cardPlus)")
     }
     
-    
-    public func getColor(groupId: Int) -> String {
-        switch groupId {
-        case 1:
-            return "F4D03F" // Приглушенный желтый
-        case 2:
-            return "E67E22" // Приглушенный оранжевый
-        case 3:
-            return "D2527F" // Приглушенный розовый
-        case 4:
-            return "FF9D23" // Яркий оранжевый
-        case 5:
-            return "71BBB2" // Яркий оливка
-        case 6:
-            return "D17D98" // Приглушенный фиолетовый
-        case 7:
-            return "E74C3C" // Приглушенный красный
-        case 8:
-            return "E73879" // Яркий розовый
-        case 9:
-            return "2980B9" // Приглушенный синий
-        case 10:
-            return "B1C29E" // Оливковый
-        case 11:
-            return "F39C12" // Приглушенный оранжевый
-        case 12:
-            return "D35400" // Теплый оранжевый
-        case 13:
-            return "27AE60" // Приглушенный зеленый
-        case 14:
-            return "5DADE2" // Приглушенный голубой
-        default:
-            return "EAEAEA" // Серый (по умолчанию)
-        }
-    }
-    
-    
-    /*
-    private func initArray() {
-        for section in 0..<2 { // section
-            var cardArray: [CardModel] = []
-            for _ in 0..<15 {
-                
-                var card = CardModel(from: <#any Decoder#>)
-                card.title = "Sleep " + String(section)
-                card.imageName = "cubesV_xBG"
-                //card. = "green"
-                card.groupId = 1
-                cardArray.append(card)
-                 
-            }
-            mainArray.append(cardArray)
-        }
-    }
-     */
-    
-    
-//    func getConvertedCards() -> [CardModel] {
-//        let getConvertedCards = parentCardsArray
-//       // print("🎞️getConvertedCards : \(getConvertedCards)")
-//        return parentCardsArray
+    func loadNewCard(name: String, selectedColor: Int, selectedImage: UIImage?) {
+        
+        // Преобразуем UIImage в base64 строку
+        let imageString = selectedImage?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
 
-//        return parentCardsArray.map { cardData in
-//            CardModel(
-//                cardId: cardData.cardId,
-//                title: cardData.title,
-//                //colorCard: cardData.color,
-//                groupId: cardData.groupId,
-//                imageName: cardData.imageName
-//                
-//            )
-//        }
-//    }
+        let newCard = CardModel(
+            cardId:  Float(parentCardsArray.count + 1),
+            title: name,
+            groupId: selectedColor,
+            imageName: imageString,
+            priority: nil,
+            childCards: [])
+        
+        addNewCardToParentCardsArray(newCard: newCard)
+    }
+    
+    private func addNewCardToParentCardsArray(newCard: CardModel) {
+        parentCardsArray.append(newCard)
+    }
     
     
-  
 }
 
 
 
 
-//    func getCards(section: Int) -> [CardModel] {
-//        guard section < mainArray.count else { return [] }
-//         return mainArray[section]
-//    }

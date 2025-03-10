@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ColorPickerItem: View {
     
-    var color: Color
-    var isSelected: Bool
-    var selectedDiameter: CGFloat = 30
-    var notSelectedDiameter: CGFloat = 20
+    //var color: Color
+    let color: Color
+    let isSelected: Bool
+    let selectedDiameter: CGFloat = 30
+    let notSelectedDiameter: CGFloat = 20
 
     var body: some View {
        
@@ -24,6 +25,9 @@ struct ColorPickerItem: View {
 
 #Preview {
     VStack {
+//        ColorPickerItem(color: .blue, color1: 1, isSelected: false )
+//        ColorPickerItem(color: .red, color1: 2, isSelected: true )
+        
         ColorPickerItem(color: .blue, isSelected: false )
         ColorPickerItem(color: .red, isSelected: true )
     }

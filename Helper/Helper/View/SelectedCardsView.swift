@@ -33,7 +33,6 @@ struct SelectedCardsView: View {
                     
                 }
             }
-            
         }
         
     }

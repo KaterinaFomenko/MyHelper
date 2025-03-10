@@ -7,11 +7,11 @@
 
 import SwiftUI
 
+    
+
 struct CustomColorPicker: View {
     
-    let arrayColor: [Color] = [.red, .green, .blue, .yellow, .brown, .purple, .orange, .pink, .gray, .white, .cyan]
-    
-    @Binding var selectedColor: Color
+    @Binding var selectedColorId: Int
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,14 +19,16 @@ struct CustomColorPicker: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 
                 HStack(spacing: 10) {
-                    ForEach(arrayColor, id: \.self) { color in
+                    ForEach(AppColors.arrayColorIds, id: \.self) { colorId in
                         
-                        ColorPickerItem(color: color, isSelected: color == selectedColor)
-                        
+                        ColorPickerItem(
+                            color: AppColors.getColor(groupId: colorId),
+                            isSelected: colorId == selectedColorId
+                        )
                             .onTapGesture {
-                                print("color: \(color)")
+                                print("color: \(colorId)")
                                 withAnimation {
-                                    selectedColor = color
+                                    selectedColorId = colorId
                                 }
                             }
                     }
@@ -39,7 +41,9 @@ struct CustomColorPicker: View {
     }
 }
 
-#Preview {
-    @State var isSelected: Bool = false
-    CustomColorPicker(selectedColor: .constant(.blue))
+// MARK: - Preview
+struct CustomColorPicker_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomColorPicker(selectedColorId: .constant(1))
+    }
 }

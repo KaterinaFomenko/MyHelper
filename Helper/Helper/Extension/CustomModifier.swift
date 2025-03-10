@@ -26,6 +26,14 @@ struct CustomButtonModifier: ViewModifier {
     }
 }
 
+//struct ImageToStringModifier: ViewModifier {
+//    let image: UIImage
+//    
+//    func body(content: Content) -> some View {
+//        let image = image.to
+//        content
+//    }
+//}
 
 #Preview {
     

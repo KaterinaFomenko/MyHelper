@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainCardsView: View {
-    @State var isShowAddScreen: Bool = false
+   
     @EnvironmentObject var dm: DM
     
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
@@ -40,7 +40,7 @@ struct MainCardsView: View {
                                 
                             } else if card.id == 102 {
                                 print("Tap new card ")
-                                isShowAddScreen.toggle()
+                                dm.isShowAddScreen.toggle()
                                 
                             } else {
                                 // Add path on SettigsView
@@ -65,7 +65,7 @@ struct MainCardsView: View {
             }
         }
         .padding()
-        .sheet(isPresented: $isShowAddScreen) {
+        .sheet(isPresented: $dm.isShowAddScreen) {
             NewCardView()
         }
     }
