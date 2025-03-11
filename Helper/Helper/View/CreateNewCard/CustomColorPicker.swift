@@ -26,7 +26,6 @@ struct CustomColorPicker: View {
                             isSelected: colorId == selectedColorId
                         )
                             .onTapGesture {
-                                print("color: \(colorId)")
                                 withAnimation {
                                     selectedColorId = colorId
                                 }

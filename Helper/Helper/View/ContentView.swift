@@ -36,21 +36,18 @@ struct ContentView: View {
             }
             
             // Вертикальный MainScroll
-            ScrollView {
-                VStack {
-                    MainCardsView()
-                        .environmentObject(dm)
-                    
-                }
+        ScrollView {
+            VStack {
+                MainCardsView()
+                    .environmentObject(dm)
             }
-            
+        }
+        .onChange(of: dm.parentCardsArray) {
+                print("🥑 Change parentCardsArray")
+        }
     }
 }
 
-
-
-
 #Preview {
-    
     ContentView()
 }

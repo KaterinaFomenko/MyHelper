@@ -58,25 +58,22 @@ class DM: ObservableObject {
             print("dm.parentCardsArray.append(cardPlus)")
     }
     
-    func loadNewCard(name: String, selectedColor: Int, selectedImage: UIImage?) {
+    func addNewCard(name: String, selectedColorId: Int, imageName: String) {
         
         // Преобразуем UIImage в base64 строку
-        let imageString = selectedImage?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
+        //let imageString = selectedImage?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
 
         let newCard = CardModel(
             cardId:  Float(parentCardsArray.count + 1),
             title: name,
-            groupId: selectedColor,
-            imageName: imageString,
+            groupId: selectedColorId,
+            imageName: imageName,
             priority: nil,
             childCards: [])
         
-        addNewCardToParentCardsArray(newCard: newCard)
-    }
-    
-    private func addNewCardToParentCardsArray(newCard: CardModel) {
         parentCardsArray.append(newCard)
     }
+   
     
     
 }

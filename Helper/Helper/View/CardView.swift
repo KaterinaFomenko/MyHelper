@@ -16,12 +16,20 @@ struct CardView: View {
             Text(card.title)
                 .font(.custom("Helvetica Neue", size: 20))
                 .multilineTextAlignment(.center)
-            
-            Image(card.imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 60, height: 60)
-                .padding(.bottom, 5)
+            //try load image from local directory
+            if let image = ImageService.shared.loadImageFromDiskWith(fileName: card.imageName) {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+                    .padding(.bottom, 5)
+            } else { // load from asset
+                Image(card.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+                    .padding(.bottom, 5)
+            }
         }
         .frame(width: 100, height: 100 )
         .background(RoundedRectangle(cornerRadius: 10)

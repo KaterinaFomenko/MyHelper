@@ -62,15 +62,21 @@ struct MainCardsView: View {
                             }
                         }
                     }
+                
             }
         }
         .padding()
         .sheet(isPresented: $dm.isShowAddScreen) {
             NewCardView()
         }
+       
+        
+       
+
     }
     
     
+
     
 }
 
