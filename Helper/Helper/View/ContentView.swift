@@ -13,7 +13,6 @@ struct ContentView: View {
     
     var body: some View {
         
-            
             VStack(spacing: 0)  {
                 // Горизонтальный Scroll
                 SelectedCardsView()
@@ -42,9 +41,9 @@ struct ContentView: View {
                     .environmentObject(dm)
             }
         }
-        .onChange(of: dm.parentCardsArray) {
-                print("🥑 Change parentCardsArray")
-        }
+//        .onChange(of: dm.parentCardsArray) {
+//                print("🥑 Change parentCardsArray")
+//        }
     }
 }
 

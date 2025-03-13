@@ -16,17 +16,22 @@ class DM: ObservableObject {
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     @Published var childCardsArray: [CardModel] = []  // source for childElements from Json
     
+    var childCardIdOpened: Float = -1
+    
     @Published var mainArray: [CardModel] = [] // monitor
     
     @Published var titleWay: String = ""
+    
+    @ObservedObject var userSaving = UserSaving()
     
     static let shared = DM()
     let textToSpeech = TextToSpeech()
     
     init() {
-        loadParentCards()
-        addPlusCard()
-        mainArray = parentCardsArray
+        //addPlusCard()
+       // mainArray = parentCardsArray
+        loadData()
+       // addPlusCard()
     }
     
      func addItemToSelected(item: CardModel) {
@@ -47,33 +52,65 @@ class DM: ObservableObject {
         textToSpeech.speak(text: text, locale: "en-US", voiceIdentifier: "com.apple.speech.synthesis.voice.Fred")
     }
     
-    private func loadParentCards() {
-        parentCardsArray = load()
-        print("🎞️ Загруженные карточки: \(parentCardsArray)")
+    // check the first loaded
+    private func loadData() {
+        let array = UserSaving.shared.loadParentCardsArray()
+        // load from UserDefaults
+        if array.count > 0 {
+            parentCardsArray = array
+            mainArray = parentCardsArray
+            addPlusCard()
+            print("load from UserDefaults \(parentCardsArray.count)")
+        } else {
+            // load from JSON
+            parentCardsArray = loadFromJSON()
+           
+            mainArray = parentCardsArray
+            addPlusCard()
+        }
     }
     
-    private func addPlusCard() {
+//    private func loadFromUserDefaults() {
+//        userSaving.loadParentCardsArray()
+//        print("🎞️ Загруженные карточки loadFromUserDefaults: \(mainArray.count)")
+//    }
+    
+    func addPlusCard() {
         let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus")
-            parentCardsArray.append(cardPlus)
-            print("dm.parentCardsArray.append(cardPlus)")
+        if !mainArray.contains(cardPlus) {
+            mainArray.append(cardPlus)
+        }
+        print("dm.parentCardsArray.append(cardPlus)")
     }
     
     func addNewCard(name: String, selectedColorId: Int, imageName: String) {
         
-        // Преобразуем UIImage в base64 строку
-        //let imageString = selectedImage?.jpegData(compressionQuality: 1.0)?.base64EncodedString() ?? ""
-
         let newCard = CardModel(
-            cardId:  Float(parentCardsArray.count + 1),
+            cardId: Float(parentCardsArray.count + 1),
             title: name,
             groupId: selectedColorId,
             imageName: imageName,
             priority: nil,
-            childCards: [])
-        
-        parentCardsArray.append(newCard)
+            childCards: []
+        )
+        if childCardIdOpened > 0 {
+            //add card to child card
+            if #available(iOS 18.0, *) {
+                let index = parentCardsArray.indices(where: {$0.cardId == childCardIdOpened})
+                let number = index.ranges.first?.lowerBound ?? 0
+                parentCardsArray[number].childCards?.append(newCard)
+                print("New card append to parent id = " + String(childCardIdOpened))
+            } else {
+                // Fallback on earlier versions
+            }
+        } else {
+            //add new card to main screen
+            parentCardsArray.append(newCard)
+        }
+        UserSaving.shared.saveParentCardArray(parentCardsArray)
+        print("🎞️ 🎞️ parentCardsArray добавили newCard: \( parentCardsArray.count)")
     }
-   
+    
     
     
 }

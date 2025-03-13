@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 //cardsData.last?.childCards?[4].title ?? ""  ->  "Tooth"
 
-struct CardModel: Decodable, Identifiable, Hashable {
+struct CardModel: Codable, Identifiable, Hashable {
     var id: Float { cardId }
     
     var cardId: Float
@@ -20,7 +20,7 @@ struct CardModel: Decodable, Identifiable, Hashable {
     var childCards: [CardModel]?
 }
 
-func load() -> [CardModel] {
+func loadFromJSON() -> [CardModel] {
     // 1. Поиск файла в Bundle
     guard let fileURL = Bundle.main.url(forResource: "Cards", withExtension: "json") else {
         print("❌ File is not found")
@@ -31,16 +31,16 @@ func load() -> [CardModel] {
     do {
     // 2. Чтение данных из файла
         jsonData = try Data(contentsOf: fileURL)
-        print("✅ File is found: \(fileURL.path())")
+      //  print("✅ File is found: \(fileURL.path())")
     } catch {
-        print("❌ Couldn't load file : \(error.localizedDescription)")
+        print("❌ Couldn't loadFromJSON file : \(error.localizedDescription)")
         return []
     }
         
     do {
     // 3. Декодирование JSON в массив объектов
         let cardsData = try JSONDecoder().decode([CardModel].self, from: jsonData)
-        print("✅ CARDS DATA: \(cardsData)")
+      //  print("✅ CARDS DATA: \(cardsData)")
         return cardsData
         
     } catch {

@@ -33,20 +33,24 @@ struct MainCardsView: View {
                             if card.cardId == 100 {
                                 dm.titleWay = ""
                                 dm.mainArray = dm.parentCardsArray
+                                dm.childCardIdOpened = -1
                                 
                             } else if card.cardId == 101 {
                                 dm.titleWay = ""
                                 dm.mainArray = dm.parentCardsArray
+                                dm.childCardIdOpened = -1
                                 
                             } else if card.id == 102 {
                                 print("Tap new card ")
                                 dm.isShowAddScreen.toggle()
                                 
-                            } else {
+                            } else { // проваливаемся в childCards
+                                
+                                dm.childCardIdOpened = card.cardId
                                 // Add path on SettigsView
                                 dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
                                 
-                                // проваливаемся в childCards
+                               
                                 dm.mainArray = card.childCards ?? []
                                 
                                 dm.addItemToSelected(item: card)
@@ -69,10 +73,21 @@ struct MainCardsView: View {
         .sheet(isPresented: $dm.isShowAddScreen) {
             NewCardView()
         }
-       
+        .onChange(of: dm.parentCardsArray) { oldValue, newValue in
+            print("On change")
+            if dm.childCardIdOpened > 0 {
+                // update child screen
+                
+            } else {
+                //update main screen
+                dm.mainArray = newValue
+                dm.addPlusCard()
+            }
+        }
         
-       
-
+        
+        
+        
     }
     
     

@@ -10,7 +10,7 @@ import UIKit
 
 class ImageService {
     
-    static var shared = ImageService()
+    static let shared = ImageService()
     
     func saveImage(imageName: String, image: UIImage) {
         
