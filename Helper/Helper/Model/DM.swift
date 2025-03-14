@@ -12,15 +12,15 @@ class DM: ObservableObject {
     @Published var isShowAddScreen: Bool = false
     
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
+    @Published var titleWay: String = "" // settings line
     
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     @Published var childCardsArray: [CardModel] = []  // source for childElements from Json
     
-    var childCardIdOpened: Float = -1
-    
     @Published var mainArray: [CardModel] = [] // monitor
     
-    @Published var titleWay: String = ""
+    var childCardIdOpened: Float = -1
+
     
     @ObservedObject var userSaving = UserSaving()
     
@@ -28,10 +28,7 @@ class DM: ObservableObject {
     let textToSpeech = TextToSpeech()
     
     init() {
-        //addPlusCard()
-       // mainArray = parentCardsArray
         loadData()
-       // addPlusCard()
     }
     
      func addItemToSelected(item: CardModel) {
@@ -51,8 +48,7 @@ class DM: ObservableObject {
         //textToSpeech.speak(text: text, locale: "en-US")
         textToSpeech.speak(text: text, locale: "en-US", voiceIdentifier: "com.apple.speech.synthesis.voice.Fred")
     }
-    
-    // check the first loaded
+
     private func loadData() {
         let array = UserSaving.shared.loadParentCardsArray()
         // load from UserDefaults
@@ -64,16 +60,10 @@ class DM: ObservableObject {
         } else {
             // load from JSON
             parentCardsArray = loadFromJSON()
-           
             mainArray = parentCardsArray
             addPlusCard()
         }
     }
-    
-//    private func loadFromUserDefaults() {
-//        userSaving.loadParentCardsArray()
-//        print("🎞️ Загруженные карточки loadFromUserDefaults: \(mainArray.count)")
-//    }
     
     func addPlusCard() {
         let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus")
@@ -107,6 +97,7 @@ class DM: ObservableObject {
             //add new card to main screen
             parentCardsArray.append(newCard)
         }
+       
         UserSaving.shared.saveParentCardArray(parentCardsArray)
         print("🎞️ 🎞️ parentCardsArray добавили newCard: \( parentCardsArray.count)")
     }

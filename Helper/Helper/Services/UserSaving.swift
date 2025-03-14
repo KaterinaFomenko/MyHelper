@@ -10,21 +10,10 @@ import Foundation
 class UserSaving: ObservableObject {
     
     static var shared = UserSaving()
-//    @Published var parentCardArray: [CardModel] = []
-//    {
-//        didSet {
-//            saveParentCardArray()
-//        }
-//    }
-//    
-//    init() {
-//        loadParentCardsArray()
-//    }
     
     func saveParentCardArray(_ array: [CardModel]) {
         if let encodeData = try? JSONEncoder().encode(array) {
             UserDefaults.standard.set(encodeData, forKey: "parentCardsArray")
-           // print("💾 Saved parentCardsArray: \(parentCardArray)")
             print("💾 Saved parentCardsArray: \(array.count)")
         }
     }
@@ -36,7 +25,6 @@ class UserSaving: ObservableObject {
         }
         do {
             let decodedData = try JSONDecoder().decode([CardModel].self, from: savedData)
-            //parentCardArray = decodedData
             print("🔄 Loaded \(decodedData.count) cards")
             return decodedData
         } catch {
@@ -47,6 +35,17 @@ class UserSaving: ObservableObject {
 }
 
 
+
+//    @Published var parentCardArray: [CardModel] = [] {
+//        didSet {
+//            saveParentCardArray()
+//        }
+//    }
+//
+//    init() {
+//        loadParentCardsArray()
+//    }
+//    ----------
 //    @Published var cardName: String = UserDefaults.standard.string(forKey: "cardName") ?? "" {
 //        didSet {
 //            UserDefaults.standard.set(cardName, forKey: "cardName")

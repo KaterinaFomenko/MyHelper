@@ -13,40 +13,35 @@ struct ContentView: View {
     
     var body: some View {
         
-            VStack(spacing: 0)  {
-                // Горизонтальный Scroll
-                SelectedCardsView()
+        VStack(spacing: 0)  {
+            // Горизонтальный Scroll
+            SelectedCardsView()
+                .environmentObject(dm)
+        }
+        
+        // Голубой разделитель
+        ZStack() {
+            Rectangle()
+                .fill(Color.blue.opacity(0.1))
+                .frame(height: 60)
+            HStack() {
+                Spacer()
+                
+                SettingsView()
                     .environmentObject(dm)
             }
-            
-            // Голубой разделитель
-            ZStack() {
-                Rectangle()
-                    .fill(Color.blue.opacity(0.1))
-                    .frame(height: 60)
-                HStack() {
-                    Spacer()
-                    
-                    SettingsView()
-                    
-                        .environmentObject(dm)
-                    
-                }
-            }
-            
-            // Вертикальный MainScroll
+        }
+        
+        // Вертикальный MainScroll
         ScrollView {
             VStack {
                 MainCardsView()
                     .environmentObject(dm)
             }
         }
-//        .onChange(of: dm.parentCardsArray) {
-//                print("🥑 Change parentCardsArray")
-//        }
     }
 }
 
-#Preview {
-    ContentView()
-}
+    #Preview {
+        ContentView()
+    }
