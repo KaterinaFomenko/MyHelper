@@ -19,6 +19,7 @@ class DM: ObservableObject {
     
     @Published var mainArray: [CardModel] = [] // monitor
     
+    // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
     var childCardIdOpened: Float = -1
 
     
@@ -73,9 +74,17 @@ class DM: ObservableObject {
         print("dm.parentCardsArray.append(cardPlus)")
     }
     
+    func addHomeBackCards() {
+        let cardHome = CardModel(cardId: 100, title: "Home", groupId: 100, imageName: "home4" )
+        let cardBack = CardModel(cardId: 101, title: "Back", groupId: 101, imageName: "back1")
+        
+        mainArray.insert(cardHome, at: 0)
+        mainArray.append(cardBack)
+    }
+    
     func addNewCard(name: String, selectedColorId: Int, imageName: String) {
         
-        let newCard = CardModel(
+        var newCard = CardModel(
             cardId: Float(parentCardsArray.count + 1),
             title: name,
             groupId: selectedColorId,
@@ -85,21 +94,32 @@ class DM: ObservableObject {
         )
         if childCardIdOpened > 0 {
             //add card to child card
-            if #available(iOS 18.0, *) {
-                let index = parentCardsArray.indices(where: {$0.cardId == childCardIdOpened})
-                let number = index.ranges.first?.lowerBound ?? 0
-                parentCardsArray[number].childCards?.append(newCard)
-                print("New card append to parent id = " + String(childCardIdOpened))
-            } else {
-                // Fallback on earlier versions
-            }
+             let number = getCardFromId(childCardIdOpened)
+             let count = parentCardsArray[number].childCards?.count ?? 0
+             newCard.cardId = Float(count) + 0.1
+             parentCardsArray[number].childCards?.append(newCard)
+             mainArray.insert(newCard, at: mainArray.count - 2)
+            
+             print("New card append to parent id = " + String(childCardIdOpened))
+           
         } else {
             //add new card to main screen
             parentCardsArray.append(newCard)
-        }
+            mainArray.insert(newCard, at: mainArray.count - 1)        }
        
         UserSaving.shared.saveParentCardArray(parentCardsArray)
         print("🎞️ 🎞️ parentCardsArray добавили newCard: \( parentCardsArray.count)")
+    }
+    
+    func getCardFromId(_ cardId: Float) -> Int {
+        for (index, card) in parentCardsArray.enumerated() {
+            if card.cardId == cardId {
+                return index
+            }
+        }
+        return 0
+        
+       // let index = parentCardsArray.firstIndex(where: {$0.cardId == cardId})
     }
     
     

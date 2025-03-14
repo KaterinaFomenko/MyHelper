@@ -60,6 +60,9 @@ struct SettingsView: View {
            // .background(Color(.gray))
         }    }
 }
+
 #Preview {
+    
     SettingsView()
+        .environmentObject(DM.shared)
 }

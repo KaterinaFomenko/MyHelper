@@ -8,9 +8,20 @@
 import Foundation
 
 class UserSaving: ObservableObject {
+    let KEY = "parentCardsArray"
     
     static var shared = UserSaving()
     
+    func saveParentCardArray2(_ array: [CardModel]) {
+        let defaults = UserDefaults.standard
+        defaults.set(array, forKey: KEY)
+    }
+    func loadParentCardsArray2() -> [CardModel] {
+        let defaults = UserDefaults.standard
+        let array = defaults.array(forKey: KEY) as? [CardModel]
+        return array ?? []
+    }
+
     func saveParentCardArray(_ array: [CardModel]) {
         if let encodeData = try? JSONEncoder().encode(array) {
             UserDefaults.standard.set(encodeData, forKey: "parentCardsArray")
