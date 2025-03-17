@@ -54,7 +54,6 @@ struct MainCardsView: View {
                                 // Add path on SettigsView
                                 dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
                                 
-                               
                                 dm.mainArray = card.childCards ?? []
                                 
                                 dm.addItemToSelected(item: card)

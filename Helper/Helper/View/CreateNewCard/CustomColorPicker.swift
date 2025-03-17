@@ -11,7 +11,8 @@ import SwiftUI
 
 struct CustomColorPicker: View {
     
-    @Binding var selectedColorId: Int
+   @Binding var selectedColorId: Int
+    @EnvironmentObject var dm: DM
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,15 +22,26 @@ struct CustomColorPicker: View {
                 HStack(spacing: 10) {
                     ForEach(AppColors.arrayColorIds, id: \.self) { colorId in
                         
-                        ColorPickerItem(
-                            color: AppColors.getColor(groupId: colorId),
-                            isSelected: colorId == selectedColorId
-                        )
+//                            ColorPickerItem(
+//                                color: AppColors.getColor(groupId: colorId),
+//                                
+//                                isSelected: colorId == selectedColorId
+//                            )
+//
+                            
+                            ColorPickerItem(
+                                color: AppColors.getColor(groupId: colorId),
+                                isSelected: colorId == dm.getColorOfGroup()
+                            )
+                      //  print("Попытка выделить большим кружочком цвет гпуппы")
+                      //  }
                             .onTapGesture {
                                 withAnimation {
                                     selectedColorId = colorId
+                                   // selectedColorId = dm.getColorOfGroup()
                                 }
                             }
+                        
                     }
                 }
             }

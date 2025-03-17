@@ -54,7 +54,7 @@ struct CardView: View {
 
 #Preview {
     var card = CardModel(cardId: 1, title: "I", groupId: 1, imageName: "I2")
-    let userSaving = UserSaving()
+   // let userSaving = UserSaving()
     CardView(card: card)
     
 }

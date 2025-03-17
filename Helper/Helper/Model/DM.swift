@@ -22,13 +22,11 @@ class DM: ObservableObject {
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
     var childCardIdOpened: Float = -1
 
-    
-    @ObservedObject var userSaving = UserSaving()
-    
     static let shared = DM()
     let textToSpeech = TextToSpeech()
     
     init() {
+        
         loadData()
     }
     
@@ -118,10 +116,19 @@ class DM: ObservableObject {
             }
         }
         return 0
-        
-       // let index = parentCardsArray.firstIndex(where: {$0.cardId == cardId})
     }
     
+    func getNameOfGroup() -> String {
+        let number = getCardFromId(childCardIdOpened)
+        let nameOfGroup = parentCardsArray[number].title
+        return nameOfGroup
+    }
+    
+    func getColorOfGroup() -> Int {
+        let number = getCardFromId(childCardIdOpened)
+        let colorIdGroup = parentCardsArray[number].groupId
+        return colorIdGroup
+    }
     
     
 }
