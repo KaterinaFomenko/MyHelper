@@ -25,9 +25,6 @@ struct ColorPickerItem: View {
 
 #Preview {
     VStack {
-//        ColorPickerItem(color: .blue, color1: 1, isSelected: false )
-//        ColorPickerItem(color: .red, color1: 2, isSelected: true )
-        
         ColorPickerItem(color: .blue, isSelected: false )
         ColorPickerItem(color: .red, isSelected: true )
     }

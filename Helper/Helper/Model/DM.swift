@@ -124,13 +124,11 @@ class DM: ObservableObject {
         return nameOfGroup
     }
     
-    func getColorOfGroup() -> Int {
-        let number = getCardFromId(childCardIdOpened)
-        let colorIdGroup = parentCardsArray[number].groupId
-        return colorIdGroup
+    func getColorIdOfGroup() -> Int {
+            let number = getCardFromId(childCardIdOpened)
+            let colorIdGroup = parentCardsArray[number].groupId
+            return colorIdGroup
     }
-    
-    
 }
 
 
