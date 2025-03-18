@@ -88,7 +88,7 @@ class DM: ObservableObject {
             groupId: selectedColorId,
             imageName: imageName,
             priority: nil,
-            childCards: []
+            childCards: nil
         )
         if childCardIdOpened > 0 {
             //add card to child card
