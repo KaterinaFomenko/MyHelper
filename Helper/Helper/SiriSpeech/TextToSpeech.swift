@@ -26,10 +26,10 @@ class TextToSpeech {
         
         if let voice = AVSpeechSynthesisVoice(identifier: voiceIdentifier) {
             utterance.voice = voice
-            print("🎶🎶 custom voice")
+           // print("🎶🎶 custom voice")
         } else {
             utterance.voice = AVSpeechSynthesisVoice(language: locale)
-            print("🎶🎶 standart voice")
+          //  print("🎶🎶 standart voice")
         }
         
         utterance.voice = AVSpeechSynthesisVoice(language: locale)

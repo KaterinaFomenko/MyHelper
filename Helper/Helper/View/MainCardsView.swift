@@ -25,7 +25,6 @@ struct MainCardsView: View {
                         dm.speakText(text: card.title)
                         print("☎️ \(card.title)")
                         
-                        //if card.childCards?.isEmpty ?? true && card.cardId < 100 {
                         if card.childCards == nil && card.cardId < 100 {
                             // Add new card on top array
                             dm.addItemToSelected(item: card)
@@ -49,15 +48,13 @@ struct MainCardsView: View {
                             
                                 dm.isShowAddScreen.toggle()
                                 
-                            } else { // проваливаемся в childCards
-                                
+                            } else {
+                                // проваливаемся в childCards
                                 dm.childCardIdOpened = card.cardId
                                 // Add path on SettigsView
                                 dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
                                 
                                 dm.mainArray = card.childCards ?? []
-                                //dm.childCardsArray = dm.mainArray
-                               
                                 dm.addItemToSelected(item: card)
                                 
                                 // Add servise buttons

@@ -15,8 +15,6 @@ class DM: ObservableObject {
     @Published var titleWay: String = "" // settings line
     
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
-    @Published var childCardsArray: [CardModel] = []  // source for childElements from Json
-    
     @Published var mainArray: [CardModel] = [] // monitor
     
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
@@ -103,7 +101,8 @@ class DM: ObservableObject {
         } else {
             //add new card to main screen
             parentCardsArray.append(newCard)
-            mainArray.insert(newCard, at: mainArray.count - 1)        }
+            mainArray.insert(newCard, at: mainArray.count - 1)
+        }
        
         UserSaving.shared.saveParentCardArray(parentCardsArray)
         print("🎞️ 🎞️ parentCardsArray добавили newCard: \( parentCardsArray.count)")
