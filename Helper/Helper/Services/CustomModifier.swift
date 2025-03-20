@@ -11,14 +11,17 @@ import SwiftUI
 
 struct CustomButtonModifier: ViewModifier {
     let isPressed: Bool
+    let backgroundColor: Color
+    let textColor: Color
+    
     func body(content: Content) -> some View {
         content
             .padding()
             .font(.headline)
-            //.foregroundStyle(.white)
             .fontWeight(.bold)
             .frame(width: 150)
-            //.background(.blue)
+            .background(backgroundColor)
+            .foregroundStyle(textColor)
             .clipShape(RoundedRectangle(cornerRadius: 50))
             .shadow(radius: 5)
             .scaleEffect(isPressed ? 0.95 : 1.0)
@@ -27,5 +30,11 @@ struct CustomButtonModifier: ViewModifier {
 }
 
 #Preview {
-    
+    VStack {
+        Text("Add image")
+            .modifier(CustomButtonModifier(isPressed: false, backgroundColor: .gray, textColor: .black))
+        
+        Text("Add image")
+            .modifier(CustomButtonModifier(isPressed: true, backgroundColor: .blue, textColor: .white))
+    }
 }

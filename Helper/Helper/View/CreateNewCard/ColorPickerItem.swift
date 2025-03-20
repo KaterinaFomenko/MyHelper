@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ColorPickerItem: View {
-    
-    //var color: Color
     let color: Color
     let isSelected: Bool
     let selectedDiameter: CGFloat = 30

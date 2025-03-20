@@ -75,6 +75,7 @@ struct MainCardsView: View {
             return
         }
         
+        
     }
     
     

@@ -15,6 +15,7 @@ class DM: ObservableObject {
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     
     @Published var isShowAddScreen: Bool = false
+    @Published var isCardContainGroup = false // will card contain other cards?
     @Published var titleWay: String = "" // settings line
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
@@ -82,7 +83,9 @@ class DM: ObservableObject {
             groupId: selectedColorId,
             imageName: imageName,
             priority: nil,
-            childCards: nil
+            // to do correct condition if nil / childCard = []
+            
+            childCards: isCardContainGroup ? [] : nil
         )
         if childCardIdOpened > 0 {
             //add card to child card

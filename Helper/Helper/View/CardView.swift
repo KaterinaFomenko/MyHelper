@@ -8,35 +8,34 @@
 import SwiftUI
 
 struct CardView: View {
+    @EnvironmentObject var dm: DM
     
     let card: CardModel
-  //  @ObservedObject var userSaving: UserSaving
-    @EnvironmentObject var dm: DM
     
     var body: some View {
         VStack(spacing: 1.0) {
+            Text(card.title)
+                .font(.custom("Helvetica Neue", size: 20))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 2)
             
-                Text(card.title)
-                    .font(.custom("Helvetica Neue", size: 20))
-                    .multilineTextAlignment(.center)
-            
-            //try loadFromJSON image from local directory
+            // loadFromJSON image from local directory
             if let image = ImageService.shared.loadImageFromDiskWith(fileName: card.imageName) {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 60)
-                    .padding(.bottom, 5)
-            } else { // loadFromJSON from asset
+                    .scaledToFill()
+                    .frame(width: 65, height: 65)
+                    .cornerRadius(5)
+            } else {
+            // loadFromJSON from asset
                 Image(card.imageName)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 60)
-                    .padding(.bottom, 5)
+                    .scaledToFill()
+                    .frame(width: 65, height: 65)
+                    .cornerRadius(5)
             }
         }
-        
-        .frame(width: 100, height: 100 )
+        .frame(width: 100, height: 100)
         .background(RoundedRectangle(cornerRadius: 10)
             .fill(AppColors.getColor(groupId: card.groupId))
             .opacity(0.5)
@@ -46,8 +45,7 @@ struct CardView: View {
 }
 
 #Preview {
-    var card = CardModel(cardId: 1, title: "I", groupId: 1, imageName: "I2")
-   // let userSaving = UserSaving()
-    CardView(card: card)
     
+    var card = CardModel(cardId: 1, title: "I", groupId: 1, imageName: "Andrii")
+    CardView(card: card)
 }

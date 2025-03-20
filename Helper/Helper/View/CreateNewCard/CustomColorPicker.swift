@@ -12,8 +12,6 @@ import SwiftUI
 struct CustomColorPicker: View {
     
     @Binding var selectedColorId: Int
-    //  @EnvironmentObject var dm: DM
-    
     
     var body: some View {
         VStack(alignment: .leading) {
