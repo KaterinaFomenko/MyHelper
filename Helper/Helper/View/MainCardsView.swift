@@ -12,7 +12,6 @@ struct MainCardsView: View {
     @EnvironmentObject var dm: DM
     
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
-  //  let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus" )
     
     var body: some View {
         
@@ -74,43 +73,15 @@ struct MainCardsView: View {
         //triggers when pressed BTN Save
         .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
             return
-            /*
-            print("On change")
-            if dm.childCardIdOpened > 0 {
-                // update child screen
-                let index = newParentArray.firstIndex(where: {$0.cardId == dm.childCardIdOpened}) ?? 0
-                dm.mainArray = newParentArray[index].childCards ?? []
-                dm.addHomeBackCards()
-                dm.addPlusCard()
-                
-            } else {
-                //update main screen
-                dm.mainArray = newParentArray
-                dm.addPlusCard()
-            }
-             */
         }
-        
-        
-        
         
     }
     
     
-
-    
 }
 
-
-
-
-
-//#Preview {
-//
-//    @Previewable @State var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
-//    MainCardsView(colums: $colums, isHaveChildCards: <#Binding<Bool>#>)
-//        .environmentObject(DM.shared) // передаём $ для Binding
-//}
-
-
+#Preview {
+    MainCardsView()
+        .environmentObject(DM.shared) 
+}
 

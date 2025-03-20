@@ -9,24 +9,20 @@ import Foundation
 import SwiftUI
 
 class DM: ObservableObject {
-    @Published var isShowAddScreen: Bool = false
+    static let shared = DM()
     
-    @Published var selectedItemsArray: [CardModel] = [] // for top grid
-    @Published var titleWay: String = "" // settings line
-    
-    @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     @Published var mainArray: [CardModel] = [] // monitor
+    @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
+    
+    @Published var isShowAddScreen: Bool = false
+    @Published var titleWay: String = "" // settings line
+    @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
     var childCardIdOpened: Float = -1
-
-    static let shared = DM()
     let textToSpeech = TextToSpeech()
     
-    init() {
-        
-        loadData()
-    }
+    init() { loadData() }
     
      func addItemToSelected(item: CardModel) {
          if !selectedItemsArray.contains(where: {$0.cardId == item.cardId}) {

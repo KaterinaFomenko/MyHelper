@@ -37,18 +37,18 @@ struct SelectedCardsView: View {
         
     }
 }
-/*
+
 #Preview {
-    @Previewable @State var columsTop = [GridItem(.flexible())]
-    SelectedCardsView(columsTop: columsTop)
-        .environmentObject(DM.shared) // Передаём `DM`, чтобы видеть `selectedItemsArray`
+   
+    SelectedCardsView()
+        .environmentObject(DM.shared) 
 }
-*/
-struct SelectedCardsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectedCardsView()
-            .environmentObject(DM.shared) // Передаём `DM`, чтобы видеть `selectedItemsArray`
-    }
-     
-    
-}
+
+//struct SelectedCardsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SelectedCardsView()
+//            .environmentObject(DM.shared) // Передаём `DM`, чтобы видеть `selectedItemsArray`
+//    }
+//     
+//    
+//}

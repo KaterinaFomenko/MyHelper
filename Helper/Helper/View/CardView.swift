@@ -16,16 +16,9 @@ struct CardView: View {
     var body: some View {
         VStack(spacing: 1.0) {
             
-//           //     Text(userSaving.parentCardArray.first?.title ?? card.title)
-//            if let savedCard = dm.parentCardsArray.first(where: { $0.cardId == card.cardId }) {
-//                Text(savedCard.title)
-//                    .font(.custom("Helvetica Neue", size: 20))
-//                    .multilineTextAlignment(.center)
-//            } else {
                 Text(card.title)
                     .font(.custom("Helvetica Neue", size: 20))
                     .multilineTextAlignment(.center)
-//            }
             
             //try loadFromJSON image from local directory
             if let image = ImageService.shared.loadImageFromDiskWith(fileName: card.imageName) {
