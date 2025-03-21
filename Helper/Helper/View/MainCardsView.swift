@@ -14,12 +14,14 @@ struct MainCardsView: View {
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
     
     var body: some View {
-        
         LazyVGrid(columns: colums, spacing: 10) {
             
             ForEach(dm.mainArray, id: \.cardId) { card in
-                CardView(card: card)
+                CardView(card: card, hasChildren: card.childCards != nil)
                 
+                    .onLongPressGesture(perform: {
+                        print("Long Tap")
+                    })
                     .onTapGesture {
                         dm.speakText(text: card.title)
                         print("☎️ \(card.title)")

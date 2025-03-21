@@ -19,7 +19,7 @@ struct NewCardView: View {
     
     @State private var isPressedSaveBtn: Bool = false
     @State private var isPressedAddImageBtn: Bool = false
-    @State private var isShowChildScreen: Bool = false
+    //@State private var isShowChildScreen: Bool = false
     @State private var isShowingImagePicker = false
     @State private var selectedImage: UIImage? = nil  // выбранная картинка с Галереи
    
@@ -82,6 +82,13 @@ struct NewCardView: View {
                                     .padding(.top, 10)
                                     .frame(maxWidth: geometry.size.width / 1.5 - 40)
                                 Spacer()
+                                if dm.isCardContainGroup && dm.childCardIdOpened < 0 {
+                                    HStack {
+                                        Spacer()
+                                        Label("This is Grope", systemImage: "ellipsis")
+                                            .labelStyle(.iconOnly)
+                                    }
+                                }
                             }
                             .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
                         }
@@ -139,15 +146,17 @@ struct NewCardView: View {
                 
                 Text("Color")
                     .font(.headline)
-                 CustomColorPicker(selectedColorId: $selectedColorId)
-               // CustomColorPicker(selectedColorId: dm.childCardIdOpened)
+                CustomColorPicker(selectedColorId: $selectedColorId)
+                // CustomColorPicker(selectedColorId: dm.childCardIdOpened)
             }
             // MARK: Toogle
+            if dm.childCardIdOpened < 0 {
                 Toggle("Will the card contain other cards ?", isOn: $dm.isCardContainGroup)
-                .font(.custom("Helvetica Neue", size: 20))
-                .foregroundStyle(.gray)
-                .animation(.snappy, value: dm.isCardContainGroup)
-                .padding(.top)
+                    .font(.custom("Helvetica Neue", size: 20))
+                    .foregroundStyle(.gray)
+                    .animation(.snappy, value: dm.isCardContainGroup)
+                    .padding(.top)
+            }
         }
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup()
@@ -167,14 +176,7 @@ struct NewCardView: View {
                         textColor: nameCard.isEmpty ? .black : .white
                     )
                 )
-             //   .foregroundStyle(nameCard.isEmpty ? .orange : .white)
-              //  .padding()
-              //  .frame(width: 150)
-               // .font(isPressedSaveBtn ? .callout : .headline)
         }
-       // .background(nameCard.isEmpty ? .gray.opacity(0.2) : .green)
-       // .cornerRadius(50)
-       // .shadow(radius: 25)
         .padding(.bottom)
         
         // Open Galery

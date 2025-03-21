@@ -15,7 +15,8 @@ class DM: ObservableObject {
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     
     @Published var isShowAddScreen: Bool = false
-    @Published var isCardContainGroup = false // will card contain other cards?
+    @Published var isCardContainGroup = false // will card contain other cards into togle
+   
     @Published var titleWay: String = "" // settings line
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
@@ -23,7 +24,9 @@ class DM: ObservableObject {
     var childCardIdOpened: Float = -1
     let textToSpeech = TextToSpeech()
     
-    init() { loadData() }
+    init() {
+        loadData()
+    }
     
      func addItemToSelected(item: CardModel) {
          if !selectedItemsArray.contains(where: {$0.cardId == item.cardId}) {
@@ -92,6 +95,7 @@ class DM: ObservableObject {
              let number = getCardFromId(childCardIdOpened)
              let count = parentCardsArray[number].childCards?.count ?? 0
              newCard.cardId = Float(count) + 0.1
+             newCard.childCards = nil //  MARK: I add
              parentCardsArray[number].childCards?.append(newCard)
              mainArray.insert(newCard, at: mainArray.count - 2)
             
@@ -123,10 +127,33 @@ class DM: ObservableObject {
     }
     
     func getColorIdOfGroup() -> Int {
-            let number = getCardFromId(childCardIdOpened)
-            let colorIdGroup = parentCardsArray[number].groupId
-            return colorIdGroup
+        let number = getCardFromId(childCardIdOpened)
+        let colorIdGroup = parentCardsArray[number].groupId
+        return colorIdGroup
     }
+    
+//    func cardsWithChidren()  {
+//        for card in mainArray {
+//            if let childCards = card.childCards {
+//                if childCards.count > 0 {
+//                }
+//            }
+//        }
+//    }
+//    
+//    func fetchArrayContainChildCards1() -> [CardModel] {
+//        var arrayContainChildCards: [CardModel] = []
+//        for card in mainArray {
+//            if let childCards = card.childCards {
+//                if childCards.count > 0 {
+//                    arrayContainChildCards.append(card)
+//                }
+//            }
+//        }
+//        print("❤️ arrayContainChildCards : \(arrayContainChildCards.count)")
+//        return arrayContainChildCards
+//    }
+    
 }
 
 
