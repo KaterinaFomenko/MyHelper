@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct MainCardsView: View {
-   
+    
     @EnvironmentObject var dm: DM
+    
+   //  Alert
+    
+    @State var isShowAlert = false
+    @State var message = ""
+    var idCurrentCard: Float = 0
     
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
     
@@ -19,17 +25,15 @@ struct MainCardsView: View {
             ForEach(dm.mainArray, id: \.cardId) { card in
                 CardView(card: card, hasChildren: card.childCards != nil)
                 
-                    .onLongPressGesture(perform: {
-                        print("Long Tap")
-                    })
                     .onTapGesture {
+                        
                         dm.speakText(text: card.title)
                         print("☎️ \(card.title)")
                         
                         if card.childCards == nil && card.cardId < 100 {
                             // Add new card on top array
                             dm.addItemToSelected(item: card)
-                           
+                            
                         } else {
                             // tap Home / Back / Plus
                             if card.cardId == 100 { //"home"
@@ -46,7 +50,7 @@ struct MainCardsView: View {
                                 
                             } else if card.id == 102 { // "plus"
                                 print("Tap new card ")
-                            
+                                
                                 dm.isShowAddScreen.toggle()
                                 
                             } else {
@@ -65,6 +69,30 @@ struct MainCardsView: View {
                             }
                         }
                     }
+
+                // MARK: LongPressGesture
+                
+                    .contextMenu {
+                        
+                        if card.cardId < 100 && card.priority != 1 {
+                            
+                            Button(action: {
+                                // Действие при удалении
+                                dm.selectedCardId = card.cardId
+                                print("selectedCardId : \(dm.selectedCardId)")
+                                isShowAlert = true
+                                print("Delete")
+                            }) {
+                                HStack {
+                                    Image(systemName: "trash")
+                                        .foregroundStyle(.red) // ???
+                                    
+                                    Text("Delete")
+                                        .foregroundStyle(.red) // ????
+                                }
+                            }
+                        }
+                    }
             }
         }
         .padding()
@@ -72,19 +100,29 @@ struct MainCardsView: View {
             NewCardView()
         }
         
+        .alert(isPresented: $isShowAlert) {
+           
+            // Alert.Button
+            Alert(title: Text("Are you sure you want to remove this item?"),
+                  message: Text(message),
+                  primaryButton: .destructive(Text("Delete"), action: {
+                print("Delete item")
+                
+                dm.removeCardFromId(dm.selectedCardId)
+            } ),
+                  secondaryButton: .cancel() )
+        }
+        .animation(.easeInOut, value: isShowAlert)
+        
         //triggers when pressed BTN Save
         .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
             return
         }
-        
-        
     }
-    
-    
 }
 
 #Preview {
     MainCardsView()
-        .environmentObject(DM.shared) 
+        .environmentObject(DM.shared)
 }
 

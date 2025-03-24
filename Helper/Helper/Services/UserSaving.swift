@@ -11,26 +11,9 @@ class UserSaving: ObservableObject {
     let KEY = "parentCardsArray"
     
     static var shared = UserSaving()
-    
-    func saveParentCardArray2(_ array: [CardModel]) {
-        let defaults = UserDefaults.standard
-        defaults.set(array, forKey: KEY)
-    }
-    func loadParentCardsArray2() -> [CardModel] {
-        let defaults = UserDefaults.standard
-        let array = defaults.array(forKey: KEY) as? [CardModel]
-        return array ?? []
-    }
 
-    func saveParentCardArray(_ array: [CardModel]) {
-        if let encodeData = try? JSONEncoder().encode(array) {
-            UserDefaults.standard.set(encodeData, forKey: "parentCardsArray")
-            print("💾 Saved parentCardsArray: \(array.count)")
-        }
-    }
-    
     func loadParentCardsArray() -> [CardModel] {
-        guard let savedData = UserDefaults.standard.data(forKey: "parentCardsArray") else {
+        guard let savedData = UserDefaults.standard.data(forKey: KEY) else {
             print("⚠️ No saved data found")
             return []
         }
@@ -43,9 +26,31 @@ class UserSaving: ObservableObject {
         }
         return []
     }
+    
+    func saveParentCardArray(_ array: [CardModel]) {
+        if let encodeData = try? JSONEncoder().encode(array) {
+            UserDefaults.standard.set(encodeData, forKey: KEY)
+            print("💾 Saved parentCardsArray: \(array.count)")
+        }
+    }
+    
+    func removeCard(_ card: CardModel) {
+        var cards = loadParentCardsArray()
+        cards.removeAll { $0.cardId == card.cardId }
+        saveParentCardArray(cards)
+    }
 }
 
-
+//
+//    func saveParentCardArray2(_ array: [CardModel]) {
+//        let defaults = UserDefaults.standard
+//        defaults.set(array, forKey: KEY)
+//    }
+//    func loadParentCardsArray2() -> [CardModel] {
+//        let defaults = UserDefaults.standard
+//        let array = defaults.array(forKey: KEY) as? [CardModel]
+//        return array ?? []
+//    }
 
 //    @Published var parentCardArray: [CardModel] = [] {
 //        didSet {

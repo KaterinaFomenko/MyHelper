@@ -36,7 +36,6 @@ struct CardView: View {
                     .cornerRadius(5)
             }
             
-          //  Spacer()
 // if card has child cards show ellipsis
             if hasChildren {
                 HStack {
@@ -45,6 +44,7 @@ struct CardView: View {
                     Label("This is Grope", systemImage: "ellipsis")
                         .labelStyle(.iconOnly)
                         .padding(.horizontal, 5)
+                        .foregroundStyle(.gray)
                 }
             }
         }

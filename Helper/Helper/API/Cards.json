@@ -15,38 +15,12 @@
     },
     {
         "title": "Want",
-        "cardId": 16,
+        "cardId": 3,
         "imageName": "want",
         "priority": 1,
         "groupId": 1
     },
-    {
-        "title": "Words of greeting",
-        "cardId": 3,
-        "imageName": "greeting2",
-        "priority": 1,
-        "groupId": 2,
-        "childCards": [
-            {
-                "title": "Good morning",
-                "cardId": 3.1,
-                "imageName": "Good morning",
-                "groupId": 2
-            },
-            {
-                "title": "Hello",
-                "cardId": 3.2,
-                "imageName": "Hello",
-                "groupId": 2
-            },
-            {
-                "title": "Goodbye",
-                "cardId": 3.3,
-                "imageName": "Goodbye",
-                "groupId": 2
-            }
-        ]
-    },
+    
     {
         "title": "Hurts",
         "cardId": 4,
@@ -108,7 +82,7 @@
         "title": "Play",
         "cardId": 5,
         "imageName": "games",
-        "priority": 2,
+        "priority": 1,
         "groupId": 4,
         "childCards": [
             {
@@ -141,7 +115,7 @@
         "title": "Toilet",
         "cardId": 6,
         "imageName": "toilet",
-        "priority": 2,
+        "priority": 1,
         "groupId": 5,
         "childCards": [
             {
@@ -166,59 +140,61 @@
         ]
     },
     {
-        "title": "Tableware",
+        "title": "Feelings",
         "cardId": 7,
-        "imageName": "tableware",
-        "priority": 3,
+        "imageName": "feelings",
+        "priority": 2,
         "groupId": 6,
         "childCards": [
             {
-                "title": "Fork",
-                "cardId": 7.1,
-                "imageName": "Fork",
-                "groupId": 6
-            },
-            {
-                "title": "Spoon",
-                "cardId": 7.2,
-                "imageName": "Spoon",
-                "groupId": 6
-            },
-            {
-                "title": "Knife",
-                "cardId": 7.3,
-                "imageName": "Knife",
-                "groupId": 6
-            },
-            {
-                "title": "Plate",
-                "cardId": 7.4,
-                "imageName": "Plate",
-                "groupId": 6
-            }
-        ]
-    },
-    {
-        "title": "Feelings",
-        "cardId": 8,
-        "imageName": "feelings",
-        "priority": 2,
-        "groupId": 7,
-        "childCards": [
-            {
                 "title": "Good",
-                "cardId": 8.1,
+                "cardId": 7.1,
                 "imageName": "Good",
-                "groupId": 7
+                "groupId": 6
             },
             {
                 "title": "Bad",
-                "cardId": 8.2,
+                "cardId": 7.2,
                 "imageName": "Bad",
+                "groupId": 6
+            }
+        ]
+    },
+    
+    {
+        "title": "Tableware",
+        "cardId": 8,
+        "imageName": "tableware",
+        "priority": 3,
+        "groupId": 7,
+        "childCards": [
+            {
+                "title": "Fork",
+                "cardId": 8.1,
+                "imageName": "Fork",
+                "groupId": 7
+            },
+            {
+                "title": "Spoon",
+                "cardId": 8.2,
+                "imageName": "Spoon",
+                "groupId": 7
+            },
+            {
+                "title": "Knife",
+                "cardId": 8.3,
+                "imageName": "Knife",
+                "groupId": 7
+            },
+            {
+                "title": "Plate",
+                "cardId": 8.4,
+                "imageName": "Plate",
                 "groupId": 7
             }
         ]
     },
+    
     {
         "title": "Emotions",
         "cardId": 9,
@@ -453,6 +429,33 @@
                 "cardId": 15.4,
                 "imageName": "Elephant",
                 "groupId": 14
+            }
+        ]
+    },
+    {
+        "title": "Words of greeting",
+        "cardId": 16,
+        "imageName": "greeting2",
+        "priority": 2,
+        "groupId": 15,
+        "childCards": [
+            {
+                "title": "Good morning",
+                "cardId": 16.1,
+                "imageName": "Good morning",
+                "groupId": 15
+            },
+            {
+                "title": "Hello",
+                "cardId": 16.2,
+                "imageName": "Hello",
+                "groupId": 15
+            },
+            {
+                "title": "Goodbye",
+                "cardId": 16.3,
+                "imageName": "Goodbye",
+                "groupId": 15
             }
         ]
     }

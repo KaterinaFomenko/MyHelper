@@ -22,8 +22,9 @@ struct NewCardView: View {
     //@State private var isShowChildScreen: Bool = false
     @State private var isShowingImagePicker = false
     @State private var selectedImage: UIImage? = nil  // выбранная картинка с Галереи
-   
-    @State private var showAlert = false // Alert
+    
+    // Alert
+    @State private var showAlert = false
     @State private var alertMessage = ""
     
     var body: some View {
