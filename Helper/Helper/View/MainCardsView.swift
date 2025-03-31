@@ -85,8 +85,7 @@ struct MainCardsView: View {
                                
                                 dm.selectedCardId = card.cardId
                                 
-                                print("selectedCardId : \(dm.selectedCardId)")
-                                print("edit. Show new Card")
+                                print("Show Card for Editing : \(dm.selectedCardId)")
                                 
                                 // Show new Card
                                 dm.isShowAddScreenForEdiding = true

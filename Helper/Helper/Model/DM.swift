@@ -127,8 +127,8 @@ class DM: ObservableObject {
     }
     
     func removeCurrentCard(_ cardId: Float) {
-        for (index, name) in mainArray.enumerated() {
-            if name.cardId == cardId {
+        for (index, card) in mainArray.enumerated() {
+            if card.cardId == cardId {
                 mainArray.remove(at: index)
             }
         }
@@ -138,14 +138,15 @@ class DM: ObservableObject {
     func getIndexFromCardId(_ cardId: Float) -> Int {
         for (index, card) in parentCardsArray.enumerated() {
             if card.cardId == cardId {
-                return index // return index of child
+                return index
             }
         }
         return 0
     }
     
-    func getNameCardForEditing(selectedCard: Int) {
-        
+    func getNameCardForEditing(selectedCardId: Float) -> String {
+        let ind = getIndexFromCardId(selectedCardId)
+        return mainArray[ind].title // MARK: работает только родителей (для детей не ищет id )
     }
     
     func removeCardFromId(_ cardId: Float) {

@@ -156,7 +156,7 @@ struct NewCardView: View {
            
             // MARK:  show new Card Screen for editind
             if dm.isShowAddScreenForEdiding == true {
-                nameCard = "Hello"
+                nameCard = dm.getNameCardForEditing(selectedCardId: dm.selectedCardId)
             }
             
         }
