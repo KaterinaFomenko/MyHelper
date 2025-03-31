@@ -11,7 +11,6 @@ struct MainCardsView: View {
     
     @EnvironmentObject var dm: DM
     
-   //  Alert
     
     @State var isShowAlert = false
     @State var message = ""
@@ -60,6 +59,10 @@ struct MainCardsView: View {
                                 dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
                                 
                                 dm.mainArray = card.childCards ?? []
+                                
+                                let arrayIDs = dm.mainArray.compactMap { "\($0.cardId) : \($0.title)" }
+                                print("👼 There are all child cards: \( arrayIDs )")
+                                
                                 dm.addItemToSelected(item: card)
                                 
                                 // Add servise buttons
@@ -76,12 +79,36 @@ struct MainCardsView: View {
                         
                         if card.cardId < 100 && card.priority != 1 {
                             
-                            Button(action: {
-                                // Действие при удалении
+                            
+                            
+                            Button(action: {  // Действие при редактировании
+                               
                                 dm.selectedCardId = card.cardId
+                                
                                 print("selectedCardId : \(dm.selectedCardId)")
+                                print("edit. Show new Card")
+                                
+                                // Show new Card
+                                dm.isShowAddScreenForEdiding = true
+                                dm.isShowAddScreen.toggle()
+                                
+                            }) {
+                                HStack {
+                                    Image(systemName: "pencil")
+                                        .foregroundStyle(.red) // ???
+                                    
+                                    Text("Edit")
+                                        .foregroundStyle(.red) // ????
+                                }
+                                
+                                
+                            }
+                            
+                            Button(action: { // Действие при удалении
+                                
+                                dm.selectedCardId = card.cardId
                                 isShowAlert = true
-                                print("Delete")
+                                
                             }) {
                                 HStack {
                                     Image(systemName: "trash")
@@ -91,6 +118,7 @@ struct MainCardsView: View {
                                         .foregroundStyle(.red) // ????
                                 }
                             }
+                            
                         }
                     }
             }
@@ -117,6 +145,11 @@ struct MainCardsView: View {
         //triggers when pressed BTN Save
         .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
             return
+        }
+ .onAppear {
+            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title)" }
+            print("🤵 It`s all parent cards: \(arrayIDs)")
+        
         }
     }
 }

@@ -14,28 +14,28 @@ class DM: ObservableObject {
     @Published var mainArray: [CardModel] = [] // monitor
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     
+    
+    @Published var isShowAddScreenForEdiding: Bool = false
     @Published var isShowAddScreen: Bool = false
     @Published var isCardContainGroup = false // will card contain other cards into togle
-   
+    
     @Published var titleWay: String = "" // settings line
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
     var childCardIdOpened: Float = -1
     
-    // хранится id карты на которую выделили для удаления
+    // хранится id карты на которую выделили для удаления / редактирования
     var selectedCardId: Float = 0
     let textToSpeech = TextToSpeech()
-    
     
     init() {
         loadData()
     }
     
-     func addItemToSelected(item: CardModel) {
-         if !selectedItemsArray.contains(where: {$0.cardId == item.cardId}) {
+    func addItemToSelected(item: CardModel) {
+        if !selectedItemsArray.contains(where: {$0.cardId == item.cardId}) {
             selectedItemsArray.append(item)
-            print("Add new item in SelectedArray")
         }
     }
     
@@ -49,7 +49,7 @@ class DM: ObservableObject {
         //textToSpeech.speak(text: text, locale: "en-US")
         textToSpeech.speak(text: text, locale: "en-US", voiceIdentifier: "com.apple.speech.synthesis.voice.Fred")
     }
-
+    
     private func loadData() {
         let array = UserSaving.shared.loadParentCardsArray()
         // load from UserDefaults
@@ -77,108 +77,65 @@ class DM: ObservableObject {
     func addHomeBackCards() {
         let cardHome = CardModel(cardId: 100, title: "Home", groupId: 100, imageName: "home4" )
         let cardBack = CardModel(cardId: 101, title: "Back", groupId: 101, imageName: "back1")
-        
         mainArray.insert(cardHome, at: 0)
         mainArray.append(cardBack)
     }
     
     func addNewCard(name: String, selectedColorId: Int, imageName: String) {
-        
+        let maxIdParent = parentCardsArray.map { $0.cardId }.max() ?? 99
         var newCard = CardModel(
-            cardId: Float(parentCardsArray.count + 1),
+            cardId: Float(maxIdParent + 1),
             title: name,
             groupId: selectedColorId,
             imageName: imageName,
             priority: nil,
-            // to do correct condition if nil / childCard = []
-            
             childCards: isCardContainGroup ? [] : nil
         )
+        print("💁 Create new Id of parentCard \(newCard.cardId) ")
+        
         if childCardIdOpened > 0 {
             //add card to child card
-             let number = getCardFromId(childCardIdOpened)
-             let count = parentCardsArray[number].childCards?.count ?? 0
-             newCard.cardId = Float(count) + 0.1
-             newCard.childCards = nil //  MARK: I add
-             parentCardsArray[number].childCards?.append(newCard)
-             mainArray.insert(newCard, at: mainArray.count - 2)
+            let ind = getIndexFromCardId(childCardIdOpened)
+            let maxId = parentCardsArray[ind].childCards?.map { $0.cardId }.max() ?? 99
             
-             print("New card append to parent id = " + String(childCardIdOpened))
-           
+            newCard.cardId = Float(maxId) + 0.1
+            newCard.childCards = nil //  MARK: I add
+            parentCardsArray[ind].childCards?.append(newCard)
+            mainArray.insert(newCard, at: mainArray.count - 2)
+            
         } else {
             //add new card to main screen
             parentCardsArray.append(newCard)
             mainArray.insert(newCard, at: mainArray.count - 1)
         }
-       
+        
         UserSaving.shared.saveParentCardArray(parentCardsArray)
         print("🎞️ 🎞️ parentCardsArray добавили newCard: \( parentCardsArray.count)")
     }
-    // ищет индекс по Id
-//    func getCardFromId(_ cardId: Float) -> Int {
-//        for (index, card) in parentCardsArray.enumerated() {
-//            if card.cardId == cardId {
-//                return index // return index of child
-//            }
-//        }
-//        return 0
-//    }
     
     func getNameOfGroup() -> String {
-        let number = getCardFromId(childCardIdOpened)
+        let number = getIndexFromCardId(childCardIdOpened)
         let nameOfGroup = parentCardsArray[number].title
         print("☎️ childCardIdOpened: \(childCardIdOpened)")
         return nameOfGroup
     }
     
     func getColorIdOfGroup() -> Int {
-        let number = getCardFromId(childCardIdOpened)
+        let number = getIndexFromCardId(childCardIdOpened)
         let colorIdGroup = parentCardsArray[number].groupId
         return colorIdGroup
     }
     
     func removeCurrentCard(_ cardId: Float) {
-       
-            for (index, name) in mainArray.enumerated() {
-                if name.cardId == cardId {
-                    mainArray.remove(at: index)
-                
+        for (index, name) in mainArray.enumerated() {
+            if name.cardId == cardId {
+                mainArray.remove(at: index)
             }
         }
     }
     
-    func removeCurrentCard1(_ cardId: Float) {
-        let number = getCardFromId(childCardIdOpened) // индекс родителя
-        let tapCard = getCardFromId(cardId)
-        if childCardIdOpened > 0 {
-            //remove card from child card
-            
-            parentCardsArray[number].childCards?.remove(at: number)
-            mainArray.remove(at: tapCard)
-            }
-        
-        else {
-            parentCardsArray.remove(at: tapCard)
-        }
-        
-    }
-    
-    func removeCurrentCard2() {
-        let number = getCardFromId(childCardIdOpened) // индекс родителя
-        print("Index tapping card: \(number)")
-        if childCardIdOpened > 0 {
-            //remove card from child card
-            
-            parentCardsArray[number].childCards?.remove(at: number)
-            mainArray.remove(at: number)
-            }
-        else {
-            parentCardsArray.remove(at: number)
-            mainArray.remove(at: number)
-        }
-    }
-    
-    func getCardFromId(_ cardId: Float) -> Int {
+    // ищет индекс по Id
+    func getIndexFromCardId(_ cardId: Float) -> Int {
         for (index, card) in parentCardsArray.enumerated() {
             if card.cardId == cardId {
                 return index // return index of child
@@ -187,54 +144,34 @@ class DM: ObservableObject {
         return 0
     }
     
-    func removeCardFromId(_ cardId: Float) {
+    func getNameCardForEditing(selectedCard: Int) {
         
-        for (index, card) in parentCardsArray.enumerated() {
-            if card.cardId == cardId {
-                parentCardsArray.remove(at: index)
-                mainArray.remove(at: index)
+    }
+    
+    func removeCardFromId(_ cardId: Float) {
+        for (indexParent, cardParent) in parentCardsArray.enumerated() {
+            if cardParent.cardId == cardId {
+                parentCardsArray.remove(at: indexParent)
+                mainArray.remove(at: indexParent)
                 UserSaving.shared.saveParentCardArray(parentCardsArray)
                 return
             }
             
-            if let childCards = card.childCards {
-                for (index2, card2) in childCards.enumerated() {
-                    if card2.cardId == cardId {
-                        parentCardsArray[index].childCards?.remove(at: index2)
-                        mainArray.remove(at: index2 + 1) // first button is "Home"
-                        UserSaving.shared.saveParentCardArray(parentCardsArray)
-                        return
-                    }
+            if let indChild = cardParent.childCards?.firstIndex(where: { $0.cardId == cardId } ) {
+                parentCardsArray[indexParent].childCards?.remove(at: indChild)
+                if mainArray.indices.contains(indChild) {
+                    mainArray.remove(at: indChild + 1)
                 }
+                UserSaving.shared.saveParentCardArray(parentCardsArray)
+                break
             }
         }
     }
-    
-    func removeCurrentCard3() {
-        let index = getCardFromId(selectedCardId)
-        print("selectedCardId : \(selectedCardId)")
-        print("index: \(index)")
-        parentCardsArray.remove(at: index)
-        mainArray.remove(at: index)
-        UserSaving.shared.saveParentCardArray(parentCardsArray)
-        
-        
-        
-        
-//        if childCardIdOpened > 0 {
-//            // in child card
-//            
-//            parentCardsArray[indexChild].childCards?[indexChild].cardId
-//            mainArray.remove(at: indexChild)
-//        } else {
-//            parentCardsArray.remove(at: indexChild)
-//            mainArray.remove(at: indexChild)
-//        }
-    }
-    
-    
-    
 }
+
+
+
+
 
 
 

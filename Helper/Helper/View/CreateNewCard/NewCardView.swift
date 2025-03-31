@@ -19,7 +19,6 @@ struct NewCardView: View {
     
     @State private var isPressedSaveBtn: Bool = false
     @State private var isPressedAddImageBtn: Bool = false
-    //@State private var isShowChildScreen: Bool = false
     @State private var isShowingImagePicker = false
     @State private var selectedImage: UIImage? = nil  // выбранная картинка с Галереи
     
@@ -31,35 +30,32 @@ struct NewCardView: View {
         ZStack {
             VStack() {
                 HStack {
-                    Button("", systemImage: "pencil") {
-                        print("Tapped Edit")
-                        // ToDo editing image
-                    }
-                    .font(.largeTitle)
-                    .foregroundStyle(.black)
-                    Spacer()
+               //     Spacer()
+//                    Button("", systemImage: "pencil") {
+//                        print("Tapped Edit")
+//                        // ToDo editing image
+//                    }
+//                    .font(.largeTitle)
+//                    .foregroundStyle(.black)
+             
                     if dm.childCardIdOpened < 0 {
                         Text(dm.isCardContainGroup ? "Create new Groupe" : "Create new Card")
                         .font(.custom("Helvetica Neue", size: 20))
                             .foregroundStyle(.gray)
                             .transition(.opacity)
                             .id("TextIdentifier_\(dm.isCardContainGroup)")
-                            .offset(x: -20)
-                            
-                        Spacer()
-                        
+                       
                     } else {
                         Text(dm.getNameOfGroup())
                             .font(.custom("Helvetica Neue", size: 20))
                             .lineLimit(1) // Ограничиваем одной строкой
                             .truncationMode(.tail) // Добавляем многоточие в конце
                             .foregroundStyle(.gray)
-                            .offset(x: -20)
-                        Spacer()
+                
                     }
                 }
                 .animation(.snappy , value: dm.isCardContainGroup)
-                Spacer()
+            //    Spacer()
                 
                 GeometryReader { geometry in
                     ZStack(alignment: .center) {
@@ -121,8 +117,6 @@ struct NewCardView: View {
                                             textColor: .white
                                         )
                                     )
-                                    
-                                    //.foregroundStyle(.white)
                             }
                             .zIndex(2)
                         }
@@ -130,7 +124,6 @@ struct NewCardView: View {
                 }
             }
             .padding()
-           
         }
         .background(Color.gray.opacity(0.1))
         
@@ -148,7 +141,6 @@ struct NewCardView: View {
                 Text("Color")
                     .font(.headline)
                 CustomColorPicker(selectedColorId: $selectedColorId)
-                // CustomColorPicker(selectedColorId: dm.childCardIdOpened)
             }
             // MARK: Toogle
             if dm.childCardIdOpened < 0 {
@@ -161,6 +153,12 @@ struct NewCardView: View {
         }
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup()
+           
+            // MARK:  show new Card Screen for editind
+            if dm.isShowAddScreenForEdiding == true {
+                nameCard = "Hello"
+            }
+            
         }
         .listStyle(.inset)
         

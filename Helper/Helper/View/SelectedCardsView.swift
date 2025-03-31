@@ -34,7 +34,6 @@ struct SelectedCardsView: View {
                 }
             }
         }
-        
     }
 }
 
