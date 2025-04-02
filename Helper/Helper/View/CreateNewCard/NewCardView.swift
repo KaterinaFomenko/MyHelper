@@ -25,6 +25,7 @@ struct NewCardView: View {
     // Alert
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var titleCard = ""
     
     var body: some View {
         ZStack {
@@ -39,21 +40,17 @@ struct NewCardView: View {
 //                    .foregroundStyle(.black)
              
                     if dm.childCardIdOpened < 0 {
-                        Text(dm.isCardContainGroup ? "Create new Groupe" : "Create new Card")
-                        .font(.custom("Helvetica Neue", size: 20))
-                            .foregroundStyle(.gray)
+                        Text(titleCard)
                             .transition(.opacity)
                             .id("TextIdentifier_\(dm.isCardContainGroup)")
-                       
                     } else {
                         Text(dm.getNameOfGroup())
-                            .font(.custom("Helvetica Neue", size: 20))
                             .lineLimit(1) // Ограничиваем одной строкой
                             .truncationMode(.tail) // Добавляем многоточие в конце
-                            .foregroundStyle(.gray)
-                
                     }
                 }
+                .font(.custom("Helvetica Neue", size: 20))
+                .foregroundStyle(.gray)
                 .animation(.snappy , value: dm.isCardContainGroup)
             //    Spacer()
                 
@@ -66,7 +63,6 @@ struct NewCardView: View {
                                 .fill(AppColors.getColor(groupId: selectedColorId))
                                 .opacity(0.5)
                                 .frame(width: geometry.size.width / 1.35, height: geometry.size.width / 1.35)
-                            
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                             
@@ -137,11 +133,11 @@ struct NewCardView: View {
             }
             
             HStack(alignment: .center) {
-                
                 Text("Color")
                     .font(.headline)
                 CustomColorPicker(selectedColorId: $selectedColorId)
             }
+            
             // MARK: Toogle
             if dm.childCardIdOpened < 0 {
                 Toggle("Will the card contain other cards ?", isOn: $dm.isCardContainGroup)
@@ -153,19 +149,23 @@ struct NewCardView: View {
         }
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup()
+            titleCard = dm.titleState()
            
             // MARK:  show new Card Screen for editind
-            if dm.isShowAddScreenForEdiding == true {
+            if dm.isStateEdiding == true {
                 nameCard = dm.getNameCardForEditing(selectedCardId: dm.selectedCardId)
             }
-            
+        }
+        // при закрытии окна режим редактирования = false
+        .onDisappear {
+            dm.isStateEdiding = false
         }
         .listStyle(.inset)
         
         Button {
             isPressedSaveBtn.toggle()
             checkUniqName()
-            //dm.isShowAddScreen = false
+          
         } label: {
             Text("Save")
                 .modifier(

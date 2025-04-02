@@ -8,6 +8,21 @@
 import Foundation
 import SwiftUI
 
+ //Title for CreateNewCard
+enum TitleState {
+    case hasChildsCards
+    case hasNotChildsCards
+    case editingState
+    
+    var title: String {
+        switch self {
+        case .hasChildsCards: return "Create new Group"
+        case .hasNotChildsCards: return "Create new Card"
+        case .editingState: return "You may edit Card"
+        }
+    }
+}
+
 class DM: ObservableObject {
     static let shared = DM()
     
@@ -15,7 +30,7 @@ class DM: ObservableObject {
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     
     
-    @Published var isShowAddScreenForEdiding: Bool = false
+    @Published var isStateEdiding: Bool = false
     @Published var isShowAddScreen: Bool = false
     @Published var isCardContainGroup = false // will card contain other cards into togle
     
@@ -144,9 +159,23 @@ class DM: ObservableObject {
         return 0
     }
     
-    func getNameCardForEditing(selectedCardId: Float) -> String {
+    func getNameCardForEditing1(selectedCardId: Float) -> String {
         let ind = getIndexFromCardId(selectedCardId)
         return mainArray[ind].title // MARK: работает только родителей (для детей не ищет id )
+    }
+        
+    func getNameCardForEditing(selectedCardId: Float) -> String {
+        for (indexParent, cardParent) in parentCardsArray.enumerated() {
+            if cardParent.cardId == selectedCardId {
+                return parentCardsArray[indexParent].title
+            }
+            
+            if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == selectedCardId }) {
+                guard let childCardTitle = parentCardsArray[indexParent].childCards?[indexChild].title else { return "Something Wrong" }
+                return childCardTitle
+            }
+        }
+       return " DM. getNameCardForEditing "
     }
     
     func removeCardFromId(_ cardId: Float) {
@@ -166,6 +195,15 @@ class DM: ObservableObject {
                 UserSaving.shared.saveParentCardArray(parentCardsArray)
                 break
             }
+        }
+    }
+    /// Возвращает локализованный заголовок в зависимости от состояния
+    func titleState() -> String {
+        if isStateEdiding {
+            return TitleState.editingState.title
+        }
+        else {
+            return isCardContainGroup ? TitleState.hasChildsCards.title : TitleState.hasNotChildsCards.title
         }
     }
 }

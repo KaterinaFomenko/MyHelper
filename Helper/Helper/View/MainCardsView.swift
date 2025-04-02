@@ -60,8 +60,8 @@ struct MainCardsView: View {
                                 
                                 dm.mainArray = card.childCards ?? []
                                 
-                                let arrayIDs = dm.mainArray.compactMap { "\($0.cardId) : \($0.title)" }
-                                print("👼 There are all child cards: \( arrayIDs )")
+                               // let arrayIDs = dm.mainArray.compactMap { "\($0.cardId) : \($0.title)" }
+                              //  print("👼 There are all child cards: \( arrayIDs )")
                                 
                                 dm.addItemToSelected(item: card)
                                 
@@ -88,16 +88,16 @@ struct MainCardsView: View {
                                 print("Show Card for Editing : \(dm.selectedCardId)")
                                 
                                 // Show new Card
-                                dm.isShowAddScreenForEdiding = true
+                                dm.isStateEdiding = true
                                 dm.isShowAddScreen.toggle()
                                 
                             }) {
                                 HStack {
                                     Image(systemName: "pencil")
-                                        .foregroundStyle(.red) // ???
+                                    //    .foregroundStyle(.red) // ???
                                     
                                     Text("Edit")
-                                        .foregroundStyle(.red) // ????
+                                     //   .foregroundStyle(.red) // ????
                                 }
                                 
                                 
@@ -111,15 +111,17 @@ struct MainCardsView: View {
                             }) {
                                 HStack {
                                     Image(systemName: "trash")
-                                        .foregroundStyle(.red) // ???
+                                    //.foregroundStyle(.red) // ???
                                     
                                     Text("Delete")
-                                        .foregroundStyle(.red) // ????
+                                       // .foregroundStyle(.red) // ????
                                 }
                             }
                             
                         }
                     }
+                
+              
             }
         }
         .padding()
@@ -145,14 +147,14 @@ struct MainCardsView: View {
         .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
             return
         }
- .onAppear {
-            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title)" }
-            print("🤵 It`s all parent cards: \(arrayIDs)")
+ //.onAppear {
+          //  let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title)" }
+         //   print("🤵 It`s all parent cards: \(arrayIDs)")
         
-        }
+ //       }
     }
 }
-
+    
 #Preview {
     MainCardsView()
         .environmentObject(DM.shared)

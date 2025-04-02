@@ -41,30 +41,3 @@ class UserSaving: ObservableObject {
     }
 }
 
-//
-//    func saveParentCardArray2(_ array: [CardModel]) {
-//        let defaults = UserDefaults.standard
-//        defaults.set(array, forKey: KEY)
-//    }
-//    func loadParentCardsArray2() -> [CardModel] {
-//        let defaults = UserDefaults.standard
-//        let array = defaults.array(forKey: KEY) as? [CardModel]
-//        return array ?? []
-//    }
-
-//    @Published var parentCardArray: [CardModel] = [] {
-//        didSet {
-//            saveParentCardArray()
-//        }
-//    }
-//
-//    init() {
-//        loadParentCardsArray()
-//    }
-//    ----------
-//    @Published var cardName: String = UserDefaults.standard.string(forKey: "cardName") ?? "" {
-//        didSet {
-//            UserDefaults.standard.set(cardName, forKey: "cardName")
-//            print("🍄‍🟫 New Card Name: \(cardName)")
-//        }
-//    }
