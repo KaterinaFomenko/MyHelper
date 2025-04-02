@@ -149,11 +149,21 @@ struct NewCardView: View {
         }
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup()
-            titleCard = dm.titleState()
+            titleCard = dm.titleState() // update titleGroupe
            
             // MARK:  show new Card Screen for editind
+            
             if dm.isStateEdiding == true {
-                nameCard = dm.getNameCardForEditing(selectedCardId: dm.selectedCardId)
+                nameCard = dm.getCardByID(cardId: dm.selectedCardId)?.title ?? "Empty name"
+                
+                let imageName = dm.getCardByID(cardId: dm.selectedCardId)?.imageName ?? "ball"
+
+                if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
+                    selectedImage = image
+                    
+                } else {
+                     selectedImage = UIImage(named: imageName)
+                }
             }
         }
         // при закрытии окна режим редактирования = false
@@ -164,6 +174,7 @@ struct NewCardView: View {
         
         Button {
             isPressedSaveBtn.toggle()
+           
             checkUniqName()
           
         } label: {
@@ -240,11 +251,17 @@ struct NewCardView: View {
         let imageName = nameCard
         ImageService.shared.saveImage(imageName: imageName, image: selectedImage ?? UIImage())
         
-        dm.addNewCard(
-            name: nameCard,
-            selectedColorId: selectedColorId,
-            imageName: imageName
-        )
+        if dm.isStateEdiding {
+            let card = CardModel(cardId: dm.selectedCardId, title: nameCard, groupId: selectedColorId, imageName: imageName)
+            dm.updateCard(card: card)
+        } else {
+            dm.addNewCard(
+                name: nameCard,
+                selectedColorId: selectedColorId,
+                imageName: imageName
+            )
+        }
+        
         dm.isShowAddScreen = false
     }
     

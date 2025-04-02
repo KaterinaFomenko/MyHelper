@@ -147,11 +147,11 @@ struct MainCardsView: View {
         .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
             return
         }
- //.onAppear {
-          //  let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title)" }
-         //   print("🤵 It`s all parent cards: \(arrayIDs)")
+ .onAppear {
+            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title)" }
+            print("🤵 It`s all parent cards: \(arrayIDs)")
         
- //       }
+        }
     }
 }
     

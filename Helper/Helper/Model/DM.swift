@@ -125,13 +125,12 @@ class DM: ObservableObject {
         }
         
         UserSaving.shared.saveParentCardArray(parentCardsArray)
-        print("🎞️ 🎞️ parentCardsArray добавили newCard: \( parentCardsArray.count)")
     }
     
     func getNameOfGroup() -> String {
         let number = getIndexFromCardId(childCardIdOpened)
         let nameOfGroup = parentCardsArray[number].title
-        print("☎️ childCardIdOpened: \(childCardIdOpened)")
+        print("☎️ childCardIdOpened: \(parentCardsArray[number].title)")
         return nameOfGroup
     }
     
@@ -150,32 +149,66 @@ class DM: ObservableObject {
     }
     
     // ищет индекс по Id
-    func getIndexFromCardId(_ cardId: Float) -> Int {
-        for (index, card) in parentCardsArray.enumerated() {
-            if card.cardId == cardId {
-                return index
-            }
-        }
-        return 0
-    }
+//    func getIndexFromCardId1(_ cardId: Float) -> Int {
+//        for (index, card) in parentCardsArray.enumerated() {
+//            if card.cardId == cardId {
+//                return index
+//            }
+//        }
+//        return 0
+//    }
     
-    func getNameCardForEditing1(selectedCardId: Float) -> String {
-        let ind = getIndexFromCardId(selectedCardId)
-        return mainArray[ind].title // MARK: работает только родителей (для детей не ищет id )
-    }
-        
-    func getNameCardForEditing(selectedCardId: Float) -> String {
+    // ищет индекс по Id (2.04 find Id for parent / child Cards)
+    func getIndexFromCardId(_ cardId: Float) -> Int {
         for (indexParent, cardParent) in parentCardsArray.enumerated() {
-            if cardParent.cardId == selectedCardId {
-                return parentCardsArray[indexParent].title
+            if cardParent.cardId == cardId {
+                print ("indexParent : \(indexParent)💁💁 ")
+                return indexParent
             }
             
-            if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == selectedCardId }) {
-                guard let childCardTitle = parentCardsArray[indexParent].childCards?[indexChild].title else { return "Something Wrong" }
-                return childCardTitle
+            if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == cardId }) {
+                print ("indexChild : \(indexChild)💁")
+                return indexChild
             }
         }
-       return " DM. getNameCardForEditing "
+       return 0
+    }
+    
+    // updateCard  Заменяем данные карточки(2.04)
+    func updateCard(card: CardModel) {
+        for (indexParent, cardParent) in parentCardsArray.enumerated() {
+            if cardParent.cardId == card.cardId {
+                print(parentCardsArray[indexParent])
+                parentCardsArray[indexParent].title = card.title
+                parentCardsArray[indexParent].groupId = card.groupId
+                parentCardsArray[indexParent].imageName = card.imageName
+            }
+            
+            if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == card.cardId }) {
+                if let childCard = parentCardsArray[indexParent].childCards?[indexChild] {
+                    print(childCard)
+                }
+            }
+        }
+        UserSaving.shared.saveParentCardArray(parentCardsArray)
+    }
+    
+     // При редактировании карты
+    func getCardByID(cardId: Float) -> CardModel? {
+        for (indexParent, cardParent) in parentCardsArray.enumerated() {
+            if cardParent.cardId == cardId {
+                print(parentCardsArray[indexParent])
+                return parentCardsArray[indexParent]
+            }
+            
+            if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == cardId }) {
+                if let childCard = parentCardsArray[indexParent].childCards?[indexChild] {
+                    print(childCard)
+                    return childCard
+                }
+            }
+        }
+        return nil
     }
     
     func removeCardFromId(_ cardId: Float) {
