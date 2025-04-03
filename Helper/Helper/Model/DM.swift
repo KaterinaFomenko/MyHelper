@@ -174,7 +174,7 @@ class DM: ObservableObject {
        return 0
     }
     
-    // updateCard  Заменяем данные карточки(2.04)
+    // updateCard  Заменяем данные карточки на новые
     func updateCard(card: CardModel) {
         for (indexParent, cardParent) in parentCardsArray.enumerated() {
             if cardParent.cardId == card.cardId {
@@ -182,12 +182,20 @@ class DM: ObservableObject {
                 parentCardsArray[indexParent].title = card.title
                 parentCardsArray[indexParent].groupId = card.groupId
                 parentCardsArray[indexParent].imageName = card.imageName
+                mainArray[indexParent] = parentCardsArray[indexParent]
             }
-            
+            // ToDo SaveChild
             if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == card.cardId }) {
-                if let childCard = parentCardsArray[indexParent].childCards?[indexChild] {
-                    print(childCard)
-                }
+               // if let childCard = parentCardsArray[indexParent].childCards?[indexChild] {
+               //     print(childCard)
+                parentCardsArray[indexParent].childCards?[indexChild].title = card.title
+                parentCardsArray[indexParent].childCards?[indexChild].groupId = card.groupId
+                parentCardsArray[indexParent].childCards?[indexChild].imageName = card.imageName
+                if let card = parentCardsArray[indexParent].childCards?[indexChild] {
+                    
+                    mainArray[indexChild + 1] = card // in сhild array has HomeButton in the first place
+                 }
+               
             }
         }
         UserSaving.shared.saveParentCardArray(parentCardsArray)

@@ -175,7 +175,7 @@ struct NewCardView: View {
         Button {
             isPressedSaveBtn.toggle()
            
-            checkUniqName()
+            saveCard()
           
         } label: {
             Text("Save")
@@ -229,26 +229,27 @@ struct NewCardView: View {
         }
     }
     
-    private func checkUniqName() {
+    private func saveCard() {
         if nameCard.isEmpty {
             showAlert(message: "Please enter name")
             return
         }
         
-        var isUnique: Bool = true
+ //       var isUnique: Bool = true
         
-        for card in dm.mainArray {
-            //check parent title
-            if card.title == nameCard {
-                isUnique = false
-            }
-        }
-        if !isUnique {
-            showAlert(message: "Please enter a unique name: \(nameCard)")
-            return
-        }
+//        for card in dm.mainArray {
+//            //check parent title
+//            if card.title == nameCard {
+//                isUnique = false
+//            }
+//        }
+//        if !isUnique {
+//            showAlert(message: "Please enter a unique name: \(nameCard)")
+//            return
+//        }
         
-        let imageName = nameCard
+        let imageName = "img_" + String(dm.selectedCardId)  //nameCard
+        print(imageName) 
         ImageService.shared.saveImage(imageName: imageName, image: selectedImage ?? UIImage())
         
         if dm.isStateEdiding {

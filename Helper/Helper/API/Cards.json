@@ -374,27 +374,27 @@
         "groupId": 13,
         "childCards": [
             {
-                "title": "One",
+                "title": "one",
                 "cardId": 14.1,
-                "imageName": "One",
+                "imageName": "one",
                 "groupId": 13
             },
             {
-                "title": "Two",
+                "title": "two",
                 "cardId": 14.2,
-                "imageName": "Two",
+                "imageName": "two",
                 "groupId": 13
             },
             {
                 "title": "Three",
                 "cardId": 14.3,
-                "imageName": "Three",
+                "imageName": "three",
                 "groupId": 13
             },
             {
                 "title": "Four",
                 "cardId": 14.4,
-                "imageName": "Four",
+                "imageName": "four",
                 "groupId": 13
             }
         ]

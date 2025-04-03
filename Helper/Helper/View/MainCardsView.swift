@@ -14,6 +14,7 @@ struct MainCardsView: View {
     
     @State var isShowAlert = false
     @State var message = ""
+    
     var idCurrentCard: Float = 0
     
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
@@ -79,8 +80,6 @@ struct MainCardsView: View {
                         
                         if card.cardId < 100 && card.priority != 1 {
                             
-                            
-                            
                             Button(action: {  // Действие при редактировании
                                
                                 dm.selectedCardId = card.cardId
@@ -94,41 +93,30 @@ struct MainCardsView: View {
                             }) {
                                 HStack {
                                     Image(systemName: "pencil")
-                                    //    .foregroundStyle(.red) // ???
-                                    
-                                    Text("Edit")
-                                     //   .foregroundStyle(.red) // ????
-                                }
-                                
-                                
-                            }
                             
+                                    Text("Edit")
+                                }
+                            }
+            
                             Button(action: { // Действие при удалении
-                                
                                 dm.selectedCardId = card.cardId
                                 isShowAlert = true
-                                
                             }) {
                                 HStack {
                                     Image(systemName: "trash")
-                                    //.foregroundStyle(.red) // ???
                                     
                                     Text("Delete")
-                                       // .foregroundStyle(.red) // ????
                                 }
                             }
                             
                         }
                     }
-                
-              
             }
         }
         .padding()
         .sheet(isPresented: $dm.isShowAddScreen) {
             NewCardView()
         }
-        
         .alert(isPresented: $isShowAlert) {
            
             // Alert.Button
@@ -145,6 +133,7 @@ struct MainCardsView: View {
         
         //triggers when pressed BTN Save
         .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
+            print("onChange parentCardsArray")
             return
         }
  .onAppear {

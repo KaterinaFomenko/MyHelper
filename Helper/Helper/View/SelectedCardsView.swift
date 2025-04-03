@@ -29,7 +29,7 @@ struct SelectedCardsView: View {
                 withAnimation {
                      
                     proxy.scrollTo(newValue.last, anchor: .bottomTrailing)
-                    print("👀 Last element \(newValue.last)")
+                  //  print("👀 Last element \(newValue.last)")
                     
                 }
             }

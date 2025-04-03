@@ -29,6 +29,7 @@ struct CardView: View {
                     .cornerRadius(5)
             } else {
             // loadFromJSON from asset
+               // Image("one")
                 Image(card.imageName)
                     .resizable()
                     .scaledToFill()
