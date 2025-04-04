@@ -17,8 +17,8 @@ struct NewCardView: View {
     @State private var colorOfGroupId  = 1 // цвет группы
     @State private var selectedIcon: String? = nil // выбранная иконка
     
-    @State private var isPressedSaveBtn: Bool = false
-    @State private var isPressedAddImageBtn: Bool = false
+    @State private var isSavingBtn: Bool = false
+    @State private var isAddingImageBtn: Bool = false
     @State private var isShowingImagePicker = false
     @State private var selectedImage: UIImage? = nil  // выбранная картинка с Галереи
     
@@ -45,7 +45,7 @@ struct NewCardView: View {
                             .id("TextIdentifier_\(dm.isCardContainGroup)")
                     } else {
                         Text(dm.getNameOfGroup())
-                            .lineLimit(1) // Ограничиваем одной строкой
+                            .lineLimit(1)
                             .truncationMode(.tail) // Добавляем многоточие в конце
                     }
                 }
@@ -96,10 +96,10 @@ struct NewCardView: View {
                             
                         } else {
                             Button {
-                                isPressedAddImageBtn.toggle()
+                                isAddingImageBtn.toggle()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                     withAnimation {
-                                        isPressedAddImageBtn = true
+                                        isAddingImageBtn = true
                                     }
                                     print ("👇 Tapped add new image")
                                     pickPhoto()
@@ -108,7 +108,7 @@ struct NewCardView: View {
                                 Text("Add image") // Blue Button
                                     .modifier(
                                         CustomButtonModifier(
-                                            isPressed: isPressedAddImageBtn,
+                                            isPressed: isAddingImageBtn,
                                             backgroundColor: .blue,
                                             textColor: .white
                                         )
@@ -173,20 +173,21 @@ struct NewCardView: View {
         .listStyle(.inset)
         
         Button {
-            isPressedSaveBtn.toggle()
+            isSavingBtn.toggle()
            
             saveCard()
-          
+                
         } label: {
             Text("Save")
                 .modifier(
                     CustomButtonModifier(
-                        isPressed: isPressedSaveBtn,
+                        isPressed: isSavingBtn,
                         backgroundColor: nameCard.isEmpty ? .grayLight1 : .blue,
                         textColor: nameCard.isEmpty ? .black : .white
                     )
                 )
         }
+        .disabled(!isNameValid())
         .padding(.bottom)
         
         // Open Galery
@@ -229,28 +230,34 @@ struct NewCardView: View {
         }
     }
     
+    private func isNameValid() -> Bool {
+        let trimmedName = nameCard.trimmingCharacters(in: .whitespaces)
+        return !trimmedName.isEmpty
+    }
+    
     private func saveCard() {
-        if nameCard.isEmpty {
-            showAlert(message: "Please enter name")
+        guard isNameValid() else {
+            showAlert(message: "Name cannot be empty")
             return
         }
+        var imageName = ""
+        if dm.isStateEdiding == false {
+            
+            // State_ add new Card
+            var maxId = dm.mainArray.dropLast().max { $0.cardId < $1.cardId }?.cardId ?? 1
+            dm.selectedCardId = maxId + 1
+            imageName = "img_" + String(dm.selectedCardId)
+            print("State_ add new Card: \(imageName)")
+            
+        } else {
+            // State_ edit Card
+            imageName = "img_" + String(dm.selectedCardId)  // nameCard by Id
+            print("State_ edit Card: \(imageName)")
+        }
         
- //       var isUnique: Bool = true
-        
-//        for card in dm.mainArray {
-//            //check parent title
-//            if card.title == nameCard {
-//                isUnique = false
-//            }
-//        }
-//        if !isUnique {
-//            showAlert(message: "Please enter a unique name: \(nameCard)")
-//            return
-//        }
-        
-        let imageName = "img_" + String(dm.selectedCardId)  //nameCard
-        print(imageName) 
-        ImageService.shared.saveImage(imageName: imageName, image: selectedImage ?? UIImage())
+        if let image = selectedImage {
+            ImageService.shared.saveImage(imageName: imageName, image: image)
+        }
         
         if dm.isStateEdiding {
             let card = CardModel(cardId: dm.selectedCardId, title: nameCard, groupId: selectedColorId, imageName: imageName)
@@ -262,8 +269,7 @@ struct NewCardView: View {
                 imageName: imageName
             )
         }
-        
-        dm.isShowAddScreen = false
+        dm.isShowCreateCardScreen = false
     }
     
     private func showAlert(message: String) {

@@ -31,7 +31,7 @@ class DM: ObservableObject {
     
     
     @Published var isStateEdiding: Bool = false
-    @Published var isShowAddScreen: Bool = false
+    @Published var isShowCreateCardScreen: Bool = false
     @Published var isCardContainGroup = false // will card contain other cards into togle
     
     @Published var titleWay: String = "" // settings line
@@ -86,7 +86,7 @@ class DM: ObservableObject {
         if !mainArray.contains(cardPlus) {
             mainArray.append(cardPlus)
         }
-        print("dm.parentCardsArray.append(cardPlus)")
+        //print("dm.parentCardsArray.append(cardPlus)")
     }
     
     func addHomeBackCards() {
@@ -96,36 +96,7 @@ class DM: ObservableObject {
         mainArray.append(cardBack)
     }
     
-    func addNewCard(name: String, selectedColorId: Int, imageName: String) {
-        let maxIdParent = parentCardsArray.map { $0.cardId }.max() ?? 99
-        var newCard = CardModel(
-            cardId: Float(maxIdParent + 1),
-            title: name,
-            groupId: selectedColorId,
-            imageName: imageName,
-            priority: nil,
-            childCards: isCardContainGroup ? [] : nil
-        )
-        print("💁 Create new Id of parentCard \(newCard.cardId) ")
-        
-        if childCardIdOpened > 0 {
-            //add card to child card
-            let ind = getIndexFromCardId(childCardIdOpened)
-            let maxId = parentCardsArray[ind].childCards?.map { $0.cardId }.max() ?? 99
-            
-            newCard.cardId = Float(maxId) + 0.1
-            newCard.childCards = nil //  MARK: I add
-            parentCardsArray[ind].childCards?.append(newCard)
-            mainArray.insert(newCard, at: mainArray.count - 2)
-            
-        } else {
-            //add new card to main screen
-            parentCardsArray.append(newCard)
-            mainArray.insert(newCard, at: mainArray.count - 1)
-        }
-        
-        UserSaving.shared.saveParentCardArray(parentCardsArray)
-    }
+    
     
     func getNameOfGroup() -> String {
         let number = getIndexFromCardId(childCardIdOpened)
@@ -172,6 +143,37 @@ class DM: ObservableObject {
             }
         }
        return 0
+    }
+    
+    func addNewCard(name: String, selectedColorId: Int, imageName: String) {
+        let maxIdParent = parentCardsArray.map { $0.cardId }.max() ?? 99
+        var newCard = CardModel(
+            cardId: Float(maxIdParent + 1),
+            title: name,
+            groupId: selectedColorId,
+            imageName: imageName,
+            priority: nil,
+            childCards: isCardContainGroup ? [] : nil
+        )
+        print("💁 Create new Id of parentCard \(newCard.cardId) ")
+        
+        if childCardIdOpened > 0 {
+            //add card to child card
+            let ind = getIndexFromCardId(childCardIdOpened)
+            let maxId = parentCardsArray[ind].childCards?.map { $0.cardId }.max() ?? 99
+            
+            newCard.cardId = Float(maxId) + 0.1
+            newCard.childCards = nil
+            parentCardsArray[ind].childCards?.append(newCard)
+            mainArray.insert(newCard, at: mainArray.count - 2)
+            
+        } else {
+            //add new card to main screen
+            parentCardsArray.append(newCard)
+            mainArray.insert(newCard, at: mainArray.count - 1)
+        }
+        
+        UserSaving.shared.saveParentCardArray(parentCardsArray)
     }
     
     // updateCard  Заменяем данные карточки на новые

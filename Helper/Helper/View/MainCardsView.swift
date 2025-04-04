@@ -28,7 +28,7 @@ struct MainCardsView: View {
                     .onTapGesture {
                         
                         dm.speakText(text: card.title)
-                        print("☎️ \(card.title)")
+                        print("☎️ card.title: \(card.title)")
                         
                         if card.childCards == nil && card.cardId < 100 {
                             // Add new card on top array
@@ -51,7 +51,7 @@ struct MainCardsView: View {
                             } else if card.id == 102 { // "plus"
                                 print("Tap new card ")
                                 
-                                dm.isShowAddScreen.toggle()
+                                dm.isShowCreateCardScreen.toggle()
                                 
                             } else {
                                 // проваливаемся в childCards
@@ -83,12 +83,11 @@ struct MainCardsView: View {
                             Button(action: {  // Действие при редактировании
                                
                                 dm.selectedCardId = card.cardId
-                                
-                                print("Show Card for Editing : \(dm.selectedCardId)")
+                                print("🆔 Show Card for Editing : \(dm.selectedCardId)")
                                 
                                 // Show new Card
                                 dm.isStateEdiding = true
-                                dm.isShowAddScreen.toggle()
+                                dm.isShowCreateCardScreen.toggle()
                                 
                             }) {
                                 HStack {
@@ -104,7 +103,6 @@ struct MainCardsView: View {
                             }) {
                                 HStack {
                                     Image(systemName: "trash")
-                                    
                                     Text("Delete")
                                 }
                             }
@@ -114,7 +112,7 @@ struct MainCardsView: View {
             }
         }
         .padding()
-        .sheet(isPresented: $dm.isShowAddScreen) {
+        .sheet(isPresented: $dm.isShowCreateCardScreen) {
             NewCardView()
         }
         .alert(isPresented: $isShowAlert) {
@@ -137,7 +135,8 @@ struct MainCardsView: View {
             return
         }
  .onAppear {
-            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title)" }
+     let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title) : \($0.imageName)" }.joined(separator: "\n")
+    
             print("🤵 It`s all parent cards: \(arrayIDs)")
         
         }
