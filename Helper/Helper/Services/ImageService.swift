@@ -33,7 +33,7 @@ class ImageService {
         
         do {
             try data.write(to: fileURL)
-            print("Save image OK: " + imageName)
+            print("⚒️ Save image: " + imageName)
         } catch let error {
             print("error saving file with error", error)
         }

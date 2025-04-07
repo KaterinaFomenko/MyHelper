@@ -90,7 +90,7 @@ class DM: ObservableObject {
     }
     
     func addHomeBackCards() {
-        let cardHome = CardModel(cardId: 100, title: "Home", groupId: 100, imageName: "home4" )
+        let cardHome = CardModel(cardId: 100, title: "Home", groupId: 100, imageName: "home" )
         let cardBack = CardModel(cardId: 101, title: "Back", groupId: 101, imageName: "back1")
         mainArray.insert(cardHome, at: 0)
         mainArray.append(cardBack)

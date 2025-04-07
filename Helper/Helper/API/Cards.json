@@ -81,7 +81,7 @@
     {
         "title": "Play",
         "cardId": 5,
-        "imageName": "games",
+        "imageName": "play",
         "priority": 1,
         "groupId": 4,
         "childCards": [
@@ -395,6 +395,48 @@
                 "title": "Four",
                 "cardId": 14.4,
                 "imageName": "four",
+                "groupId": 13
+            },
+            {
+                "title": "Five",
+                "cardId": 14.5,
+                "imageName": "five",
+                "groupId": 13
+            },
+            {
+                "title": "Six",
+                "cardId": 14.6,
+                "imageName": "six",
+                "groupId": 13
+            },
+            {
+                "title": "Seven",
+                "cardId": 14.7,
+                "imageName": "seven",
+                "groupId": 13
+            },
+            {
+                "title": "Eight",
+                "cardId": 14.8,
+                "imageName": "eight",
+                "groupId": 13
+            },
+            {
+                "title": "Nine",
+                "cardId": 14.9,
+                "imageName": "nine",
+                "groupId": 13
+            },
+            {
+                "title": "Ten",
+                "cardId": 14.11,
+                "imageName": "ten",
+                "groupId": 13
+            },
+            {
+                "title": "Zero",
+                "cardId": 14.12,
+                "imageName": "zero",
                 "groupId": 13
             }
         ]

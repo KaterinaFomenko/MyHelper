@@ -28,7 +28,7 @@ struct MainCardsView: View {
                     .onTapGesture {
                         
                         dm.speakText(text: card.title)
-                        print("☎️ card.title: \(card.title)")
+                        print("☎️ card.title: \(card.title), cardId: \(card.cardId)")
                         
                         if card.childCards == nil && card.cardId < 100 {
                             // Add new card on top array

@@ -149,6 +149,7 @@ struct NewCardView: View {
         }
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup()
+          //  selectedColorId = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 1
             titleCard = dm.titleState() // update titleGroupe
            
             // MARK:  show new Card Screen for editind
@@ -157,6 +158,7 @@ struct NewCardView: View {
                 nameCard = dm.getCardByID(cardId: dm.selectedCardId)?.title ?? "Empty name"
                 
                 let imageName = dm.getCardByID(cardId: dm.selectedCardId)?.imageName ?? "ball"
+               // let color = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 0
 
                 if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
                     selectedImage = image
@@ -241,18 +243,29 @@ struct NewCardView: View {
             return
         }
         var imageName = ""
+        var maxId: Float = 1
+        
+        
         if dm.isStateEdiding == false {
             
             // State_ add new Card
-            var maxId = dm.mainArray.dropLast().max { $0.cardId < $1.cardId }?.cardId ?? 1
+           
+            if dm.childCardIdOpened < 0 {
+                maxId = dm.mainArray.dropLast().max { $0.cardId < $1.cardId }?.cardId ?? 1
+                
+            } else {
+                //var count = dm.mainArray.count - 2
+                maxId = dm.mainArray.dropLast(2).max { $0.cardId < $1.cardId }?.cardId ?? 1
+            }
+           
             dm.selectedCardId = maxId + 1
             imageName = "img_" + String(dm.selectedCardId)
-            print("State_ add new Card: \(imageName)")
+            print("⚒️ State_ create <new Card>, save imageName: \(imageName)")
             
         } else {
             // State_ edit Card
             imageName = "img_" + String(dm.selectedCardId)  // nameCard by Id
-            print("State_ edit Card: \(imageName)")
+            print("⚒️ State_ edit Card: \(imageName)")
         }
         
         if let image = selectedImage {
