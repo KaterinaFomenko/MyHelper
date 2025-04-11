@@ -30,11 +30,13 @@ struct CardView: View {
             } else {
             // loadFromJSON from asset
                // Image("one")
-                Image(card.imageName)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 65, height: 65)
-                    .cornerRadius(5)
+             
+                    Image(card.imageName ?? "blankImage")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 65, height: 65)
+                        .cornerRadius(5)
+                
             }
             
 // if card has child cards show ellipsis

@@ -12,8 +12,8 @@ class ImageService {
     
     static let shared = ImageService()
     
-    func saveImage(imageName: String, image: UIImage) {
-        
+    func saveImage(imageName: String?, image: UIImage) {
+        guard let imageName = imageName else { return }
      guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
 
         let fileName = imageName
@@ -39,8 +39,8 @@ class ImageService {
         }
     }
 
-    func loadImageFromDiskWith(fileName: String) -> UIImage? {
-        
+    func loadImageFromDiskWith(fileName: String?) -> UIImage? {
+      guard let fileName = fileName else { return nil }
       let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
 
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask

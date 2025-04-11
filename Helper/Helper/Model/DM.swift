@@ -32,16 +32,16 @@ class DM: ObservableObject {
     
     @Published var isStateEdiding: Bool = false
     @Published var isShowCreateCardScreen: Bool = false
-    @Published var isCardContainGroup = false // will card contain other cards into togle
+    @Published var isCardContainGroup = false // will card contain other cards into toggle
     
     @Published var titleWay: String = "" // settings line
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
-    var childCardIdOpened: Float = -1
+    var parentCardIdOpened: Float = -1
     
     // хранится id карты на которую выделили для удаления / редактирования
-    var selectedCardId: Float = 0
+    var contextCardId: Float = 0
     let textToSpeech = TextToSpeech()
     
     init() {
@@ -96,17 +96,15 @@ class DM: ObservableObject {
         mainArray.append(cardBack)
     }
     
-    
-    
     func getNameOfGroup() -> String {
-        let number = getIndexFromCardId(childCardIdOpened)
+        let number = getIndexFromCardId(parentCardIdOpened)
         let nameOfGroup = parentCardsArray[number].title
-        print("☎️ childCardIdOpened: \(parentCardsArray[number].title)")
+       // print("👇 parentCardIdOpened: \(nameOfGroup)")
         return nameOfGroup
     }
     
     func getColorIdOfGroup() -> Int {
-        let number = getIndexFromCardId(childCardIdOpened)
+        let number = getIndexFromCardId(parentCardIdOpened)
         let colorIdGroup = parentCardsArray[number].groupId
         return colorIdGroup
     }
@@ -118,34 +116,24 @@ class DM: ObservableObject {
             }
         }
     }
-    
-    // ищет индекс по Id
-//    func getIndexFromCardId1(_ cardId: Float) -> Int {
-//        for (index, card) in parentCardsArray.enumerated() {
-//            if card.cardId == cardId {
-//                return index
-//            }
-//        }
-//        return 0
-//    }
-    
-    // ищет индекс по Id (2.04 find Id for parent / child Cards)
+ 
+    // ищет индекс по Id (looking for Id for parent / child Cards)
     func getIndexFromCardId(_ cardId: Float) -> Int {
         for (indexParent, cardParent) in parentCardsArray.enumerated() {
             if cardParent.cardId == cardId {
-                print ("indexParent : \(indexParent)💁💁 ")
+               // print ("cardParent 💁💁: \(cardParent)")
                 return indexParent
             }
             
             if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == cardId }) {
-                print ("indexChild : \(indexChild)💁")
+                //print ("cardChild 💁: \(cardParent.childCards?[indexChild].title):\(indexChild)")
                 return indexChild
             }
         }
-       return 0
+        return 0
     }
     
-    func addNewCard(name: String, selectedColorId: Int, imageName: String) {
+    func addNewCard(name: String, selectedColorId: Int, imageName: String?) {
         let maxIdParent = parentCardsArray.map { $0.cardId }.max() ?? 99
         var newCard = CardModel(
             cardId: Float(maxIdParent + 1),
@@ -157,10 +145,10 @@ class DM: ObservableObject {
         )
         print("💁 Create new Id of parentCard \(newCard.cardId) ")
         
-        if childCardIdOpened > 0 {
+        if parentCardIdOpened > 0 {
             //add card to child card
-            let ind = getIndexFromCardId(childCardIdOpened)
-            let maxId = parentCardsArray[ind].childCards?.map { $0.cardId }.max() ?? 99
+            let ind = getIndexFromCardId(parentCardIdOpened)
+            let maxId = parentCardsArray[ind].childCards?.map { $0.cardId }.max() ?? parentCardIdOpened
             
             newCard.cardId = Float(maxId) + 0.1
             newCard.childCards = nil
@@ -184,6 +172,10 @@ class DM: ObservableObject {
                 parentCardsArray[indexParent].title = card.title
                 parentCardsArray[indexParent].groupId = card.groupId
                 parentCardsArray[indexParent].imageName = card.imageName
+                
+                if isCardContainGroup == true && parentCardsArray[indexParent].childCards == nil {
+                    parentCardsArray[indexParent].childCards = []
+                }
                 mainArray[indexParent] = parentCardsArray[indexParent]
             }
             // ToDo SaveChild
@@ -202,6 +194,14 @@ class DM: ObservableObject {
         }
         UserSaving.shared.saveParentCardArray(parentCardsArray)
     }
+    
+//    func updateChildIds(for parent: CardModel) {
+//        guard let childCardsCount = parent.childCards else { return }
+//        
+//        for i in 0..<parent.childCardsCount.count {
+//            
+//        }
+//    }
     
      // При редактировании карты
     func getCardByID(cardId: Float) -> CardModel? {
@@ -249,7 +249,20 @@ class DM: ObservableObject {
             return isCardContainGroup ? TitleState.hasChildsCards.title : TitleState.hasNotChildsCards.title
         }
     }
+    
+    func checkIsParent(id: Float) -> Bool { 
+        for card in parentCardsArray {
+            if card.cardId == id && card.childCards != nil {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    
 }
+
 
 
 

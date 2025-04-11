@@ -13,8 +13,8 @@ struct NewCardView: View {
     @EnvironmentObject var dm: DM
     
     @State private var nameCard: String = "" // имя
-    @State private var selectedColorId = 1 // цвет
-    @State private var colorOfGroupId  = 1 // цвет группы
+    @State private var selectedColorId = 1 // цвет groupId
+   // @State private var colorOfGroupId  = 1 // цвет группы
     @State private var selectedIcon: String? = nil // выбранная иконка
     
     @State private var isSavingBtn: Bool = false
@@ -31,15 +31,8 @@ struct NewCardView: View {
         ZStack {
             VStack() {
                 HStack {
-               //     Spacer()
-//                    Button("", systemImage: "pencil") {
-//                        print("Tapped Edit")
-//                        // ToDo editing image
-//                    }
-//                    .font(.largeTitle)
-//                    .foregroundStyle(.black)
-             
-                    if dm.childCardIdOpened < 0 {
+                
+                    if dm.parentCardIdOpened < 0 {
                         Text(titleCard)
                             .transition(.opacity)
                             .id("TextIdentifier_\(dm.isCardContainGroup)")
@@ -52,7 +45,6 @@ struct NewCardView: View {
                 .font(.custom("Helvetica Neue", size: 20))
                 .foregroundStyle(.gray)
                 .animation(.snappy , value: dm.isCardContainGroup)
-            //    Spacer()
                 
                 GeometryReader { geometry in
                     ZStack(alignment: .center) {
@@ -74,13 +66,29 @@ struct NewCardView: View {
                                     .truncationMode(.tail) // Добавляем многоточие в конце
                                     .padding(.top, 10)
                                     .frame(maxWidth: geometry.size.width / 1.5 - 40)
+                                
                                 Spacer()
-                                if dm.isCardContainGroup && dm.childCardIdOpened < 0 {
-                                    HStack {
+                                
+                                HStack {
+                                    
+                                   //   if (dm.isCardContainGroup && dm.parentCardIdOpened < 0)  {
+                                    if dm.isStateEdiding {
+                                        
+                                        Button("", systemImage: "pencil.circle") {
+                                            pickPhoto()
+                                        }
+                                        .font(.title)
+                                        .foregroundStyle(.black)
+                                          }
                                         Spacer()
-                                        Label("This is Grope", systemImage: "ellipsis")
-                                            .labelStyle(.iconOnly)
-                                    }
+                                        //if (dm.isCardContainGroup && dm.parentCardIdOpened > 0) || dm.isStateEdiding {
+                                        // если создаю родительскую карточку:   false && -1.0 > 0 (false)
+                                   
+                                        if (dm.isCardContainGroup && dm.parentCardIdOpened < 0) {
+                                            Label("This is Grope", systemImage: "ellipsis")
+                                                .labelStyle(.iconOnly)
+                                        }
+                                  //  }
                                 }
                             }
                             .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
@@ -114,7 +122,7 @@ struct NewCardView: View {
                                         )
                                     )
                             }
-                            .zIndex(2)
+                                .zIndex(2)
                         }
                     }
                 }
@@ -138,47 +146,64 @@ struct NewCardView: View {
                 CustomColorPicker(selectedColorId: $selectedColorId)
             }
             
-            // MARK: Toogle
-            if dm.childCardIdOpened < 0 {
+            //(dm.isCardContainGroup && dm.parentCardIdOpened > 0)
+            // MARK: Toogle // add 10.04 && dm.isStateEdiding == false
+            // if dm.parentCardIdOpened < 0 && dm.isStateEdiding == false {
+            
+            if ( dm.parentCardIdOpened < 0 ) {
+                
                 Toggle("Will the card contain other cards ?", isOn: $dm.isCardContainGroup)
                     .font(.custom("Helvetica Neue", size: 20))
                     .foregroundStyle(.gray)
                     .animation(.snappy, value: dm.isCardContainGroup)
                     .padding(.top)
+                    .disabled(dm.checkIsParent(id: dm.contextCardId) && dm.isStateEdiding)
             }
         }
+        
+        
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup()
-          //  selectedColorId = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 1
-            titleCard = dm.titleState() // update titleGroupe
+            //  selectedColorId = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 1
            
+            dm.isCardContainGroup = dm.checkIsParent(id: dm.contextCardId) // Bool
+            // dm.isCardContainGroup = false
+            
+            titleCard = dm.titleState() // update titleGroupe
+            
             // MARK:  show new Card Screen for editind
             
             if dm.isStateEdiding == true {
-                nameCard = dm.getCardByID(cardId: dm.selectedCardId)?.title ?? "Empty name"
+                nameCard = dm.getCardByID(cardId: dm.contextCardId)?.title ?? "Empty name"
                 
-                let imageName = dm.getCardByID(cardId: dm.selectedCardId)?.imageName ?? "ball"
-               // let color = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 0
-
+                let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "ball"
+                // let color = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 0
+                
                 if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
                     selectedImage = image
                     
                 } else {
-                     selectedImage = UIImage(named: imageName)
+                    selectedImage = UIImage(named: imageName)
                 }
+                
+                
             }
+            
+            
         }
         // при закрытии окна режим редактирования = false
         .onDisappear {
             dm.isStateEdiding = false
+            dm.isCardContainGroup = false
+            dm.contextCardId = 0
         }
         .listStyle(.inset)
         
         Button {
             isSavingBtn.toggle()
-           
+            
             saveCard()
-                
+            
         } label: {
             Text("Save")
                 .modifier(
@@ -237,43 +262,60 @@ struct NewCardView: View {
         return !trimmedName.isEmpty
     }
     
+    private func maxChildId(for parentId: Float, array: [CardModel]) -> Float {
+        guard let parent = array.first(where: { $0.cardId == parentId }),
+              let children = parent.childCards, !children.isEmpty else { return  parentId }
+            
+        
+        return children.max(by: { $0.cardId < $1.cardId })?.cardId ?? parentId
+    }
+    
     private func saveCard() {
         guard isNameValid() else {
             showAlert(message: "Name cannot be empty")
             return
         }
-        var imageName = ""
-        var maxId: Float = 1
-        
-        
-        if dm.isStateEdiding == false {
-            
-            // State_ add new Card
-           
-            if dm.childCardIdOpened < 0 {
-                maxId = dm.mainArray.dropLast().max { $0.cardId < $1.cardId }?.cardId ?? 1
-                
-            } else {
-                //var count = dm.mainArray.count - 2
-                maxId = dm.mainArray.dropLast(2).max { $0.cardId < $1.cardId }?.cardId ?? 1
-            }
-           
-            dm.selectedCardId = maxId + 1
-            imageName = "img_" + String(dm.selectedCardId)
-            print("⚒️ State_ create <new Card>, save imageName: \(imageName)")
-            
-        } else {
-            // State_ edit Card
-            imageName = "img_" + String(dm.selectedCardId)  // nameCard by Id
-            print("⚒️ State_ edit Card: \(imageName)")
-        }
-        
-        if let image = selectedImage {
-            ImageService.shared.saveImage(imageName: imageName, image: image)
-        }
+       
+        var imageName: String? = nil
+        var maxId: Float = 0
         
         if dm.isStateEdiding {
-            let card = CardModel(cardId: dm.selectedCardId, title: nameCard, groupId: selectedColorId, imageName: imageName)
+            // Режим редактирования: используем существующий ID
+            //imageName = "img_\(dm.contextCardId)"
+            maxId = dm.contextCardId
+            print("⚒️ Редактирование карточки ID: \(dm.contextCardId)")
+        } else {
+            
+                // Режим создания новой карты
+            if dm.parentCardIdOpened < 0 {
+                // Создаем родительскую карточку
+                maxId  = dm.parentCardsArray.max(by: { $0.cardId < $1.cardId })?.cardId ??  1
+                maxId = maxId + 1
+                //imageName = "img_\(maxIdParent + 1)"
+               
+            } else {
+                // Создаем дочернюю карточку
+                let parentId = Float(dm.parentCardIdOpened)
+                print(parentId)
+                maxId = maxChildId(for: dm.parentCardIdOpened, array: dm.parentCardsArray)
+                maxId = maxId + 0.1
+                print(maxId)
+            }
+    }
+        // Сохранение изображения
+        if let image = selectedImage {
+            imageName = "img_\(maxId)"
+            ImageService.shared.saveImage(imageName: imageName, image: image)
+            print("⚒️ Создана картинка с именем ID: \(String(describing: imageName))")
+        }
+        
+        let card = CardModel(
+            cardId: dm.contextCardId,
+            title: nameCard,
+            groupId: selectedColorId,
+            imageName: imageName)
+        
+        if dm.isStateEdiding {
             dm.updateCard(card: card)
         } else {
             dm.addNewCard(
@@ -284,7 +326,7 @@ struct NewCardView: View {
         }
         dm.isShowCreateCardScreen = false
     }
-    
+  
     private func showAlert(message: String) {
         alertMessage = message
         showAlert = true

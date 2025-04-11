@@ -250,13 +250,13 @@
             {
                 "title": "Apple",
                 "cardId": 10.1,
-                "imageName": "Apple",
+                "imageName": "apple",
                 "groupId": 9
             },
             {
                 "title": "Bread",
                 "cardId": 10.2,
-                "imageName": "bread1",
+                "imageName": "bread",
                 "groupId": 9
             },
             {
@@ -270,7 +270,19 @@
                 "cardId": 10.4,
                 "imageName": "Juice",
                 "groupId": 9
-            }
+            },
+            {
+                "title": "Soup",
+                "cardId": 10.5,
+                "imageName": "soup",
+                "groupId": 9
+            },
+            {
+                "title": "Cheese",
+                "cardId": 10.6,
+                "imageName": "cheese",
+                "groupId": 9
+            },
         ]
     },
     {
@@ -283,25 +295,31 @@
             {
                 "title": "Play",
                 "cardId": 11.1,
-                "imageName": "Play",
+                "imageName": "play",
                 "groupId": 10
             },
             {
                 "title": "Wait",
                 "cardId": 11.2,
-                "imageName": "Wait",
+                "imageName": "wait",
                 "groupId": 10
             },
             {
                 "title": "Hug",
                 "cardId": 11.3,
-                "imageName": "Hug",
+                "imageName": "hug",
                 "groupId": 10
             },
             {
                 "title": "Kiss",
                 "cardId": 11.4,
-                "imageName": "Kiss",
+                "imageName": "kiss",
+                "groupId": 10
+            },
+            {
+                "title": "Run",
+                "cardId": 11.5,
+                "imageName": "run",
                 "groupId": 10
             }
         ]

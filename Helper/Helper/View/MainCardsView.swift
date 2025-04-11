@@ -40,13 +40,13 @@ struct MainCardsView: View {
                                 dm.titleWay = ""
                                 dm.mainArray = dm.parentCardsArray
                                 dm.addPlusCard()
-                                dm.childCardIdOpened = -1
+                                dm.parentCardIdOpened = -1
                                 
                             } else if card.cardId == 101 { //"back"
                                 dm.titleWay = ""
                                 dm.mainArray = dm.parentCardsArray
                                 dm.addPlusCard()
-                                dm.childCardIdOpened = -1
+                                dm.parentCardIdOpened = -1
                                 
                             } else if card.id == 102 { // "plus"
                                 print("Tap new card ")
@@ -55,7 +55,7 @@ struct MainCardsView: View {
                                 
                             } else {
                                 // проваливаемся в childCards
-                                dm.childCardIdOpened = card.cardId
+                                dm.parentCardIdOpened = card.cardId
                                 // Add path on SettigsView
                                 dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
                                 
@@ -82,8 +82,8 @@ struct MainCardsView: View {
                             
                             Button(action: {  // Действие при редактировании
                                
-                                dm.selectedCardId = card.cardId
-                                print("🆔 Show Card for Editing : \(dm.selectedCardId)")
+                                dm.contextCardId = card.cardId
+                                print("🆔 Show Card for Editing : \(dm.contextCardId)")
                                 
                                 // Show new Card
                                 dm.isStateEdiding = true
@@ -98,7 +98,7 @@ struct MainCardsView: View {
                             }
             
                             Button(action: { // Действие при удалении
-                                dm.selectedCardId = card.cardId
+                                dm.contextCardId = card.cardId
                                 isShowAlert = true
                             }) {
                                 HStack {
@@ -123,7 +123,7 @@ struct MainCardsView: View {
                   primaryButton: .destructive(Text("Delete"), action: {
                 print("Delete item")
                 
-                dm.removeCardFromId(dm.selectedCardId)
+                dm.removeCardFromId(dm.contextCardId)
             } ),
                   secondaryButton: .cancel() )
         }

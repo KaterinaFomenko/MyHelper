@@ -23,7 +23,7 @@ struct CardViewForSecectedCards: View {
                 .font(.custom("Helvetica Neue", size: 25))
                 .multilineTextAlignment(.center)
                 
-            Image(card.imageName)
+            Image(card.imageName ?? "blankImage")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40, height: 40)
