@@ -38,6 +38,7 @@ class DM: ObservableObject {
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
+   
     var parentCardIdOpened: Float = -1
     
     // хранится id карты на которую выделили для удаления / редактирования
