@@ -161,7 +161,6 @@ struct NewCardView: View {
             }
         }
         
-        
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup()
             //  selectedColorId = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 1

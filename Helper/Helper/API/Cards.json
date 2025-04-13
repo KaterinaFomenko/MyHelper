@@ -205,19 +205,19 @@
             {
                 "title": "Happy",
                 "cardId": 9.1,
-                "imageName": "Happy",
+                "imageName": "happy",
                 "groupId": 8
             },
             {
                 "title": "Sad",
                 "cardId": 9.2,
-                "imageName": "Sad",
+                "imageName": "sad",
                 "groupId": 8
             },
             {
                 "title": "Angry",
                 "cardId": 9.3,
-                "imageName": "Angry",
+                "imageName": "angry",
                 "groupId": 8
             },
             {
@@ -262,13 +262,13 @@
             {
                 "title": "Water",
                 "cardId": 10.3,
-                "imageName": "Water",
+                "imageName": "water",
                 "groupId": 9
             },
             {
                 "title": "Juice",
                 "cardId": 10.4,
-                "imageName": "Juice",
+                "imageName": "juice",
                 "groupId": 9
             },
             {
