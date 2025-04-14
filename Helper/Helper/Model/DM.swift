@@ -38,7 +38,6 @@ class DM: ObservableObject {
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
-   
     var parentCardIdOpened: Float = -1
     
     // хранится id карты на которую выделили для удаления / редактирования
@@ -104,9 +103,15 @@ class DM: ObservableObject {
         return nameOfGroup
     }
     
-    func getColorIdOfGroup() -> Int {
+    func getColorIdOfGroup1() -> Int {
         let number = getIndexFromCardId(parentCardIdOpened)
         let colorIdGroup = parentCardsArray[number].groupId
+        return colorIdGroup
+    }
+    
+    func getColorIdOfGroup(for cardId: Float ) -> Int {
+        let ind = getIndexFromCardId(cardId)
+        let colorIdGroup = parentCardsArray[ind].groupId
         return colorIdGroup
     }
     

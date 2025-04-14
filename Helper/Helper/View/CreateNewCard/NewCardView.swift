@@ -162,17 +162,19 @@ struct NewCardView: View {
         }
         
         .onAppear {
-            selectedColorId = dm.getColorIdOfGroup()
-            //  selectedColorId = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 1
-           
-            dm.isCardContainGroup = dm.checkIsParent(id: dm.contextCardId) // Bool
-            // dm.isCardContainGroup = false
+            selectedColorId = dm.getColorIdOfGroup(for: dm.parentCardIdOpened)
+            print(selectedColorId)
             
+            dm.isCardContainGroup = dm.checkIsParent(id: dm.contextCardId)
+          
             titleCard = dm.titleState() // update titleGroupe
             
             // MARK:  show new Card Screen for editind
             
             if dm.isStateEdiding == true {
+                // add 13.04
+                selectedColorId = dm.getColorIdOfGroup(for: dm.contextCardId)
+                print(selectedColorId)
                 nameCard = dm.getCardByID(cardId: dm.contextCardId)?.title ?? "Empty name"
                 
                 let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "ball"
@@ -184,11 +186,7 @@ struct NewCardView: View {
                 } else {
                     selectedImage = UIImage(named: imageName)
                 }
-                
-                
             }
-            
-            
         }
         // при закрытии окна режим редактирования = false
         .onDisappear {
