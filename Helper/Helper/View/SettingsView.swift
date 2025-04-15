@@ -25,7 +25,6 @@ struct SettingsView: View {
                 .foregroundStyle(.blue)
                 .padding(5)
                 
-        
                 .onTapGesture {
                     dm.titleWay = ""
                 }
@@ -56,7 +55,7 @@ struct SettingsView: View {
                     .scaleEffect(isPressed ? 0.9 : 1.0)
             }
             .padding(.trailing, 10)
-            .frame(width: 80, height: 100, alignment: .trailing) // для увеличения площади нажатия
+            .frame(width: 80, height: 60, alignment: .trailing) // для увеличения площади нажатия
            // .background(Color(.gray))
         }    }
 }

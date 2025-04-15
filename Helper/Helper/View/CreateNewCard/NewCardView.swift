@@ -146,10 +146,6 @@ struct NewCardView: View {
                 CustomColorPicker(selectedColorId: $selectedColorId)
             }
             
-            //(dm.isCardContainGroup && dm.parentCardIdOpened > 0)
-            // MARK: Toogle // add 10.04 && dm.isStateEdiding == false
-            // if dm.parentCardIdOpened < 0 && dm.isStateEdiding == false {
-            
             if ( dm.parentCardIdOpened < 0 ) {
                 
                 Toggle("Will the card contain other cards ?", isOn: $dm.isCardContainGroup)
@@ -163,7 +159,7 @@ struct NewCardView: View {
         
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup(for: dm.parentCardIdOpened)
-            print(selectedColorId)
+          
             
             dm.isCardContainGroup = dm.checkIsParent(id: dm.contextCardId)
           
@@ -174,10 +170,10 @@ struct NewCardView: View {
             if dm.isStateEdiding == true {
                 // add 13.04
                 selectedColorId = dm.getColorIdOfGroup(for: dm.contextCardId)
-                print(selectedColorId)
+               
                 nameCard = dm.getCardByID(cardId: dm.contextCardId)?.title ?? "Empty name"
                 
-                let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "ball"
+                let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "scribble"
                 // let color = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 0
                 
                 if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
@@ -308,9 +304,10 @@ struct NewCardView: View {
         
         let card = CardModel(
             cardId: dm.contextCardId,
-            title: nameCard,
+            titleKey: nameCard,
             groupId: selectedColorId,
-            imageName: imageName)
+            imageName: imageName,
+            priority: nil)
         
         if dm.isStateEdiding {
             dm.updateCard(card: card)

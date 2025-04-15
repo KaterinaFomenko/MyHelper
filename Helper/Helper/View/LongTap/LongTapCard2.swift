@@ -39,7 +39,7 @@ struct LongTapCard2: View {
 
 #Preview {
    // let dm = DM()
-    let card = CardModel(cardId: 1, title: "Play", groupId: 1, imageName: "puzzle")
+    let card = CardModel(cardId: 1, titleKey: "Play", groupId: 1, imageName: "puzzle", priority: 1)
     LongTapCard2(card: card, isShowAlert: .constant(true), message: .constant(""))
      //   .environmentObject(dm)
 }

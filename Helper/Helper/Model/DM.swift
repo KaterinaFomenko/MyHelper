@@ -82,7 +82,7 @@ class DM: ObservableObject {
     }
     
     func addPlusCard() {
-        let cardPlus = CardModel(cardId: 102, title: "Plus", groupId: 102, imageName: "plus")
+        let cardPlus = CardModel(cardId: 102, titleKey: "Plus", groupId: 102, imageName: "plus")
         if !mainArray.contains(cardPlus) {
             mainArray.append(cardPlus)
         }
@@ -90,8 +90,8 @@ class DM: ObservableObject {
     }
     
     func addHomeBackCards() {
-        let cardHome = CardModel(cardId: 100, title: "Home", groupId: 100, imageName: "home" )
-        let cardBack = CardModel(cardId: 101, title: "Back", groupId: 101, imageName: "back1")
+        let cardHome = CardModel(cardId: 100, titleKey: "Home", groupId: 100, imageName: "home" )
+        let cardBack = CardModel(cardId: 101, titleKey: "Back", groupId: 101, imageName: "back1")
         mainArray.insert(cardHome, at: 0)
         mainArray.append(cardBack)
     }
@@ -103,16 +103,36 @@ class DM: ObservableObject {
         return nameOfGroup
     }
     
-    func getColorIdOfGroup1() -> Int {
+    func getColorIdOfGroup2() -> Int {
         let number = getIndexFromCardId(parentCardIdOpened)
         let colorIdGroup = parentCardsArray[number].groupId
         return colorIdGroup
     }
-    
-    func getColorIdOfGroup(for cardId: Float ) -> Int {
+    func getColorIdOfGroup1(for cardId: Float ) -> Int {
         let ind = getIndexFromCardId(cardId)
         let colorIdGroup = parentCardsArray[ind].groupId
         return colorIdGroup
+    }
+    // fix find and for children
+    func getColorIdOfGroup(for cardId: Float ) -> Int {
+        
+        for parentCard in parentCardsArray {
+                if parentCard.cardId == cardId {
+                  //  let ind = getIndexFromCardId(parentCards.id)
+                    return parentCard.groupId
+                }
+            
+            
+            if let children = parentCard.childCards {
+                for child in children {
+                    if child.cardId == cardId {
+                       // let ind = getIndexFromCardId(parentCard.id)
+                        return parentCard.groupId
+                    }
+                }
+            }
+        }
+        return 1 // Yellow color
     }
     
     func removeCurrentCard(_ cardId: Float) {
@@ -143,7 +163,7 @@ class DM: ObservableObject {
         let maxIdParent = parentCardsArray.map { $0.cardId }.max() ?? 99
         var newCard = CardModel(
             cardId: Float(maxIdParent + 1),
-            title: name,
+            titleKey: name,
             groupId: selectedColorId,
             imageName: imageName,
             priority: nil,
@@ -175,7 +195,7 @@ class DM: ObservableObject {
         for (indexParent, cardParent) in parentCardsArray.enumerated() {
             if cardParent.cardId == card.cardId {
                 print(parentCardsArray[indexParent])
-                parentCardsArray[indexParent].title = card.title
+                parentCardsArray[indexParent].titleKey = card.title
                 parentCardsArray[indexParent].groupId = card.groupId
                 parentCardsArray[indexParent].imageName = card.imageName
                 
@@ -188,7 +208,7 @@ class DM: ObservableObject {
             if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == card.cardId }) {
                // if let childCard = parentCardsArray[indexParent].childCards?[indexChild] {
                //     print(childCard)
-                parentCardsArray[indexParent].childCards?[indexChild].title = card.title
+                parentCardsArray[indexParent].childCards?[indexChild].titleKey = card.title
                 parentCardsArray[indexParent].childCards?[indexChild].groupId = card.groupId
                 parentCardsArray[indexParent].childCards?[indexChild].imageName = card.imageName
                 if let card = parentCardsArray[indexParent].childCards?[indexChild] {

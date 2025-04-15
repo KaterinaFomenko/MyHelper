@@ -15,7 +15,7 @@ struct CardView: View {
     
     var body: some View {
         VStack(spacing: 1.0) {
-            Text(card.title)
+            Text(card.titleKey.loc)
                 .font(.custom("Helvetica Neue", size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 2)
@@ -31,7 +31,7 @@ struct CardView: View {
             // loadFromJSON from asset
                // Image("one")
              
-                    Image(card.imageName ?? "blankImage")
+                    Image(card.imageName ?? "scribble")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 65, height: 65)

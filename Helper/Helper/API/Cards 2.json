@@ -1,76 +1,77 @@
 [
     {
-        "titleKey": "I_am",
+        "title": "I am",
         "cardId": 1,
         "imageName": "I",
         "priority": 1,
         "groupId": 1
     },
     {
-        "titleKey": "You",
+        "title": "You",
         "cardId": 2,
         "imageName": "you",
         "priority": 1,
         "groupId": 1
     },
     {
-        "titleKey": "Want",
+        "title": "Want",
         "cardId": 3,
         "imageName": "want",
         "priority": 1,
         "groupId": 1
     },
+    
     {
-        "titleKey": "Hurts",
+        "title": "Hurts",
         "cardId": 4,
         "imageName": "hurts",
         "priority": 1,
         "groupId": 3,
         "childCards": [
             {
-                "titleKey": "Head",
+                "title": "Head",
                 "cardId": 4.1,
                 "imageName": "Hurts",
                 "groupId": 3
             },
             {
-                "titleKey": "Arm",
+                "title": "Arm",
                 "cardId": 4.2,
                 "imageName": "Hurts",
                 "groupId": 3
             },
             {
-                "titleKey": "Leg",
+                "title": "Leg",
                 "cardId": 4.3,
                 "imageName": "Hurts",
                 "groupId": 3
             },
             {
-                "titleKey": "Stomach",
+                "title": "Stomach",
                 "cardId": 4.4,
                 "imageName": "Hurts",
                 "groupId": 3
             },
             {
-                "titleKey": "Tooth",
+                "title": "Tooth",
                 "cardId": 4.5,
                 "imageName": "tooth1",
                 "groupId": 3
             },
             {
-                "titleKey": "Ear",
+                "title": "Ear",
                 "cardId": 4.6,
                 "imageName": "ear_hurt",
                 "groupId": 3
             },
             {
-                "titleKey": "Back",
+                "title": "Back",
                 "cardId": 4.7,
                 "imageName": "back_hurt",
                 "groupId": 3
             },
             {
-                "titleKey": "Throat",
+                "title": "Throat",
                 "cardId": 4.8,
                 "imageName": "throat_hurt",
                 "groupId": 3
@@ -78,32 +79,32 @@
         ]
     },
     {
-        "titleKey": "Play",
+        "title": "Play",
         "cardId": 5,
         "imageName": "play",
         "priority": 1,
         "groupId": 4,
         "childCards": [
             {
-                "titleKey": "Ball",
+                "title": "Ball",
                 "cardId": 5.1,
                 "imageName": "ball",
                 "groupId": 4
             },
             {
-                "titleKey": "Puzzle",
+                "title": "Puzzle",
                 "cardId": 5.2,
                 "imageName": "puzzle",
                 "groupId": 4
             },
             {
-                "titleKey": "Doll",
+                "title": "Doll",
                 "cardId": 5.3,
                 "imageName": "doll",
                 "groupId": 4
             },
             {
-                "titleKey": "Car",
+                "title": "Car",
                 "cardId": 5.4,
                 "imageName": "Car",
                 "groupId": 4
@@ -111,26 +112,26 @@
         ]
     },
     {
-        "titleKey": "Toilet",
+        "title": "Toilet",
         "cardId": 6,
         "imageName": "toilet",
         "priority": 1,
         "groupId": 5,
         "childCards": [
             {
-                "titleKey": "Wash_Hands",
+                "title": "Wash Hands",
                 "cardId": 6.1,
                 "imageName": "Wash Hands",
                 "groupId": 5
             },
             {
-                "titleKey": "Pee",
+                "title": "Pee",
                 "cardId": 6.2,
                 "imageName": "Pee",
                 "groupId": 5
             },
             {
-                "titleKey": "Poop",
+                "title": "Poop",
                 "cardId": 6.3,
                 "imageName": "Poop",
                 "audioName": "poop.mp3",
@@ -139,98 +140,100 @@
         ]
     },
     {
-        "titleKey": "Feelings",
+        "title": "Feelings",
         "cardId": 7,
         "imageName": "feelings",
         "priority": 2,
         "groupId": 6,
         "childCards": [
             {
-                "titleKey": "Good",
+                "title": "Good",
                 "cardId": 7.1,
                 "imageName": "Good",
                 "groupId": 6
             },
             {
-                "titleKey": "Bad",
+                "title": "Bad",
                 "cardId": 7.2,
                 "imageName": "Bad",
                 "groupId": 6
             }
         ]
     },
+    
     {
-        "titleKey": "Tableware",
+        "title": "Tableware",
         "cardId": 8,
         "imageName": "tableware",
         "priority": 3,
         "groupId": 7,
         "childCards": [
             {
-                "titleKey": "Fork",
+                "title": "Fork",
                 "cardId": 8.1,
                 "imageName": "Fork",
                 "groupId": 7
             },
             {
-                "titleKey": "Spoon",
+                "title": "Spoon",
                 "cardId": 8.2,
                 "imageName": "Spoon",
                 "groupId": 7
             },
             {
-                "titleKey": "Knife",
+                "title": "Knife",
                 "cardId": 8.3,
                 "imageName": "Knife",
                 "groupId": 7
             },
             {
-                "titleKey": "Plate",
+                "title": "Plate",
                 "cardId": 8.4,
                 "imageName": "Plate",
                 "groupId": 7
             }
         ]
     },
+    
     {
-        "titleKey": "Emotions",
+        "title": "Emotions",
         "cardId": 9,
         "imageName": "emotions",
         "priority": 2,
         "groupId": 8,
         "childCards": [
             {
-                "titleKey": "Happy",
+                "title": "Happy",
                 "cardId": 9.1,
                 "imageName": "happy",
                 "groupId": 8
             },
             {
-                "titleKey": "Sad",
+                "title": "Sad",
                 "cardId": 9.2,
                 "imageName": "sad",
                 "groupId": 8
             },
             {
-                "titleKey": "Angry",
+                "title": "Angry",
                 "cardId": 9.3,
                 "imageName": "angry",
                 "groupId": 8
             },
             {
-                "titleKey": "Hungry",
+                "title": "Hungry",
                 "cardId": 9.4,
                 "imageName": "hungry",
                 "groupId": 8
             },
             {
-                "titleKey": "Satisfied",
+                "title": "Satisfied",
                 "cardId": 9.5,
                 "imageName": "Satisfied",
                 "groupId": 8
             },
             {
-                "titleKey": "Dissatisfied",
+                "title": "Dissatisfied",
                 "cardId": 9.6,
                 "imageName": "Dissatisfied",
                 "groupId": 8
@@ -238,83 +241,83 @@
         ]
     },
     {
-        "titleKey": "Food",
+        "title": "Food",
         "cardId": 10,
         "imageName": "food",
         "priority": 2,
         "groupId": 9,
         "childCards": [
             {
-                "titleKey": "Apple",
+                "title": "Apple",
                 "cardId": 10.1,
                 "imageName": "apple",
                 "groupId": 9
             },
             {
-                "titleKey": "Bread",
+                "title": "Bread",
                 "cardId": 10.2,
                 "imageName": "bread",
                 "groupId": 9
             },
             {
-                "titleKey": "Water",
+                "title": "Water",
                 "cardId": 10.3,
                 "imageName": "water",
                 "groupId": 9
             },
             {
-                "titleKey": "Juice",
+                "title": "Juice",
                 "cardId": 10.4,
                 "imageName": "juice",
                 "groupId": 9
             },
             {
-                "titleKey": "Soup",
+                "title": "Soup",
                 "cardId": 10.5,
                 "imageName": "soup",
                 "groupId": 9
             },
             {
-                "titleKey": "Cheese",
+                "title": "Cheese",
                 "cardId": 10.6,
                 "imageName": "cheese",
                 "groupId": 9
-            }
+            },
         ]
     },
     {
-        "titleKey": "Actions",
+        "title": "Actions",
         "cardId": 11,
         "imageName": "actions",
         "priority": 2,
         "groupId": 10,
         "childCards": [
             {
-                "titleKey": "Play",
+                "title": "Play",
                 "cardId": 11.1,
                 "imageName": "play",
                 "groupId": 10
             },
             {
-                "titleKey": "Wait",
+                "title": "Wait",
                 "cardId": 11.2,
                 "imageName": "wait",
                 "groupId": 10
             },
             {
-                "titleKey": "Hug",
+                "title": "Hug",
                 "cardId": 11.3,
                 "imageName": "hug",
                 "groupId": 10
             },
             {
-                "titleKey": "Kiss",
+                "title": "Kiss",
                 "cardId": 11.4,
                 "imageName": "kiss",
                 "groupId": 10
             },
             {
-                "titleKey": "Run",
+                "title": "Run",
                 "cardId": 11.5,
                 "imageName": "run",
                 "groupId": 10
@@ -322,26 +325,26 @@
         ]
     },
     {
-        "titleKey": "Weather",
+        "title": "Weather",
         "cardId": 12,
         "imageName": "weather",
         "priority": 3,
         "groupId": 11,
         "childCards": [
             {
-                "titleKey": "Sunny",
+                "title": "Sunny",
                 "cardId": 12.1,
                 "imageName": "Sunny",
                 "groupId": 11
             },
             {
-                "titleKey": "Rainy",
+                "title": "Rainy",
                 "cardId": 12.2,
                 "imageName": "Rainy",
                 "groupId": 11
             },
             {
-                "titleKey": "Snowy",
+                "title": "Snowy",
                 "cardId": 12.3,
                 "imageName": "Snowy",
                 "groupId": 11
@@ -349,32 +352,32 @@
         ]
     },
     {
-        "titleKey": "Colors",
+        "title": "Colors",
         "cardId": 13,
         "imageName": "colors",
         "priority": 3,
         "groupId": 12,
         "childCards": [
             {
-                "titleKey": "Red",
+                "title": "Red",
                 "cardId": 13.1,
                 "imageName": "Red",
                 "groupId": 12
             },
             {
-                "titleKey": "Blue",
+                "title": "Blue",
                 "cardId": 13.2,
                 "imageName": "Blue",
                 "groupId": 12
             },
             {
-                "titleKey": "Green",
+                "title": "Green",
                 "cardId": 13.3,
                 "imageName": "Green",
                 "groupId": 12
             },
             {
-                "titleKey": "Yellow",
+                "title": "Yellow",
                 "cardId": 13.4,
                 "imageName": "Yellow",
                 "groupId": 12
@@ -382,74 +385,74 @@
         ]
     },
     {
-        "titleKey": "Numbers",
+        "title": "Numbers",
         "cardId": 14,
         "imageName": "numbers",
         "priority": 3,
         "groupId": 13,
         "childCards": [
             {
-                "titleKey": "One",
+                "title": "one",
                 "cardId": 14.1,
                 "imageName": "one",
                 "groupId": 13
             },
             {
-                "titleKey": "Two",
+                "title": "two",
                 "cardId": 14.2,
                 "imageName": "two",
                 "groupId": 13
             },
             {
-                "titleKey": "Three",
+                "title": "Three",
                 "cardId": 14.3,
                 "imageName": "three",
                 "groupId": 13
             },
             {
-                "titleKey": "Four",
+                "title": "Four",
                 "cardId": 14.4,
                 "imageName": "four",
                 "groupId": 13
             },
             {
-                "titleKey": "Five",
+                "title": "Five",
                 "cardId": 14.5,
                 "imageName": "five",
                 "groupId": 13
             },
             {
-                "titleKey": "Six",
+                "title": "Six",
                 "cardId": 14.6,
                 "imageName": "six",
                 "groupId": 13
             },
             {
-                "titleKey": "Seven",
+                "title": "Seven",
                 "cardId": 14.7,
                 "imageName": "seven",
                 "groupId": 13
             },
             {
-                "titleKey": "Eight",
+                "title": "Eight",
                 "cardId": 14.8,
                 "imageName": "eight",
                 "groupId": 13
             },
             {
-                "titleKey": "Nine",
+                "title": "Nine",
                 "cardId": 14.9,
                 "imageName": "nine",
                 "groupId": 13
             },
             {
-                "titleKey": "Ten",
+                "title": "Ten",
                 "cardId": 14.11,
                 "imageName": "ten",
                 "groupId": 13
             },
             {
-                "titleKey": "Zero",
+                "title": "Zero",
                 "cardId": 14.12,
                 "imageName": "zero",
                 "groupId": 13
@@ -457,32 +460,32 @@
         ]
     },
     {
-        "titleKey": "Animals",
+        "title": "Animals",
         "cardId": 15,
         "imageName": "animals",
         "priority": 3,
         "groupId": 14,
         "childCards": [
             {
-                "titleKey": "Dog",
+                "title": "Dog",
                 "cardId": 15.1,
                 "imageName": "Dog",
                 "groupId": 14
             },
             {
-                "titleKey": "Cat",
+                "title": "Cat",
                 "cardId": 15.2,
                 "imageName": "Cat",
                 "groupId": 14
             },
             {
-                "titleKey": "Lion",
+                "title": "Lion",
                 "cardId": 15.3,
                 "imageName": "Lion",
                 "groupId": 14
             },
             {
-                "titleKey": "Elephant",
+                "title": "Elephant",
                 "cardId": 15.4,
                 "imageName": "Elephant",
                 "groupId": 14
@@ -490,26 +493,26 @@
         ]
     },
     {
-        "titleKey": "Words_of_greeting",
+        "title": "Words of greeting",
         "cardId": 16,
         "imageName": "greeting2",
         "priority": 2,
         "groupId": 15,
         "childCards": [
             {
-                "titleKey": "Good_morning",
+                "title": "Good morning",
                 "cardId": 16.1,
                 "imageName": "Good morning",
                 "groupId": 15
             },
             {
-                "titleKey": "Hello",
+                "title": "Hello",
                 "cardId": 16.2,
                 "imageName": "Hello",
                 "groupId": 15
             },
             {
-                "titleKey": "Goodbye",
+                "title": "Goodbye",
                 "cardId": 16.3,
                 "imageName": "Goodbye",
                 "groupId": 15
@@ -517,4 +520,3 @@
         ]
     }
 ]
-

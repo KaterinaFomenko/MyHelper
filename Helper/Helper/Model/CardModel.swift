@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 //cardsData.last?.childCards?[4].title ?? ""  ->  "Tooth"
 
-struct CardModel: Codable, Identifiable, Hashable {
+struct CardModel1: Codable, Identifiable, Hashable {
     var id: Float { cardId }
     
     var cardId: Float
@@ -18,6 +18,21 @@ struct CardModel: Codable, Identifiable, Hashable {
     var imageName: String?
     var priority: Int?
     var childCards: [CardModel]?
+}
+
+struct CardModel: Codable, Identifiable, Hashable {
+    var id: Float { cardId }
+    
+    var cardId: Float
+    var titleKey: String
+    var groupId: Int
+    var imageName: String?
+    var priority: Int?
+    var childCards: [CardModel]?
+
+    var title: String {
+        return NSLocalizedString(titleKey, comment: "")
+    }
 }
 
 func loadFromJSON() -> [CardModel] {

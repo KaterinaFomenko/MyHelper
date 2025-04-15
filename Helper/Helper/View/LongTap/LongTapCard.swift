@@ -44,8 +44,8 @@ struct LongTapCard: View {
 }
 
 #Preview {
-    let card = CardModel(cardId: 1, title: "Animals", groupId: 1, imageName: "puzzle")
+    let card = CardModel(cardId: 1, titleKey: "Animals", groupId: 1, imageName: "puzzle", priority: 1)
     let dm = DM() // Создайте экземпляр DM
-    return LongTapCard(card: card)
+    LongTapCard(card: card)
         .environmentObject(dm) // Передайте его в окружение
 }

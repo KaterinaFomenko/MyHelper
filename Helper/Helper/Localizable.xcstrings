@@ -1,0 +1,60 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "Add image" : {
+
+    },
+    "Are you sure you want to remove this item?" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Color" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Delete item" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Enter name" : {
+
+    },
+    "Name" : {
+
+    },
+    "OK" : {
+
+    },
+    "Please confirm" : {
+
+    },
+    "Save" : {
+
+    },
+    "This is Grope" : {
+
+    },
+    "Warning" : {
+
+    },
+    "Will the card contain other cards ?" : {
+
+    },
+    "Выберите иконку" : {
+
+    },
+    "Закрыть" : {
+
+    }
+  },
+  "version" : "1.0"
+}

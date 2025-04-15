@@ -23,7 +23,7 @@ struct CardViewForSecectedCards: View {
                 .font(.custom("Helvetica Neue", size: 25))
                 .multilineTextAlignment(.center)
                 
-            Image(card.imageName ?? "blankImage")
+            Image(card.imageName ?? "scribble")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40, height: 40)
@@ -32,7 +32,7 @@ struct CardViewForSecectedCards: View {
 }
 
 #Preview {
-    var card = CardModel(cardId: 2, title: "Hello World", groupId: 2, imageName: "I2")
+    var card = CardModel(cardId: 2, titleKey: "Hello World", groupId: 2, imageName: "I2", priority: 1)
     CardViewForSecectedCards(card: card)
     
 }
