@@ -265,7 +265,7 @@
 				CODE_SIGN_ENTITLEMENTS = Helper/Helper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Helper/local/Localizable(Russian).xcstrings Helper/local/Localizable(Polish).xcstrings Helper/local/Localizable(English).xcstrings Helper/Preview\\ Content Helper/local/Localizable.strings\\ (Ukrainian).xcstrings";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 4DR6RFVM32;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -307,7 +307,7 @@
 				CODE_SIGN_ENTITLEMENTS = Helper/Helper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Helper/local/Localizable(Russian).xcstrings Helper/local/Localizable(Polish).xcstrings Helper/local/Localizable(English).xcstrings Helper/Preview\\ Content Helper/local/Localizable.strings\\ (Ukrainian).xcstrings";
+				DEVELOPMENT_ASSET_PATHS = "Helper/local/Localizable.strings\\ (Ukrainian).xcstrings Helper/local/Localizable(Russian).xcstrings Helper/local/Localizable(Polish).xcstrings Helper/local/Localizable(English).xcstrings";
 				DEVELOPMENT_TEAM = 4DR6RFVM32;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

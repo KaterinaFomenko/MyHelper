@@ -9,12 +9,6 @@
             "state" : "translated",
             "value" : "Akcje"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Akcje"
-          }
         }
       }
     },
@@ -22,12 +16,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zły"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zły"
@@ -43,12 +31,6 @@
             "state" : "translated",
             "value" : "Zwierzęta"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zwierzęta"
-          }
         }
       }
     },
@@ -56,12 +38,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jabłko"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jabłko"
@@ -77,12 +53,6 @@
             "state" : "translated",
             "value" : "Ramię"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ramię"
-          }
         }
       }
     },
@@ -90,12 +60,6 @@
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plecy"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plecy"
@@ -111,12 +75,6 @@
             "state" : "translated",
             "value" : "Źle"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Źle"
-          }
         }
       }
     },
@@ -124,12 +82,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Piłka"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Piłka"
@@ -145,12 +97,6 @@
             "state" : "translated",
             "value" : "Niebieski"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Niebieski"
-          }
         }
       }
     },
@@ -158,12 +104,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chleb"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chleb"
@@ -179,12 +119,6 @@
             "state" : "translated",
             "value" : "Samochód"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Samochód"
-          }
         }
       }
     },
@@ -192,12 +126,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kot"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kot"
@@ -213,12 +141,6 @@
             "state" : "translated",
             "value" : "Ser"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ser"
-          }
         }
       }
     },
@@ -226,12 +148,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kolory"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kolory"
@@ -247,12 +163,6 @@
             "state" : "translated",
             "value" : "Niezadowolony"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Niezadowolony"
-          }
         }
       }
     },
@@ -260,12 +170,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pies"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pies"
@@ -281,12 +185,6 @@
             "state" : "translated",
             "value" : "Lalka"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lalka"
-          }
         }
       }
     },
@@ -294,12 +192,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ucho"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ucho"
@@ -313,13 +205,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Osiem"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Osiem"
+            "value" : "osiem"
           }
         }
       }
@@ -328,12 +214,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Słoń"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Słoń"
@@ -349,12 +229,6 @@
             "state" : "translated",
             "value" : "Emocje"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Emocje"
-          }
         }
       }
     },
@@ -362,12 +236,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uczucia"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uczucia"
@@ -381,13 +249,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pięć"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pięć"
+            "value" : "pięć"
           }
         }
       }
@@ -396,12 +258,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jedzenie"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jedzenie"
@@ -417,12 +273,6 @@
             "state" : "translated",
             "value" : "Widelec"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Widelec"
-          }
         }
       }
     },
@@ -432,13 +282,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cztery"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cztery"
+            "value" : "cztery"
           }
         }
       }
@@ -447,12 +291,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dobrze"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dobrze"
@@ -468,12 +306,6 @@
             "state" : "translated",
             "value" : "Dzień dobry"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dzień dobry"
-          }
         }
       }
     },
@@ -481,12 +313,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Do widzenia"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Do widzenia"
@@ -502,12 +328,6 @@
             "state" : "translated",
             "value" : "Zielony"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zielony"
-          }
         }
       }
     },
@@ -515,12 +335,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Szczęśliwy"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Szczęśliwy"
@@ -536,12 +350,6 @@
             "state" : "translated",
             "value" : "Głowa"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Głowa"
-          }
         }
       }
     },
@@ -549,12 +357,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cześć"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cześć"
@@ -570,12 +372,6 @@
             "state" : "translated",
             "value" : "Przytulać"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Przytulać"
-          }
         }
       }
     },
@@ -583,12 +379,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Głodny"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Głodny"
@@ -604,26 +394,13 @@
             "state" : "translated",
             "value" : "Boli"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Boli"
-          }
         }
       }
     },
     "I_am" : {
-      "comment" : "Localizable(Polish).strings\n  Helper\n\n  Created by Катерина Фоменко on 15/04/2025.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jestem"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jestem"
@@ -639,12 +416,6 @@
             "state" : "translated",
             "value" : "Sok"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sok"
-          }
         }
       }
     },
@@ -652,12 +423,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Całować"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Całować"
@@ -673,12 +438,6 @@
             "state" : "translated",
             "value" : "Nóż"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nóż"
-          }
         }
       }
     },
@@ -686,12 +445,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Noga"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Noga"
@@ -707,12 +460,6 @@
             "state" : "translated",
             "value" : "Lew"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lew"
-          }
         }
       }
     },
@@ -722,13 +469,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dziewięć"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dziewięć"
+            "value" : "dziewięć"
           }
         }
       }
@@ -737,12 +478,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Liczby"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liczby"
@@ -756,13 +491,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jeden"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jeden"
+            "value" : "jeden"
           }
         }
       }
@@ -771,12 +500,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sikać"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sikać"
@@ -792,12 +515,6 @@
             "state" : "translated",
             "value" : "Talerz"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Talerz"
-          }
         }
       }
     },
@@ -805,12 +522,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Grać"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Grać"
@@ -826,12 +537,6 @@
             "state" : "translated",
             "value" : "Kupka"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kupka"
-          }
         }
       }
     },
@@ -839,12 +544,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Puzzle"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Puzzle"
@@ -860,12 +559,6 @@
             "state" : "translated",
             "value" : "Deszczowo"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pada deszcz"
-          }
         }
       }
     },
@@ -873,12 +566,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Czerwony"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Czerwony"
@@ -894,12 +581,6 @@
             "state" : "translated",
             "value" : "Biegać"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Biegać"
-          }
         }
       }
     },
@@ -907,12 +588,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Smutny"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Smutny"
@@ -928,12 +603,6 @@
             "state" : "translated",
             "value" : "Zadowolony"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zadowolony"
-          }
         }
       }
     },
@@ -943,13 +612,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Siedem"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Siedem"
+            "value" : "siedem"
           }
         }
       }
@@ -960,13 +623,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sześć"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sześć"
+            "value" : "sześć"
           }
         }
       }
@@ -979,12 +636,6 @@
             "state" : "translated",
             "value" : "Śnieżnie"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pada śnieg"
-          }
         }
       }
     },
@@ -992,12 +643,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zupa"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zupa"
@@ -1013,12 +658,6 @@
             "state" : "translated",
             "value" : "Łyżka"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Łyżka"
-          }
         }
       }
     },
@@ -1030,12 +669,6 @@
             "state" : "translated",
             "value" : "Brzuch"
           }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Brzuch"
-          }
         }
       }
     },
@@ -1043,12 +676,6 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Słonecznie"
-          }
-        },
-        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Słonecznie"
@@ -1073,7 +700,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dziesięć"
+            "value" : "dziesięć"
           }
         }
       }
@@ -1084,7 +711,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trzy"
+            "value" : "trzy"
           }
         }
       }
@@ -1128,7 +755,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dwa"
+            "value" : "dwa"
           }
         }
       }
@@ -1227,7 +854,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zero"
+            "value" : "zero"
           }
         }
       }

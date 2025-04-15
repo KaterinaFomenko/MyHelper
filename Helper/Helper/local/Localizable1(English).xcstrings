@@ -527,6 +527,12 @@
             "state" : "translated",
             "value" : "Play"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grać"
+          }
         }
       }
     },
