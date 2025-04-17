@@ -15,24 +15,25 @@ struct LibraryIconsScreen: View {
     
         var body: some View {
             VStack {
-                Text("Выберите иконку")
+                
+                Text("Select icon")
                     .font(.largeTitle)
                     .padding()
 
-                // Пример иконок
+                
                 HStack {
                     ForEach(icons, id: \.self) { icon in
                         Image(systemName: icon)
                             .onTapGesture {
-                                print("selected icon: \(icon)")
+                                print("Selected icon: \(icon)")
                                 selectIcon(icon)
                             }
                             .font(.system(size: 50))
                     }
                 }
 
-                Button("Закрыть") {
-                    isShowingLibraryIconsScreen = false 
+                Button("Close") {
+                    isShowingLibraryIconsScreen = false
                 }
                 .padding()
                 .background(Color.red)

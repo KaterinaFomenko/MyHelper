@@ -16,7 +16,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Akcje"
+            "value" : "Działanie"
           }
         },
         "ru" : {
@@ -45,19 +45,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add image"
+            "value" : "Dodać obrazy"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add image"
+            "value" : "Добавить изображение"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add image"
+            "value" : "Додати картинку"
           }
         }
       }
@@ -161,19 +161,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Are you sure you want to remove this item?"
+            "value" : "Czy na pewno chcesz usunąć tę kartę?"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Are you sure you want to remove this item?"
+            "value" : "Вы уверены что хотите удалить эту карточку?"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Are you sure you want to remove this item?"
+            "value" : "Ви справді бажаєте видалити цю картку?"
           }
         }
       }
@@ -219,19 +219,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plecy"
+            "value" : "Wróć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спина"
+            "value" : "Назад"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спина"
+            "value" : "Назад"
           }
         }
       }
@@ -364,19 +364,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cancel"
+            "value" : "Zamknąć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cancel"
+            "value" : "Закрыть"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cancel"
+            "value" : "Закрити"
           }
         }
       }
@@ -480,19 +480,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Close"
+            "value" : "Zamknąć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Close"
+            "value" : "Закрыть"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Close"
+            "value" : "Закрити"
           }
         }
       }
@@ -509,19 +509,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Color"
+            "value" : "Kolor"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Color"
+            "value" : "Цвет"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Color"
+            "value" : "Колір"
           }
         }
       }
@@ -555,6 +555,50 @@
         }
       }
     },
+    "Create new Card" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utwórz nową kartę"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создайте новую карту"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Створити нову картку"
+          }
+        }
+      }
+    },
+    "Create new Group" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utwórz nową grupę"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создайте новую группу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Створити нову групу карток"
+          }
+        }
+      }
+    },
     "Delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -567,19 +611,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete"
+            "value" : "Usunąć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete"
+            "value" : "Удалить"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete"
+            "value" : "Видалити"
           }
         }
       }
@@ -596,19 +640,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete item"
+            "value" : "Usuń kartę"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete item"
+            "value" : "Удалить элемент"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete item"
+            "value" : "Видалити картинку"
           }
         }
       }
@@ -741,19 +785,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Edit"
+            "value" : "Edytować"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Edit"
+            "value" : "Редактировать"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Edit"
+            "value" : "Редагувати"
           }
         }
       }
@@ -770,19 +814,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "osiem"
+            "value" : "Osiem"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "восемь"
+            "value" : "Восемь"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "вісім"
+            "value" : "Вісім"
           }
         }
       }
@@ -863,13 +907,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter name"
+            "value" : "Введите имя"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter name"
+            "value" : "Введіть ім'я"
           }
         }
       }
@@ -915,19 +959,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pięć"
+            "value" : "Pięć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "пять"
+            "value" : "Пять"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "п'ять"
+            "value" : "П’ять"
           }
         }
       }
@@ -1002,19 +1046,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "cztery"
+            "value" : "Cztery"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "четыре"
+            "value" : "Четыре"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "чотири"
+            "value" : "Чотири"
           }
         }
       }
@@ -1222,6 +1266,29 @@
         }
       }
     },
+    "Home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домой"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додому"
+          }
+        }
+      }
+    },
     "Hug" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1367,35 +1434,6 @@
         }
       }
     },
-    "Kiss" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kiss"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Całować"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Целовать"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Цілувати"
-          }
-        }
-      }
-    },
     "Knife" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1495,19 +1533,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Name"
+            "value" : "Nazwa"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Name"
+            "value" : "Название"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Name"
+            "value" : "Ім'я"
           }
         }
       }
@@ -1524,19 +1562,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "dziewięć"
+            "value" : "Dziewięć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "девять"
+            "value" : "Девять"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "дев'ять"
+            "value" : "Дев'ять"
           }
         }
       }
@@ -1599,31 +1637,31 @@
         }
       }
     },
-    "one" : {
+    "One" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "one"
+            "value" : "One"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "jeden"
+            "state" : "needs_review",
+            "value" : "Jeden"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "один"
+            "state" : "needs_review",
+            "value" : "Один"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "один"
+            "state" : "needs_review",
+            "value" : "Один"
           }
         }
       }
@@ -1727,7 +1765,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please confirm"
+            "value" : "Proszę potwierdzić"
           }
         },
         "ru" : {
@@ -1739,7 +1777,36 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please confirm"
+            "value" : "Будь ласка, підтвердіть"
+          }
+        }
+      }
+    },
+    "Plus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати"
           }
         }
       }
@@ -1918,35 +1985,6 @@
         }
       }
     },
-    "Satisfied" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Satisfied"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zadowolony"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Довольный"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Задоволений"
-          }
-        }
-      }
-    },
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1959,19 +1997,48 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save"
+            "value" : "Zapisz kartę"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save"
+            "value" : "Сохранить"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save"
+            "value" : "Зберегти"
+          }
+        }
+      }
+    },
+    "Scary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scary"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boję się"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Боюсь"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Страшно"
           }
         }
       }
@@ -1988,19 +2055,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select icon"
+            "value" : "Wybierz kartę"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select icon"
+            "value" : "Выберите картинку"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select icon"
+            "value" : "Оберіть зображення"
           }
         }
       }
@@ -2017,19 +2084,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "siedem"
+            "value" : "Siedem"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "семь"
+            "value" : "Семь"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "сім"
+            "value" : "Сім"
           }
         }
       }
@@ -2046,19 +2113,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "sześć"
+            "value" : "Sześć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "шесть"
+            "value" : "Шесть"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "шість"
+            "value" : "Шість"
           }
         }
       }
@@ -2075,7 +2142,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Śnieżnie"
+            "value" : "Pada śnieg"
           }
         },
         "ru" : {
@@ -2249,19 +2316,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "dziesięć"
+            "value" : "Dziesięć"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "десять"
+            "value" : "Десять"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "десять"
+            "value" : "Десять"
           }
         }
       }
@@ -2278,19 +2345,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This is Grope"
+            "value" : "To jest Grope"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This is Grope"
+            "value" : "Эта группа"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This is Grope"
+            "value" : "То є група"
           }
         }
       }
@@ -2307,19 +2374,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "trzy"
+            "value" : "Trzy"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "три"
+            "value" : "Три"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "три"
+            "value" : "Три"
           }
         }
       }
@@ -2411,7 +2478,7 @@
         }
       }
     },
-    "two" : {
+    "Two" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -2423,19 +2490,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "dwa"
+            "value" : "Dwa"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "два"
+            "value" : "Два"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "два"
+            "value" : "Два"
           }
         }
       }
@@ -2510,7 +2577,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warning"
+            "value" : "Ostrzeżenie"
           }
         },
         "ru" : {
@@ -2522,7 +2589,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warning"
+            "value" : "Увага"
           }
         }
       }
@@ -2626,19 +2693,19 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Will the card contain other cards ?"
+            "value" : "Czy karta będzie zawierać inne karty?"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Will the card contain other cards ?"
+            "value" : "Будет ли карта содержать другие картинки?"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Will the card contain other cards ?"
+            "value" : "Чи буде карта містити інші карти?"
           }
         }
       }
@@ -2730,6 +2797,28 @@
         }
       }
     },
+    "You may edit Card" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz edytować Kartę"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете редактировать карту"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ви можете редагувати карту"
+          }
+        }
+      }
+    },
     "Zero" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2742,28 +2831,22 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "zero"
+            "value" : "Zero"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ноль"
+            "value" : "Ноль"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "нуль"
+            "value" : "Нуль"
           }
         }
       }
-    },
-    "Выберите иконку" : {
-
-    },
-    "Закрыть" : {
-
     }
   },
   "version" : "1.0"

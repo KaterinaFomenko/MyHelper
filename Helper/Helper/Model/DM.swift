@@ -14,7 +14,8 @@ enum TitleState {
     case hasNotChildsCards
     case editingState
     
-    var title: String {
+//    var title: String {
+    var title: LocalizedStringResource {
         switch self {
         case .hasChildsCards: return "Create new Group"
         case .hasNotChildsCards: return "Create new Card"
@@ -61,8 +62,7 @@ class DM: ObservableObject {
     }
     
     func speakText(text: String) {
-        //textToSpeech.speak(text: text, locale: "en-US")
-        textToSpeech.speak(text: text, locale: "en-US", voiceIdentifier: "com.apple.speech.synthesis.voice.Fred")
+        textToSpeech.speak(text: text)
     }
     
     private func loadData() {
@@ -86,7 +86,6 @@ class DM: ObservableObject {
         if !mainArray.contains(cardPlus) {
             mainArray.append(cardPlus)
         }
-        //print("dm.parentCardsArray.append(cardPlus)")
     }
     
     func addHomeBackCards() {
@@ -115,13 +114,11 @@ class DM: ObservableObject {
     }
     // fix find and for children
     func getColorIdOfGroup(for cardId: Float ) -> Int {
-        
         for parentCard in parentCardsArray {
                 if parentCard.cardId == cardId {
                   //  let ind = getIndexFromCardId(parentCards.id)
                     return parentCard.groupId
                 }
-            
             
             if let children = parentCard.childCards {
                 for child in children {
@@ -267,7 +264,7 @@ class DM: ObservableObject {
         }
     }
     /// Возвращает локализованный заголовок в зависимости от состояния
-    func titleState() -> String {
+    func titleState() -> LocalizedStringResource {
         if isStateEdiding {
             return TitleState.editingState.title
         }

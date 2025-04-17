@@ -25,7 +25,7 @@ struct NewCardView: View {
     // Alert
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @State private var titleCard = ""
+    @State private var titleCard: LocalizedStringResource = ""
     
     var body: some View {
         ZStack {
@@ -74,7 +74,7 @@ struct NewCardView: View {
                                    //   if (dm.isCardContainGroup && dm.parentCardIdOpened < 0)  {
                                     if dm.isStateEdiding {
                                         
-                                        Button("", systemImage: "pencil.circle") {
+                                        Button(String(""), systemImage: "pencil.circle") {
                                             pickPhoto()
                                         }
                                         .font(.title)
