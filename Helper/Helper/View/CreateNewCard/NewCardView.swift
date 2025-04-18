@@ -125,7 +125,6 @@ struct NewCardView: View {
                                     IconGalaryView(isShowIconGalary: $isShowIconGalary, selectedIcon: $selectedIconByUser)
                                 }
                                 
-                                
                             }
                             .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
                         }
