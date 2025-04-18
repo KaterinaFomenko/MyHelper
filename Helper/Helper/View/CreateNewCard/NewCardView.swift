@@ -14,13 +14,18 @@ struct NewCardView: View {
     
     @State private var nameCard: String = "" // имя
     @State private var selectedColorId = 1 // цвет groupId
-   // @State private var colorOfGroupId  = 1 // цвет группы
+    // @State private var colorOfGroupId  = 1 // цвет группы
     @State private var selectedIcon: String? = nil // выбранная иконка
+    @State private var selectedIconByUser: String = ""
+    @State private var selectedImage: UIImage? = nil
+    
     
     @State private var isSavingBtn: Bool = false
     @State private var isAddingImageBtn: Bool = false
     @State private var isShowingImagePicker = false
-    @State private var selectedImage: UIImage? = nil  // выбранная картинка с Галереи
+     // выбранная картинка с Галереи
+    @State private var isShowMenu: Bool = false
+    @State private var isShowIconGalary: Bool = false
     
     // Alert
     @State private var showAlert = false
@@ -31,7 +36,7 @@ struct NewCardView: View {
         ZStack {
             VStack() {
                 HStack {
-                
+                    
                     if dm.parentCardIdOpened < 0 {
                         Text(titleCard)
                             .transition(.opacity)
@@ -71,29 +76,60 @@ struct NewCardView: View {
                                 
                                 HStack {
                                     
-                                   //   if (dm.isCardContainGroup && dm.parentCardIdOpened < 0)  {
                                     if dm.isStateEdiding {
                                         
-                                        Button(String(""), systemImage: "pencil.circle") {
-                                            pickPhoto()
+                                        Button(action: {
+                                            // ToDo add contex menu
+                                            isShowMenu.toggle()
+                                        }) {
+                                            Image(systemName:"pencil.circle" )
                                         }
                                         .font(.title)
-                                        .foregroundStyle(.black)
-                                          }
-                                        Spacer()
-                                        //if (dm.isCardContainGroup && dm.parentCardIdOpened > 0) || dm.isStateEdiding {
-                                        // если создаю родительскую карточку:   false && -1.0 > 0 (false)
-                                   
-                                        if (dm.isCardContainGroup && dm.parentCardIdOpened < 0) {
-                                            Label("This is Grope", systemImage: "ellipsis")
-                                                .labelStyle(.iconOnly)
+                                        .foregroundStyle(.blue)
+                                        .shadow(radius: 10)
+                                  
+                                        .contextMenu {
+                                            VStack {
+                                                Button(action: {
+                                                    isShowIconGalary = true
+                                                }) {
+                                                    Text("Icon Gallery")
+                                                }
+                                                
+                                                Button(action: {
+                                                    pickPhoto()
+                                                }) {
+                                                    Text("Photo Gallery")
+                                                }
+                                            }
+                                            .padding()
+                                            .background(Color.white)
+                                            .cornerRadius(10)
+                                            .shadow(radius: 10)
                                         }
-                                  //  }
+                                    }
+                                        
+                                    Spacer()
+                                    
+                                    if (dm.isCardContainGroup && dm.parentCardIdOpened < 0) {
+                                        Image(systemName: "circle.fill")
+                                            .resizable()
+                                            .frame(width: 5, height: 5)
+                                            .foregroundColor(.blue)
+                                            .padding(.horizontal, 5)
+                                            .shadow(radius: 10)
+                                           
+                                    }
                                 }
+                                .sheet(isPresented: $isShowIconGalary) {
+                                    IconGalaryView(isShowIconGalary: $isShowIconGalary, selectedIcon: $selectedIconByUser)
+                                }
+                                
+                                
                             }
                             .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
                         }
-                        
+                        // MARK: place show Galary
                         if let selectedImage = selectedImage {
                             Image(uiImage: selectedImage)
                                 .resizable()
@@ -101,6 +137,7 @@ struct NewCardView: View {
                                 .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .offset(y: 20)
+                               // .background(Color(.pink))
                             
                         } else {
                             Button {
@@ -122,7 +159,7 @@ struct NewCardView: View {
                                         )
                                     )
                             }
-                                .zIndex(2)
+                            .zIndex(2)
                         }
                     }
                 }
@@ -159,10 +196,10 @@ struct NewCardView: View {
         
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup(for: dm.parentCardIdOpened)
-          
+            
             
             dm.isCardContainGroup = dm.checkIsParent(id: dm.contextCardId)
-          
+            
             titleCard = dm.titleState() // update titleGroupe
             
             // MARK:  show new Card Screen for editind
@@ -170,11 +207,10 @@ struct NewCardView: View {
             if dm.isStateEdiding == true {
                 // add 13.04
                 selectedColorId = dm.getColorIdOfGroup(for: dm.contextCardId)
-               
+                
                 nameCard = dm.getCardByID(cardId: dm.contextCardId)?.title ?? "Empty name"
                 
                 let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "scribble"
-                // let color = dm.getCardByID(cardId: dm.selectedCardId)?.groupId ?? 0
                 
                 if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
                     selectedImage = image
@@ -258,7 +294,7 @@ struct NewCardView: View {
     private func maxChildId(for parentId: Float, array: [CardModel]) -> Float {
         guard let parent = array.first(where: { $0.cardId == parentId }),
               let children = parent.childCards, !children.isEmpty else { return  parentId }
-            
+        
         
         return children.max(by: { $0.cardId < $1.cardId })?.cardId ?? parentId
     }
@@ -268,7 +304,7 @@ struct NewCardView: View {
             showAlert(message: "Name cannot be empty")
             return
         }
-       
+        
         var imageName: String? = nil
         var maxId: Float = 0
         
@@ -279,13 +315,13 @@ struct NewCardView: View {
             print("⚒️ Редактирование карточки ID: \(dm.contextCardId)")
         } else {
             
-                // Режим создания новой карты
+            // Режим создания новой карты
             if dm.parentCardIdOpened < 0 {
                 // Создаем родительскую карточку
                 maxId  = dm.parentCardsArray.max(by: { $0.cardId < $1.cardId })?.cardId ??  1
                 maxId = maxId + 1
                 //imageName = "img_\(maxIdParent + 1)"
-               
+                
             } else {
                 // Создаем дочернюю карточку
                 let parentId = Float(dm.parentCardIdOpened)
@@ -294,7 +330,7 @@ struct NewCardView: View {
                 maxId = maxId + 0.1
                 print(maxId)
             }
-    }
+        }
         // Сохранение изображения
         if let image = selectedImage {
             imageName = "img_\(maxId)"
@@ -320,7 +356,7 @@ struct NewCardView: View {
         }
         dm.isShowCreateCardScreen = false
     }
-  
+    
     private func showAlert(message: String) {
         alertMessage = message
         showAlert = true

@@ -20,10 +20,11 @@ struct SelectedCardsView: View {
                         CardViewForSecectedCards(card: item)
                             .id(item)
                     }
-                }.padding()
+                }
+                .padding(.horizontal, 20)
             }
-            .frame(height: 40)
-            .padding()
+            .frame(height: 60)
+           // .padding()
             .onChange(of: dm.selectedItemsArray) { oldValue, newValue in
                 print("On change")
                 withAnimation {

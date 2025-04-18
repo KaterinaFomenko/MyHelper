@@ -1388,7 +1388,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jestem"
+            "value" : "Ja"
           }
         },
         "ru" : {
@@ -1404,6 +1404,9 @@
           }
         }
       }
+    },
+    "Icon Gallery" : {
+
     },
     "Juice" : {
       "extractionState" : "manual",
@@ -1430,6 +1433,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сік"
+          }
+        }
+      }
+    },
+    "Kiss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pocałunek"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поцелуй"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поцілуй"
           }
         }
       }
@@ -1694,6 +1720,12 @@
           }
         }
       }
+    },
+    "pencil.circle" : {
+
+    },
+    "Photo Gallery" : {
+
     },
     "Plate" : {
       "extractionState" : "manual",

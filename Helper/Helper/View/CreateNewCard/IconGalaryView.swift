@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct LibraryIconsScreen: View {
-    @Binding var isShowingLibraryIconsScreen: Bool
+struct IconGalaryView: View {
+    @Binding var isShowIconGalary: Bool
     @Binding var selectedIcon: String
     
     let icons = ["star.fill", "heart.fill", "cloud.fill", "moon.fill", "sun.max.fill"]
@@ -33,7 +33,7 @@ struct LibraryIconsScreen: View {
                 }
 
                 Button("Close") {
-                    isShowingLibraryIconsScreen = false
+                    isShowIconGalary = false
                 }
                 .padding()
                 .background(Color.red)
@@ -52,5 +52,5 @@ struct LibraryIconsScreen: View {
     }
 
 #Preview {
-    LibraryIconsScreen(isShowingLibraryIconsScreen: .constant(true), selectedIcon: .constant("star.fill"))
+    IconGalaryView(isShowIconGalary: .constant(true), selectedIcon: .constant("star.fill"))
 }

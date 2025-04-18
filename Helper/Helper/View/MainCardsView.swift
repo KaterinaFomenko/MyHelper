@@ -61,8 +61,8 @@ struct MainCardsView: View {
                                 
                                 dm.mainArray = card.childCards ?? []
                                 
-                               // let arrayIDs = dm.mainArray.compactMap { "\($0.cardId) : \($0.title)" }
-                              //  print("👼 There are all child cards: \( arrayIDs )")
+                                // let arrayIDs = dm.mainArray.compactMap { "\($0.cardId) : \($0.title)" }
+                                //  print("👼 There are all child cards: \( arrayIDs )")
                                 
                                 dm.addItemToSelected(item: card)
                                 
@@ -73,7 +73,7 @@ struct MainCardsView: View {
                             }
                         }
                     }
-
+                
                 // MARK: LongPressGesture
                 
                     .contextMenu {
@@ -81,7 +81,7 @@ struct MainCardsView: View {
                         if card.cardId < 100 && card.priority != 1 {
                             
                             Button(action: {  // Действие при редактировании
-                               
+                                
                                 dm.contextCardId = card.cardId
                                 print("🆔 Show Card for Editing : \(dm.contextCardId)")
                                 
@@ -92,12 +92,11 @@ struct MainCardsView: View {
                             }) {
                                 HStack {
                                     Image(systemName: "pencil")
-                            
                                     Text("Edit")
                                 }
                             }
-            
-                            Button(action: { // Действие при удалении
+                            // Действие при удалении
+                            Button(action: {
                                 dm.contextCardId = card.cardId
                                 isShowAlert = true
                             }) {
@@ -106,7 +105,6 @@ struct MainCardsView: View {
                                     Text("Delete")
                                 }
                             }
-                            
                         }
                     }
             }
@@ -116,7 +114,7 @@ struct MainCardsView: View {
             NewCardView()
         }
         .alert(isPresented: $isShowAlert) {
-           
+            
             // Alert.Button
             Alert(title: Text("Are you sure you want to remove this item?"),
                   message: Text(message),
@@ -129,20 +127,20 @@ struct MainCardsView: View {
         }
         .animation(.easeInOut, value: isShowAlert)
         
-        //triggers when pressed BTN Save
-        .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
-            print("onChange parentCardsArray")
-            return
-        }
- .onAppear {
-     let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title) : \($0.imageName)" }.joined(separator: "\n")
-    
+//        //triggers when pressed BTN Save
+//        .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
+//            print("onChange parentCardsArray")
+//            return
+//        }
+        .onAppear {
+            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title) : \($0.imageName)" }.joined(separator: "\n")
+            
             print("🤵 It`s all parent cards: \(arrayIDs)")
-        
+            
         }
     }
 }
-    
+
 #Preview {
     MainCardsView()
         .environmentObject(DM.shared)

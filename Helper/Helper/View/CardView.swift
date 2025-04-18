@@ -20,34 +20,20 @@ struct CardView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 2)
             
-            // loadFromJSON image from local directory
-            if let image = ImageService.shared.loadImageFromDiskWith(fileName: card.imageName) {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 65, height: 65)
-                    .cornerRadius(5)
-            } else {
-            // loadFromJSON from asset
-               // Image("one")
-             
-                    Image(card.imageName ?? "scribble")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 65, height: 65)
-                        .cornerRadius(5)
-                
-            }
+            CardImageView(imageName: card.imageName, fallImageName: "scribble")
             
 // if card has child cards show ellipsis
             if hasChildren {
                 HStack {
                     Spacer()
                     
-                    Label("This is Grope", systemImage: "ellipsis")
-                        .labelStyle(.iconOnly)
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: 5, height: 5)
+                        .foregroundColor(.blue)
                         .padding(.horizontal, 5)
-                        .foregroundStyle(.gray)
+                        .padding(.bottom, 5)
+                        .shadow(radius: 10)
                 }
             }
         }

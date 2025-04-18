@@ -14,8 +14,14 @@ struct ContentView: View {
     var body: some View {
         
         VStack(spacing: 0)  {
+            Rectangle()
+                .fill(Color.blue.opacity(0.1))
+                .frame(height: 20)
+                .padding(.bottom, 10)
+            
             // Горизонтальный Scroll
             SelectedCardsView()
+                .padding(10)
                 .environmentObject(dm)
         }
         

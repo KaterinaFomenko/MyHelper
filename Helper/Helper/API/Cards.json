@@ -331,19 +331,19 @@
             {
                 "titleKey": "Sunny",
                 "cardId": 12.1,
-                "imageName": "Sunny",
+                "imageName": "sunny",
                 "groupId": 11
             },
             {
                 "titleKey": "Rainy",
                 "cardId": 12.2,
-                "imageName": "Rainy",
+                "imageName": "rainy",
                 "groupId": 11
             },
             {
                 "titleKey": "Snowy",
                 "cardId": 12.3,
-                "imageName": "Snowy",
+                "imageName": "snowy",
                 "groupId": 11
             }
         ]

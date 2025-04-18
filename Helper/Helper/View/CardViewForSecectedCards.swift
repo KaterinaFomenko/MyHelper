@@ -22,12 +22,10 @@ struct CardViewForSecectedCards: View {
             Text(card.title)
                 .font(.custom("Helvetica Neue", size: 25))
                 .multilineTextAlignment(.center)
-                
-            Image(card.imageName ?? "scribble")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 40, height: 40)
+            
+            CardImageView(imageName: card.imageName, fallImageName: "scribble")
         }
+        
     }
 }
 
