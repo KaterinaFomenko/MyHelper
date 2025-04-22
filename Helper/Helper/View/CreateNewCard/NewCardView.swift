@@ -121,13 +121,13 @@ struct NewCardView: View {
                                     }
                                 }
                                 .sheet(isPresented: $isShowIconGalary) {
-                                    IconGalaryView(isShowIconGalary: $isShowIconGalary, selectedIcon: $selectedIconLibrary)
+                                    IconLibraryView(isShowIconGalary: $isShowIconGalary, selectedIconLibrary: $selectedIconLibrary)
                                 }
                                 
                             }
                             .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
                         }
-                        displayImageOreButton(geometry: geometry)
+                        displayImageOrButton(geometry: geometry)
 
                     }
                 }
@@ -185,6 +185,7 @@ struct NewCardView: View {
                     
                 } else {
                     selectedImageGalary = UIImage(named: imageName)
+                   // selectedIconLibrary = UIImage(systemName: imageName)
                 }
             }
         }
@@ -332,7 +333,7 @@ struct NewCardView: View {
     // MARK: Todo refactor condition
     
     @ViewBuilder
-    private func displayImageOreButton(geometry: GeometryProxy) -> some View {
+    private func displayImageOrButton(geometry: GeometryProxy) -> some View {
         
         // MARK: place show Galary
         if selectedImageGalary != nil {

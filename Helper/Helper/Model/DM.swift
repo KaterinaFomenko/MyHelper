@@ -218,14 +218,6 @@ class DM: ObservableObject {
         UserSaving.shared.saveParentCardArray(parentCardsArray)
     }
     
-//    func updateChildIds(for parent: CardModel) {
-//        guard let childCardsCount = parent.childCards else { return }
-//        
-//        for i in 0..<parent.childCardsCount.count {
-//            
-//        }
-//    }
-    
      // При редактировании карты
     func getCardByID(cardId: Float) -> CardModel? {
         for (indexParent, cardParent) in parentCardsArray.enumerated() {

@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct IconGalaryView: View {
+struct IconLibraryView1: View {
     @Binding var isShowIconGalary: Bool
     @Binding var selectedIcon: String
+    
     
     let icons = ["star.fill", "heart.fill", "cloud.fill", "moon.fill", "sun.max.fill"]
     
@@ -52,5 +53,5 @@ struct IconGalaryView: View {
     }
 
 #Preview {
-    IconGalaryView(isShowIconGalary: .constant(true), selectedIcon: .constant("star.fill"))
+    IconLibraryView1(isShowIconGalary: .constant(true), selectedIcon: .constant("star.fill"))
 }

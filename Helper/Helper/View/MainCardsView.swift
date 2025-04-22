@@ -11,13 +11,12 @@ struct MainCardsView: View {
     
     @EnvironmentObject var dm: DM
     
-    
     @State var isShowAlert = false
     @State var message = ""
     
     var idCurrentCard: Float = 0
     
-    var colums = [GridItem(.adaptive(minimum: 100), spacing: 0)]
+    var colums = [GridItem(.adaptive(minimum: 100), spacing: 10)]
     
     var body: some View {
         LazyVGrid(columns: colums, spacing: 10) {
@@ -127,11 +126,6 @@ struct MainCardsView: View {
         }
         .animation(.easeInOut, value: isShowAlert)
         
-//        //triggers when pressed BTN Save
-//        .onChange(of: dm.parentCardsArray) { oldParentArray, newParentArray in
-//            print("onChange parentCardsArray")
-//            return
-//        }
         .onAppear {
             let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title) : \($0.imageName)" }.joined(separator: "\n")
             

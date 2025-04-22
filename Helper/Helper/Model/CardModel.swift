@@ -9,17 +9,6 @@ import Foundation
 import SwiftUI
 //cardsData.last?.childCards?[4].title ?? ""  ->  "Tooth"
 
-struct CardModel1: Codable, Identifiable, Hashable {
-    var id: Float { cardId }
-    
-    var cardId: Float
-    var title: String
-    var groupId: Int
-    var imageName: String?
-    var priority: Int?
-    var childCards: [CardModel]?
-}
-
 struct CardModel: Codable, Identifiable, Hashable {
     var id: Float { cardId }
     
