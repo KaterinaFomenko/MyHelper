@@ -49,3 +49,6 @@ struct LongTapCard: View {
     LongTapCard(card: card)
         .environmentObject(dm) // Передайте его в окружение
 }
+
+
+

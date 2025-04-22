@@ -20,7 +20,6 @@ struct IconGalaryView: View {
                     .font(.largeTitle)
                     .padding()
 
-                
                 HStack {
                     ForEach(icons, id: \.self) { icon in
                         Image(systemName: icon)
@@ -48,6 +47,7 @@ struct IconGalaryView: View {
         private func selectIcon(_ iconName: String) {
             print("Выбрана иконка: \(iconName)")
             selectedIcon = iconName
+            isShowIconGalary = false
         }
     }
 

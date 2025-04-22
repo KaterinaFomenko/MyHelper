@@ -15,16 +15,16 @@ struct NewCardView: View {
     @State private var nameCard: String = "" // имя
     @State private var selectedColorId = 1 // цвет groupId
     // @State private var colorOfGroupId  = 1 // цвет группы
-    @State private var selectedIcon: String? = nil // выбранная иконка
-    @State private var selectedIconByUser: String = ""
-    @State private var selectedImage: UIImage? = nil
+   // @State private var selectedIcon: String? = nil // выбранная иконка
+    @State private var selectedIconLibrary: String = ""
+    @State private var selectedImageGalary: UIImage? = nil
     
     
     @State private var isSavingBtn: Bool = false
     @State private var isAddingImageBtn: Bool = false
     @State private var isShowingImagePicker = false
      // выбранная картинка с Галереи
-    @State private var isShowMenu: Bool = false
+   // @State private var isShowMenu: Bool = false
     @State private var isShowIconGalary: Bool = false
     
     // Alert
@@ -79,8 +79,7 @@ struct NewCardView: View {
                                     if dm.isStateEdiding {
                                         
                                         Button(action: {
-                                            // ToDo add contex menu
-                                            isShowMenu.toggle()
+                                            // open contex menu
                                         }) {
                                             Image(systemName:"pencil.circle" )
                                         }
@@ -93,7 +92,7 @@ struct NewCardView: View {
                                                 Button(action: {
                                                     isShowIconGalary = true
                                                 }) {
-                                                    Text("Icon Gallery")
+                                                    Text("Icon Library")
                                                 }
                                                 
                                                 Button(action: {
@@ -122,44 +121,14 @@ struct NewCardView: View {
                                     }
                                 }
                                 .sheet(isPresented: $isShowIconGalary) {
-                                    IconGalaryView(isShowIconGalary: $isShowIconGalary, selectedIcon: $selectedIconByUser)
+                                    IconGalaryView(isShowIconGalary: $isShowIconGalary, selectedIcon: $selectedIconLibrary)
                                 }
                                 
                             }
                             .frame(width: geometry.size.width / 1.5, height: geometry.size.width / 1.5)
                         }
-                        // MARK: place show Galary
-                        if let selectedImage = selectedImage {
-                            Image(uiImage: selectedImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .offset(y: 20)
-                               // .background(Color(.pink))
-                            
-                        } else {
-                            Button {
-                                isAddingImageBtn.toggle()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                    withAnimation {
-                                        isAddingImageBtn = true
-                                    }
-                                    print ("👇 Tapped add new image")
-                                    pickPhoto()
-                                }
-                            } label: {
-                                Text("Add image") // Blue Button
-                                    .modifier(
-                                        CustomButtonModifier(
-                                            isPressed: isAddingImageBtn,
-                                            backgroundColor: .blue,
-                                            textColor: .white
-                                        )
-                                    )
-                            }
-                            .zIndex(2)
-                        }
+                        displayImageOreButton(geometry: geometry)
+
                     }
                 }
             }
@@ -212,10 +181,10 @@ struct NewCardView: View {
                 let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "scribble"
                 
                 if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
-                    selectedImage = image
+                    selectedImageGalary = image
                     
                 } else {
-                    selectedImage = UIImage(named: imageName)
+                    selectedImageGalary = UIImage(named: imageName)
                 }
             }
         }
@@ -247,7 +216,7 @@ struct NewCardView: View {
         
         // Open Galery
         .sheet(isPresented: $isShowingImagePicker) {
-            ImagePicker(selectedImage: $selectedImage)
+            ImagePicker(selectedImage: $selectedImageGalary)
         }
         // Alert
         .alert(isPresented: $showAlert) {
@@ -331,7 +300,7 @@ struct NewCardView: View {
             }
         }
         // Сохранение изображения
-        if let image = selectedImage {
+        if let image = selectedImageGalary {
             imageName = "img_\(maxId)"
             ImageService.shared.saveImage(imageName: imageName, image: image)
             print("⚒️ Создана картинка с именем ID: \(String(describing: imageName))")
@@ -360,6 +329,54 @@ struct NewCardView: View {
         alertMessage = message
         showAlert = true
     }
+    // MARK: Todo refactor condition
+    
+    @ViewBuilder
+    private func displayImageOreButton(geometry: GeometryProxy) -> some View {
+        
+        // MARK: place show Galary
+        if selectedImageGalary != nil {
+            Image(uiImage: selectedImageGalary!)
+                .resizable()
+                .scaledToFill()
+                .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .offset(y: 20)
+            // .background(Color(.pink))
+            
+        } else if !selectedIconLibrary.isEmpty {
+            Image(systemName: selectedIconLibrary)
+                .resizable()
+                .scaledToFit()
+                .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+            
+        } else {
+            Button {
+                isAddingImageBtn.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation {
+                        isAddingImageBtn = true
+                    }
+                    print ("👇 Tapped add new image")
+                    pickPhoto()
+                }
+            } label: {
+                Text("Add image") // Blue Button
+                    .modifier(
+                        CustomButtonModifier(
+                            isPressed: isAddingImageBtn,
+                            backgroundColor: .blue,
+                            textColor: .white
+                        )
+                    )
+            }
+            .zIndex(2)
+        }
+    }
+    
+
+    
 }
 #Preview {
     NewCardView()

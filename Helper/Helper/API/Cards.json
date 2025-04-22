@@ -148,13 +148,13 @@
             {
                 "titleKey": "Good",
                 "cardId": 7.1,
-                "imageName": "Good",
+                "imageName": "good",
                 "groupId": 6
             },
             {
                 "titleKey": "Bad",
                 "cardId": 7.2,
-                "imageName": "Bad",
+                "imageName": "bad",
                 "groupId": 6
             }
         ]
@@ -232,7 +232,7 @@
             {
                 "titleKey": "Dissatisfied",
                 "cardId": 9.6,
-                "imageName": "Dissatisfied",
+                "imageName": "dissatisfied",
                 "groupId": 8
             }
         ]
