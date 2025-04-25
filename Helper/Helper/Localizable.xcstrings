@@ -51,7 +51,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добавить изображение"
+            "value" : "Добавить картинку"
           }
         },
         "uk" : {
@@ -208,6 +208,35 @@
       }
     },
     "Back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plecy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спина"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спина"
+          }
+        }
+      }
+    },
+    "BackService" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1034,6 +1063,28 @@
         }
       }
     },
+    "Foto Galary" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotogaleria"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фотогалерея"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фотогалерея"
+          }
+        }
+      }
+    },
     "Four" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1406,7 +1457,26 @@
       }
     },
     "Icon Library" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biblioteka ikon"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Библиотека иконок"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бібліотека іконок"
+          }
+        }
+      }
     },
     "Juice" : {
       "extractionState" : "manual",
@@ -1547,6 +1617,9 @@
         }
       }
     },
+    "more" : {
+
+    },
     "Name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1601,6 +1674,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дев'ять"
+          }
+        }
+      }
+    },
+    "No" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ні"
           }
         }
       }
@@ -1674,19 +1770,19 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Jeden"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Один"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Один"
           }
         }
@@ -1710,21 +1806,18 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Писать"
+            "value" : "Писять"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сикати"
+            "value" : "Пісять"
           }
         }
       }
     },
     "pencil.circle" : {
-
-    },
-    "Photo Gallery" : {
 
     },
     "Plate" : {
@@ -1925,7 +2018,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дощисто"
+            "value" : "Іде дощ"
           }
         }
       }
@@ -2186,7 +2279,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сніжно"
+            "value" : "Падає сніг"
           }
         }
       }
@@ -2592,7 +2685,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Хочу"
+            "value" : "Хотіти"
           }
         }
       }
@@ -2796,6 +2889,52 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Жовтий"
+          }
+        }
+      }
+    },
+    "Yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tak"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Так"
+          }
+        }
+      }
+    },
+    "Yes No" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tak Nie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да Нет"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Так Ні"
           }
         }
       }

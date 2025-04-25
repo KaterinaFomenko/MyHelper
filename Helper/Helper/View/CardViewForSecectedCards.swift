@@ -23,7 +23,7 @@ struct CardViewForSecectedCards: View {
                 .font(.custom("Helvetica Neue", size: 25))
                 .multilineTextAlignment(.center)
             
-            CardImageView(imageName: card.imageName, fallImageName: "scribble")
+            CardImageView(imageName: card.imageName)
         }
         
     }

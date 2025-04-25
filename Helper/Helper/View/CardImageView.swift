@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardImageView: View {
     let imageName: String?
-    let fallImageName: String
+    let fallImageName: String = "scribble"
     
     var body: some View {
         Group {
@@ -20,6 +20,7 @@ struct CardImageView: View {
                     .scaledToFill()
                     .frame(width: 65, height: 65)
                     .cornerRadius(5)
+                    //.background(Color.blue)
             } else {
                 // load From JSON from Asset Catalog
                 Image(imageName ?? fallImageName)
@@ -27,12 +28,14 @@ struct CardImageView: View {
                     .scaledToFill()
                     .frame(width: 65, height: 65)
                     .cornerRadius(5)
+                  //  .background(Color.red)
             }
         }
     }
 }
 
 #Preview {
-    CardImageView(imageName: "sunny", fallImageName:  "scribble")
+    
+    CardImageView(imageName: "sunny")
 }
 

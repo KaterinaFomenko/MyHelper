@@ -20,9 +20,8 @@ struct CardView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 2)
             
-            CardImageView(imageName: card.imageName, fallImageName: "scribble")
+            CardImageView(imageName: card.imageName)
             
-// if card has child cards show ellipsis
             if hasChildren {
                 HStack {
                     Spacer()
@@ -34,6 +33,7 @@ struct CardView: View {
                         .padding(.horizontal, 5)
                         .padding(.bottom, 5)
                         .shadow(radius: 10)
+                        .opacity(0.5)
                 }
             }
         }

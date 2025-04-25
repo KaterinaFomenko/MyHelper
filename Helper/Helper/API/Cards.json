@@ -120,41 +120,41 @@
             {
                 "titleKey": "Wash_Hands",
                 "cardId": 6.1,
-                "imageName": "Wash Hands",
+                "imageName": "wash Hands",
                 "groupId": 5
             },
             {
                 "titleKey": "Pee",
                 "cardId": 6.2,
-                "imageName": "Pee",
+                "imageName": "pee",
                 "groupId": 5
             },
             {
                 "titleKey": "Poop",
                 "cardId": 6.3,
-                "imageName": "Poop",
+                "imageName": "poop",
                 "audioName": "poop.mp3",
                 "groupId": 5
             }
         ]
     },
     {
-        "titleKey": "Feelings",
+        "titleKey": "Yes No",
         "cardId": 7,
-        "imageName": "feelings",
+        "imageName": "yesNo",
         "priority": 2,
         "groupId": 6,
         "childCards": [
             {
-                "titleKey": "Good",
+                "titleKey": "Yes",
                 "cardId": 7.1,
-                "imageName": "good",
+                "imageName": "yes",
                 "groupId": 6
             },
             {
-                "titleKey": "Bad",
+                "titleKey": "No",
                 "cardId": 7.2,
-                "imageName": "bad",
+                "imageName": "no",
                 "groupId": 6
             }
         ]
@@ -358,25 +358,25 @@
             {
                 "titleKey": "Red",
                 "cardId": 13.1,
-                "imageName": "Red",
+                "imageName": "red",
                 "groupId": 12
             },
             {
                 "titleKey": "Blue",
                 "cardId": 13.2,
-                "imageName": "Blue",
+                "imageName": "blue",
                 "groupId": 12
             },
             {
                 "titleKey": "Green",
                 "cardId": 13.3,
-                "imageName": "Green",
+                "imageName": "green",
                 "groupId": 12
             },
             {
                 "titleKey": "Yellow",
                 "cardId": 13.4,
-                "imageName": "Yellow",
+                "imageName": "yellow",
                 "groupId": 12
             }
         ]

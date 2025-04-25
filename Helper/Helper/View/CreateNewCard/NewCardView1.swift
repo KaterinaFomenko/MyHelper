@@ -1,12 +1,4 @@
 //
-//  NewCardView 2.swift
-//  Helper
-//
-//  Created by Катерина Фоменко on 24/04/2025.
-//
-
-
-//
 //  NewCardsView.swift
 //  Helper
 //
@@ -16,7 +8,7 @@
 import SwiftUI
 import Photos
 
-struct NewCardView: View {
+struct NewCardView1: View {
     
     @EnvironmentObject var dm: DM
     
@@ -76,10 +68,8 @@ struct NewCardView: View {
                                     .font(.custom("Helvetica Neue", size: 30))
                                     .lineLimit(1) // Ограничиваем одной строкой
                                     .truncationMode(.tail) // Добавляем многоточие в конце
-                                    .frame(maxWidth: geometry.size.width / 1.5 - 40)
                                     .padding(.top, 10)
-                                    
-                                    
+                                    .frame(maxWidth: geometry.size.width / 1.5 - 40)
                                 
                                 Spacer()
                                 
@@ -87,27 +77,35 @@ struct NewCardView: View {
                                     
                                     if dm.isStateEdiding {
                                         
-                                        Menu {
-                                            ControlGroup {
-                                                Button {
+                                        Button(action: {
+                                            // open contex menu
+                                        }) {
+                                            Image(systemName:"pencil.circle" )
+                                        }
+                                        .font(.title)
+                                        .foregroundStyle(.blue)
+                                        .shadow(radius: 10)
+                                  
+                                        .contextMenu {
+                                            VStack {
+                                                Button(action: {
                                                     isShowIconLibrary = true
-                                                } label: {
-                                                    Label("Icon Library", systemImage:   "square.3.layers.3d.down.right")
+                                                    // ToDo IconLibrary
                                                     
+                                                }) {
+                                                    Text("Icon Library")
                                                 }
                                                 
-                                                Button {
+                                                Button(action: {
                                                     pickPhoto()
-                                                } label: {
-                                                    Label("Foto Galary", systemImage:  "camera")
-                                        
+                                                }) {
+                                                    Text("Foto Galary")
                                                 }
                                             }
-                                            
-                                        } label: {
-                                            Label("more", systemImage: "ellipsis.circle")
-                                                .labelStyle(.iconOnly)
-                                                .shadow(radius: 10)
+                                            .padding()
+                                            .background(Color.white)
+                                            .cornerRadius(10)
+                                            .shadow(radius: 10)
                                         }
                                     }
                                         
@@ -117,11 +115,10 @@ struct NewCardView: View {
                                         Image(systemName: "circle.fill")
                                             .resizable()
                                             .frame(width: 5, height: 5)
-                                            .foregroundColor(dm.isCardContainGroup ? .blue : .clear)
+                                            .foregroundColor(.blue)
                                             .padding(.horizontal, 5)
                                             .shadow(radius: 10)
                                             .opacity(0.5)
-                                         //   .padding(.top, 40)
                                     }
                                 }
                                 .sheet(isPresented: $isShowIconLibrary) {
@@ -186,8 +183,8 @@ struct NewCardView: View {
                     selectedImageGalary = image
                     
                 } else {
-                    selectedImageGalary = UIImage(named: imageName) // или ???
-                    //selectedIconLibrary = imageName
+                    //selectedImageGalary = UIImage(named: imageName) // или ???
+                    selectedIconLibrary = imageName
                 }
             }
         }
@@ -303,8 +300,7 @@ struct NewCardView: View {
             imageName = selectedIconLibrary
             print("⚒️ Создана selectedIconLibrary с именем ID: \(imageName!)")
          } else if let image = selectedImageGalary {
-             let randomValue = Float.random(in: 0.0...0.1000)
-             imageName = "img_\(maxId + randomValue)"
+            imageName = "img_\(maxId)"
             ImageService.shared.saveImage(imageName: imageName, image: image)
             print("⚒️ Создана selectedImageGalary с именем ID: \(imageName!))")
        
@@ -347,8 +343,6 @@ struct NewCardView: View {
                 .scaledToFit()
                 .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding(.top, 50)
-            
         } else if let selectedImageGalary = selectedImageGalary {
             Image(uiImage: selectedImageGalary)
                 .resizable()
@@ -384,18 +378,8 @@ struct NewCardView: View {
 
     
 }
-
-#Preview("state editing") {
-    let dm = DM()
-    dm.isStateEdiding = true
-    return NewCardView()
-        .environmentObject(dm)
-}
-
-#Preview("state general") {
-    let dm = DM()
-    dm.isStateEdiding = false
-    return NewCardView()
-        .environmentObject(dm)
+#Preview {
+    NewCardView()
+        .environmentObject(DM())
 }
 
