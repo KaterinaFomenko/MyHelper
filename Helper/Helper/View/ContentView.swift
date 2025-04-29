@@ -33,7 +33,7 @@ struct ContentView: View {
             HStack() {
                 Spacer()
                 
-                SettingsView()
+                SelectedParentCardView()
                     .environmentObject(dm)
             }
         }

@@ -22,19 +22,19 @@ struct CardView: View {
             
             CardImageView(imageName: card.imageName)
             
-            if hasChildren {
+           // if hasChildren {
                 HStack {
                     Spacer()
                     
                     Image(systemName: "circle.fill")
                         .resizable()
                         .frame(width: 5, height: 5)
-                        .foregroundColor(.blue)
+                        .foregroundColor(hasChildren ? .blue : .clear)
                         .padding(.horizontal, 5)
                         .padding(.bottom, 5)
                         .shadow(radius: 10)
                         .opacity(0.5)
-                }
+           //     }
             }
         }
         .frame(width: 100, height: 100)

@@ -30,19 +30,19 @@
             {
                 "titleKey": "Head",
                 "cardId": 4.1,
-                "imageName": "Hurts",
+                "imageName": "head",
                 "groupId": 3
             },
             {
                 "titleKey": "Arm",
                 "cardId": 4.2,
-                "imageName": "Hurts",
+                "imageName": "arm",
                 "groupId": 3
             },
             {
                 "titleKey": "Leg",
                 "cardId": 4.3,
-                "imageName": "Hurts",
+                "imageName": "leg",
                 "groupId": 3
             },
             {
@@ -54,7 +54,7 @@
             {
                 "titleKey": "Tooth",
                 "cardId": 4.5,
-                "imageName": "tooth1",
+                "imageName": "tooth",
                 "groupId": 3
             },
             {

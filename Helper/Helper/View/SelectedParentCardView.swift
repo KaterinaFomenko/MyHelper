@@ -7,7 +7,7 @@
 
 import SwiftUI
 // Голубой разделитель
-struct SettingsView: View {
+struct SelectedParentCardView: View {
     @State private var isPressed = false
     
     @EnvironmentObject var dm: DM
@@ -62,6 +62,6 @@ struct SettingsView: View {
 
 #Preview {
     
-    SettingsView()
+    SelectedParentCardView()
         .environmentObject(DM.shared)
 }

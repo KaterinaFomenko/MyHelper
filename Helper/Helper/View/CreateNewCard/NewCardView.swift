@@ -113,7 +113,7 @@ struct NewCardView: View {
                                         
                                     Spacer()
                                     
-                                    if (dm.isCardContainGroup && dm.parentCardIdOpened < 0) {
+                                  //  if (dm.parentCardIdOpened < 0) {
                                         Image(systemName: "circle.fill")
                                             .resizable()
                                             .frame(width: 5, height: 5)
@@ -122,7 +122,7 @@ struct NewCardView: View {
                                             .shadow(radius: 10)
                                             .opacity(0.5)
                                          //   .padding(.top, 40)
-                                    }
+                                 //   }
                                 }
                                 .sheet(isPresented: $isShowIconLibrary) {
                                     IconLibraryView(isShowIconGalary: $isShowIconLibrary, selectedIconLibrary: $selectedIconLibrary)
