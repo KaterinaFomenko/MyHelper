@@ -8,9 +8,11 @@
 import SwiftUI
 // Голубой разделитель
 struct SelectedParentCardView: View {
-    @State private var isPressed = false
-    
+   // @State private var isPressed = false
+    @State var isShowAdditionalSettingsView: Bool = false
     @EnvironmentObject var dm: DM
+    @EnvironmentObject var settings: Settings // Добавляем EnvironmentObject для Settings
+    
     
     var body: some View {
         HStack(alignment: .center) {
@@ -24,10 +26,12 @@ struct SelectedParentCardView: View {
                 .background(Circle().fill(Color.white))
                 .foregroundStyle(.blue)
                 .padding(5)
-                
+            
                 .onTapGesture {
-                    dm.titleWay = ""
+                    // dm.titleWay = ""
+                    isShowAdditionalSettingsView.toggle()
                 }
+            
             
             ScrollViewReader { proxy in
                 ScrollView(.horizontal) {
@@ -52,16 +56,26 @@ struct SelectedParentCardView: View {
                     .background(Color.blue)
                     .foregroundStyle(.white)
                     .clipShape(Circle())
-                    .scaleEffect(isPressed ? 0.9 : 1.0)
+                  //  .scaleEffect(isPressed ? 0.9 : 1.0)
             }
             .padding(.trailing, 10)
             .frame(width: 80, height: 60, alignment: .trailing) // для увеличения площади нажатия
-           // .background(Color(.gray))
-        }    }
+            // .background(Color(.gray))
+            
+            
+        }
+        .sheet(isPresented: $isShowAdditionalSettingsView) {
+            AdditionalSettingsView(isShowAdditionalSettingsView: $isShowAdditionalSettingsView)
+                .environmentObject(settings)
+        }
+    }
+        
+
 }
 
 #Preview {
     
     SelectedParentCardView()
         .environmentObject(DM.shared)
+        .environmentObject(Settings())
 }

@@ -10,6 +10,7 @@ struct ContentView: View {
     
     // Управляем состоянием DM
     @ObservedObject private var dm = DM.shared
+   
     
     var body: some View {
         

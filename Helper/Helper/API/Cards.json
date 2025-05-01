@@ -48,7 +48,7 @@
             {
                 "titleKey": "Stomach",
                 "cardId": 4.4,
-                "imageName": "Hurts",
+                "imageName": "stomach",
                 "groupId": 3
             },
             {
@@ -105,7 +105,7 @@
             {
                 "titleKey": "Car",
                 "cardId": 5.4,
-                "imageName": "Car",
+                "imageName": "car",
                 "groupId": 4
             }
         ]

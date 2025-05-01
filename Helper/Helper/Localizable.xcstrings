@@ -497,6 +497,9 @@
         }
       }
     },
+    "Choice Language" : {
+
+    },
     "Close" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -714,6 +717,9 @@
           }
         }
       }
+    },
+    "Do you want to use the audio?" : {
+
     },
     "Dog" : {
       "extractionState" : "manual",
@@ -1559,6 +1565,9 @@
         }
       }
     },
+    "Language" : {
+
+    },
     "Leg" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2197,6 +2206,9 @@
         }
       }
     },
+    "Settins" : {
+
+    },
     "Seven" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2631,6 +2643,9 @@
           }
         }
       }
+    },
+    "Voice Guidance" : {
+
     },
     "Wait" : {
       "extractionState" : "manual",

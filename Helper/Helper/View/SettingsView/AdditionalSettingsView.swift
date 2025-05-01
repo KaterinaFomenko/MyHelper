@@ -9,22 +9,31 @@ import SwiftUI
 
 class Settings: ObservableObject {
     
-    @Published var language: Language = .english
+    //@Published var language: Language = .english
     @Published var voiceGuidance: Bool = false
+    @AppStorage("appLanguage") var language: Language = .english {
+        willSet { objectWillChange.send() }
+    }
     
-    enum Language: String, CaseIterable {
+    enum Language: String, CaseIterable, Identifiable {
         case english = "en"
         case polish = "pl"
-        case russian = "rus"
+        case russian = "ru"
         case ukrainian = "uk"
         
-        var getLanguage: String {
+        var id: String { self.rawValue }
+        
+        var displayName: String {
             switch self {
             case .english: return "English"
-            case .polish: return "Polisz"
+            case .polish: return "Polski"
             case .russian: return "Русский"
-            case .ukrainian: return "Украінський"
+            case .ukrainian: return "Українська"
             }
+        }
+        
+         var locale: Locale {
+            Locale(identifier: self.rawValue)
         }
     }
 }
@@ -32,15 +41,16 @@ class Settings: ObservableObject {
 
 struct AdditionalSettingsView: View {
     @EnvironmentObject var settings: Settings
+    @Binding var isShowAdditionalSettingsView: Bool
     
     var body: some View {
         NavigationStack {
             Form {
-                Section("Languge") {
+                Section("Language") {
                     
                     Picker("Choice Language", selection: $settings.language) {
-                        ForEach(Settings.Language.allCases, id: \.self) { language in
-                            Text(language.getLanguage)
+                        ForEach(Settings.Language.allCases) { language in
+                            Text(language.displayName)
                         }
                     }
                     .pickerStyle(.navigationLink)
@@ -59,6 +69,6 @@ struct AdditionalSettingsView: View {
 
 #Preview {
     let settings = Settings()
-    AdditionalSettingsView()
+    AdditionalSettingsView( isShowAdditionalSettingsView: .constant(true))
         .environmentObject(settings)
 }
