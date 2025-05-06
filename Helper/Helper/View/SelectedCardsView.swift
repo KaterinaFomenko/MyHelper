@@ -41,7 +41,7 @@ struct SelectedCardsView: View {
 #Preview {
    
     SelectedCardsView()
-        .environmentObject(DM.shared) 
+//.environmentObject(DM.shared) 
 }
 
 //struct SelectedCardsView_Previews: PreviewProvider {

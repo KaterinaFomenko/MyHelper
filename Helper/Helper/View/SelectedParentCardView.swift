@@ -8,74 +8,58 @@
 import SwiftUI
 // Голубой разделитель
 struct SelectedParentCardView: View {
-   // @State private var isPressed = false
-    @State var isShowAdditionalSettingsView: Bool = false
-    @EnvironmentObject var dm: DM
-    @EnvironmentObject var settings: Settings // Добавляем EnvironmentObject для Settings
     
+    @State private var isShowLanguagePickerView: Bool = false
+    @EnvironmentObject var dm: DM
     
     var body: some View {
-        HStack(alignment: .center) {
-            
-            Image("home5")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 46, height: 46)
-                .scaleEffect(1)
-                .clipShape(Circle())
-                .background(Circle().fill(Color.white))
-                .foregroundStyle(.blue)
-                .padding(5)
-            
-                .onTapGesture {
-                    // dm.titleWay = ""
-                    isShowAdditionalSettingsView.toggle()
-                }
-            
-            
-            ScrollViewReader { proxy in
-                ScrollView(.horizontal) {
-                    Text(dm.titleWay)
+        ZStack() {
+            Rectangle()
+                .fill(Color.blue.opacity(0.1))
+                .frame(height: 60)
+    
+                HStack(alignment: .center) {
+                    Image(systemName: "gearshape.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
+                        .foregroundStyle(.blue)
+                        .padding(10)
+                        .onTapGesture {
+                            isShowLanguagePickerView.toggle()
+                        }
+                    let a = "\u{203A} "
+                    let b = dm.titleWay.lkey.toString()
+                   
+                    Text(b.isEmpty ? "" : a).font(.system(size: 25)) + Text(dm.titleWay.lkey)
                         .font(.system(size: 25))
-                        .id(dm.titleWay)
-                }.onChange(of: dm.titleWay) { oldValue, newValue in
-                    withAnimation {
-                        proxy.scrollTo(newValue, anchor: .trailing)
+                     
+                    Spacer()
+                    
+                    Button() {
+                        dm.removeLastItem()
+                        print("\(dm.titleWay)")
+                        print("\(dm.titleWay.loc)")
+                        print(NSLocalizedString(dm.titleWay, comment: ""))
+                        print("\(LocalizedStringKey(dm.titleWay))")
+                    } label: {
+                        Image(systemName: "delete.left.fill")
+                            .font(.system(size: 20))
+                            .padding(10)
+                            .background(Color.blue)
+                            .foregroundStyle(.white)
+                            .clipShape(Circle())
                     }
+                    .padding(.trailing, 10)
+                    .frame(width: 80, height: 60, alignment: .trailing) // для увеличения площади нажатия
+                }
+                .sheet(isPresented: $isShowLanguagePickerView) {
+                    LanguagePickerView(isShowLanguagePicker: $isShowLanguagePickerView)
                 }
             }
-            
-            Spacer()
-            
-            Button() {
-                dm.removeLastItem()
-            } label: {
-                Image(systemName: "delete.left.fill")
-                    .font(.system(size: 25))
-                    .padding(10)
-                    .background(Color.blue)
-                    .foregroundStyle(.white)
-                    .clipShape(Circle())
-                  //  .scaleEffect(isPressed ? 0.9 : 1.0)
-            }
-            .padding(.trailing, 10)
-            .frame(width: 80, height: 60, alignment: .trailing) // для увеличения площади нажатия
-            // .background(Color(.gray))
-            
-            
-        }
-        .sheet(isPresented: $isShowAdditionalSettingsView) {
-            AdditionalSettingsView(isShowAdditionalSettingsView: $isShowAdditionalSettingsView)
-                .environmentObject(settings)
         }
     }
-        
-
-}
 
 #Preview {
-    
     SelectedParentCardView()
-        .environmentObject(DM.shared)
-        .environmentObject(Settings())
 }

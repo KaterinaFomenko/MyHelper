@@ -18,10 +18,6 @@ struct CardModel: Codable, Identifiable, Hashable {
     var imageName: String?
     var priority: Int?
     var childCards: [CardModel]?
-
-    var title: String {
-        return NSLocalizedString(titleKey, comment: "")
-    }
 }
 
 func loadFromJSON() -> [CardModel] {

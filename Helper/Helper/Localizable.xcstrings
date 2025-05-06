@@ -352,6 +352,29 @@
         }
       }
     },
+    "Boar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dzik"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кабан"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кабан"
+          }
+        }
+      }
+    },
     "Bread" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -497,9 +520,6 @@
         }
       }
     },
-    "Choice Language" : {
-
-    },
     "Close" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -631,6 +651,29 @@
         }
       }
     },
+    "Deer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeleń"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Олень"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Олень"
+          }
+        }
+      }
+    },
     "Delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -719,7 +762,26 @@
       }
     },
     "Do you want to use the audio?" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chcesz skorzystać z dźwięku?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы хотите использовать звуковое сопровождение?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ви хочете використовувати звуковий супровід?"
+          }
+        }
+      }
     },
     "Dog" : {
       "extractionState" : "manual",
@@ -1040,6 +1102,29 @@
         }
       }
     },
+    "Forest animals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwierzę leśne"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лесные животные"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лісові тварини"
+          }
+        }
+      }
+    },
     "Fork" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1116,6 +1201,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чотири"
+          }
+        }
+      }
+    },
+    "Giraffe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Żyrafa"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жираф"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жирафа"
           }
         }
       }
@@ -1236,6 +1344,29 @@
         }
       }
     },
+    "Hamster" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chomik"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хомяк"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хом'як"
+          }
+        }
+      }
+    },
     "Happy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1290,6 +1421,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Голова"
+          }
+        }
+      }
+    },
+    "Hedgehog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeż"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ёж"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Їжак"
           }
         }
       }
@@ -1451,13 +1605,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Я"
+            "value" : "«Я»"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Я"
+            "value" : "«Я»"
           }
         }
       }
@@ -1566,7 +1720,26 @@
       }
     },
     "Language" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Język"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Язык"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мова"
+          }
+        }
+      }
     },
     "Leg" : {
       "extractionState" : "manual",
@@ -1627,7 +1800,26 @@
       }
     },
     "more" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "więcej"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "подробнее"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "детальніше"
+          }
+        }
+      }
     },
     "Name" : {
       "extractionState" : "manual",
@@ -1797,6 +1989,29 @@
         }
       }
     },
+    "Parrot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Papuga"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Попугай"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папуга"
+          }
+        }
+      }
+    },
     "Pee" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1826,8 +2041,34 @@
         }
       }
     },
-    "pencil.circle" : {
-
+    "Pets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pets"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwierzęta domowe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домашние животные\t"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домашні тварини"
+          }
+        }
+      }
     },
     "Plate" : {
       "extractionState" : "manual",
@@ -1999,6 +2240,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пазл"
+          }
+        }
+      }
+    },
+    "Rabbit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Królik"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кролик"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кролик"
           }
         }
       }
@@ -2206,8 +2470,27 @@
         }
       }
     },
-    "Settins" : {
-
+    "Settings" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Налаштування"
+          }
+        }
+      }
     },
     "Seven" : {
       "extractionState" : "manual",
@@ -2350,6 +2633,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ложка"
+          }
+        }
+      }
+    },
+    "Squirrel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiewiórka"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белка"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Білка"
           }
         }
       }
@@ -2557,6 +2863,29 @@
         }
       }
     },
+    "Tiger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tygrys"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тигр"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тигр"
+          }
+        }
+      }
+    },
     "Toilet" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2645,7 +2974,26 @@
       }
     },
     "Voice Guidance" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wskazówki głosowe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Голосовые подсказки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Голосові підказки"
+          }
+        }
+      }
     },
     "Wait" : {
       "extractionState" : "manual",
@@ -2817,6 +3165,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Погода"
+          }
+        }
+      }
+    },
+    "Wild Animals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dzikie zwierzęta"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дикие животные"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дикі тварини"
           }
         }
       }

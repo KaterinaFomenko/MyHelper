@@ -45,9 +45,10 @@ struct LongTapCard: View {
 
 #Preview {
     let card = CardModel(cardId: 1, titleKey: "Animals", groupId: 1, imageName: "puzzle", priority: 1)
-    let dm = DM() // Создайте экземпляр DM
+    let testSpeechManager = SpeechManager(settings: Settings())
+    let dm = DM(speechManager: testSpeechManager)
     LongTapCard(card: card)
-        .environmentObject(dm) // Передайте его в окружение
+        .environmentObject(dm)
 }
 
 

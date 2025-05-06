@@ -25,8 +25,12 @@ enum TitleState {
 }
 
 class DM: ObservableObject {
-    static let shared = DM()
+  //  static let shared = DM(speechManager: <#SpeechManager#>)
     
+ //   @EnvironmentObject var speechManager: SpeechManager
+    
+    let speechManager: SpeechManager
+
     @Published var mainArray: [CardModel] = [] // monitor
     @Published var parentCardsArray: [CardModel] = [] // source for perentElements from Json
     
@@ -43,9 +47,10 @@ class DM: ObservableObject {
     
     // хранится id карты на которую выделили для удаления / редактирования
     var contextCardId: Float = 0
-    let textToSpeech = TextToSpeech()
+   // let textToSpeech = SpeechManager(initialLanguage: Settings().currentLanguage)
     
-    init() {
+    init(speechManager: SpeechManager) {
+        self.speechManager = speechManager
         loadData()
     }
     
@@ -61,10 +66,34 @@ class DM: ObservableObject {
         }
     }
     
-    func speakText(text: String) {
-        textToSpeech.speak(text: text)
-    }
+//    func speakText(text: String) {
+//        print("🗣 Озвучиваем: \(text)")
+//           speechManager?.speak(text: text)
+//       }
     
+    func speakText(forKey key: String, language: Settings.Language) {
+        // Получаем нужный бандл для выбранного языка
+        let locale: String
+        switch language {
+        case .english: locale = "en"
+        case .polish: locale = "pl"
+        case .russian: locale = "ru"
+        case .ukrainian: locale = "uk"
+        }
+        // Получаем путь к нужному .lproj
+        guard let path = Bundle.main.path(forResource: locale, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            print("❌ Не найден бандл для \(locale)")
+            return
+        }
+        // Локализуем текст явно для нужного языка
+        let localizedText = NSLocalizedString(key, bundle: bundle, comment: "")
+        print("🗣 Озвучиваем (\(locale)): \(localizedText)")
+        
+        print("🟢 [DM] speakText вызван с текстом: \(localizedText)")
+        speechManager.speak(text: localizedText)
+        
+    }
     private func loadData() {
         let array = UserSaving.shared.loadParentCardsArray()
         // load from UserDefaults
@@ -90,23 +119,18 @@ class DM: ObservableObject {
     
     func addHomeBackCards() {
         let cardHome = CardModel(cardId: 100, titleKey: "Home", groupId: 100, imageName: "home" )
-        let cardBack = CardModel(cardId: 101, titleKey: "BackService", groupId: 101, imageName: "back1")
+        let cardBack = CardModel(cardId: 101, titleKey: "BackService", groupId: 101, imageName: "back")
         mainArray.insert(cardHome, at: 0)
         mainArray.append(cardBack)
     }
     
     func getNameOfGroup() -> String {
         let number = getIndexFromCardId(parentCardIdOpened)
-        let nameOfGroup = parentCardsArray[number].title
+        let nameOfGroup = parentCardsArray[number].titleKey
        // print("👇 parentCardIdOpened: \(nameOfGroup)")
         return nameOfGroup
     }
     
-    func getColorIdOfGroup2() -> Int {
-        let number = getIndexFromCardId(parentCardIdOpened)
-        let colorIdGroup = parentCardsArray[number].groupId
-        return colorIdGroup
-    }
     func getColorIdOfGroup1(for cardId: Float ) -> Int {
         let ind = getIndexFromCardId(cardId)
         let colorIdGroup = parentCardsArray[ind].groupId
@@ -140,7 +164,7 @@ class DM: ObservableObject {
         }
     }
  
-    // ищет индекс по Id (looking for Id for parent / child Cards)
+    // looking for Id for parent / child Cards
     func getIndexFromCardId(_ cardId: Float) -> Int {
         for (indexParent, cardParent) in parentCardsArray.enumerated() {
             if cardParent.cardId == cardId {
@@ -191,8 +215,9 @@ class DM: ObservableObject {
     func updateCard(card: CardModel) {
         for (indexParent, cardParent) in parentCardsArray.enumerated() {
             if cardParent.cardId == card.cardId {
+               
                 print(parentCardsArray[indexParent])
-                parentCardsArray[indexParent].titleKey = card.title
+                parentCardsArray[indexParent].titleKey = card.titleKey
                 parentCardsArray[indexParent].groupId = card.groupId
                 parentCardsArray[indexParent].imageName = card.imageName
                 
@@ -201,11 +226,10 @@ class DM: ObservableObject {
                 }
                 mainArray[indexParent] = parentCardsArray[indexParent]
             }
-            // ToDo SaveChild
+           
             if let indexChild = cardParent.childCards?.firstIndex(where: { $0.cardId == card.cardId }) {
-               // if let childCard = parentCardsArray[indexParent].childCards?[indexChild] {
-               //     print(childCard)
-                parentCardsArray[indexParent].childCards?[indexChild].titleKey = card.title
+            
+                parentCardsArray[indexParent].childCards?[indexChild].titleKey = card.titleKey
                 parentCardsArray[indexParent].childCards?[indexChild].groupId = card.groupId
                 parentCardsArray[indexParent].childCards?[indexChild].imageName = card.imageName
                 if let card = parentCardsArray[indexParent].childCards?[indexChild] {

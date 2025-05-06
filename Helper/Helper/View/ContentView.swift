@@ -8,47 +8,36 @@ import SwiftUI
 
 struct ContentView: View {
     
-    // Управляем состоянием DM
-    @ObservedObject private var dm = DM.shared
-   
+  //  @ObservedObject private var dm = DM.shared
+    @EnvironmentObject var dm: DM
     
     var body: some View {
-        
-        VStack(spacing: 0)  {
-            Rectangle()
-                .fill(Color.blue.opacity(0.1))
-                .frame(height: 20)
-                .padding(.bottom, 10)
-            
-            // Горизонтальный Scroll
-            SelectedCardsView()
-                .padding(10)
-                .environmentObject(dm)
-        }
-        
-        // Голубой разделитель
-        ZStack() {
-            Rectangle()
-                .fill(Color.blue.opacity(0.1))
-                .frame(height: 60)
-            HStack() {
-                Spacer()
+        VStack {
+            VStack(spacing: 0)  {
+                Rectangle()
+                    .fill(Color.blue.opacity(0.1))
+                    .frame(height: 20)
+                    .padding(.bottom, 10)
+                
+                SelectedCardsView()
+                    .padding(10)
+                    .padding(.bottom, 10)
+                   // .environmentObject(dm)
                 
                 SelectedParentCardView()
-                    .environmentObject(dm)
+                   // .environmentObject(dm)
             }
-        }
-        
-        // Вертикальный MainScroll
-        ScrollView {
-            VStack {
-                MainCardsView()
-                    .environmentObject(dm)
+            
+            ScrollView {
+                VStack {
+                    MainCardsView()
+                      //  .environmentObject(dm)
+                }
             }
         }
     }
 }
 
-    #Preview {
-        ContentView()
-    }
+#Preview {
+    ContentView()
+}

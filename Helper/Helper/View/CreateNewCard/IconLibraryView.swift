@@ -26,7 +26,6 @@ struct IconLibraryView: View {
                     }
                     .frame(height: 1)
                     
-                    // Контент
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(arrayImagesFix, id: \.self) { iconName in
                             CardImageView(
@@ -62,7 +61,6 @@ struct IconLibraryView: View {
         }
     }
     
-    // Остальные функции остаются без изменений
     private func debugPrintArrays(_ arrayImages: [String], _ arrayImagesFix: [String]) {
         print("arrayImages: \(arrayImages.count)")
         print("arrayImagesFix (filtered): \(arrayImagesFix.count)")
@@ -95,5 +93,5 @@ struct ScrollOffsetKey: PreferenceKey {
         isShowIconGalary: .constant(true),
         selectedIconLibrary: .constant("sun.max.fill")
     )
-    .environmentObject(DM.shared)
+    .environmentObject(DM(speechManager: SpeechManager(settings: Settings())))
 }

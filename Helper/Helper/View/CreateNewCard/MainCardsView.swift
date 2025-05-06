@@ -10,13 +10,11 @@ import SwiftUI
 struct MainCardsView: View {
     
     @EnvironmentObject var dm: DM
-    
+    @EnvironmentObject var settings: Settings
     @State var isShowAlert = false
-   
     @State var message = ""
     
     var idCurrentCard: Float = 0
-    
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 10)]
     
     var body: some View {
@@ -27,8 +25,10 @@ struct MainCardsView: View {
                 
                     .onTapGesture {
                         
-                        dm.speakText(text: card.title)
-                        print("☎️ card.title: \(card.title), cardId: \(card.cardId)")
+                        dm.speakText(forKey: card.titleKey, language: settings.currentLanguage)
+                       
+                        print("☎️ card.titleKey: \(card.titleKey), cardId: \(card.cardId)")
+                        print("☎️ card.titleKey: \(card.titleKey.lkey), cardId: \(card.cardId)")
                         
                         if card.childCards == nil && card.cardId < 100 {
                             // Add new card on top array
@@ -59,11 +59,11 @@ struct MainCardsView: View {
                                 // проваливаемся в childCards
                                 dm.parentCardIdOpened = card.cardId
                                 // Add path on SettigsView
-                                dm.titleWay =  dm.titleWay + " \u{203A} " + card.title
+                                dm.titleWay = card.titleKey
                                 
                                 dm.mainArray = card.childCards ?? []
                                 
-                                // let arrayIDs = dm.mainArray.compactMap { "\($0.cardId) : \($0.title)" }
+                                // let arrayIDs = dm.mainArray.compactMap { "\($0.cardId) : \($0.titleKey)" }
                                 //  print("👼 There are all child cards: \( arrayIDs )")
                                 
                                 dm.addItemToSelected(item: card)
@@ -130,7 +130,7 @@ struct MainCardsView: View {
         .animation(.easeInOut, value: isShowAlert)
         
         .onAppear {
-            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.title) : \($0.imageName)" }.joined(separator: "\n")
+            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.titleKey) : \($0.imageName)" }.joined(separator: "\n")
             
             print("🤵 It`s all parent cards: \(arrayIDs)")
             
@@ -140,6 +140,6 @@ struct MainCardsView: View {
 
 #Preview {
     MainCardsView()
-        .environmentObject(DM.shared)
+        .environmentObject(DM(speechManager: SpeechManager(settings: Settings())))
 }
 

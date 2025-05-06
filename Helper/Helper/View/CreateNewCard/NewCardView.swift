@@ -22,8 +22,6 @@ struct NewCardView: View {
     
     @State private var nameCard: String = "" // имя
     @State private var selectedColorId = 1 // цвет groupId
-    // @State private var colorOfGroupId  = 1 // цвет группы
-   // @State private var selectedIcon: String? = nil // выбранная иконка
     @State private var selectedIconLibrary: String = ""
     @State private var selectedImageGalary: UIImage? = nil
     
@@ -76,7 +74,7 @@ struct NewCardView: View {
                                     .font(.custom("Helvetica Neue", size: 30))
                                     .lineLimit(1) // Ограничиваем одной строкой
                                     .truncationMode(.tail) // Добавляем многоточие в конце
-                                    .frame(maxWidth: geometry.size.width / 1.5 - 40)
+                                    .frame(maxWidth: geometry.size.width / 1.5)
                                     .padding(.top, 10)
                                     
                                     
@@ -85,7 +83,7 @@ struct NewCardView: View {
                                 
                                 HStack {
                                     
-                                    if dm.isStateEdiding {
+                                   // if dm.isStateEdiding {
                                         
                                         Menu {
                                             ControlGroup {
@@ -109,7 +107,7 @@ struct NewCardView: View {
                                                 .labelStyle(.iconOnly)
                                                 .shadow(radius: 10)
                                         }
-                                    }
+                              //      }
                                         
                                     Spacer()
                                     
@@ -175,10 +173,10 @@ struct NewCardView: View {
             // MARK:  show new Card Screen for editind
             
             if dm.isStateEdiding == true {
-                // add 13.04
+              
                 selectedColorId = dm.getColorIdOfGroup(for: dm.contextCardId)
                 
-                nameCard = dm.getCardByID(cardId: dm.contextCardId)?.title ?? "Empty name"
+                nameCard = dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name"
                 
                 let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "scribble"
                 
@@ -206,6 +204,7 @@ struct NewCardView: View {
             
         } label: {
             Text("Save")
+                .frame(minWidth: 80)
                 .modifier(
                     CustomButtonModifier(
                         isPressed: isSavingBtn,
@@ -341,7 +340,7 @@ struct NewCardView: View {
     private func displayImageOrButton(geometry: GeometryProxy) -> some View {
         // MARK: place show Galary
         if !selectedIconLibrary.isEmpty {
-        //    selectedImageGalary = nil
+      
             Image(selectedIconLibrary)
                 .resizable()
                 .scaledToFit()
@@ -379,23 +378,23 @@ struct NewCardView: View {
             .zIndex(2)
         }
     }
-
-    
-
-    
 }
 
 #Preview("state editing") {
-    let dm = DM()
+    let testSpeechManager = SpeechManager(settings: Settings())
+    let dm = DM(speechManager: testSpeechManager)
     dm.isStateEdiding = true
     return NewCardView()
-        .environmentObject(dm)
+            .environmentObject(dm)
+            .environmentObject(testSpeechManager)
 }
 
 #Preview("state general") {
-    let dm = DM()
+    let testSpeechManager = SpeechManager(settings: Settings())
+    let dm = DM(speechManager: testSpeechManager)
     dm.isStateEdiding = false
     return NewCardView()
-        .environmentObject(dm)
+            .environmentObject(dm)
+            .environmentObject(testSpeechManager)
 }
 

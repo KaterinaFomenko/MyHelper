@@ -7,10 +7,7 @@
 
 import SwiftUI
 
-    
-
 struct CustomColorPicker: View {
-    
     @Binding var selectedColorId: Int
     
     var body: some View {
@@ -36,7 +33,6 @@ struct CustomColorPicker: View {
                 .padding()
                 .background(Color.gray.opacity(0.1))
                 .clipShape(.rect(cornerRadius: 10))
-                
             }
         }
     }

@@ -120,7 +120,7 @@
             {
                 "titleKey": "Wash_Hands",
                 "cardId": 6.1,
-                "imageName": "wash Hands",
+                "imageName": "wash hands",
                 "groupId": 5
             },
             {
@@ -134,6 +134,13 @@
                 "cardId": 6.3,
                 "imageName": "poop",
                 "audioName": "poop.mp3",
+                "groupId": 5
+            },
+            {
+                "titleKey": "Brush the teeth",
+                "cardId": 6.4,
+                "imageName": "brush the teeth",
+                "audioName": "brush the teeth.mp3",
                 "groupId": 5
             }
         ]
@@ -169,25 +176,31 @@
             {
                 "titleKey": "Fork",
                 "cardId": 8.1,
-                "imageName": "Fork",
+                "imageName": "fork",
                 "groupId": 7
             },
             {
                 "titleKey": "Spoon",
                 "cardId": 8.2,
-                "imageName": "Spoon",
+                "imageName": "spoon",
                 "groupId": 7
             },
             {
                 "titleKey": "Knife",
                 "cardId": 8.3,
-                "imageName": "Knife",
+                "imageName": "knife",
                 "groupId": 7
             },
             {
                 "titleKey": "Plate",
                 "cardId": 8.4,
-                "imageName": "Plate",
+                "imageName": "plate",
+                "groupId": 7
+            },
+            {
+                "titleKey": "Сup",
+                "cardId": 8.5,
+                "imageName": "cup",
                 "groupId": 7
             }
         ]
@@ -457,62 +470,134 @@
         ]
     },
     {
-        "titleKey": "Animals",
+        "titleKey": "Pets",
         "cardId": 15,
-        "imageName": "animals",
+        "imageName": "pets",
         "priority": 3,
         "groupId": 14,
         "childCards": [
             {
                 "titleKey": "Dog",
                 "cardId": 15.1,
-                "imageName": "Dog",
+                "imageName": "dog",
                 "groupId": 14
             },
             {
                 "titleKey": "Cat",
                 "cardId": 15.2,
-                "imageName": "Cat",
+                "imageName": "cat",
                 "groupId": 14
             },
             {
-                "titleKey": "Lion",
+                "titleKey": "Hamster",
                 "cardId": 15.3,
-                "imageName": "Lion",
+                "imageName": "hamster",
                 "groupId": 14
             },
             {
-                "titleKey": "Elephant",
+                "titleKey": "Rabbit",
                 "cardId": 15.4,
-                "imageName": "Elephant",
+                "imageName": "rabbit",
+                "groupId": 14
+            },
+            {
+                "titleKey": "Parrot",
+                "cardId": 15.5,
+                "imageName": "parrot",
                 "groupId": 14
             }
         ]
     },
     {
-        "titleKey": "Words_of_greeting",
+        "titleKey": "Forest animals",
         "cardId": 16,
-        "imageName": "greeting2",
-        "priority": 2,
+        "imageName": "forest animals",
+        "priority": 3,
         "groupId": 15,
         "childCards": [
             {
-                "titleKey": "Good_morning",
+                "titleKey": "Squirrel",
                 "cardId": 16.1,
-                "imageName": "Good morning",
+                "imageName": "squirrel",
                 "groupId": 15
+            },
+            {
+                "titleKey": "Hedgehog",
+                "cardId": 16.2,
+                "imageName": "hedgehog",
+                "groupId": 15
+            },
+            {
+                "titleKey": "Deer",
+                "cardId": 16.3,
+                "imageName": "deer",
+                "groupId": 15
+            },
+            {
+                "titleKey": "Boar",
+                "cardId": 16.4,
+                "imageName": "boar",
+                "groupId": 15
+            }
+        ]
+    },
+    {
+        "titleKey": "Wild Animals",
+        "cardId": 17,
+        "imageName": "wild animals",
+        "priority": 3,
+        "groupId": 16,
+        "childCards": [
+            {
+                "titleKey": "Giraffe",
+                "cardId": 17.1,
+                "imageName": "giraffe",
+                "groupId": 16
+            },
+            {
+                "titleKey": "Tiger",
+                "cardId": 17.2,
+                "imageName": "tiger",
+                "groupId": 16
+            },
+            {
+                "titleKey": "Lion",
+                "cardId": 17.3,
+                "imageName": "Lion",
+                "groupId": 16
+            },
+            {
+                "titleKey": "Elephant",
+                "cardId": 17.4,
+                "imageName": "Elephant",
+                "groupId": 16
+            }
+        ]
+    },
+    {
+        "titleKey": "Words_of_greeting",
+        "cardId": 18,
+        "imageName": "greeting2",
+        "priority": 2,
+        "groupId": 17,
+        "childCards": [
+            {
+                "titleKey": "Good_morning",
+                "cardId": 18.1,
+                "imageName": "Good morning",
+                "groupId": 17
             },
             {
                 "titleKey": "Hello",
-                "cardId": 16.2,
+                "cardId": 18.2,
                 "imageName": "Hello",
-                "groupId": 15
+                "groupId": 17
             },
             {
                 "titleKey": "Goodbye",
-                "cardId": 16.3,
+                "cardId": 18.3,
                 "imageName": "Goodbye",
-                "groupId": 15
+                "groupId": 17
             }
         ]
     }
