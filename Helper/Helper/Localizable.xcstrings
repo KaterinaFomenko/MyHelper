@@ -462,6 +462,29 @@
         }
       }
     },
+    "Care" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Troska"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Забота"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Турбота"
+          }
+        }
+      }
+    },
     "Cat" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -607,6 +630,29 @@
         }
       }
     },
+    "Comfort me" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pociesz mnie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалей меня"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалій мене"
+          }
+        }
+      }
+    },
     "Create new Card" : {
       "localizations" : {
         "pl" : {
@@ -647,6 +693,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Створити нову групу карток"
+          }
+        }
+      }
+    },
+    "Cup" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cup"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Kubek"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Чашка"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Чашка"
           }
         }
       }
@@ -1228,6 +1303,29 @@
         }
       }
     },
+    "Give me five" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przybij piątkę"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дай пять"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дай п’ять"
+          }
+        }
+      }
+    },
     "Good" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1477,6 +1575,29 @@
         }
       }
     },
+    "Hold me tight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przytul mocno"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прижми к себе"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Притисни до себе"
+          }
+        }
+      }
+    },
     "Home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1525,6 +1646,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обіймати"
+          }
+        }
+      }
+    },
+    "Hug me" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przytul mnie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обними меня"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обійми мене"
           }
         }
       }
@@ -1686,6 +1830,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поцілуй"
+          }
+        }
+      }
+    },
+    "Kiss me" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pocałuj mnie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поцелуй меня"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поцілуй мене"
           }
         }
       }
@@ -2012,6 +2179,29 @@
         }
       }
     },
+    "Pat my head" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pogłaszcz mnie po głowie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Погладь по голове"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Погладь мене по голові"
+          }
+        }
+      }
+    },
     "Pee" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2066,6 +2256,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Домашні тварини"
+          }
+        }
+      }
+    },
+    "Pick me up" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weź mnie na ręce"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возьми меня на ручки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Візьми мене на ручки"
           }
         }
       }

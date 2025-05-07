@@ -184,8 +184,7 @@ struct NewCardView: View {
                     selectedImageGalary = image
                     
                 } else {
-                    selectedImageGalary = UIImage(named: imageName) // или ???
-                    //selectedIconLibrary = imageName
+                    selectedImageGalary = UIImage(named: imageName)
                 }
             }
         }

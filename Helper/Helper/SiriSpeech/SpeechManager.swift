@@ -90,7 +90,7 @@ class SpeechManager: ObservableObject {
         switch language {
         case .english:
             locale = "en-US"
-            preferredVoiceName = "Samantha" // Или "Nickey"
+            preferredVoiceName = "Samantha" 
         case .polish:
             locale = "pl-PL"
             preferredVoiceName = "Zosia"

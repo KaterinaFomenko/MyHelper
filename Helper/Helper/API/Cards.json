@@ -167,40 +167,46 @@
         ]
     },
     {
-        "titleKey": "Tableware",
+        "titleKey": "Care",
         "cardId": 8,
-        "imageName": "tableware",
+        "imageName": "care",
         "priority": 3,
         "groupId": 7,
         "childCards": [
             {
-                "titleKey": "Fork",
+                "titleKey": "Hug me",
                 "cardId": 8.1,
-                "imageName": "fork",
+                "imageName": "hug me",
                 "groupId": 7
             },
             {
-                "titleKey": "Spoon",
+                "titleKey": "Kiss me",
                 "cardId": 8.2,
-                "imageName": "spoon",
+                "imageName": "kiss me",
                 "groupId": 7
             },
             {
-                "titleKey": "Knife",
+                "titleKey": "Comfort me",
                 "cardId": 8.3,
-                "imageName": "knife",
+                "imageName": "comfort me",
                 "groupId": 7
             },
             {
-                "titleKey": "Plate",
+                "titleKey": "Pat my head",
                 "cardId": 8.4,
-                "imageName": "plate",
+                "imageName": "pat my head",
                 "groupId": 7
             },
             {
-                "titleKey": "Сup",
+                "titleKey": "Give me five",
                 "cardId": 8.5,
-                "imageName": "cup",
+                "imageName": "give me five",
+                "groupId": 7
+            },
+            {
+                "titleKey": "Hold me tight",
+                "cardId": 8.6,
+                "imageName": "hold me tight",
                 "groupId": 7
             }
         ]
@@ -546,31 +552,31 @@
         "cardId": 17,
         "imageName": "wild animals",
         "priority": 3,
-        "groupId": 16,
+        "groupId": 1,
         "childCards": [
             {
                 "titleKey": "Giraffe",
                 "cardId": 17.1,
                 "imageName": "giraffe",
-                "groupId": 16
+                "groupId": 1
             },
             {
                 "titleKey": "Tiger",
                 "cardId": 17.2,
                 "imageName": "tiger",
-                "groupId": 16
+                "groupId": 1
             },
             {
                 "titleKey": "Lion",
                 "cardId": 17.3,
                 "imageName": "Lion",
-                "groupId": 16
+                "groupId": 1
             },
             {
                 "titleKey": "Elephant",
                 "cardId": 17.4,
                 "imageName": "Elephant",
-                "groupId": 16
+                "groupId": 1
             }
         ]
     },
@@ -579,25 +585,25 @@
         "cardId": 18,
         "imageName": "greeting2",
         "priority": 2,
-        "groupId": 17,
+        "groupId": 2,
         "childCards": [
             {
                 "titleKey": "Good_morning",
                 "cardId": 18.1,
                 "imageName": "Good morning",
-                "groupId": 17
+                "groupId": 2
             },
             {
                 "titleKey": "Hello",
                 "cardId": 18.2,
                 "imageName": "Hello",
-                "groupId": 17
+                "groupId": 2
             },
             {
                 "titleKey": "Goodbye",
                 "cardId": 18.3,
                 "imageName": "Goodbye",
-                "groupId": 17
+                "groupId": 2
             }
         ]
     }

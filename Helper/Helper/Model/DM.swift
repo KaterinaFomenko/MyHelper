@@ -71,7 +71,12 @@ class DM: ObservableObject {
 //           speechManager?.speak(text: text)
 //       }
     
-    func speakText(forKey key: String, language: Settings.Language) {
+    func speakText(forKey key: String, language: Settings.Language, isVoice: Bool = false) {
+        
+        guard isVoice else {
+            print("🔇 voiceGuidance off (isVoice = false)")
+            return
+        }
         // Получаем нужный бандл для выбранного языка
         let locale: String
         switch language {
@@ -94,6 +99,7 @@ class DM: ObservableObject {
         speechManager.speak(text: localizedText)
         
     }
+    
     private func loadData() {
         let array = UserSaving.shared.loadParentCardsArray()
         // load from UserDefaults

@@ -19,7 +19,6 @@ struct CardViewForSecectedCards: View {
     
     var body: some View {
         VStack(spacing: 1.0) {
-          //  Text(card.title)
             Text(LocalizedStringKey(card.titleKey))
                 .font(.custom("Helvetica Neue", size: 25))
                 .multilineTextAlignment(.center)

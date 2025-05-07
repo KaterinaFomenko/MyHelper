@@ -34,13 +34,15 @@ struct AppColors {
     }
     
     static func getColorCircle(cardId: Int) -> Int {
-        return cardId % arrayColorIds.count
+        //Расчет colorId по кругу
+        var colorId = cardId % arrayColorIds.count
+        return colorId
         
     }
     
     static func color(for cardId: Int) -> Color {
         let ind = getColorCircle(cardId: cardId)
-        let groupInd = arrayColorIds[ind]
+        let groupInd = arrayColorIds[ind] + 1
         return getColor(groupId: groupInd)
     }
 }
