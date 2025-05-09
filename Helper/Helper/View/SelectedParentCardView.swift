@@ -29,7 +29,7 @@ struct SelectedParentCardView: View {
                             isShowLanguagePickerView.toggle()
                         }
                     let a = "\u{203A} "
-                    let b = dm.titleWay.lkey.toString()
+                    let b = dm.titleWay
                    
                     Text(b.isEmpty ? "" : a).font(.system(size: 25)) + Text(dm.titleWay.lkey)
                         .font(.system(size: 25))

@@ -321,18 +321,6 @@
                 "groupId": 10
             },
             {
-                "titleKey": "Hug",
-                "cardId": 11.3,
-                "imageName": "hug",
-                "groupId": 10
-            },
-            {
-                "titleKey": "Kiss",
-                "cardId": 11.4,
-                "imageName": "kiss",
-                "groupId": 10
-            },
-            {
                 "titleKey": "Run",
                 "cardId": 11.5,
                 "imageName": "run",
@@ -544,39 +532,6 @@
                 "cardId": 16.4,
                 "imageName": "boar",
                 "groupId": 15
-            }
-        ]
-    },
-    {
-        "titleKey": "Wild Animals",
-        "cardId": 17,
-        "imageName": "wild animals",
-        "priority": 3,
-        "groupId": 1,
-        "childCards": [
-            {
-                "titleKey": "Giraffe",
-                "cardId": 17.1,
-                "imageName": "giraffe",
-                "groupId": 1
-            },
-            {
-                "titleKey": "Tiger",
-                "cardId": 17.2,
-                "imageName": "tiger",
-                "groupId": 1
-            },
-            {
-                "titleKey": "Lion",
-                "cardId": 17.3,
-                "imageName": "Lion",
-                "groupId": 1
-            },
-            {
-                "titleKey": "Elephant",
-                "cardId": 17.4,
-                "imageName": "Elephant",
-                "groupId": 1
             }
         ]
     },

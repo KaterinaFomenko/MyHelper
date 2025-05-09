@@ -21,6 +21,9 @@ struct NewCardView: View {
     @EnvironmentObject var dm: DM
     
     @State private var nameCard: String = "" // имя
+
+    
+
     @State private var selectedColorId = 1 // цвет groupId
     @State private var selectedIconLibrary: String = ""
     @State private var selectedImageGalary: UIImage? = nil
@@ -36,6 +39,7 @@ struct NewCardView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var titleCard: LocalizedStringResource = ""
+   // @State private var titleCard: String = ""
     
     var body: some View {
         ZStack {
@@ -70,7 +74,8 @@ struct NewCardView: View {
                             
                             VStack {
                                 
-                                Text(nameCard)
+                            //    Text(LocalizedStringKey(nameCard))
+                                Text(nameCard.lkey)
                                     .font(.custom("Helvetica Neue", size: 30))
                                     .lineLimit(1) // Ограничиваем одной строкой
                                     .truncationMode(.tail) // Добавляем многоточие в конце
@@ -142,7 +147,9 @@ struct NewCardView: View {
             VStack(alignment: .leading) {
                 Text("Name")
                     .font(.headline)
-                TextField("Enter name", text: $nameCard)
+               
+                TextField("Enter name", text: $nameCard )
+                //Text(LocalizedStringKey(nameCard))
             }
             
             HStack(alignment: .center) {
@@ -176,7 +183,16 @@ struct NewCardView: View {
               
                 selectedColorId = dm.getColorIdOfGroup(for: dm.contextCardId)
                 
-                nameCard = dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name"
+               // nameCard = NSLocalizedString ("Hello", comment: "") ?? "Empty name"
+                let nameCardTranslate = dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name"
+                nameCard =  nameCardTranslate.lkey.toString()
+               
+             //   nameCard = NSLocalizedString(dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name", comment: "")
+                
+                let nameCardStr = dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name"
+                
+            //    nameCard = NSLocalizedString(nameCardStr, comment: "")
+            //    nameCard = LocalizedStringKey(nameCard)
                 
                 let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "scribble"
                 
