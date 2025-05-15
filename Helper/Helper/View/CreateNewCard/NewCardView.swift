@@ -19,39 +19,37 @@ import Photos
 struct NewCardView: View {
     
     @EnvironmentObject var dm: DM
+    @EnvironmentObject var settings: Settings
     
-    @State private var nameCard: String = "" // имя
-
-    
-
-    @State private var selectedColorId = 1 // цвет groupId
+    @State private var nameCard: String = ""
+    @State private var selectedColorId = 1 // color groupId
     @State private var selectedIconLibrary: String = ""
     @State private var selectedImageGalary: UIImage? = nil
-    
     
     @State private var isSavingBtn: Bool = false
     @State private var isAddingImageBtn: Bool = false
     @State private var isShowingImagePicker = false
-     // выбранная картинка с Галереи
     @State private var isShowIconLibrary: Bool = false
     
     // Alert
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var titleCard: LocalizedStringResource = ""
-   // @State private var titleCard: String = ""
+   
     
     var body: some View {
         ZStack {
             VStack() {
                 HStack {
-                    
                     if dm.parentCardIdOpened < 0 {
                         Text(titleCard)
+                        
                             .transition(.opacity)
                             .id("TextIdentifier_\(dm.isCardContainGroup)")
                     } else {
-                        Text(dm.getNameOfGroup())
+                        let leng = Settings().storedLanguage
+                        let nameOfGroupe = (dm.getNameOfGroup()).getLocalizedString(language: leng)
+                        Text(nameOfGroupe)
                             .lineLimit(1)
                             .truncationMode(.tail) // Добавляем многоточие в конце
                     }
@@ -74,36 +72,28 @@ struct NewCardView: View {
                             
                             VStack {
                                 
-                            //    Text(LocalizedStringKey(nameCard))
                                 Text(nameCard.lkey)
                                     .font(.custom("Helvetica Neue", size: 30))
-                                    .lineLimit(1) // Ограничиваем одной строкой
+                                    .lineLimit(1)
                                     .truncationMode(.tail) // Добавляем многоточие в конце
                                     .frame(maxWidth: geometry.size.width / 1.5)
                                     .padding(.top, 10)
                                     
-                                    
-                                
                                 Spacer()
                                 
                                 HStack {
-                                    
-                                   // if dm.isStateEdiding {
-                                        
                                         Menu {
                                             ControlGroup {
                                                 Button {
                                                     isShowIconLibrary = true
                                                 } label: {
                                                     Label("Icon Library", systemImage:   "square.3.layers.3d.down.right")
-                                                    
                                                 }
                                                 
                                                 Button {
                                                     pickPhoto()
                                                 } label: {
                                                     Label("Foto Galary", systemImage:  "camera")
-                                        
                                                 }
                                             }
                                             
@@ -112,11 +102,9 @@ struct NewCardView: View {
                                                 .labelStyle(.iconOnly)
                                                 .shadow(radius: 10)
                                         }
-                              //      }
-                                        
+                    
                                     Spacer()
                                     
-                                  //  if (dm.parentCardIdOpened < 0) {
                                         Image(systemName: "circle.fill")
                                             .resizable()
                                             .frame(width: 5, height: 5)
@@ -124,8 +112,6 @@ struct NewCardView: View {
                                             .padding(.horizontal, 5)
                                             .shadow(radius: 10)
                                             .opacity(0.5)
-                                         //   .padding(.top, 40)
-                                 //   }
                                 }
                                 .sheet(isPresented: $isShowIconLibrary) {
                                     IconLibraryView(isShowIconGalary: $isShowIconLibrary, selectedIconLibrary: $selectedIconLibrary)
@@ -183,16 +169,12 @@ struct NewCardView: View {
               
                 selectedColorId = dm.getColorIdOfGroup(for: dm.contextCardId)
                 
-               // nameCard = NSLocalizedString ("Hello", comment: "") ?? "Empty name"
                 let nameCardTranslate = dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name"
-                nameCard =  nameCardTranslate.lkey.toString()
-               
-             //   nameCard = NSLocalizedString(dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name", comment: "")
+                let lang = settings.storedLanguage
+                nameCard =  nameCardTranslate.getLocalizedString(language: lang )
+                print(nameCard)
+              //  nameCard = nameCardTranslate.lkey.toString()
                 
-                let nameCardStr = dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name"
-                
-            //    nameCard = NSLocalizedString(nameCardStr, comment: "")
-            //    nameCard = LocalizedStringKey(nameCard)
                 
                 let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "scribble"
                 
@@ -396,7 +378,7 @@ struct NewCardView: View {
 }
 
 #Preview("state editing") {
-    let testSpeechManager = SpeechManager(settings: Settings())
+    let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     dm.isStateEdiding = true
     return NewCardView()
@@ -405,7 +387,7 @@ struct NewCardView: View {
 }
 
 #Preview("state general") {
-    let testSpeechManager = SpeechManager(settings: Settings())
+    let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     dm.isStateEdiding = false
     return NewCardView()

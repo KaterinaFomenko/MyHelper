@@ -93,5 +93,5 @@ struct ScrollOffsetKey: PreferenceKey {
         isShowIconGalary: .constant(true),
         selectedIconLibrary: .constant("sun.max.fill")
     )
-    .environmentObject(DM(speechManager: SpeechManager(settings: Settings())))
+    .environmentObject(DM(speechManager: SpeechManager(lang: "en")))
 }

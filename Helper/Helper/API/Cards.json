@@ -18,62 +18,76 @@
         "cardId": 3,
         "imageName": "want",
         "priority": 1,
-        "groupId": 1
+        "groupId": 2
+    },
+    {
+        "titleKey": "Yes",
+        "cardId": 19,
+        "imageName": "yes",
+        "priority": 1,
+        "groupId": 6
+    },
+    {
+        "titleKey": "No",
+        "cardId": 21,
+        "imageName": "no",
+        "priority": 1,
+        "groupId": 6
     },
     {
         "titleKey": "Hurts",
         "cardId": 4,
         "imageName": "hurts",
         "priority": 1,
-        "groupId": 3,
+        "groupId": 15,
         "childCards": [
             {
                 "titleKey": "Head",
-                "cardId": 4.1,
+                "cardId": 1.1,
                 "imageName": "head",
-                "groupId": 3
+                "groupId": 15
             },
             {
                 "titleKey": "Arm",
-                "cardId": 4.2,
+                "cardId": 1.2,
                 "imageName": "arm",
-                "groupId": 3
+                "groupId": 15
             },
             {
                 "titleKey": "Leg",
-                "cardId": 4.3,
+                "cardId": 1.3,
                 "imageName": "leg",
-                "groupId": 3
+                "groupId": 15
             },
             {
                 "titleKey": "Stomach",
-                "cardId": 4.4,
+                "cardId": 1.4,
                 "imageName": "stomach",
-                "groupId": 3
+                "groupId": 15
             },
             {
                 "titleKey": "Tooth",
-                "cardId": 4.5,
+                "cardId": 1.5,
                 "imageName": "tooth",
-                "groupId": 3
+                "groupId": 15
             },
             {
                 "titleKey": "Ear",
-                "cardId": 4.6,
+                "cardId": 1.6,
                 "imageName": "ear_hurt",
-                "groupId": 3
+                "groupId": 15
             },
             {
                 "titleKey": "Back",
-                "cardId": 4.7,
+                "cardId": 1.7,
                 "imageName": "back_hurt",
-                "groupId": 3
+                "groupId": 15
             },
             {
                 "titleKey": "Throat",
                 "cardId": 4.8,
                 "imageName": "throat_hurt",
-                "groupId": 3
+                "groupId": 15
             }
         ]
     },
@@ -142,27 +156,6 @@
                 "imageName": "brush the teeth",
                 "audioName": "brush the teeth.mp3",
                 "groupId": 5
-            }
-        ]
-    },
-    {
-        "titleKey": "Yes No",
-        "cardId": 7,
-        "imageName": "yesNo",
-        "priority": 2,
-        "groupId": 6,
-        "childCards": [
-            {
-                "titleKey": "Yes",
-                "cardId": 7.1,
-                "imageName": "yes",
-                "groupId": 6
-            },
-            {
-                "titleKey": "No",
-                "cardId": 7.2,
-                "imageName": "no",
-                "groupId": 6
             }
         ]
     },
@@ -538,29 +531,28 @@
     {
         "titleKey": "Words_of_greeting",
         "cardId": 18,
-        "imageName": "greeting2",
+        "imageName": "greeting",
         "priority": 2,
         "groupId": 2,
         "childCards": [
             {
                 "titleKey": "Good_morning",
                 "cardId": 18.1,
-                "imageName": "Good morning",
+                "imageName": "good morning",
                 "groupId": 2
             },
             {
                 "titleKey": "Hello",
                 "cardId": 18.2,
-                "imageName": "Hello",
+                "imageName": "hello",
                 "groupId": 2
             },
             {
-                "titleKey": "Goodbye",
+                "titleKey": "Good night",
                 "cardId": 18.3,
-                "imageName": "Goodbye",
+                "imageName": "good night",
                 "groupId": 2
             }
         ]
     }
 ]
-

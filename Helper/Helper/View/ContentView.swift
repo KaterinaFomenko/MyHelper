@@ -22,16 +22,13 @@ struct ContentView: View {
                 SelectedCardsView()
                     .padding(10)
                     .padding(.bottom, 10)
-                   // .environmentObject(dm)
                 
                 SelectedParentCardView()
-                   // .environmentObject(dm)
             }
             
             ScrollView {
                 VStack {
                     MainCardsView()
-                      //  .environmentObject(dm)
                 }
             }
         }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct MainCardsView: View {
     
@@ -13,7 +14,7 @@ struct MainCardsView: View {
     @EnvironmentObject var settings: Settings
     @State var isShowAlert = false
     @State var message = ""
-    
+
     var idCurrentCard: Float = 0
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 10)]
     
@@ -22,15 +23,14 @@ struct MainCardsView: View {
             
             ForEach(dm.mainArray, id: \.cardId) { card in
                 CardView(card: card, hasChildren: card.childCards != nil)
-                
                     .onTapGesture {
                         
-                        dm.speakText(forKey: card.titleKey, language: settings.currentLanguage, isVoice: settings.voiceGuidance)
+                        dm.speakText(forKey: card.titleKey,
+                                     language: settings.currentLanguage,
+                                     isVoice: settings.voiceGuidance)
                        
                         print("☎️ card.titleKey: \(card.titleKey), cardId: \(card.cardId)")
-                        print("☎️ card.titleKey: \(card.titleKey.lkey), cardId: \(card.cardId)")
-                        
-                        
+                       
                         if card.childCards == nil && card.cardId < 100 {
                             // Add new card on top array
                             dm.addItemToSelected(item: card)
@@ -141,6 +141,6 @@ struct MainCardsView: View {
 
 #Preview {
     MainCardsView()
-        .environmentObject(DM(speechManager: SpeechManager(settings: Settings())))
+        .environmentObject(DM(speechManager: SpeechManager(lang: Settings().storedLanguage)))
 }
 

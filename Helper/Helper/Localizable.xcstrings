@@ -62,6 +62,9 @@
         }
       }
     },
+    "Additional features" : {
+
+    },
     "Angry" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -351,6 +354,9 @@
           }
         }
       }
+    },
+    "Blue dot means the card contains additional cards." : {
+
     },
     "Boar" : {
       "extractionState" : "manual",
@@ -1089,6 +1095,9 @@
           }
         }
       }
+    },
+    "Explanations" : {
+
     },
     "Feelings" : {
       "extractionState" : "manual",
@@ -1965,6 +1974,9 @@
           }
         }
       }
+    },
+    "Long-press a card to edit or delete it." : {
+
     },
     "more" : {
       "localizations" : {
@@ -3566,6 +3578,9 @@
           }
         }
       }
+    },
+    "You can create new cards." : {
+
     },
     "You may edit Card" : {
       "localizations" : {

@@ -10,6 +10,7 @@ import SwiftUI
 struct SelectedParentCardView: View {
     
     @State private var isShowLanguagePickerView: Bool = false
+    @StateObject private var settings = Settings()
     @EnvironmentObject var dm: DM
     
     var body: some View {
@@ -38,10 +39,6 @@ struct SelectedParentCardView: View {
                     
                     Button() {
                         dm.removeLastItem()
-                        print("\(dm.titleWay)")
-                        print("\(dm.titleWay.loc)")
-                        print(NSLocalizedString(dm.titleWay, comment: ""))
-                        print("\(LocalizedStringKey(dm.titleWay))")
                     } label: {
                         Image(systemName: "delete.left.fill")
                             .font(.system(size: 20))
@@ -54,7 +51,7 @@ struct SelectedParentCardView: View {
                     .frame(width: 80, height: 60, alignment: .trailing) // для увеличения площади нажатия
                 }
                 .sheet(isPresented: $isShowLanguagePickerView) {
-                    LanguagePickerView(isShowLanguagePicker: $isShowLanguagePickerView)
+                    SettingsView(settings: settings)
                 }
             }
         }

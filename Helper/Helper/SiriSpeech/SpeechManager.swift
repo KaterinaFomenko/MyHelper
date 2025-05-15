@@ -1,107 +1,59 @@
-//
+
 //  SpeechManager.swift
 //  Helper
 //
 //  Created by Катерина Фоменко on 04/03/2025.
-//
 
-//import Foundation
-//
-//import AVFoundation
-//
-//class SpeechManager: ObservableObject {
-//    private let synthesizer = AVSpeechSynthesizer()
-//    @Published var isSpeaking = false
-//    
-//    var voiceIdentifier = "com.apple.voice.compact.en-US.Samantha"
-//    var locale = ""
-//    var voices = AVSpeechSynthesisVoice.speechVoices()
-//    
-//    // "ru-RU"
-//    
-//    init() {
-//        // locale = "pl-PL"
-//        locale = Locale.current.identifier.replacingOccurrences(of: "_", with: "-")
-//        let filteredVoices = voices.filter { $0.language == locale }
-//        
-//        if filteredVoices.isEmpty {
-//                print("❌ Нет голосов для locale: \(locale)")
-//            } else {
-//                voiceIdentifier = filteredVoices.first?.identifier ?? ""
-//              //  print("✅ Найдены голоса \(locale)")
-//                for voice in filteredVoices {
-//                   // DM.shared.voiceIdentifier = voice.identifier   Junior Samantha
-//                    if locale.contains("en") && voice.name.contains("Samantha") {
-//                        voiceIdentifier = voice.identifier
-//                    }
-//                    print("✅ Voice Name: \(voice.name), Language: \(voice.language), Identifier: \(voice.identifier)")
-//                }
-//            }
-//    }
-//    
-//    func speak(text: String) {
-//        
-//        let utterance = AVSpeechUtterance(string: text)
-//        // Если указан voiceIdentifier — используем его
-//        if let customVoice = AVSpeechSynthesisVoice(identifier: voiceIdentifier) {
-//            utterance.voice = customVoice
-//            print("✅ Используем голос по identifier: \(voiceIdentifier)")
-//        } else {
-//            if let defaultVoice = AVSpeechSynthesisVoice(language: locale) {
-//                utterance.voice = defaultVoice
-//                print("✅ Используем голос по locale: \(locale)")
-//            } else {
-//                print("⚠️ Не удалось подобрать голос, будет использован системный")
-//            }
-//        }
-//        // Настройка скорости и тона (опционально)
-//        utterance.rate = AVSpeechUtteranceDefaultSpeechRate // Скорость (0.0 до 1.0)
-//        utterance.pitchMultiplier = 1.0 // Тон (0.5 до 2.0)
-//        
-//        synthesizer.speak(utterance)
-//    }
-//    
-//    func stopSpeaking() {
-//        synthesizer.stopSpeaking(at: .immediate)
-//        isSpeaking = false
-//    }
-//    
-//   
-//    
-//}
 
 import Foundation
 import AVFoundation
 
 class SpeechManager: ObservableObject {
     private let synthesizer = AVSpeechSynthesizer()
-    private var settings: Settings
+    //private var settings: Settings
     private var voiceIdentifier: String = ""
-
-    init(settings: Settings) {
-        self.settings = settings
-        updateLanguage(to: settings.currentLanguage)
+    
+    //init(settings: Settings) {
+    //    self.settings = settings
+    //    updateLanguage(to: settings.currentLanguage)
+    //}
+    
+    init(lang: String) {
+        updateLanguage(language: lang)
     }
-
-    func updateLanguage(to language: Settings.Language) {
-        let locale: String
+    
+    //func updateLanguage(to language: Settings.Language) {
+    func updateLanguage(language: String) {
+        
         let preferredVoiceName: String
         
+        var locale = ""
+        let sysLangCode = Locale.preferredLanguages.first ?? "en"
+        
         switch language {
-        case .english:
+        case "en":
             locale = "en-US"
-            preferredVoiceName = "Samantha" 
-        case .polish:
+            preferredVoiceName = "Samantha"
+        case "pl":
             locale = "pl-PL"
             preferredVoiceName = "Zosia"
-        case .russian:
+        case "ru":
             locale = "ru-RU"
             preferredVoiceName = "Milena"
-        case .ukrainian:
+        case "uk":
             locale = "uk-UA"
             preferredVoiceName = "Oksana"
+        default:
+            //prepare local for another language for search  optimal speech dictor // test german
+            locale = getFixedLocale()
+            preferredVoiceName = ""
         }
         
+       // if language != sysLangCode {
+            //locale = getFixedLocale()
+            
+      //  }
+
         let voices = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == locale }
         print("🔍 Доступные голоса для \(locale): \(voices.map { $0.name })")
         
@@ -118,14 +70,14 @@ class SpeechManager: ObservableObject {
             voiceIdentifier = ""
         }
     }
-
-
+    
+    
     func speak(text: String) {
         print("🟡 [SpeechManager] speak вызван с текстом: \(text)")
         print("🔤 Используемый voiceIdentifier: \(voiceIdentifier)")
         if text.isEmpty {
             print("🔴 [SpeechManager] Пустой текст для озвучки!")
-                    return
+            return
         }
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(identifier: voiceIdentifier)
@@ -135,5 +87,11 @@ class SpeechManager: ObservableObject {
             synthesizer.stopSpeaking(at: .immediate)
         }
         print("🟠 [SpeechManager] synthesizer.speak вызван")
+    }
+    
+    func getFixedLocale() -> String {
+        let languageCode = Locale.preferredLanguages.first ?? "en"
+        let regionCode = Locale.current.region?.identifier ?? "US"
+        return "\(languageCode)-\(regionCode)"
     }
 }
