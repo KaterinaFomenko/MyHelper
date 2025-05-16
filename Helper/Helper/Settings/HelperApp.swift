@@ -29,7 +29,7 @@ struct HelperApp: App {
                 .environmentObject(speechManager)
                 .environmentObject(dm)
                 .environment(\.locale, settings.speechLanguage.locale)
-                .id(settings.speechLanguage)
+               //.id(settings.speechLanguage)
         }
     }
 }

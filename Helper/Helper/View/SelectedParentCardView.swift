@@ -10,8 +10,11 @@ import SwiftUI
 struct SelectedParentCardView: View {
     
     @State private var isShowLanguagePickerView: Bool = false
-    @StateObject private var settings = Settings()
+   // @StateObject private var settings = Settings()
+    @EnvironmentObject var speechManager: SpeechManager
     @EnvironmentObject var dm: DM
+    @EnvironmentObject var settings: Settings
+    
     
     var body: some View {
         ZStack() {
@@ -52,6 +55,8 @@ struct SelectedParentCardView: View {
                 }
                 .sheet(isPresented: $isShowLanguagePickerView) {
                     SettingsView(settings: settings)
+                  //  SettingsView()
+                  //  SettingsView(speechManager: speechManager)
                 }
             }
         }
@@ -59,4 +64,5 @@ struct SelectedParentCardView: View {
 
 #Preview {
     SelectedParentCardView()
+        .environmentObject(DM(speechManager: SpeechManager(lang: "en")))
 }

@@ -10,7 +10,7 @@ import SwiftUI
 class Settings: ObservableObject {
     @AppStorage("appLanguage") var storedLanguage: String = "en"
     @AppStorage("appVoiceGuidance") var voiceGuidance: Bool = true
-    
+   
     // Using for speechManager
     @Published var speechLanguage: Language {
         didSet {
@@ -53,6 +53,7 @@ struct SettingsView: View {
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var speechManager: SpeechManager
     @State var tempLanguage: Settings.Language
+    @State var titleSettings = "Settings"
     
     init(settings: Settings) {
         _tempLanguage = State(initialValue: settings.speechLanguage)
@@ -63,6 +64,8 @@ struct SettingsView: View {
             Form {
                 Section("Language") {
                     
+                    
+                    
                     Picker("Language", selection: $tempLanguage) {
                         ForEach(Settings.Language.allCases) { lang in
                             Text(lang.displayName).tag(lang)
@@ -70,8 +73,75 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.navigationLink)
                     .onChange(of: tempLanguage) {_, newLang in
+                        print("Before updateLanguage")
                         settings.speechLanguage = newLang
                         speechManager.updateLanguage(language: newLang.rawValue)
+                        print("After updateLanguage")
+                    }
+                }
+                
+                Section("Voice Guidance") {
+                    Toggle("Do you want to use the audio?", isOn: $settings.voiceGuidance)
+                }
+                
+                Section("Additional features") {
+                    DisclosureGroup("Explanations") {
+                        
+                        HStack {
+                            ChildCardImage(hasChildren: true)
+                            Text("Blue dot means the card contains additional cards.")
+                        }
+                        
+                        HStack {
+                            Image("plus")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 25, height: 25)
+                            Text("You can create new cards.")
+                        }
+                        Text("Long-press a card to edit or delete it.")
+                    }
+                }
+                .onChange(of: settings.voiceGuidance) { oldValue, newValue in
+                    print("🔊 Voice guidance changed: \(settings.voiceGuidance)")
+                }
+            }
+            .navigationTitle( "Settings".getLocalizedString(language: settings.storedLanguage))
+        }
+        
+        .onDisappear() {
+            settings.speechLanguage = tempLanguage
+            speechManager.updateLanguage(language: tempLanguage.rawValue)
+            print("onDisappear")
+        }
+    }
+}
+
+/*
+struct SettingsView1: View {
+    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var speechManager: SpeechManager
+ //   @StateObject var speechManager: SpeechManager
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section("Language") {
+                    
+                    Picker("Language", selection: $settings.speechLanguage) {
+                        ForEach(Settings.Language.allCases) { lang in
+                            Text(lang.displayName).tag(lang)
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
+                    .onChange(of: settings.speechLanguage) {oldLng, newLang in
+                        print("Before updateLanguage")
+                        settings.speechLanguage = newLang
+                        speechManager.updateLanguage(language: newLang.rawValue)
+                        print("oldLng: \(oldLng.rawValue)")
+                        print("oldLng: \(newLang.rawValue)")
+                        print("After updateLanguage")
+                        
                     }
                 }
                 
@@ -100,21 +170,27 @@ struct SettingsView: View {
                 }
                 
                 .navigationTitle("Settings")
+         
                 .onChange(of: settings.voiceGuidance) { oldValue, newValue in
                     print("🔊 Voice guidance changed: \(settings.voiceGuidance)")
                 }
             }
+            .id(settings.speechLanguage)
         }
         
-        .onDisappear() {
-            settings.speechLanguage = tempLanguage
-            speechManager.updateLanguage(language: tempLanguage.rawValue)
-        }
+//        .onDisappear() {
+//            settings.speechLanguage = tempLanguage
+//            speechManager.updateLanguage(language: tempLanguage.rawValue)
+//        }
     }
 }
 
-#Preview {
-    let settings = Settings()
-    SettingsView(settings: settings)
-        .environmentObject(settings)
-}
+*/
+
+
+//#Preview {
+//    let settings = Settings()
+//    let speechManager = SpeechManager(lang: "en")
+//    SettingsView(settings: settings, speechManager: speechManager)
+//        .environmentObject(settings)
+//}

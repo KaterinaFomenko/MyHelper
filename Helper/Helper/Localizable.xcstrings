@@ -63,7 +63,26 @@
       }
     },
     "Additional features" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodatkowe funkcje"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дополнительные функции"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додаткові функції"
+          }
+        }
+      }
     },
     "Angry" : {
       "extractionState" : "manual",
@@ -356,7 +375,26 @@
       }
     },
     "Blue dot means the card contains additional cards." : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niebieska kropka oznacza, że karta zawiera dodatkowe karty."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синяя точка означает, что карточка содержит дополнительные карты."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синя точка означає, що карточка містить додаткові карти."
+          }
+        }
+      }
     },
     "Boar" : {
       "extractionState" : "manual",
@@ -406,6 +444,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Хліб"
+          }
+        }
+      }
+    },
+    "Brush the teeth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Myć zęby"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чистить зубы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Почистити зуби"
           }
         }
       }
@@ -1097,7 +1158,26 @@
       }
     },
     "Explanations" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оbjaśnienia"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пояснения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Роз'яснення"
+          }
+        }
+      }
     },
     "Feelings" : {
       "extractionState" : "manual",
@@ -1976,7 +2056,26 @@
       }
     },
     "Long-press a card to edit or delete it." : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naciśnij długo kartę, aby ją edytować lub usunąć."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Долго жмите на карточку, чтобы изменить или удалить ее"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Довге натискання на карту, допоможе змінити або видалити карточку"
+          }
+        }
+      }
     },
     "more" : {
       "localizations" : {
@@ -3580,7 +3679,26 @@
       }
     },
     "You can create new cards." : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz stworzyć nowe karty."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете создавать новые карты."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ви можете створювати нові карти."
+          }
+        }
+      }
     },
     "You may edit Card" : {
       "localizations" : {
