@@ -10,26 +10,17 @@ import AVFoundation
 
 class SpeechManager: ObservableObject {
     private let synthesizer = AVSpeechSynthesizer()
-    //private var settings: Settings
     private var voiceIdentifier: String = ""
-    
-    //init(settings: Settings) {
-    //    self.settings = settings
-    //    updateLanguage(to: settings.currentLanguage)
-    //}
     
     init(lang: String) {
         updateLanguage(language: lang)
     }
     
-    //func updateLanguage(to language: Settings.Language) {
     func updateLanguage(language: String) {
         
         let preferredVoiceName: String
-        
         var locale = ""
-        let sysLangCode = Locale.preferredLanguages.first ?? "en"
-        
+   
         switch language {
         case "en":
             locale = "en-US"
@@ -49,11 +40,6 @@ class SpeechManager: ObservableObject {
             preferredVoiceName = ""
         }
         
-       // if language != sysLangCode {
-            //locale = getFixedLocale()
-            
-      //  }
-
         let voices = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == locale }
         print("🔍 Доступные голоса для \(locale): \(voices.map { $0.name })")
         
@@ -71,7 +57,6 @@ class SpeechManager: ObservableObject {
         }
     }
     
-    
     func speak(text: String) {
         print("🟡 [SpeechManager] speak вызван с текстом: \(text)")
         print("🔤 Используемый voiceIdentifier: \(voiceIdentifier)")
@@ -79,9 +64,11 @@ class SpeechManager: ObservableObject {
             print("🔴 [SpeechManager] Пустой текст для озвучки!")
             return
         }
+        
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(identifier: voiceIdentifier)
         synthesizer.speak(utterance)
+        
         if synthesizer.isSpeaking {
             print("⚠️ [SpeechManager] Синтезатор уже говорит, останавливаем...")
             synthesizer.stopSpeaking(at: .immediate)

@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct HelperApp: App {
    
-    @StateObject var settings = Settings()
+    @StateObject var settings: Settings // = Settings()
     @StateObject var speechManager: SpeechManager
     @StateObject var dm: DM
 
@@ -28,8 +28,8 @@ struct HelperApp: App {
                 .environmentObject(settings)
                 .environmentObject(speechManager)
                 .environmentObject(dm)
-                .environment(\.locale, settings.currentLanguage.locale)
-                .id(settings.currentLanguage)
+                .environment(\.locale, settings.speechLanguage.locale)
+                .id(settings.speechLanguage)
         }
     }
 }

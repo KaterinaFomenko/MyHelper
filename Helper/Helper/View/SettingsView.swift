@@ -10,23 +10,20 @@ import SwiftUI
 class Settings: ObservableObject {
     @AppStorage("appLanguage") var storedLanguage: String = "en"
     @AppStorage("appVoiceGuidance") var voiceGuidance: Bool = true
-    @Published var currentLanguage: Language {
+    
+    // Using for speechManager
+    @Published var speechLanguage: Language {
         didSet {
-            storedLanguage = currentLanguage.rawValue
+            storedLanguage = speechLanguage.rawValue
         }
     }
     
     init() {
-        let sytemLangCode = Locale.preferredLanguages.first ?? "en"
-        let savedLang = UserDefaults.standard.string(forKey: "appLanguage") ?? sytemLangCode
+        let sytemLang = Locale.preferredLanguages.first ?? "en"
+        let savedLang = UserDefaults.standard.string(forKey: "appLanguage") ?? sytemLang
         storedLanguage = savedLang
-        self.currentLanguage = Language(rawValue: savedLang) ?? .english
-        print(self.currentLanguage)
-        
-        //  Locale(identifier: self.currentLanguage.rawValue)
-        //   print(self.currentLanguage.rawValue)
-        //  let savedVoiceGuidance = UserDefaults.standard.bool(forKey: "appVoiceGuidance")
-        
+        self.speechLanguage = Language(rawValue: savedLang) ?? .english
+        print(self.speechLanguage)
     }
     
     enum Language: String, CaseIterable, Identifiable {
@@ -46,7 +43,7 @@ class Settings: ObservableObject {
             }
         }
         
-        var locale: Locale {
+        var locale: Locale { // -> "en", "ru"
             Locale(identifier: self.rawValue)
         }
     }
@@ -58,7 +55,7 @@ struct SettingsView: View {
     @State var tempLanguage: Settings.Language
     
     init(settings: Settings) {
-        _tempLanguage = State(initialValue: settings.currentLanguage)
+        _tempLanguage = State(initialValue: settings.speechLanguage)
     }
     
     var body: some View {
@@ -73,7 +70,7 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.navigationLink)
                     .onChange(of: tempLanguage) {_, newLang in
-                        settings.currentLanguage = newLang
+                        settings.speechLanguage = newLang
                         speechManager.updateLanguage(language: newLang.rawValue)
                     }
                 }
@@ -110,7 +107,7 @@ struct SettingsView: View {
         }
         
         .onDisappear() {
-            settings.currentLanguage = tempLanguage
+            settings.speechLanguage = tempLanguage
             speechManager.updateLanguage(language: tempLanguage.rawValue)
         }
     }

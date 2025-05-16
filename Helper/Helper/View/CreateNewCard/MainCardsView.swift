@@ -26,7 +26,7 @@ struct MainCardsView: View {
                     .onTapGesture {
                         
                         dm.speakText(forKey: card.titleKey,
-                                     language: settings.currentLanguage,
+                                     language: settings.speechLanguage,
                                      isVoice: settings.voiceGuidance)
                        
                         print("☎️ card.titleKey: \(card.titleKey), cardId: \(card.cardId)")

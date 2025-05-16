@@ -14,7 +14,7 @@ enum TitleState {
     case hasNotChildsCards
     case editingState
     
-//    var title: String {
+
     var title: LocalizedStringResource {
         switch self {
         case .hasChildsCards: return "Create new Group"
@@ -25,10 +25,7 @@ enum TitleState {
 }
 
 class DM: ObservableObject {
-  //  static let shared = DM(speechManager: <#SpeechManager#>)
-    
- //   @EnvironmentObject var speechManager: SpeechManager
-    
+
     let speechManager: SpeechManager
 
     @Published var mainArray: [CardModel] = [] // monitor
@@ -47,7 +44,6 @@ class DM: ObservableObject {
     
     // хранится id карты на которую выделили для удаления / редактирования
     var contextCardId: Float = 0
-   // let textToSpeech = SpeechManager(initialLanguage: Settings().currentLanguage)
     
     init(speechManager: SpeechManager) {
         self.speechManager = speechManager
@@ -65,12 +61,7 @@ class DM: ObservableObject {
             selectedItemsArray.removeLast()
         }
     }
-    
-//    func speakText(text: String) {
-//        print("🗣 Озвучиваем: \(text)")
-//           speechManager?.speak(text: text)
-//       }
-    
+
     func speakText(forKey key: String, language: Settings.Language, isVoice: Bool = false) {
         
         guard isVoice else {
