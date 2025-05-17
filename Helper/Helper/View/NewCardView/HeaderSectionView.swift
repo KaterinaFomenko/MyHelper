@@ -1,5 +1,5 @@
 //
-//  TopNewCardView.swift
+//  HeaderNewCardViewView.swift
 //  Helper
 //
 //  Created by Катерина Фоменко on 17/05/2025.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Photos
 
-struct TopNewCardView: View {
+struct HeaderSectionView: View {
     
     @EnvironmentObject var dm: DM
 
@@ -160,7 +160,7 @@ struct TopNewCardView: View {
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     
-    TopNewCardView(
+    HeaderSectionView(
         nameCard: .constant("Animals"),
         selectedColorId: .constant(2),
         selectedIconLibrary: .constant("tooth"),
@@ -178,7 +178,7 @@ struct TopNewCardView: View {
     
     let testImage = UIImage(systemName: "sun.max.fill")
     
-    TopNewCardView(
+    HeaderSectionView(
         nameCard: .constant("Nature"),
         selectedColorId: .constant(3),
         selectedIconLibrary: .constant(""),
@@ -194,7 +194,7 @@ struct TopNewCardView: View {
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     
-    TopNewCardView(
+    HeaderSectionView(
         nameCard: .constant("Travel"),
         selectedColorId: .constant(4),
         selectedIconLibrary: .constant(""),

@@ -24,20 +24,11 @@ struct CardView: View {
                 HStack {
                     Spacer()
                     ChildCardImage(hasChildren: hasChildren)
-//                    Image(systemName: "circle.fill")
-//                        .resizable()
-//                        .frame(width: 5, height: 5)
-//                        .foregroundColor(hasChildren ? .blue : .clear)
-//                        .padding(.horizontal, 5)
-//                        .padding(.bottom, 5)
-//                        .shadow(radius: 10)
-//                        .opacity(0.5)
             }
         }
         .frame(width: 115, height: 100)
         .background(RoundedRectangle(cornerRadius: 10)
             .fill(AppColors.getColor(groupId: card.groupId))
-          //  .fill(AppColors.color(for: Int(card.cardId)))
             .opacity(0.45)
             .shadow(color: .gray, radius: 2, x: 3, y: 3)
         )
@@ -47,7 +38,6 @@ struct CardView: View {
 #Preview {
     var card1 = CardModel(cardId: 1, titleKey: "I", groupId: 1, imageName: "puzzle")
    
-
     VStack {
         CardView(card: card1, hasChildren: true)
     }

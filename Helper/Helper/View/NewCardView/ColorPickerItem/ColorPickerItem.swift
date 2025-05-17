@@ -14,7 +14,6 @@ struct ColorPickerItem: View {
     let notSelectedDiameter: CGFloat = 20
 
     var body: some View {
-       
             Circle()
             .fill(color)
             .frame(width: isSelected ? selectedDiameter : notSelectedDiameter)

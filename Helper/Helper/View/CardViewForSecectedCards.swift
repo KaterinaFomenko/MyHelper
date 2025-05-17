@@ -25,12 +25,17 @@ struct CardViewForSecectedCards: View {
             
             CardImageView(imageName: card.imageName)
         }
-        
     }
 }
 
 #Preview {
-    var card = CardModel(cardId: 2, titleKey: "Hello World", groupId: 2, imageName: "I2", priority: 1)
+    var card = CardModel(
+        cardId: 2,
+        titleKey: "Hello World",
+        groupId: 2,
+        imageName: "I",
+        priority: 1
+    )
     CardViewForSecectedCards(card: card)
     
 }

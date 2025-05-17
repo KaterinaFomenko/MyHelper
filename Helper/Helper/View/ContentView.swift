@@ -8,9 +8,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-  //  @ObservedObject private var dm = DM.shared
-    @EnvironmentObject var dm: DM
-    
     var body: some View {
         VStack {
             VStack(spacing: 0)  {
@@ -27,9 +24,7 @@ struct ContentView: View {
             }
             
             ScrollView {
-                VStack {
-                    MainCardsView()
-                }
+                MainCardsView()
             }
         }
     }
@@ -37,4 +32,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(DM(speechManager: SpeechManager(lang: "en")))
+        .environmentObject(Settings())
 }

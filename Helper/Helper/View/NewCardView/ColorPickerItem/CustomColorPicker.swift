@@ -30,7 +30,8 @@ struct CustomColorPicker: View {
                         }
                     }
                 }
-                .padding()
+                .padding(.leading, 5)
+                .padding(.vertical, 10)
                 .background(Color.gray.opacity(0.1))
                 .clipShape(.rect(cornerRadius: 10))
             }

@@ -9,12 +9,13 @@ import SwiftUI
 
 struct ListFormNewCardView: View {
     @EnvironmentObject var dm: DM
-    @ObservedObject private var keyboard = KeyboardResponder()
     
     @Binding var nameCard: String // TextField
     @Binding var selectedColorId: Int // color groupId
-    @FocusState private var isFocused: Bool
     
+    @ObservedObject private var keyboard = KeyboardResponder()
+    @FocusState private var isFocused: Bool
+
     var body: some View {
         List {
             VStack(alignment: .leading) {
@@ -23,7 +24,6 @@ struct ListFormNewCardView: View {
                 
                 TextField("Enter name", text: $nameCard )
                     .focused($isFocused)
-                
             }
             
             if keyboard.currentHeight == 0 {
@@ -48,7 +48,7 @@ struct ListFormNewCardView: View {
 }
 
 #Preview {
-   
+    
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     ListFormNewCardView(
