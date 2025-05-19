@@ -9,8 +9,9 @@ import SwiftUI
 import Combine
 
 // Класс для отслеживания высоты клавиатуры
-final class KeyboardResponder: ObservableObject {
-    @Published var currentHeight: CGFloat = 0
+final class KeyboardState: ObservableObject {
+    @Published var keyboardHeight: CGFloat = 0
+    @Published var isFocused: Bool = false
     
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -24,7 +25,13 @@ final class KeyboardResponder: ObservableObject {
         
         Publishers.Merge(keyboardWillShow, keyboardWillHide)
             .receive(on: RunLoop.main)
-            .assign(to: \.currentHeight, on: self)
+            .assign(to: \.keyboardHeight, on: self)
             .store(in: &cancellableSet)
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

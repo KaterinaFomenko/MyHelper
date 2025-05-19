@@ -39,6 +39,10 @@ class DM: ObservableObject {
     @Published var titleWay: String = "" // settings line
     @Published var selectedItemsArray: [CardModel] = [] // for top grid
     
+    // keyboard
+   //     @ObservedObject private var keyboard = KeyboardResponder()
+    //    @FocusState var isFocused: Bool
+    
     // хранится id карты на которую тапнули, если значение == -1 то показываем родительский массив иначе если больше нуля отображаются дочерние элементы
     var parentCardIdOpened: Float = -1
     

@@ -14,6 +14,7 @@ struct NewCardView: View {
     @EnvironmentObject var dm: DM
     @EnvironmentObject var settings: Settings
     
+    @State private var titleCard: LocalizedStringResource = ""
     @State private var nameCard: String = "" // TextField
     @State private var selectedColorId = 1 // color groupId
     @State private var selectedIconLibrary: String = ""
@@ -27,42 +28,62 @@ struct NewCardView: View {
     // Alert
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @State private var titleCard: LocalizedStringResource = ""
+    
+    // keyboard
+    @StateObject private var keyboardState = KeyboardState()
     
     var body: some View {
-        ZStack {
-            VStack() {
-                VStack {
-                    TitleCardView(title: titleCard)
-    
-                    HeaderSectionView(
-                        nameCard: $nameCard,
-                        selectedColorId: $selectedColorId,
-                        selectedIconLibrary: $selectedIconLibrary,
-                        selectedImageGalary: $selectedImageGalary,
-                        isAddingImageBtn: $isAddingImageBtn,
-                        isShowingImagePicker: $isShowingImagePicker,
-                        isShowIconLibrary: $isShowIconLibrary
-                    )
-                }
-                .padding()
-                .background(Color.gray.opacity(0.1))
+        
+        ZStack(alignment: .bottom) {
+            VStack {
+                TitleCardView(title: titleCard)
                 
-                //MARK: Second half of the screen
-                
-                ListFormNewCardView(
+                HeaderSectionView(
                     nameCard: $nameCard,
-                    selectedColorId: $selectedColorId
+                    selectedColorId: $selectedColorId,
+                    selectedIconLibrary: $selectedIconLibrary,
+                    selectedImageGalary: $selectedImageGalary,
+                    isAddingImageBtn: $isAddingImageBtn,
+                    isShowingImagePicker: $isShowingImagePicker,
+                    isShowIconLibrary: $isShowIconLibrary
                 )
-                .listStyle(.inset)
-                
+            
+            //MARK: Second half of the screen
+            
+            ListFormNewCardView(
+                nameCard: $nameCard,
+                selectedColorId: $selectedColorId
+            )
+            }
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .listStyle(.inset)
+            
+            if keyboardState.keyboardHeight == 0 {
                 SaveButtonView(
                     isPressed: $isPressedSaveBtn,
                     isDisabled: !isNameValid(),
                     action: saveCard
                 )
+                .padding(.bottom, 20)
             }
         }
+        .environmentObject(keyboardState)
+        
+       //.background(Color.blue)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        //.padding(.bottom, keyboardState.keyboardHeight * 0.2)
+        .padding(.bottom, 1)
+        .animation(.easeOut(duration: 0.25), value: keyboardState.keyboardHeight)
+        
+        // Hide keyboard if tupped
+        .onTapGesture {
+            UIApplication.shared.endEditing()
+        }
+        
+        
+        //  .padding(.bottom, keyboardState.keyboardHeight * 0.3)
+        
         
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup(for: dm.parentCardIdOpened)
@@ -189,6 +210,7 @@ struct NewCardView: View {
 }
 
 #Preview("state editing") {
+    var keyboardState = KeyboardState()
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     let settings = Settings()
@@ -197,9 +219,11 @@ struct NewCardView: View {
         .environmentObject(dm)
         .environmentObject(testSpeechManager)
         .environmentObject(settings)
+        .environmentObject(keyboardState)
 }
 
 #Preview("state general") {
+    var keyboardState = KeyboardState()
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     let settings = Settings()
@@ -208,5 +232,6 @@ struct NewCardView: View {
         .environmentObject(dm)
         .environmentObject(testSpeechManager)
         .environmentObject(settings)
+        .environmentObject(keyboardState)
 }
 

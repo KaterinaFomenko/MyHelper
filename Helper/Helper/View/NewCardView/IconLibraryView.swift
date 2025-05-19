@@ -5,7 +5,9 @@ struct IconLibraryView: View {
     @Binding var isShowIconGalary: Bool
     @Binding var selectedIconLibrary: String
     
-    let columns = [GridItem(.adaptive(minimum: 80), spacing: 5)]
+    let columns1 = [GridItem(.adaptive(minimum: 80), spacing: 5)]
+    
+    let columns = [GridItem(.flexible(minimum: 80, maximum: 80), spacing: 5)]
     @State private var scrollOffset: CGFloat = 0
     
     var body: some View {

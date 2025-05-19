@@ -11,6 +11,7 @@ import Photos
 struct HeaderSectionView: View {
     
     @EnvironmentObject var dm: DM
+    @EnvironmentObject var keyboardState: KeyboardState
 
     @Binding var nameCard: String  // TextField
     @Binding var selectedColorId: Int // color groupId
@@ -32,17 +33,17 @@ struct HeaderSectionView: View {
                                 .fill(AppColors.getColor(groupId: selectedColorId))
                                 .opacity(0.5)
                                 .frame(width: geometry.size.width / 1.35, height: geometry.size.width / 1.35)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .clipShape(RoundedRectangle(cornerRadius: AppSize.cornerRadius))
                                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                             
                             VStack {
                                 
                                 Text(nameCard.lkey)
-                                    .font(.custom("Helvetica Neue", size: 30))
+                                    .font(.custom(AppSize.fontFamily, size:AppSize.titleFont))
                                     .lineLimit(1)
                                     .truncationMode(.tail) // Добавляем многоточие в конце
                                     .frame(maxWidth: geometry.size.width / 1.5)
-                                    .padding(.top, 10)
+                                  //  .padding(10)
                                 
                                 Spacer()
                                 
@@ -63,20 +64,21 @@ struct HeaderSectionView: View {
                                         }
                                         
                                     } label: {
-                                        Label("more", systemImage: "ellipsis.circle")
-                                            .labelStyle(.iconOnly)
-                                            .shadow(radius: 10)
+                                        if keyboardState.keyboardHeight == 0 {
+                                            Label("more", systemImage: "ellipsis.circle")
+                                                .labelStyle(.iconOnly)
+                                                .shadow(radius: 10)
+                                        }
                                     }
-                                    
                                     Spacer()
                                     
-                                    Image(systemName: "circle.fill")
-                                        .resizable()
-                                        .frame(width: 5, height: 5)
-                                        .foregroundColor(dm.isCardContainGroup ? .blue : .clear)
-                                        .padding(.horizontal, 5)
-                                        .shadow(radius: 10)
-                                        .opacity(0.5)
+                                        Image(systemName: "circle.fill")
+                                            .resizable()
+                                            .frame(width: AppSize.groupeIconSize, height: AppSize.groupeIconSize)
+                                            .foregroundColor(dm.isCardContainGroup ? .blue : .clear)
+                                            .padding(.horizontal, 5)
+                                            .shadow(radius: 10)
+                                            .opacity(0.5)
                                 }
                                 .sheet(isPresented: $isShowIconLibrary) {
                                     IconLibraryView(isShowIconGalary: $isShowIconLibrary, selectedIconLibrary: $selectedIconLibrary)
@@ -93,7 +95,8 @@ struct HeaderSectionView: View {
                                 .scaledToFit()
                                 .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .padding(.top, 50)
+                              //  .padding(.top, 50)
+                              
                             
                         } else if let selectedImageGalary = selectedImageGalary {
                             Image(uiImage: selectedImageGalary)
@@ -101,7 +104,7 @@ struct HeaderSectionView: View {
                                 .scaledToFill()
                                 .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .offset(y: 20)
+                              //  .offset(y: 20)
                         } else {
                             Button(action: {
                                 isAddingImageBtn.toggle()
@@ -125,8 +128,11 @@ struct HeaderSectionView: View {
                             .zIndex(2)
                         }
                     }
-                    
                 }
+        // уменьшаем в 2 раза при появлении клавиатуры
+                .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.75 : 1.0)
+                .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
+                .padding()
             }
             
     private func pickPhoto() {
@@ -157,6 +163,7 @@ struct HeaderSectionView: View {
 }
 
 #Preview("Library") {
+    var keyboardState = KeyboardState()
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     
@@ -170,9 +177,11 @@ struct HeaderSectionView: View {
         isShowIconLibrary: .constant(false)
     )
             .environmentObject(dm)
+            .environmentObject(keyboardState)
 }
 
 #Preview("Galary") {
+    var keyboardState = KeyboardState()
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     
@@ -188,9 +197,11 @@ struct HeaderSectionView: View {
         isShowIconLibrary: .constant(false)
     )
             .environmentObject(dm)
+            .environmentObject(keyboardState)
 }
 
 #Preview("With Add Button") {
+    var keyboardState = KeyboardState()
     let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
     let dm = DM(speechManager: testSpeechManager)
     
@@ -204,4 +215,5 @@ struct HeaderSectionView: View {
         isShowIconLibrary: .constant(false)
     )
     .environmentObject(dm)
+    .environmentObject(keyboardState)
 }
