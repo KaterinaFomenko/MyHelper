@@ -26,7 +26,6 @@ struct SaveButtonView: View {
                 )
         }
         .disabled(isPressed)
-        .padding(.bottom)
     }
 }
 

@@ -37,6 +37,7 @@ struct NewCardView: View {
         ZStack(alignment: .bottom) {
             VStack {
                 TitleCardView(title: titleCard)
+                    .padding(.top, 20)
                 
                 HeaderSectionView(
                     nameCard: $nameCard,
@@ -47,43 +48,38 @@ struct NewCardView: View {
                     isShowingImagePicker: $isShowingImagePicker,
                     isShowIconLibrary: $isShowIconLibrary
                 )
-            
-            //MARK: Second half of the screen
-            
-            ListFormNewCardView(
-                nameCard: $nameCard,
-                selectedColorId: $selectedColorId
-            )
+            //     уменьшаем в 2 раза при появлении клавиатуры
+                .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.75 : 1.0)
+                .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
+                
+                ListFormNewCardView(
+                    nameCard: $nameCard,
+                    selectedColorId: $selectedColorId
+                )
+                
+                if keyboardState.keyboardHeight == 0 {
+                   
+                    SaveButtonView(
+                        isPressed: $isPressedSaveBtn,
+                        isDisabled: !isNameValid(),
+                        action: saveCard
+                    )
+                    .padding( 20)
+                }
             }
-            .padding()
+            .environmentObject(keyboardState)
+            .padding(.horizontal)
             .background(Color.gray.opacity(0.1))
             .listStyle(.inset)
             
-            if keyboardState.keyboardHeight == 0 {
-                SaveButtonView(
-                    isPressed: $isPressedSaveBtn,
-                    isDisabled: !isNameValid(),
-                    action: saveCard
-                )
-                .padding(.bottom, 20)
-            }
-        }
-        .environmentObject(keyboardState)
-        
-       //.background(Color.blue)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-        //.padding(.bottom, keyboardState.keyboardHeight * 0.2)
-        .padding(.bottom, 1)
-        .animation(.easeOut(duration: 0.25), value: keyboardState.keyboardHeight)
-        
-        // Hide keyboard if tupped
-        .onTapGesture {
-            UIApplication.shared.endEditing()
         }
         
+        //  .background(Color.blue)
         
-        //  .padding(.bottom, keyboardState.keyboardHeight * 0.3)
-        
+//        // Hide keyboard if tupped
+//        .onTapGesture {
+//            UIApplication.shared.endEditing()
+//        }
         
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup(for: dm.parentCardIdOpened)

@@ -113,9 +113,18 @@ struct MainCardsView: View {
             }
         }
         .padding()
-        .sheet(isPresented: $dm.isShowCreateCardScreen) {
+//        .sheet(isPresented: $dm.isShowCreateCardScreen) {
+//            NewCardView()
+//        }
+//        .fullScreenCover(item: $dm.isShowCreateCardScreen, content: { <#Identifiable#> in
+//            <#code#>
+//        })
+//
+        
+        .fullScreenCover(isPresented: $dm.isShowCreateCardScreen) {
             NewCardView()
-        }
+           }
+        
         .alert(isPresented: $isShowAlert) {
             
             // Alert.Button
