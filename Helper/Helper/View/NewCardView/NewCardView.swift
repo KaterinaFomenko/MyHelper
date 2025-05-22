@@ -14,6 +14,7 @@ struct NewCardView: View {
     @EnvironmentObject var dm: DM
     @EnvironmentObject var settings: Settings
     
+    var card: CardModel
     @State private var titleCard: LocalizedStringResource = ""
     @State private var nameCard: String = "" // TextField
     @State private var selectedColorId = 1 // color groupId
@@ -32,12 +33,17 @@ struct NewCardView: View {
     // keyboard
     @StateObject private var keyboardState = KeyboardState()
     
+    init(card: CardModel) {
+            self.card = card
+            _selectedColorId = State(initialValue: card.groupId)
+        }
+    
     var body: some View {
         
         ZStack(alignment: .bottom) {
-            VStack {
+            VStack(spacing: 10) {
                 TitleCardView(title: titleCard)
-                    .padding(.top, 20)
+                    .padding(.top, 0)
                 
                 HeaderSectionView(
                     nameCard: $nameCard,
@@ -58,7 +64,6 @@ struct NewCardView: View {
                 )
                 
                 if keyboardState.keyboardHeight == 0 {
-                   
                     SaveButtonView(
                         isPressed: $isPressedSaveBtn,
                         isDisabled: !isNameValid(),
@@ -82,21 +87,23 @@ struct NewCardView: View {
 //        }
         
         .onAppear {
-            selectedColorId = dm.getColorIdOfGroup(for: dm.parentCardIdOpened)
-            dm.isCardContainGroup = dm.checkIsParent(id: dm.contextCardId)
+            selectedColorId = dm.getColorIdOfGroup(for: Float(card.groupId))
+            
+            dm.isCardContainGroup = dm.checkIsParent(id: card.cardId)
             titleCard = dm.titleState() // update titleGroupe
             
             // MARK:  show new Card Screen for editind
             
             if dm.isStateEdiding == true {
                 
-                selectedColorId = dm.getColorIdOfGroup(for: dm.contextCardId)
+                selectedColorId = dm.getColorIdOfGroup(for: card.cardId)
                 
-                let nameCardTranslate = dm.getCardByID(cardId: dm.contextCardId)?.titleKey ?? "Empty name"
+               // let nameCardTranslate = dm.getCardByID(cardId: card.cardId)?.titleKey ?? "Empty name"
+                let nameCardTranslate = card.titleKey
                 let lang = settings.storedLanguage
                 nameCard =  nameCardTranslate.getLocalizedString(language: lang )
                 
-                let imageName = dm.getCardByID(cardId: dm.contextCardId)?.imageName ?? "scribble"
+                let imageName = dm.getCardByID(cardId: card.cardId)?.imageName ?? "scribble"
                 
                 if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
                     selectedImageGalary = image
@@ -106,6 +113,7 @@ struct NewCardView: View {
                 }
             }
         }
+        
         // при закрытии окна режим редактирования = false
         .onDisappear {
             dm.isStateEdiding = false
@@ -148,7 +156,10 @@ struct NewCardView: View {
         
         // Режим редактирования: используем существующий ID
         if dm.isStateEdiding {
-            maxId = dm.contextCardId
+            
+            //maxId = dm.contextCardId
+             maxId = card.cardId
+            
             print("⚒️ Редактирование карточки ID: \(dm.contextCardId)")
         } else {
             
@@ -196,7 +207,8 @@ struct NewCardView: View {
                 imageName: imageName
             )
         }
-        dm.isShowCreateCardScreen = false
+        //dm.isShowCreateCardScreen = false
+        path.removeLast(path.count)
     }
     
     private func showAlert(message: String) {
@@ -205,29 +217,43 @@ struct NewCardView: View {
     }
 }
 
-#Preview("state editing") {
-    var keyboardState = KeyboardState()
-    let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
-    let dm = DM(speechManager: testSpeechManager)
-    let settings = Settings()
-    dm.isStateEdiding = true
-    return NewCardView()
-        .environmentObject(dm)
-        .environmentObject(testSpeechManager)
-        .environmentObject(settings)
-        .environmentObject(keyboardState)
+struct NewCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        let testCard = CardModel(
+            cardId: 1,
+            titleKey: "Test Card",
+            groupId: 1,
+            imageName: "scribble",
+            priority: nil
+        )
+        
+        let keyboardState = KeyboardState()
+        let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
+        let dm = DM(speechManager: testSpeechManager)
+        let settings = Settings()
+        
+        // Preview для режима редактирования
+        Group {
+            NewCardView(card: testCard)
+                .environmentObject(dm)
+                .environmentObject(settings)
+                .environmentObject(keyboardState)
+                .previewDisplayName("Edit Mode")
+                .onAppear {
+                    dm.isStateEdiding = true
+                    dm.contextCardId = testCard.cardId
+                }
+            
+        // Preview для режима создания новой карточки
+            NewCardView(card: testCard)
+                .environmentObject(dm)
+                .environmentObject(settings)
+                .environmentObject(keyboardState)
+                .previewDisplayName("Create Mode")
+                .onAppear {
+                    dm.isStateEdiding = false
+                    dm.parentCardIdOpened = -1
+                }
+        }
+    }
 }
-
-#Preview("state general") {
-    var keyboardState = KeyboardState()
-    let testSpeechManager = SpeechManager(lang: Settings().storedLanguage)
-    let dm = DM(speechManager: testSpeechManager)
-    let settings = Settings()
-    dm.isStateEdiding = false
-    return NewCardView()
-        .environmentObject(dm)
-        .environmentObject(testSpeechManager)
-        .environmentObject(settings)
-        .environmentObject(keyboardState)
-}
-
