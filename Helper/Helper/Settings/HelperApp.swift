@@ -13,6 +13,7 @@ struct HelperApp: App {
     @StateObject var settings: Settings // = Settings()
     @StateObject var speechManager: SpeechManager
     @StateObject var dm: DM
+    @StateObject var coordinator = NavigationCoordinator()
 
     init() {
         let settings = Settings()
@@ -29,6 +30,7 @@ struct HelperApp: App {
                 .environmentObject(speechManager)
                 .environmentObject(dm)
                 .environment(\.locale, settings.speechLanguage.locale)
+                .environmentObject(coordinator)
                //.id(settings.speechLanguage)
         }
     }

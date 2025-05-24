@@ -13,6 +13,7 @@ struct NewCardView: View {
     
     @EnvironmentObject var dm: DM
     @EnvironmentObject var settings: Settings
+    @EnvironmentObject var coordinator: NavigationCoordinator
     
     var card: CardModel
     @State private var titleCard: LocalizedStringResource = ""
@@ -79,26 +80,18 @@ struct NewCardView: View {
             
         }
         
-        //  .background(Color.blue)
-        
-//        // Hide keyboard if tupped
-//        .onTapGesture {
-//            UIApplication.shared.endEditing()
-//        }
-        
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup(for: Float(card.groupId))
             
             dm.isCardContainGroup = dm.checkIsParent(id: card.cardId)
             titleCard = dm.titleState() // update titleGroupe
             
-            // MARK:  show new Card Screen for editind
+            // if state editing
             
             if dm.isStateEdiding == true {
                 
                 selectedColorId = dm.getColorIdOfGroup(for: card.cardId)
-                
-               // let nameCardTranslate = dm.getCardByID(cardId: card.cardId)?.titleKey ?? "Empty name"
+          
                 let nameCardTranslate = card.titleKey
                 let lang = settings.storedLanguage
                 nameCard =  nameCardTranslate.getLocalizedString(language: lang )
@@ -114,13 +107,13 @@ struct NewCardView: View {
             }
         }
         
-        // при закрытии окна режим редактирования = false
+        // when the screen is closed: isStateEdiding = false
         .onDisappear {
             dm.isStateEdiding = false
             dm.isCardContainGroup = false
             dm.contextCardId = 0
         }
-        // Open Galery
+        // open Galery
         .sheet(isPresented: $isShowingImagePicker) {
             ImagePicker(selectedImage: $selectedImageGalary)
         }
@@ -157,8 +150,8 @@ struct NewCardView: View {
         // Режим редактирования: используем существующий ID
         if dm.isStateEdiding {
             
-            //maxId = dm.contextCardId
-             maxId = card.cardId
+         //   maxId = dm.contextCardId
+            maxId = card.cardId
             
             print("⚒️ Редактирование карточки ID: \(dm.contextCardId)")
         } else {
@@ -208,7 +201,7 @@ struct NewCardView: View {
             )
         }
         //dm.isShowCreateCardScreen = false
-        path.removeLast(path.count)
+        coordinator.path.removeLast(coordinator.path.count)
     }
     
     private func showAlert(message: String) {

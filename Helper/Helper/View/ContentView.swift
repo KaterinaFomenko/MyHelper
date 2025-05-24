@@ -6,12 +6,16 @@
 //
 import SwiftUI
 
+class NavigationCoordinator: ObservableObject {
+    @Published var path = NavigationPath()
+}
+
 struct ContentView: View {
-    
-    @State private var path = NavigationPath()
+  //  @StateObject var coordinator = NavigationCoordinator()
+    @EnvironmentObject var coordinator: NavigationCoordinator
     
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: $coordinator.path) {
             VStack {
                 VStack(spacing: 0)  {
                     Rectangle()
@@ -27,7 +31,7 @@ struct ContentView: View {
                 }
                 
                 ScrollView {
-                    MainCardsView(path: $path)
+                    MainCardsView()
                 }
             }
             

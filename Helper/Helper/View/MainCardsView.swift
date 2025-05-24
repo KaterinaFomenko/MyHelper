@@ -12,10 +12,12 @@ struct MainCardsView: View {
     
     @EnvironmentObject var dm: DM
     @EnvironmentObject var settings: Settings
+    @EnvironmentObject var coordinator: NavigationCoordinator
+    
     @State var isShowAlert = false
     @State var message = ""
 
-    @Binding  var path: NavigationPath
+   // @Binding  var path: NavigationPath
 
     var colums = [GridItem(.adaptive(minimum: 100), spacing: 10)]
    // let colums = [GridItem(.flexible()), GridItem(.flexible())]
@@ -110,10 +112,16 @@ struct MainCardsView: View {
         case 101:
             resetToHome()
         case 102 :
-            dm.isShowCreateCardScreen.toggle()
+           // dm.isShowCreateCardScreen.toggle()
+            openNewCardView(card)
+            
         default:
             navigateToChildCard(card)
         }
+    }
+    
+    private func openNewCardView(_ card: CardModel) {
+        coordinator.path.append(card)
     }
     
     private func resetToHome() {
@@ -152,7 +160,7 @@ struct MainCardsView: View {
        
         // Show Card увшештп
         dm.isStateEdiding = true
-        path.append(card)
+        coordinator.path.append(card)
 
         //dm.isShowCreateCardScreen.toggle()
     }
