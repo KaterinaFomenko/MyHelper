@@ -50,6 +50,8 @@ struct ListFormNewCardView: View {
                     .disabled(dm.checkIsParent(id: dm.contextCardId) && dm.isStateEdiding)
             }
         }
+        
+        
         .cornerRadius(15)
         
         

@@ -22,119 +22,128 @@ struct HeaderSectionView: View {
     @Binding var isShowingImagePicker: Bool
     @Binding var isShowIconLibrary: Bool
     
+    @StateObject var devLay = DeviceLayoutHelper.shared
+    
     var body: some View {
         
         GeometryReader { geometry in
-            let baseSize = geometry.size.width / 1.3
-            let baseSizeImage = geometry.size.width / 2
-      
-            ZStack(alignment: .center) {
-                // Fon
-                Rectangle()
-                    .fill(AppColors.getColor(groupId: selectedColorId))
-                    .opacity(0.5)
-                    .frame(width: baseSize, height: baseSize)
-                    .clipShape(RoundedRectangle(cornerRadius: AppSize.cornerRadius))
-                    .overlay {
-                        VStack {
-                            Spacer()
-                            // ellipsis.circle + circle.fill
-                            HStack {
-                                Menu {
-                                    ControlGroup {
-                                        Button { isShowIconLibrary = true
-                                        } label: {
-                                            Label("Icon Library", systemImage:   "square.3.layers.3d.down.right")
-                                        }
-                                        
-                                        Button { pickPhoto()
-                                        } label: {
-                                            Label("Foto Galary", systemImage:  "camera")
-                                        }
-                                    }
-                                } label: {
-                                 
-                                    Label("more", systemImage: "ellipsis.circle")
-                                        .labelStyle(.iconOnly)
-                                        .shadow(radius: 10)
-                                }
-                            
-                                Spacer()
-                                
-                                Image(systemName: "circle.fill")
-                                    .resizable()
-                                    .frame(width: AppSize.groupeIconSize,
-                                           height: AppSize.groupeIconSize)
-                                    .foregroundColor(dm.isCardContainGroup ? .blue : .clear)
-                                    .padding(.horizontal, 10)
-                                    .shadow(radius: 10)
-                                    .opacity(0.5)
-                            }
-                        }
-                        .padding(.leading, 10)
-                        .padding(.bottom, 10)
-                    }
-                    .position(
-                        x: geometry.size.width / 2,
-                        y: geometry.size.height / 2
-                    )
+            let size = geometry.size
+            let _ = print("Geometry size:", geometry.size)
+            if size.width > 0 && size.height > 0 {
+                let baseSize = devLay.baseSize(for: size)
+                let baseSizeImage = devLay.baseSizeImage(for: size)
                 
-                VStack(spacing: 1) {
-                    
-                    // title of card
-                    Text(nameCard.lkey)
-                        .font(.custom(AppSize.fontFamily, size:AppSize.titleFont))
-                        .lineLimit(1)
-                        .truncationMode(.tail) // Добавляем многоточие в конце
-                        .padding(.top, 10)
-                   
-                    // image ore button
-                    Group {
-                        if !selectedIconLibrary.isEmpty {
-                            Image(selectedIconLibrary)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: baseSizeImage, height: baseSizeImage)
-                        }
-                        
-                        else if let selectedImageGalary = selectedImageGalary {
-                            Image(uiImage: selectedImageGalary)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: baseSizeImage, height: baseSizeImage)
-                                .clipShape(RoundedRectangle(cornerRadius: AppSize.cornerRadius))
-                        } else {
-                            Button(action: {
-                                isAddingImageBtn.toggle()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                    withAnimation {
-                                        isAddingImageBtn = true
+                
+                ZStack(alignment: .center) {
+                    // Fon
+                    Rectangle()
+                        .fill(AppColors.getColor(groupId: selectedColorId))
+                        .opacity(0.5)
+                        .frame(width: baseSize, height: baseSize)
+                        .clipShape(RoundedRectangle(cornerRadius: AppSize.cornerRadius))
+                        .overlay {
+                            VStack {
+                                Spacer()
+                                // ellipsis.circle + circle.fill
+                                HStack {
+                                    Menu {
+                                        ControlGroup {
+                                            Button { isShowIconLibrary = true
+                                            } label: {
+                                                Label("Icon Library", systemImage:   "square.3.layers.3d.down.right")
+                                            }
+                                            
+                                            Button { pickPhoto()
+                                            } label: {
+                                                Label("Foto Galary", systemImage:  "camera")
+                                            }
+                                        }
+                                    } label: {
+                                        
+                                        Label("more", systemImage: "ellipsis.circle")
+                                            .labelStyle(.iconOnly)
+                                            .shadow(radius: 10)
                                     }
-                                    // place show Galary
-                                    pickPhoto()
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "circle.fill")
+                                        .resizable()
+                                        .frame(width: AppSize.groupeIconSize,
+                                               height: AppSize.groupeIconSize)
+                                        .foregroundColor(dm.isCardContainGroup ? .blue : .clear)
+                                        .padding(.horizontal, 10)
+                                        .shadow(radius: 10)
+                                        .opacity(0.5)
                                 }
-                            }) {
-                                Text("Add image")
-                                    .modifier(CustomButtonModifier(isPressed: isAddingImageBtn, backgroundColor: .blue, textColor: .white))
+                            }
+                            .padding(.leading, 10)
+                            .padding(.bottom, 10)
+                        }
+                        .position(
+                            x: geometry.size.width / 2,
+                            y: geometry.size.height / 2
+                        )
+                    
+                    VStack(spacing: 1) {
+                        
+                        // title of card
+                        Text(nameCard.lkey)
+                            .font(.custom(AppSize.fontFamily, size:AppSize.titleFont))
+                            .lineLimit(1)
+                            .truncationMode(.tail) // Добавляем многоточие в конце
+                            .padding(.top, 10)
+                        
+                        // image ore button
+                        Group {
+                            if !selectedIconLibrary.isEmpty {
+                                Image(selectedIconLibrary)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: baseSizeImage, height: baseSizeImage)
+                            }
+                            
+                            else if let selectedImageGalary = selectedImageGalary {
+                                Image(uiImage: selectedImageGalary)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: baseSizeImage, height: baseSizeImage)
+                                    .clipShape(RoundedRectangle(cornerRadius: AppSize.cornerRadius))
+                            } else {
+                                Button(action: {
+                                    isAddingImageBtn.toggle()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        withAnimation {
+                                            isAddingImageBtn = true
+                                        }
+                                        // place show Galary
+                                        pickPhoto()
+                                    }
+                                }) {
+                                    Text("Add image")
+                                        .modifier(CustomButtonModifier(isPressed: isAddingImageBtn, backgroundColor: .blue, textColor: .white))
+                                }
                             }
                         }
+                        .frame(height: baseSizeImage)
+                        .sheet(isPresented: $isShowIconLibrary) {
+                            IconLibraryView(isShowIconGalary: $isShowIconLibrary, selectedIconLibrary: $selectedIconLibrary)
+                        }
+                        Spacer()
                     }
-                    .frame(height: baseSizeImage)
-                    .sheet(isPresented: $isShowIconLibrary) {
-                        IconLibraryView(isShowIconGalary: $isShowIconLibrary, selectedIconLibrary: $selectedIconLibrary)
-                    }
-                    Spacer()
+                    .frame(width: baseSizeImage, height: baseSizeImage)
                 }
-                .frame(width: baseSizeImage, height: baseSizeImage)
+                .onAppear {
+                    print("Appeared, size:", geometry.size)
+                }
             }
+            
         }
-        
-        
-        // Hide keyboard if tupped
-        .onTapGesture {
-            UIApplication.shared.endEditing()
-        }
-        
+            // Hide keyboard if tupped
+                .onTapGesture {
+                    UIApplication.shared.endEditing()
+                }
+            
         
     }
     

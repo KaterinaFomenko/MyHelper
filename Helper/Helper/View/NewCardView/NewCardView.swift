@@ -11,6 +11,12 @@ import Photos
 
 struct NewCardView: View {
     
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    var isTabletLayout: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
+    
     @EnvironmentObject var dm: DM
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var coordinator: NavigationCoordinator
@@ -34,51 +40,37 @@ struct NewCardView: View {
     // keyboard
     @StateObject private var keyboardState = KeyboardState()
     
+    var isLandscape: Bool {
+        UIDevice.current.orientation.isLandscape
+    }
+    
     init(card: CardModel) {
-            self.card = card
-            _selectedColorId = State(initialValue: card.groupId)
-        }
+        self.card = card
+        _selectedColorId = State(initialValue: card.groupId)
+    }
     
     var body: some View {
         
-        ZStack(alignment: .bottom) {
-            VStack(spacing: 10) {
-                TitleCardView(title: titleCard)
-                    .padding(.top, 0)
-                
-                HeaderSectionView(
-                    nameCard: $nameCard,
-                    selectedColorId: $selectedColorId,
-                    selectedIconLibrary: $selectedIconLibrary,
-                    selectedImageGalary: $selectedImageGalary,
-                    isAddingImageBtn: $isAddingImageBtn,
-                    isShowingImagePicker: $isShowingImagePicker,
-                    isShowIconLibrary: $isShowIconLibrary
-                )
-            //     уменьшаем в 2 раза при появлении клавиатуры
-                .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.75 : 1.0)
-                .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
-                
-                ListFormNewCardView(
-                    nameCard: $nameCard,
-                    selectedColorId: $selectedColorId
-                )
-                
-                if keyboardState.keyboardHeight == 0 {
-                    SaveButtonView(
-                        isPressed: $isPressedSaveBtn,
-                        isDisabled: !isNameValid(),
-                        action: saveCard
-                    )
-                    .padding( 20)
+        Group {
+            if isTabletLayout && isLandscape {
+                HStack(spacing: 5) {
+                    leftSection
+                    rightSection
                 }
+                
+            } else {
+                VStack(spacing: 10) {
+                    leftSection
+                    rightSection
+                }
+                
             }
-            .environmentObject(keyboardState)
-            .padding(.horizontal)
-            .background(Color.gray.opacity(0.1))
-            .listStyle(.inset)
             
         }
+        .environmentObject(keyboardState)
+        .padding(.horizontal)
+        .background(Color.gray.opacity(0.1))
+        .listStyle(.inset)
         
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup(for: Float(card.groupId))
@@ -91,7 +83,7 @@ struct NewCardView: View {
             if dm.isStateEdiding == true {
                 
                 selectedColorId = dm.getColorIdOfGroup(for: card.cardId)
-          
+                
                 let nameCardTranslate = card.titleKey
                 let lang = settings.storedLanguage
                 nameCard =  nameCardTranslate.getLocalizedString(language: lang )
@@ -126,16 +118,58 @@ struct NewCardView: View {
         )
     }
     
-    private func isNameValid() -> Bool {
-        let trimmedName = nameCard.trimmingCharacters(in: .whitespaces)
-        return !trimmedName.isEmpty
+    
+    private var leftSection: some View {
+        VStack {
+        TitleCardView(title: titleCard)
+            .padding(.top, 0)
+        
+        HeaderSectionView(
+            nameCard: $nameCard,
+            selectedColorId: $selectedColorId,
+            selectedIconLibrary: $selectedIconLibrary,
+            selectedImageGalary: $selectedImageGalary,
+            isAddingImageBtn: $isAddingImageBtn,
+            isShowingImagePicker: $isShowingImagePicker,
+            isShowIconLibrary: $isShowIconLibrary
+        )
+        //     уменьшаем в 2 раза при появлении клавиатуры
+        .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.75 : 1.0)
+        .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
+        
+        }
     }
+    
+    private var rightSection: some View {
+        VStack {
+            ListFormNewCardView(
+                nameCard: $nameCard,
+                selectedColorId: $selectedColorId
+            )
+            
+            if keyboardState.keyboardHeight == 0 {
+                SaveButtonView(
+                    isPressed: $isPressedSaveBtn,
+                    isDisabled: !isNameValid(),
+                    action: saveCard
+                )
+                .padding( 20)
+            }
+        }
+    }
+  
     
     private func maxChildId(for parentId: Float, array: [CardModel]) -> Float {
         guard let parent = array.first(where: { $0.cardId == parentId }),
               let children = parent.childCards, !children.isEmpty else { return  parentId }
         
         return children.max(by: { $0.cardId < $1.cardId })?.cardId ?? parentId
+    }
+    
+    
+    private func isNameValid() -> Bool {
+        let trimmedName = nameCard.trimmingCharacters(in: .whitespaces)
+        return !trimmedName.isEmpty
     }
     
     private func saveCard() {
