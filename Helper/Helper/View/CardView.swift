@@ -29,7 +29,7 @@ struct CardView: View {
         .frame(width: 115, height: 100)
         .background(RoundedRectangle(cornerRadius: 10)
             .fill(AppColors.getColor(groupId: card.groupId))
-            .opacity(0.45)
+            .opacity(0.55)
             .shadow(color: .gray, radius: 2, x: 3, y: 3)
         )
     }

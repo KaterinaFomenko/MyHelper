@@ -271,6 +271,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Helper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Voicey;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your gallery so you can select images.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech synthesis to read text aloud.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -313,6 +314,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Helper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Voicey;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your gallery so you can select images.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need access to speech synthesis to read text aloud.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
