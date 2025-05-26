@@ -23,6 +23,7 @@ struct ListFormNewCardView: View {
                     .font(.headline)
                 
                 TextField("Enter name", text: $nameCard )
+                    
                     .focused($isFocused)
                     .textFieldStyle(.roundedBorder)
                     .onChange(of: isFocused) { oldValue, newValue in
@@ -33,6 +34,7 @@ struct ListFormNewCardView: View {
                         // скрыть клавиатуру или перейти к следующему полю
                         UIApplication.shared.endEditing()
                     }
+                 
             }
             
             HStack(alignment: .center) {

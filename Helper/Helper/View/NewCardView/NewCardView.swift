@@ -13,6 +13,8 @@ struct NewCardView: View {
     
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    
     var isTabletLayout: Bool {
         horizontalSizeClass == .regular && verticalSizeClass == .regular
     }
@@ -121,8 +123,8 @@ struct NewCardView: View {
     
     private var leftSection: some View {
         VStack {
-        TitleCardView(title: titleCard)
-            .padding(.top, 0)
+//        TitleCardView(title: titleCard)
+//            .padding(.top, 0)
         
         HeaderSectionView(
             nameCard: $nameCard,
@@ -137,24 +139,36 @@ struct NewCardView: View {
         .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.75 : 1.0)
         .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
         
+            Spacer()
         }
+        
+        
     }
     
     private var rightSection: some View {
-        VStack {
-            ListFormNewCardView(
-                nameCard: $nameCard,
-                selectedColorId: $selectedColorId
-            )
-            
-            if keyboardState.keyboardHeight == 0 {
-                SaveButtonView(
-                    isPressed: $isPressedSaveBtn,
-                    isDisabled: !isNameValid(),
-                    action: saveCard
+        ZStack {
+            VStack {
+                TitleCardView(title: titleCard)
+                    .padding(.bottom, 20)
+                
+                ListFormNewCardView(
+                    nameCard: $nameCard,
+                    selectedColorId: $selectedColorId
                 )
-                .padding( 20)
             }
+            
+            VStack {
+                Spacer()
+                if keyboardState.keyboardHeight == 0 {
+                    SaveButtonView(
+                        isPressed: $isPressedSaveBtn,
+                        isDisabled: !isNameValid(),
+                        action: saveCard
+                    )
+                    .padding(.bottom, 40)
+                }
+            }
+            
         }
     }
   

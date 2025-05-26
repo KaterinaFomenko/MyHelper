@@ -28,11 +28,10 @@ struct HeaderSectionView: View {
         
         GeometryReader { geometry in
             let size = geometry.size
-            let _ = print("Geometry size:", geometry.size)
+           // let _ = print("Geometry size:", geometry.size)
             if size.width > 0 && size.height > 0 {
                 let baseSize = devLay.baseSize(for: size)
                 let baseSizeImage = devLay.baseSizeImage(for: size)
-                
                 
                 ZStack(alignment: .center) {
                     // Fon
@@ -126,12 +125,14 @@ struct HeaderSectionView: View {
                             }
                         }
                         .frame(height: baseSizeImage)
+                        
                         .sheet(isPresented: $isShowIconLibrary) {
                             IconLibraryView(isShowIconGalary: $isShowIconLibrary, selectedIconLibrary: $selectedIconLibrary)
                         }
-                        Spacer()
                     }
+                    
                     .frame(width: baseSizeImage, height: baseSizeImage)
+                  
                 }
                 .onAppear {
                     print("Appeared, size:", geometry.size)

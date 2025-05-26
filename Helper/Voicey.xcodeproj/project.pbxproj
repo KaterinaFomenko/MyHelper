@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B746C09E2D58D2BA008F53DD /* Build configuration list for PBXProject "Helper" */;
+			buildConfigurationList = B746C09E2D58D2BA008F53DD /* Build configuration list for PBXProject "Voicey" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -344,7 +344,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B746C09E2D58D2BA008F53DD /* Build configuration list for PBXProject "Helper" */ = {
+		B746C09E2D58D2BA008F53DD /* Build configuration list for PBXProject "Voicey" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B746C0B02D58D2BC008F53DD /* Debug */,

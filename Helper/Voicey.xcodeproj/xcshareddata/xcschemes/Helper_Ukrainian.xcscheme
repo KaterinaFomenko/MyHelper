@@ -18,7 +18,7 @@
                BlueprintIdentifier = "B746C0A22D58D2BA008F53DD"
                BuildableName = "Helper.app"
                BlueprintName = "Helper"
-               ReferencedContainer = "container:Helper.xcodeproj">
+               ReferencedContainer = "container:Voicey.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "de"
-      region = "DE"
+      language = "uk"
+      region = "UA"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -49,7 +49,7 @@
             BlueprintIdentifier = "B746C0A22D58D2BA008F53DD"
             BuildableName = "Helper.app"
             BlueprintName = "Helper"
-            ReferencedContainer = "container:Helper.xcodeproj">
+            ReferencedContainer = "container:Voicey.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -66,7 +66,7 @@
             BlueprintIdentifier = "B746C0A22D58D2BA008F53DD"
             BuildableName = "Helper.app"
             BlueprintName = "Helper"
-            ReferencedContainer = "container:Helper.xcodeproj">
+            ReferencedContainer = "container:Voicey.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

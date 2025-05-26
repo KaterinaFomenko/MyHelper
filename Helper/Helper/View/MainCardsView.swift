@@ -19,8 +19,8 @@ struct MainCardsView: View {
 
    // @Binding  var path: NavigationPath
 
-    var colums = [GridItem(.adaptive(minimum: 100), spacing: 10)]
-   // let colums = [GridItem(.flexible()), GridItem(.flexible())]
+    var colums = [GridItem(.adaptive(minimum: 100), spacing: 30)]
+ //   let colums = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
 

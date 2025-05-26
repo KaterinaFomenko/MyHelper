@@ -25,7 +25,7 @@ struct TitleCardView: View {
                 Text(nameOfGroupe)
             }
         }
-        .font(.custom("Helvetica Neue", size: 20))
+        .font(.custom("Helvetica Neue", size: AppSize.titleFont))
         .foregroundStyle(.gray)
         .lineLimit(1)
         .truncationMode(.tail) // add ...
