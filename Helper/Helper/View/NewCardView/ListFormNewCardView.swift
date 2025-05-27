@@ -18,14 +18,17 @@ struct ListFormNewCardView: View {
     var body: some View {
         
         List {
-            VStack(alignment: .leading) {
+            HStack() {
                 Text("Name")
-                    .font(.headline)
+                    .font(.custom(AppSize.fontRegular, size: AppSize.titleRegular))
+                    .foregroundStyle(Color(AppSize.colorFont))
                 
                 TextField("Enter name", text: $nameCard )
-                    
                     .focused($isFocused)
-                    .textFieldStyle(.roundedBorder)
+                    .font(.custom(AppSize.fontSemiBold, size: AppSize.titleRegular))
+                    .foregroundStyle(Color(AppSize.colorFont))
+                    
+                //.textFieldStyle(.roundedBorder)
                     .onChange(of: isFocused) { oldValue, newValue in
                         keyboardState.isFocused = newValue
                     }
@@ -34,29 +37,25 @@ struct ListFormNewCardView: View {
                         // скрыть клавиатуру или перейти к следующему полю
                         UIApplication.shared.endEditing()
                     }
-                 
             }
             
             HStack(alignment: .center) {
                 Text("Color")
-                    .font(.headline)
+                    .font(.custom(AppSize.fontRegular, size: AppSize.titleRegular))
+                    .foregroundStyle(Color(AppSize.colorFont))
                 CustomColorPicker(selectedColorId: $selectedColorId)
             }
             
             if ( dm.parentCardIdOpened < 0 ) {
                 Toggle("Will the card contain other cards ?", isOn: $dm.isCardContainGroup)
-                    .font(.custom("Helvetica Neue", size: 20))
+                    .font(.custom(AppSize.fontRegular, size: AppSize.titleRegular))
                     .foregroundStyle(.gray)
                     .animation(.snappy, value: dm.isCardContainGroup)
                     .padding(.top)
                     .disabled(dm.checkIsParent(id: dm.contextCardId) && dm.isStateEdiding)
             }
         }
-        
-        
-        .cornerRadius(15)
-        
-        
+        .cornerRadius(AppSize.cornerRadius)
     }
 }
 

@@ -5,9 +5,8 @@ struct IconLibraryView: View {
     @Binding var isShowIconGalary: Bool
     @Binding var selectedIconLibrary: String
     
-    let columns1 = [GridItem(.adaptive(minimum: 80), spacing: 5)]
+    let columns = [GridItem(.adaptive(minimum: 80), spacing: 5)]
     
-    let columns = [GridItem(.flexible(minimum: 80, maximum: 80), spacing: 5)]
     @State private var scrollOffset: CGFloat = 0
     
     var body: some View {
@@ -17,40 +16,37 @@ struct IconLibraryView: View {
         
         ZStack(alignment: .top) {
             ScrollView {
-                VStack(spacing: 0) {
-                    // Маркер для отслеживания прокрутки
-                    GeometryReader { proxy in
-                        Color.clear
-                            .preference(
-                                key: ScrollOffsetKey.self,
-                                value: proxy.frame(in: .named("scroll")).minY
-                            )
-                    }
-                    .frame(height: 1)
-                    
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(arrayImagesFix, id: \.self) { iconName in
-                            CardImageView(
-                                imageName: iconName
-                            )
-                            .onTapGesture {
-                                selectedIconLibrary = iconName
-                                isShowIconGalary = false
-                            }
+                // Маркер для отслеживания прокрутки
+                GeometryReader { proxy in
+                    Color.clear
+                        .preference(
+                            key: ScrollOffsetKey.self,
+                            value: proxy.frame(in: .named("scroll")).minY
+                        )
+                }
+                .frame(height: 60)
+                
+                LazyVGrid(columns: columns, spacing: 10) {
+                    ForEach(arrayImagesFix, id: \.self) { iconName in
+                        CardImageView(
+                            imageName: iconName
+                        )
+                        .onTapGesture {
+                            selectedIconLibrary = iconName
+                            isShowIconGalary = false
                         }
                     }
-                    .padding(.top, 60)
                 }
             }
-            .padding()
+            .padding(.horizontal, 10)
+            .padding(.vertical, 5)
             .coordinateSpace(name: "scroll")
             .onPreferenceChange(ScrollOffsetKey.self) { value in
                 scrollOffset = value
             }
             
-            // Фиксированный заголовок
             Text("Icon Library")
-                .font(.title)
+                .font(.custom(AppSize.fontSemiBold, size: AppSize.titleSemiBold))
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(.bar)

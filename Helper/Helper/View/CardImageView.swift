@@ -17,17 +17,19 @@ struct CardImageView: View {
             if let image = ImageService.shared.loadImageFromDiskWith(fileName: imageName) {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 65, height: 65)
-                    .cornerRadius(5)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: AppSize.cornerRadius))
                     //.background(Color.blue)
             } else {
                 // load From JSON from Asset Catalog
                 Image(imageName ?? fallImageName)
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 65, height: 65)
-                    .cornerRadius(5)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: AppSize.cornerRadius))
                   //  .background(Color.red)
             }
         }
@@ -35,7 +37,6 @@ struct CardImageView: View {
 }
 
 #Preview {
-    
     CardImageView(imageName: "sunny")
 }
 

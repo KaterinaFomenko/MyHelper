@@ -63,9 +63,6 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section("Language") {
-                    
-                    
-                    
                     Picker("Language", selection: $tempLanguage) {
                         ForEach(Settings.Language.allCases) { lang in
                             Text(lang.displayName).tag(lang)

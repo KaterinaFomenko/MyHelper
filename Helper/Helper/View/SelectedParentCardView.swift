@@ -10,7 +10,6 @@ import SwiftUI
 struct SelectedParentCardView: View {
     
     @State private var isShowLanguagePickerView: Bool = false
-   // @StateObject private var settings = Settings()
     @EnvironmentObject var speechManager: SpeechManager
     @EnvironmentObject var dm: DM
     @EnvironmentObject var settings: Settings
@@ -19,7 +18,8 @@ struct SelectedParentCardView: View {
     var body: some View {
         ZStack() {
             Rectangle()
-                .fill(Color.blue.opacity(0.1))
+                .fill(Color("BlueLight"))
+                .opacity(0.7)
                 .frame(height: 60)
     
                 HStack(alignment: .center) {
@@ -36,7 +36,7 @@ struct SelectedParentCardView: View {
                     let b = dm.titleWay
                    
                     Text(b.isEmpty ? "" : a).font(.system(size: 25)) + Text(dm.titleWay.lkey)
-                        .font(.system(size: 25))
+                        .font(.custom(AppSize.fontRegular, size: AppSize.titleRegular))
                      
                     Spacer()
                     
@@ -55,8 +55,6 @@ struct SelectedParentCardView: View {
                 }
                 .sheet(isPresented: $isShowLanguagePickerView) {
                     SettingsView(settings: settings)
-                  //  SettingsView()
-                  //  SettingsView(speechManager: speechManager)
                 }
             }
         }

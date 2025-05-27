@@ -16,11 +16,7 @@ struct MainCardsView: View {
     
     @State var isShowAlert = false
     @State var message = ""
-
-   // @Binding  var path: NavigationPath
-
-    var colums = [GridItem(.adaptive(minimum: 100), spacing: 30)]
- //   let colums = [GridItem(.flexible()), GridItem(.flexible())]
+    var colums = [GridItem(.adaptive(minimum: 80), spacing: 30)]
     
     var body: some View {
 
@@ -29,7 +25,6 @@ struct MainCardsView: View {
                     
                     ForEach(dm.mainArray, id: \.cardId) { card in
                             cardView(card: card)
-                        
                     }
                 }
                 .padding()
@@ -50,9 +45,7 @@ struct MainCardsView: View {
                 let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.titleKey) : \($0.imageName)" }.joined(separator: "\n")
                 
                 print("🤵 It`s all parent cards: \(arrayIDs)")
-                
             }
-   //     }
     }
     
     @ViewBuilder
@@ -112,7 +105,6 @@ struct MainCardsView: View {
         case 101:
             resetToHome()
         case 102 :
-           // dm.isShowCreateCardScreen.toggle()
             openNewCardView(card)
             
         default:
@@ -153,18 +145,13 @@ struct MainCardsView: View {
     }
     
     private func editCard(_ card: CardModel) {
-        
-        
         dm.contextCardId = card.cardId
         print("🆔 Show Card for Editing : \(dm.contextCardId)")
        
-        // Show Card увшештп
+        // Show Card
         dm.isStateEdiding = true
         coordinator.path.append(card)
-
-        //dm.isShowCreateCardScreen.toggle()
     }
-    
 }
 
 //#Preview {

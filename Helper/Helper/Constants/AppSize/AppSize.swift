@@ -10,8 +10,11 @@ import Foundation
 import SwiftUI
 
 enum AppSize {
-    static let fontFamily = "Helvetica Neue"
-    static let titleFont: CGFloat = 20
+    static let fontRegular = "OpenSans-Regular"
+    static let fontSemiBold = "OpenSans-SemiBold"
+    static let colorFont = "ColorFont"
+    static let titleRegular: CGFloat = 20
+    static let titleSemiBold: CGFloat = 30
    
     static let headerCornerRadius: CGFloat = 15
     static let headerImageSizeRatio: CGFloat = 1.35

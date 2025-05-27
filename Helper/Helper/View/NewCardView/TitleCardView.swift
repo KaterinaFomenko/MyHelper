@@ -25,8 +25,8 @@ struct TitleCardView: View {
                 Text(nameOfGroupe)
             }
         }
-        .font(.custom("Helvetica Neue", size: AppSize.titleFont))
-        .foregroundStyle(.gray)
+        .font(.custom(AppSize.fontSemiBold, size: AppSize.titleSemiBold))
+        .foregroundStyle(Color(AppSize.colorFont))
         .lineLimit(1)
         .truncationMode(.tail) // add ...
         .animation(.snappy , value: dm.isCardContainGroup)

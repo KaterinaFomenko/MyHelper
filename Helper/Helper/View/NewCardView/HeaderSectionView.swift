@@ -28,7 +28,7 @@ struct HeaderSectionView: View {
         
         GeometryReader { geometry in
             let size = geometry.size
-           // let _ = print("Geometry size:", geometry.size)
+            // let _ = print("Geometry size:", geometry.size)
             if size.width > 0 && size.height > 0 {
                 let baseSize = devLay.baseSize(for: size)
                 let baseSizeImage = devLay.baseSizeImage(for: size)
@@ -88,10 +88,10 @@ struct HeaderSectionView: View {
                         
                         // title of card
                         Text(nameCard.lkey)
-                            .font(.custom(AppSize.fontFamily, size:AppSize.titleFont))
                             .lineLimit(1)
                             .truncationMode(.tail) // Добавляем многоточие в конце
-                            .padding(.top, 10)
+                            .font(.custom(AppSize.fontSemiBold, size: AppSize.titleSemiBold))
+                            .foregroundStyle(Color(AppSize.colorFont))
                         
                         // image ore button
                         Group {
@@ -130,22 +130,17 @@ struct HeaderSectionView: View {
                             IconLibraryView(isShowIconGalary: $isShowIconLibrary, selectedIconLibrary: $selectedIconLibrary)
                         }
                     }
-                    
                     .frame(width: baseSizeImage, height: baseSizeImage)
-                  
                 }
                 .onAppear {
                     print("Appeared, size:", geometry.size)
                 }
             }
-            
         }
-            // Hide keyboard if tupped
-                .onTapGesture {
-                    UIApplication.shared.endEditing()
-                }
-            
-        
+        // Hide keyboard if tupped
+        .onTapGesture {
+            UIApplication.shared.endEditing()
+        }
     }
     
     private func pickPhoto() {

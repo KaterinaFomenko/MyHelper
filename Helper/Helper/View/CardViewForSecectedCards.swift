@@ -18,9 +18,10 @@ struct CardViewForSecectedCards: View {
     let card: CardModel
     
     var body: some View {
-        VStack(spacing: 1.0) {
+        VStack(spacing: 1) {
             Text(LocalizedStringKey(card.titleKey))
-                .font(.custom("Helvetica Neue", size: 25))
+                .font(.custom(AppSize.fontRegular, size: AppSize.titleSemiBold))
+                .foregroundStyle(Color(AppSize.colorFont))
                 .multilineTextAlignment(.center)
             
             CardImageView(imageName: card.imageName)

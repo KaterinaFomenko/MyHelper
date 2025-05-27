@@ -57,23 +57,23 @@ struct NewCardView: View {
             if isTabletLayout && isLandscape {
                 HStack(spacing: 5) {
                     leftSection
-                    rightSection
+                    VStack {
+                        titleCardView
+                        rightSection
+                    }
                 }
                 
             } else {
-                VStack(spacing: 10) {
+                VStack() {
                     leftSection
+                    titleCardView
                     rightSection
                 }
-                
             }
-            
         }
         .environmentObject(keyboardState)
-        .padding(.horizontal)
         .background(Color.gray.opacity(0.1))
         .listStyle(.inset)
-        
         .onAppear {
             selectedColorId = dm.getColorIdOfGroup(for: Float(card.groupId))
             
@@ -122,10 +122,6 @@ struct NewCardView: View {
     
     
     private var leftSection: some View {
-        VStack {
-//        TitleCardView(title: titleCard)
-//            .padding(.top, 0)
-        
         HeaderSectionView(
             nameCard: $nameCard,
             selectedColorId: $selectedColorId,
@@ -138,37 +134,28 @@ struct NewCardView: View {
         //     уменьшаем в 2 раза при появлении клавиатуры
         .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.75 : 1.0)
         .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
-        
-            Spacer()
-        }
-        
-        
+    }
+    
+    private var titleCardView: some View {
+        TitleCardView(title: titleCard)
+            .padding(AppSize.buttonPadding)
     }
     
     private var rightSection: some View {
-        ZStack {
-            VStack {
-                TitleCardView(title: titleCard)
-                    .padding(.bottom, 20)
-                
+        VStack {
                 ListFormNewCardView(
                     nameCard: $nameCard,
                     selectedColorId: $selectedColorId
                 )
-            }
+                .padding(.horizontal, AppSize.buttonPadding)
             
-            VStack {
-                Spacer()
                 if keyboardState.keyboardHeight == 0 {
                     SaveButtonView(
                         isPressed: $isPressedSaveBtn,
                         isDisabled: !isNameValid(),
                         action: saveCard
                     )
-                    .padding(.bottom, 40)
                 }
-            }
-            
         }
     }
   
@@ -198,7 +185,7 @@ struct NewCardView: View {
         // Режим редактирования: используем существующий ID
         if dm.isStateEdiding {
             
-         //   maxId = dm.contextCardId
+       //   maxId = dm.contextCardId
             maxId = card.cardId
             
             print("⚒️ Редактирование карточки ID: \(dm.contextCardId)")

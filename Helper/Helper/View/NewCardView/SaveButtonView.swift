@@ -16,7 +16,7 @@ struct SaveButtonView: View {
         
         Button(action: action) {
             Text("Save")
-                .frame(minWidth: 80)
+              //  .frame(minWidth: 80)
                 .modifier(
                     CustomButtonModifier(
                         isPressed: isPressed,

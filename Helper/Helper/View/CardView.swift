@@ -15,7 +15,8 @@ struct CardView: View {
     var body: some View {
         VStack(spacing: 1.0) {
             Text(LocalizedStringKey(card.titleKey))
-                .font(.custom("Helvetica Neue", size: 20))
+                .foregroundStyle(Color(AppSize.colorFont))
+                .font(.custom(AppSize.fontSemiBold, size: AppSize.titleRegular))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 2)
             
