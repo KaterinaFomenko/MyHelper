@@ -16,20 +16,40 @@ struct MainCardsView: View {
     
     @State var isShowAlert = false
     @State var message = ""
-    var colums = [GridItem(.adaptive(minimum: 80), spacing: 30)]
+   
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
+    var isTabletLayout: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
+    
+    @State private var columns: [GridItem] = [GridItem(.adaptive(minimum: 80), spacing: 30)]
     
     var body: some View {
-
-            ScrollView {
-                LazyVGrid(columns: colums, spacing: 10) {
+      
+        ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
                     
                     ForEach(dm.mainArray, id: \.cardId) { card in
-                            cardView(card: card)
+                        cardView(card: card)
                     }
                 }
-                .padding()
+                .padding(.vertical, 10)
+                .padding(.horizontal, isTabletLayout ? 30 : 20)
+        }
+        .onAppear {
+            
+             if isTabletLayout {
+                columns = [GridItem(.adaptive(minimum: 80), spacing: 60)]
+            } else {
+                columns = [GridItem(.adaptive(minimum: 80), spacing: 30)]
             }
             
+            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.titleKey) : \($0.imageName)" }.joined(separator: "\n")
+            
+            print("🤵 It`s all parent cards: \(arrayIDs)")
+        }
             .alert(isPresented: $isShowAlert) {
                 Alert(title: Text("Are you sure you want to remove this item?"),
                       message: Text(message),
@@ -40,12 +60,6 @@ struct MainCardsView: View {
                 )
             }
             .animation(.easeInOut, value: isShowAlert)
-            
-            .onAppear {
-                let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.titleKey) : \($0.imageName)" }.joined(separator: "\n")
-                
-                print("🤵 It`s all parent cards: \(arrayIDs)")
-            }
     }
     
     @ViewBuilder
@@ -91,20 +105,18 @@ struct MainCardsView: View {
             dm.addItemToSelected(item: card)
             
         } else {
-            // tap Home / Back / Plus
             handleSpesialCardTap(card)
             
         }
     }
     
     private func handleSpesialCardTap(_ card: CardModel) {
-        
         switch card.cardId {
-        case 100:
+        case 100:           // home
             resetToHome()
-        case 101:
+        case 101:           // back
             resetToHome()
-        case 102 :
+        case 102 :          // plus
             openNewCardView(card)
             
         default:
@@ -154,9 +166,8 @@ struct MainCardsView: View {
     }
 }
 
-//#Preview {
-//    
-//    MainCardsView(path: $path)
-//        .environmentObject(DM(speechManager: SpeechManager(lang: Settings().storedLanguage)))
-//}
+#Preview {
+    MainCardsView()
+        .environmentObject(DM(speechManager: SpeechManager(lang: Settings().storedLanguage)))
+}
 

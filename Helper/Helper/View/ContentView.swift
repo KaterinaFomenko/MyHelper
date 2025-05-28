@@ -18,14 +18,13 @@ struct ContentView: View {
         NavigationStack(path: $coordinator.path) {
             VStack {
                 VStack(spacing: 0)  {
-                    Rectangle()
-                        .fill(Color("BlueLight"))
-                        .opacity(0.7)
-                        .frame(height: 20)
+//                    Rectangle()
+//                        .fill(Color("BlueLight"))
+//                        .opacity(0.2)
+//                        .frame(height: 20)
                       
                     SelectedCardsView()
-                        .background(Color("LaunchScreenBG"))
-                       // .opacity(0.7)
+                      //  .background(Color("LaunchScreenBG"))
                     
                     SelectedParentCardView()
                 }
@@ -41,6 +40,7 @@ struct ContentView: View {
         }
     }
 }
+
 #Preview {
     ContentView()
         .environmentObject(DM(speechManager: SpeechManager(lang: "en")))

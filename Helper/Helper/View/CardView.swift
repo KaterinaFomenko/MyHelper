@@ -15,11 +15,11 @@ struct CardView: View {
     var body: some View {
         VStack(spacing: 1.0) {
             Text(LocalizedStringKey(card.titleKey))
+                .padding(.horizontal, 2)
                 .foregroundStyle(Color(AppSize.colorFont))
                 .font(.custom(AppSize.fontSemiBold, size: AppSize.titleRegular))
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 2)
-            
+                
             CardImageView(imageName: card.imageName)
             
                 HStack {
@@ -37,7 +37,7 @@ struct CardView: View {
 }
 
 #Preview {
-    var card1 = CardModel(cardId: 1, titleKey: "I", groupId: 1, imageName: "puzzle")
+    var card1 = CardModel(cardId: 1, titleKey: "Irrrrrrrrrrrrhhhh", groupId: 1, imageName: "puzzle")
    
     VStack {
         CardView(card: card1, hasChildren: true)

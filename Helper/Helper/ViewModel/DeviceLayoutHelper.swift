@@ -26,7 +26,7 @@ class DeviceLayoutHelper: ObservableObject {
        // verticalSizeClass == .regular
     }
     
-    // Размеры карточек
+    // Размеры карточки для экрана NewCard
     func baseSize(for size: CGSize) -> CGFloat {
         if isTablet {
             return size.width / 1.8

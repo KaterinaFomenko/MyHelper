@@ -9,16 +9,12 @@
 import SwiftUI
 import Photos
 
+
+
 struct NewCardView: View {
     
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    
-    
-    var isTabletLayout: Bool {
-        horizontalSizeClass == .regular && verticalSizeClass == .regular
-    }
-    
     @EnvironmentObject var dm: DM
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var coordinator: NavigationCoordinator
@@ -46,6 +42,10 @@ struct NewCardView: View {
         UIDevice.current.orientation.isLandscape
     }
     
+    var isTabletLayout: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
+    
     init(card: CardModel) {
         self.card = card
         _selectedColorId = State(initialValue: card.groupId)
@@ -67,6 +67,8 @@ struct NewCardView: View {
                 VStack() {
                     leftSection
                     titleCardView
+                     //   .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.55 : 1.0)
+                     //   .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
                     rightSection
                 }
             }
@@ -132,13 +134,18 @@ struct NewCardView: View {
             isShowIconLibrary: $isShowIconLibrary
         )
         //     уменьшаем в 2 раза при появлении клавиатуры
-        .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.75 : 1.0)
+        .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.55 : 1.0)
         .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
     }
     
     private var titleCardView: some View {
         TitleCardView(title: titleCard)
-            .padding(AppSize.buttonPadding)
+            .padding(.top, -AppSize.buttonPadding)
+        
+//        if isTabletLayout == true {
+//            .scaleEffect(keyboardState.keyboardHeight > 0 ? 0.55 : 1.0)
+//            .animation(.easeInOut(duration: 0.3), value: keyboardState.keyboardHeight)
+//        }
     }
     
     private var rightSection: some View {
@@ -155,11 +162,11 @@ struct NewCardView: View {
                         isDisabled: !isNameValid(),
                         action: saveCard
                     )
+                    .padding(AppSize.buttonPadding) // for btn save
                 }
         }
     }
   
-    
     private func maxChildId(for parentId: Float, array: [CardModel]) -> Float {
         guard let parent = array.first(where: { $0.cardId == parentId }),
               let children = parent.childCards, !children.isEmpty else { return  parentId }

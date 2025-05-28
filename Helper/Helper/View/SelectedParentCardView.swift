@@ -19,7 +19,7 @@ struct SelectedParentCardView: View {
         ZStack() {
             Rectangle()
                 .fill(Color("BlueLight"))
-                .opacity(0.7)
+                .opacity(0.3)
                 .frame(height: 60)
     
                 HStack(alignment: .center) {

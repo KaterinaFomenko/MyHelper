@@ -25,6 +25,7 @@ struct CardViewForSecectedCards: View {
                 .multilineTextAlignment(.center)
             
             CardImageView(imageName: card.imageName)
+                .foregroundStyle(.white)
         }
     }
 }

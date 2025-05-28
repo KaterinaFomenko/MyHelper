@@ -18,17 +18,18 @@ struct ListFormNewCardView: View {
     var body: some View {
         
         List {
-            HStack() {
+            VStack(alignment: .leading) {
                 Text("Name")
-                    .font(.custom(AppSize.fontRegular, size: AppSize.titleRegular))
-                    .foregroundStyle(Color(AppSize.colorFont))
+                    .font(.custom(AppSize.fontRegular, size: 15))
+                    .foregroundStyle(.gray)
+                    
                 
                 TextField("Enter name", text: $nameCard )
                     .focused($isFocused)
                     .font(.custom(AppSize.fontSemiBold, size: AppSize.titleRegular))
                     .foregroundStyle(Color(AppSize.colorFont))
                     
-                //.textFieldStyle(.roundedBorder)
+                .textFieldStyle(.roundedBorder)
                     .onChange(of: isFocused) { oldValue, newValue in
                         keyboardState.isFocused = newValue
                     }
@@ -38,18 +39,18 @@ struct ListFormNewCardView: View {
                         UIApplication.shared.endEditing()
                     }
             }
-            
+           
             HStack(alignment: .center) {
                 Text("Color")
-                    .font(.custom(AppSize.fontRegular, size: AppSize.titleRegular))
-                    .foregroundStyle(Color(AppSize.colorFont))
+                    .font(.custom(AppSize.fontRegular, size: 15))
+                    .foregroundStyle(.gray)
                 CustomColorPicker(selectedColorId: $selectedColorId)
             }
             
             if ( dm.parentCardIdOpened < 0 ) {
                 Toggle("Will the card contain other cards ?", isOn: $dm.isCardContainGroup)
                     .font(.custom(AppSize.fontRegular, size: AppSize.titleRegular))
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(dm.isCardContainGroup ? Color(AppSize.colorFont) : .gray)
                     .animation(.snappy, value: dm.isCardContainGroup)
                     .padding(.top)
                     .disabled(dm.checkIsParent(id: dm.contextCardId) && dm.isStateEdiding)

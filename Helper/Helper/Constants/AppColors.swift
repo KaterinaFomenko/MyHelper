@@ -29,13 +29,13 @@ struct AppColors {
         case 13: return Color(hex: "27AE60") // Приглушенный зеленый
         case 14: return Color(hex: "5DADE2") // Приглушенный голубой
         case 15: return Color(hex: "EAEAEA") // Серый (по умолчанию)
-        default: return Color.gray
+        default: return Color.green
         }
     }
     // "F8F8F8") // Почти белый — фон
     static func getColor(groupId: Int) -> Color {
         switch groupId {
-        case 1: return Color(hex: "FFD54F") // Тёплый пастельный жёлтый — верх мегафона
+        case 1: return Color(hex: "FEA4A1") // Тёплый пастельный жёлтый — верх мегафона
         case 2: return Color(hex: "4FC3F7") // Светло-голубой — корпус мегафона
         case 3: return Color(hex: "E57373") // Мягкий красный — основные сердечки
         case 4: return Color(hex: "AED581") // Мягкий зелёный — ручка мегафона
