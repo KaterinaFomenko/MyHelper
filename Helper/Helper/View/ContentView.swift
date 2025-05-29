@@ -13,6 +13,12 @@ class NavigationCoordinator: ObservableObject {
 struct ContentView: View {
     
     @EnvironmentObject var coordinator: NavigationCoordinator
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
+    var isTabletLayout: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
@@ -26,7 +32,7 @@ struct ContentView: View {
                 .background(AppColors.linearGradient())
                 
                 ViewForMainCards()
-                    .padding(.top, 170)
+                    .padding(.top, isTabletLayout ? 200 : 170)
                     .ignoresSafeArea(edges: .bottom)
             }
             .navigationDestination(for: CardModel.self) { card in

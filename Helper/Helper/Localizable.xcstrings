@@ -1473,6 +1473,29 @@
         }
       }
     },
+    "Good night" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dobranoc"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спокойной ночи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Надобраніч"
+          }
+        }
+      }
+    },
     "Good_morning" : {
       "extractionState" : "manual",
       "localizations" : {

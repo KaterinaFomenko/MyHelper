@@ -11,12 +11,20 @@ struct SelectedCardsView: View {
     
     var columsTop: [GridItem] = [GridItem(.fixed(100))]
     @EnvironmentObject var dm: DM
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
+    var isTabletLayout: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
     
     var body: some View {
-//        Rectangle()
-//         // this Rectangle for more air
-//            .fill(.clear)
-//            .frame(height: 20)
+      if isTabletLayout == true {
+            Rectangle()
+            // this Rectangle for more air
+                .fill(.clear)
+                .frame(height: 20)
+        }
         
         ScrollViewReader { proxy in
             ScrollView(.horizontal) {

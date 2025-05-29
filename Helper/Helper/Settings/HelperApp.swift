@@ -14,7 +14,7 @@ struct HelperApp: App {
     @StateObject var speechManager: SpeechManager
     @StateObject var dm: DM
     @StateObject var coordinator = NavigationCoordinator()
-
+    
     init() {
         let settings = Settings()
         let speechManager = SpeechManager(lang: settings.storedLanguage)
