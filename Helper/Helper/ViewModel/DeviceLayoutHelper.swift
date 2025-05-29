@@ -42,22 +42,4 @@ class DeviceLayoutHelper: ObservableObject {
             return size.width / 2
         }
     }
-//    
-//    func baseSize(for size: CGSize) -> CGFloat {
-//        if size.width >= 768 {
-//            return size.width / 1.8 // iPad или широкое окно
-//        } else {
-//            return size.width / 1.3 // iPhone
-//        }
-//    }
-//    
-//    func baseSizeImage(for size: CGSize) -> CGFloat {
-//        if size.width >= 768 {
-//            return size.width / 2.2
-//        } else {
-//            return size.width / 2
-//        }
-//    }
-
-    
 }

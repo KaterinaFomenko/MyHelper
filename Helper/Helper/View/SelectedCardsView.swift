@@ -13,6 +13,11 @@ struct SelectedCardsView: View {
     @EnvironmentObject var dm: DM
     
     var body: some View {
+//        Rectangle()
+//         // this Rectangle for more air
+//            .fill(.clear)
+//            .frame(height: 20)
+        
         ScrollViewReader { proxy in
             ScrollView(.horizontal) {
                 LazyHGrid(rows: columsTop) {
@@ -21,10 +26,10 @@ struct SelectedCardsView: View {
                             .id(item)
                     }
                 }
+                .frame(height: 100)
                 .padding(.horizontal, 20)
             }
-          
-            .frame(height: 100)
+            //.background(.yellow)
             .onChange(of: dm.selectedItemsArray) { oldValue, newValue in
                 print("On change")
                 withAnimation {
@@ -34,8 +39,6 @@ struct SelectedCardsView: View {
                 }
             }
         }
-//        .background(Color("LaunchScreenBG"))
-//        .opacity(0.7)
     }
 }
 

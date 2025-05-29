@@ -11,31 +11,27 @@ class NavigationCoordinator: ObservableObject {
 }
 
 struct ContentView: View {
- 
+    
     @EnvironmentObject var coordinator: NavigationCoordinator
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            VStack {
+            ZStack(alignment: .top) {
+                
                 VStack(spacing: 0)  {
-//                    Rectangle()
-//                        .fill(Color("BlueLight"))
-//                        .opacity(0.2)
-//                        .frame(height: 20)
-                      
                     SelectedCardsView()
-                      //  .background(Color("LaunchScreenBG"))
-                    
                     SelectedParentCardView()
                 }
                 
-                ScrollView {
-                    MainCardsView()
-                }
+                .background(AppColors.linearGradient())
+                
+                ViewForMainCards()
+                    .padding(.top, 170)
+                    .ignoresSafeArea(edges: .bottom)
             }
-            .background(Color(hex: "F8F8F8"))
             .navigationDestination(for: CardModel.self) { card in
                 NewCardView(card: card)
+                
             }
         }
     }

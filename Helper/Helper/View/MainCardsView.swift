@@ -27,29 +27,29 @@ struct MainCardsView: View {
     @State private var columns: [GridItem] = [GridItem(.adaptive(minimum: 80), spacing: 30)]
     
     var body: some View {
-      
-        ScrollView {
+            ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     
                     ForEach(dm.mainArray, id: \.cardId) { card in
                         cardView(card: card)
                     }
                 }
-                .padding(.vertical, 10)
+                .padding(.vertical, 20)
                 .padding(.horizontal, isTabletLayout ? 30 : 20)
-        }
-        .onAppear {
-            
-             if isTabletLayout {
-                columns = [GridItem(.adaptive(minimum: 80), spacing: 60)]
-            } else {
-                columns = [GridItem(.adaptive(minimum: 80), spacing: 30)]
+                
             }
-            
-            let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.titleKey) : \($0.imageName)" }.joined(separator: "\n")
-            
-            print("🤵 It`s all parent cards: \(arrayIDs)")
-        }
+            .onAppear {
+                
+                if isTabletLayout {
+                    columns = [GridItem(.adaptive(minimum: 80), spacing: 60)]
+                } else {
+                    columns = [GridItem(.adaptive(minimum: 80), spacing: 30)]
+                }
+                
+                let arrayIDs = dm.mainArray.map { "\($0.cardId) : \($0.titleKey) : \($0.imageName)" }.joined(separator: "\n")
+                
+                print("🤵 It`s all parent cards: \(arrayIDs)")
+            }
             .alert(isPresented: $isShowAlert) {
                 Alert(title: Text("Are you sure you want to remove this item?"),
                       message: Text(message),
@@ -60,8 +60,8 @@ struct MainCardsView: View {
                 )
             }
             .animation(.easeInOut, value: isShowAlert)
-    }
-    
+        }
+
     @ViewBuilder
     private func cardView(card: CardModel) -> some View {
         CardView(card: card, hasChildren: card.childCards != nil)
