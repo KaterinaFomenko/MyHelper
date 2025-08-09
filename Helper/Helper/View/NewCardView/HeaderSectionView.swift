@@ -47,12 +47,15 @@ struct HeaderSectionView: View {
                                 HStack {
                                     Menu {
                                         ControlGroup {
-                                            Button { isShowIconLibrary = true
+                                            Button {
+                                                isShowIconLibrary = true
                                             } label: {
                                                 Label("Icon Library", systemImage:   "square.3.layers.3d.down.right")
                                             }
                                             
-                                            Button { pickPhoto()
+                                            Button {
+                                                // open Galary
+                                                pickPhoto()
                                             } label: {
                                                 Label("Foto Galary", systemImage:  "camera")
                                             }
@@ -153,7 +156,7 @@ struct HeaderSectionView: View {
             }
         }
     }
-    
+   
     private func requestPhotoLibraryAccess(completion: @escaping (Bool) -> Void) {
         PHPhotoLibrary.requestAuthorization { status in
             DispatchQueue.main.async {

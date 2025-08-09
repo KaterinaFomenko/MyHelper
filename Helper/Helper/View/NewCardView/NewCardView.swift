@@ -9,8 +9,6 @@
 import SwiftUI
 import Photos
 
-
-
 struct NewCardView: View {
     
     @Environment(\.verticalSizeClass) var verticalSizeClass

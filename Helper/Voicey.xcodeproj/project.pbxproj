@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		B7A615F02DEDEFE3007B6E64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B746C09B2D58D2BA008F53DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B746C0A22D58D2BA008F53DD;
+			remoteInfo = Helper;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		B746C0A32D58D2BA008F53DD /* Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7A615EC2DEDEFE3007B6E64 /* GolosokTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GolosokTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,10 +40,22 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		B7A615ED2DEDEFE3007B6E64 /* GolosokTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GolosokTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B746C0A02D58D2BA008F53DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A615E92DEDEFE3007B6E64 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				B746C0A52D58D2BA008F53DD /* Helper */,
+				B7A615ED2DEDEFE3007B6E64 /* GolosokTests */,
 				B746C0A42D58D2BA008F53DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				B746C0A32D58D2BA008F53DD /* Helper.app */,
+				B7A615EC2DEDEFE3007B6E64 /* GolosokTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +108,29 @@
 			productReference = B746C0A32D58D2BA008F53DD /* Helper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B7A615EB2DEDEFE3007B6E64 /* GolosokTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7A615F42DEDEFE3007B6E64 /* Build configuration list for PBXNativeTarget "GolosokTests" */;
+			buildPhases = (
+				B7A615E82DEDEFE3007B6E64 /* Sources */,
+				B7A615E92DEDEFE3007B6E64 /* Frameworks */,
+				B7A615EA2DEDEFE3007B6E64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7A615F12DEDEFE3007B6E64 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B7A615ED2DEDEFE3007B6E64 /* GolosokTests */,
+			);
+			name = GolosokTests;
+			packageProductDependencies = (
+			);
+			productName = GolosokTests;
+			productReference = B7A615EC2DEDEFE3007B6E64 /* GolosokTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +143,10 @@
 				TargetAttributes = {
 					B746C0A22D58D2BA008F53DD = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					B7A615EB2DEDEFE3007B6E64 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = B746C0A22D58D2BA008F53DD;
 					};
 				};
 			};
@@ -116,12 +168,20 @@
 			projectRoot = "";
 			targets = (
 				B746C0A22D58D2BA008F53DD /* Helper */,
+				B7A615EB2DEDEFE3007B6E64 /* GolosokTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B746C0A12D58D2BA008F53DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A615EA2DEDEFE3007B6E64 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,7 +198,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B7A615E82DEDEFE3007B6E64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B7A615F12DEDEFE3007B6E64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B746C0A22D58D2BA008F53DD /* Helper */;
+			targetProxy = B7A615F02DEDEFE3007B6E64 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B746C0B02D58D2BC008F53DD /* Debug */ = {
@@ -265,7 +340,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Helper/Helper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 4DR6RFVM32;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -291,7 +366,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Katerina-Fomenko.VoiceyHelper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -312,7 +387,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Helper/Helper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 4DR6RFVM32;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -338,7 +413,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Katerina-Fomenko.VoiceyHelper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -348,6 +423,47 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		B7A615F22DEDEFE3007B6E64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DR6RFVM32;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Katerina-Fomenko.GolosokTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Helper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Helper";
+			};
+			name = Debug;
+		};
+		B7A615F32DEDEFE3007B6E64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DR6RFVM32;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Katerina-Fomenko.GolosokTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Helper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Helper";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -368,6 +484,15 @@
 			buildConfigurations = (
 				B746C0B32D58D2BC008F53DD /* Debug */,
 				B746C0B42D58D2BC008F53DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7A615F42DEDEFE3007B6E64 /* Build configuration list for PBXNativeTarget "GolosokTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7A615F22DEDEFE3007B6E64 /* Debug */,
+				B7A615F32DEDEFE3007B6E64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
